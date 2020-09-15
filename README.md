@@ -4,6 +4,8 @@
 
 - Download Git Bash --> https://gitforwindows.org
 
+- just click ok and next while installing no special settings needed
+
 - open Git Bash
 
 - Login
@@ -17,13 +19,13 @@
 
 - Create a Folder Syp anywhere you want
 
-- Right click in the empty folder and click 'Git Bash here'
+- Right click in the empty Syp folder and click 'Git Bash here'
 
 - git clone https://github.com/CodeChrisB/BooklessDocs
 
-- Change something to any file.
-
 - now you have a folder called BooklessDocs
+
+- Change something to any file. (Write your name into the .md file)
 
 - cd BooklessDocs
 
@@ -71,3 +73,8 @@ Syp
 ## Get current version
 
 - codechrisb.github.io/version.html
+
+
+
+#### Written By Buchberger Christopher
+#### @CodeChrisB
