@@ -55,16 +55,17 @@ Syp
     │   of our documents E.g sprints, Powerpoints, etc.
 ```
 
-# About Pushing and Pulling
+# Git Bash Commands
 
-- to get the newest version use git pull
+- git clone (repolink)  #clone a repo to current destination
 
-- there can be merge problems
+- git add . #add all newly added files to next commit
 
-- to pull you have to be in correct folder
+- git commit -am 'Message'  #commit and give a message for clarification
 
-  - syp/bookless or syp/booklessdocs
+- git push #after commiting you can push your changes
 
+- git pull before you start working download the newest changes
 
 # Only for version control important
 
