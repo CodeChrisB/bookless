@@ -85,7 +85,10 @@ Syp
 
 - codechrisb.github.io/version.html
 
+# Get the project as desktop application
 
+- npm run electron
 
+---     
 #### Written By Buchberger Christopher
 #### @CodeChrisB
