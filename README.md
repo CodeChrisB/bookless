@@ -83,7 +83,7 @@ Syp
 
 ## Get current version
 
-- codechrisb.github.io/version.html
+- https://codechrisb.github.io/version.html
 
 # Get the project as desktop application
 
