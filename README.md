@@ -55,6 +55,16 @@ Syp
     │   of our documents E.g sprints, Powerpoints, etc.
 ```
 
+# About Pushing and Pulling
+
+- to get the newest version use git pull
+
+- there can be merge problems
+
+- to pull you have to be in correct folder
+
+- - syp/bookless or syp/booklessdocs
+
 
 # Only for version control important
 
