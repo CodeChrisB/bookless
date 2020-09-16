@@ -63,7 +63,7 @@ Syp
 
 - to pull you have to be in correct folder
 
-- - syp/bookless or syp/booklessdocs
+  - syp/bookless or syp/booklessdocs
 
 
 # Only for version control important
