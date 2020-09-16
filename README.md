@@ -85,7 +85,7 @@ Syp
 
 - https://codechrisb.github.io/version.html
 
-# Get the project as desktop application
+## Get the project as desktop application
 
 - npm run electron
 
