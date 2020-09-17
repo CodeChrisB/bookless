@@ -75,6 +75,14 @@ Syp
 - git pull                                  
     - before you start working download the newest changes.
 
+- git reset HEAD~1
+
+    - this command will bring you local code to the last committed version, do this if you accidently committed or messed up and want to do it again.
+
+    - using this is your last resort if you messed up the 1 means revert the last 1 commit.
+
+    - never reset more than you have commited for example if you do git reset HEAD~1000 you definitley destroy all we have ever committed (locally), be causious what you do with this command.
+
 
 # Only for version control important
 
