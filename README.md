@@ -57,17 +57,24 @@ Syp
 
 # Git Bash Commands
 
-- git clone (repolink)  #clone a repo to current destination.
+- git clone (repolink)                      
+    - #clone a repo to current destination.
 
-- git add . #add all newly added files to next commit.
+- git add .                 
+    -   #add/track all newly added files to next commit.
 
-- git commit -am 'Message'  #commit and give a message for clarification.
+- git status                
+    -   #to see untracked files track them with --> git add .
 
-- git push #after commiting you can push your changes.
+- git commit -am 'Message'                  
+    -   #commit and give a message for clarification.
 
-- git pull #before you start working download the newest changes.
+- git push                                  
+    -   #after commiting you can push your changes.
 
-- git status #to see untracked files track them with --> git add .
+- git pull                                  
+    -   #before you start working download the newest changes.
+
 
 # Only for version control important
 
