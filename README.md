@@ -18,6 +18,8 @@ Sebastian Egger
 
 ## Get the repos
 
+- all git commands have to be written as shown every white space and dots (.)
+
 - Create a Folder Syp anywhere you want
 
 - Right click in the empty Syp folder and click 'Git Bash here'
