@@ -1,3 +1,4 @@
+Sebastian Egger
 # Bookless Setup
 
 ## Gitbash
