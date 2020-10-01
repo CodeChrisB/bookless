@@ -11,6 +11,7 @@
     "e2e": "ng e2e",
     "electron": "electron .",
     "electron-build": "ng build --prod && electron .",
+    "eb": "ng build --prod && electron .",
     "electron-start": "ng build --base-href ./ && electron ."
   },
   "private": true,

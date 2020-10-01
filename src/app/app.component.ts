@@ -25,9 +25,9 @@ export class AppComponent {
     })
 
     console.log(this.hash256())
-  if(this.hash256() == password){
+    if(this.hash256() == password){
     alert('Login')
-  }
+    }
   }
 
   user = 
