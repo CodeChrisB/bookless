@@ -2,6 +2,9 @@
 
 [Setup the Project](github.com/CodeChrisB/booklessdocs/md/setup.md)
 
+
+[Smart Table Libary](https://lorenzofox3.github.io/smart-table-website/)
+
 # Git Bash Commands
 
 - git clone (repolink)                      
