@@ -1,12 +1,31 @@
 <body>
-      <form class="box" id="form" autocomplete="off">
-          <img src ='../assets/images/logo.jpg'>
-          <input type="text" placeholder="Firstname"  [(ngModel)]="username" name="username" />
-          <input type="text" placeholder="Lastname"  [(ngModel)]="password" name="password"/>
-          <input (click)="check()" type="submit" placeholder="Login"/>
+  {{title}}<br>
 
-          <h1>User:  admin<br>Password:  admin</h1>
-      </form>
+  <button [style.backgroundColor]='getColor(showName)' (click)="showName=!showName">Name</button>
+  <button [style.backgroundColor]='getColor(showID)'(click)="showID=!showID">Id</button>
+  <button [style.backgroundColor]='getColor(showEmail)'(click)="showEmail=!showEmail">Email</button>
+  <button [style.backgroundColor]='getColor(showCompanyName)'(click)="showCompanyName=!showCompanyName">Company Name</button>
+  <button [style.backgroundColor]='getColor(showAdress)'(click)="showAdress=!showAdress">Adress</button>
+  <button [style.backgroundColor]='getColor(showPhone)'(click)="showPhone=!showPhone">Phone</button>
+<table class ="table">
+  <tr>
+    <th *ngIf='showName' (click)="showName=!showName" >Name<th>
+    <th *ngIf='showID' (click)="showID=!showID">ID<th>
+    <th *ngIf='showEmail '(click)="showEmail=!showEmail">Email<th>
+    <th *ngIf='showCompanyName' (click)="showCompanyName=!showCompanyName" >Company<th>
+    <th *ngIf='showAdress' (click)="showAdress=!showAdress">Adress<th>
+    <th *ngIf='showPhone '(click)="showPhone=!showPhone">Phone<th>
+  </tr>
+  <tr *ngFor='let c of customers'>
+      <td *ngIf='showName'>{{c.name}}<th>
+      <td *ngIf='showID'>{{c.id}}<th>
+      <td *ngIf='showEmail'>{{c.email}}<th>
+      <td *ngIf='showCompanyName'>{{c.companyName}}<th>
+      <td *ngIf='showAdress'>{{c.adress}}<th>
+      <td *ngIf='showPhone'>{{c.phone}}<th>
+    </tr>
+  </table>     
+    
+</body>
 
-  </body>
 

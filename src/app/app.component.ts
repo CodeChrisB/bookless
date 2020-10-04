@@ -8,29 +8,60 @@ import {Md5} from 'ts-md5/dist/md5';
 })
 export class AppComponent {
   title = 'bookless';
-  username = ''
-  password  ="";
+  showName:boolean = true;
+  showID:boolean = true;
+  showEmail:boolean = true;
+  showPhone:boolean = true;
+  showAdress:boolean = true;
+  showCompanyName:boolean = true;
 
-
-  //SHA256
-  public hash256() : string{
-    return Md5.hashStr(this.password).toString()
+  public getColor(val:boolean) : string{
+    return val ? 'green':'red';
   }
 
-  public check() {
-    let password=''
-    this.user.forEach(user =>{
-      if(user.name ==this.username)
-        password = user.password;
-    })
 
-    console.log(this.hash256())
-    if(this.hash256() == password){
-    alert('Login')
-    }
+  public customers = 
+  [
+    {name:'Chris',id:1,email:'coc31',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Robert',id:2,email:'superfreisi',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Sebastian',id:3,email:'sebastianEgg',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Elias',id:3,email:'eliasAigner',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Chris',id:1,email:'coc31',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Robert',id:2,email:'superfreisi',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Sebastian',id:3,email:'sebastianEgg',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Elias',id:3,email:'eliasAigner',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Chris',id:1,email:'coc31',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Robert',id:2,email:'superfreisi',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Sebastian',id:3,email:'sebastianEgg',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Elias',id:3,email:'eliasAigner',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Chris',id:1,email:'coc31',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Robert',id:2,email:'superfreisi',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Sebastian',id:3,email:'sebastianEgg',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'},
+    {name:'Elias',id:3,email:'eliasAigner',phone:'45325324',adress:'Ritzlhof',companyName:'Buchfrei'}
+  ]
+
+
+
+  public setName(){
+    this.showName=!this.showName;
   }
 
-  user = 
-  [{name:'admin',password:'21232f297a57a5a743894a0e4a801fc3'},
-  {name:'chris',password:'d0fb963ff976f9c37fc81fe03c21ea7b'}]
+  public setID(){
+    this.showID=!this.showID;
+  }
+  public setEmail(){
+    this.showEmail=!this.showEmail;
+  }
+  
+  public setCompany(){
+    this.showName=!this.showName;
+  }
+
+  public setLocation(){
+    this.showID=!this.showID;
+  }
+  public setPhone(){
+    this.showEmail=!this.showEmail;
+  }
+
 }
