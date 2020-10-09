@@ -19,6 +19,7 @@ export class AppComponent {
     return val ? 'green':'red';
   }
 
+  
 
   public customers = 
   [
