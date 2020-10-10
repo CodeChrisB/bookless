@@ -1,34 +1,16 @@
-<body>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="true">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
 
-  <hr>
-  {{title}}<br>
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
 
-  <button [style.backgroundColor]='getColor(showName)' (click)="showName=!showName">Name</button>
-  <button [style.backgroundColor]='getColor(showID)'(click)="showID=!showID">Id</button>
-  <button [style.backgroundColor]='getColor(showEmail)'(click)="showEmail=!showEmail">Email</button>
-  <button [style.backgroundColor]='getColor(showCompanyName)'(click)="showCompanyName=!showCompanyName">Company Name</button>
-  <button [style.backgroundColor]='getColor(showAdress)'(click)="showAdress=!showAdress">Adress</button>
-  <button [style.backgroundColor]='getColor(showPhone)'(click)="showPhone=!showPhone">Phone</button>
-<table class ="table">
-  <tr>
-    <th *ngIf='showName' (click)="showName=!showName" >Name<th>
-    <th *ngIf='showID' (click)="showID=!showID">ID<th>
-    <th *ngIf='showEmail '(click)="showEmail=!showEmail">Email<th>
-    <th *ngIf='showCompanyName' (click)="showCompanyName=!showCompanyName" >Company<th>
-    <th *ngIf='showAdress' (click)="showAdress=!showAdress">Adress<th>
-    <th *ngIf='showPhone '(click)="showPhone=!showPhone">Phone<th>
-  </tr>
-  <tr *ngFor='let c of customers'>
-      <td *ngIf='showName'>{{c.name}}<th>
-      <td *ngIf='showID'>{{c.id}}<th>
-      <td *ngIf='showEmail'>{{c.email}}<th>
-      <td *ngIf='showCompanyName'>{{c.companyName}}<th>
-      <td *ngIf='showAdress'>{{c.adress}}<th>
-      <td *ngIf='showPhone'>{{c.phone}}<th>
-    </tr>
-  </table>     
-
-
-</body>
-
-
+</mat-drawer-container>
