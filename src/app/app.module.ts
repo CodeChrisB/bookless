@@ -10,6 +10,10 @@ import { SidenavComponent } from './main/sidenav/sidenav.component';
 import { FooterComponent } from './main/footer/footer.component';
 import { ViewComponent } from './main/view/view.component';
 import { MainComponent } from './main/main/main.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,13 +21,16 @@ import { MainComponent } from './main/main/main.component';
     SidenavComponent,
     FooterComponent,
     ViewComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
