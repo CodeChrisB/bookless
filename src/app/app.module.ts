@@ -12,7 +12,8 @@ import { ViewComponent } from './main/view/view.component';
 import { MainComponent } from './main/main/main.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-
+import { MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,10 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule
+
     
   ],
   providers: [],
