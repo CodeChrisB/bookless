@@ -15,6 +15,9 @@ export class SidenavComponent{
   //close others tabs when open a new one
   closeOnClick =false
 
+  public openDashboard() : void {
+    alert('Yep oneday the dashboard will be shown here')
+  }
 
   public openProduct() : void {
     this.productOpen=!this.productOpen;

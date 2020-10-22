@@ -6,22 +6,27 @@
 
   <mat-sidenav-content>
     <p>
+      <mat-icon>dashboard</mat-icon>
+      <button (click)="openDashboard()" mat-button>Dashboard</button>
+    </p>
+    <mat-divider></mat-divider>
+    <p>
       <mat-icon>account_circle</mat-icon>
       <button mat-button (click)="openCrm()">CRM</button>
     </p>
         <div *ngIf="crmOpen">
           <p>
-            <mat-icon>account_circle</mat-icon>
+            <mat-icon>perm_identity</mat-icon>
             <button mat-button>Kunden</button>
           </p>
           <p>
-            <mat-icon>account_circle</mat-icon>
+            <mat-icon>business</mat-icon>
             <button mat-button>Firmen</button>
           </p>
         </div>
     <mat-divider></mat-divider>
     <p>
-      <mat-icon>account_circle</mat-icon>
+      <mat-icon>payments</mat-icon>
       <button mat-button (click)="openBill()">Rechnungen</button>
     </p>
         <div *ngIf="billOpen">
@@ -32,12 +37,12 @@
         </div>
     <mat-divider></mat-divider>
     <p>
-      <mat-icon>account_circle</mat-icon>
+      <mat-icon>shopping_basket</mat-icon>
       <button mat-button (click)="openProduct()">Produkte</button>
     </p> 
         <div *ngIf="productOpen">
           <p>
-            <mat-icon>account_circle</mat-icon>
+            <mat-icon>panorama_wide_angle</mat-icon>
             <button disabled="true" mat-button >Wärmetauscher</button>
           </p>
         </div>
