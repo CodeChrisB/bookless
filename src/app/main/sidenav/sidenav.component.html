@@ -1,19 +1,14 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
-
-      <a mat-list-item > Accounts </a>
-      <a mat-list-item> Create Account </a>
-      <a mat-list-item> Contacts </a>
-      <a mat-list-item > Create Contact </a>
-      <a mat-list-item > Activities </a>
-      <a mat-list-item > Create Activity </a>
-      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-
-    </mat-nav-list>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side">
+    Sidenav content
   </mat-sidenav>
+
   <mat-sidenav-content>
-    <div style="height: 88vh;">
+    <p><mat-checkbox>sidenav.opened</mat-checkbox></p>
+    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+    <p>Events:</p>
+    <div class="example-events">
+      <div></div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
