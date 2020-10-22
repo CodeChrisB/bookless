@@ -3,12 +3,39 @@
     Sidenav content
   </mat-sidenav>
 
+
   <mat-sidenav-content>
-    <p><mat-checkbox>sidenav.opened</mat-checkbox></p>
-    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
-    <p>Events:</p>
-    <div class="example-events">
-      <div></div>
-    </div>
+    
+    <p>
+      <mat-icon>account_circle</mat-icon>
+      <button mat-button (click)="openCrm()">CRM</button>
+    </p>
+        <p *ngIf="crmOpen">
+          <mat-icon>account_circle</mat-icon>
+          <button mat-button>Kunden</button>
+        </p>
+        <p *ngIf="crmOpen">
+          <mat-icon>account_circle</mat-icon>
+          <button mat-button>Firmen</button>
+        </p>
+    <mat-divider></mat-divider>
+    <p>
+      <mat-icon>account_circle</mat-icon>
+      <button mat-button (click)="openBill()">Rechnungen</button>
+    </p>
+        <p *ngIf="billOpen">
+          <mat-icon>account_circle</mat-icon>
+          <button mat-button>Angebot</button>
+        </p>
+    <mat-divider></mat-divider>
+    <p>
+      <mat-icon>account_circle</mat-icon>
+      <button mat-button (click)="openProduct()">Produkte</button>
+    </p> 
+        <p *ngIf="productOpen">
+          <mat-icon>account_circle</mat-icon>
+          <button mat-button >Wärmetauscher</button>
+        </p> 
   </mat-sidenav-content>
 </mat-sidenav-container>
+

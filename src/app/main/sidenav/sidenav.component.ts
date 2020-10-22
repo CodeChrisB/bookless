@@ -11,22 +11,27 @@ export class SidenavComponent{
 
   isMenuOpen = true;
   contentMargin = 240;
+  crmOpen = false;
+  billOpen =false;
+  productOpen =false;
 
-  task: string[] = [
-    'Clearning out my closet', 'Take out trash bins', 'Wash car', 'Tank up the motorcycles', 'Go for flight training'
-  ]
 
-  onToolbarMenuToggle() {
-    console.log('On toolbar toggled', this.isMenuOpen);
-    this.isMenuOpen = !this.isMenuOpen;
-
-    if(!this.isMenuOpen) {
-      this.contentMargin = 70;
-    } else {
-      this.contentMargin = 240;
-    }
+  public openProduct() : void {
+    this.productOpen=true;
+    this.billOpen=false;
+    this.crmOpen=false;
   }
-  // sidenavEvents(str) {
-  //   console.log(str);
-  // }
+
+  public openBill() : void {
+    this.productOpen=false;
+    this.billOpen=true;
+    this.crmOpen=false
+  }
+
+  public openCrm() : void {
+    this.productOpen=false;
+    this.billOpen=false;
+    this.crmOpen=true
+  }
+
 }
