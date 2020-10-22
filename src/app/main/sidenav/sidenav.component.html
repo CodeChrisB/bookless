@@ -5,37 +5,42 @@
 
 
   <mat-sidenav-content>
-    
     <p>
       <mat-icon>account_circle</mat-icon>
       <button mat-button (click)="openCrm()">CRM</button>
     </p>
-        <p *ngIf="crmOpen">
-          <mat-icon>account_circle</mat-icon>
-          <button mat-button>Kunden</button>
-        </p>
-        <p *ngIf="crmOpen">
-          <mat-icon>account_circle</mat-icon>
-          <button mat-button>Firmen</button>
-        </p>
+        <div *ngIf="crmOpen">
+          <p>
+            <mat-icon>account_circle</mat-icon>
+            <button mat-button>Kunden</button>
+          </p>
+          <p>
+            <mat-icon>account_circle</mat-icon>
+            <button mat-button>Firmen</button>
+          </p>
+        </div>
     <mat-divider></mat-divider>
     <p>
       <mat-icon>account_circle</mat-icon>
       <button mat-button (click)="openBill()">Rechnungen</button>
     </p>
-        <p *ngIf="billOpen">
-          <mat-icon>account_circle</mat-icon>
-          <button mat-button>Angebot</button>
-        </p>
+        <div *ngIf="billOpen">
+          <p>
+            <mat-icon>account_circle</mat-icon>
+            <button disabled="true" mat-button>Angebot</button>
+          </p>
+        </div>
     <mat-divider></mat-divider>
     <p>
       <mat-icon>account_circle</mat-icon>
       <button mat-button (click)="openProduct()">Produkte</button>
     </p> 
-        <p *ngIf="productOpen">
-          <mat-icon>account_circle</mat-icon>
-          <button mat-button >Wärmetauscher</button>
-        </p> 
+        <div *ngIf="productOpen">
+          <p>
+            <mat-icon>account_circle</mat-icon>
+            <button disabled="true" mat-button >Wärmetauscher</button>
+          </p>
+        </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

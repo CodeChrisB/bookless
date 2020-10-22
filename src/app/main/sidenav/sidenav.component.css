@@ -2,7 +2,7 @@
     height: 100vh;
     border: 1px solid rgba(0, 0, 0, 0.5);
     float: left;
-    width: calc(fit-content+10);
+    width: 15%;
   }
   
   .example-sidenav-content {
@@ -14,16 +14,13 @@
   
   .example-sidenav {
     padding: 20px;
+
   }
 
   button{
     text-align: left;
   }
 
-
-mat-button{
-width: 20%;
-}
 
   div{ 
     margin: auto;
@@ -33,4 +30,12 @@ width: 20%;
 
 mat-sidenav-container{
   overflow-y: hidden;
+}
+
+div{
+  margin-left: 5%;
+}
+
+mat-sidenav-content{
+  margin: 10px;
 }
