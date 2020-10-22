@@ -1,15 +1,28 @@
+<<<<<<< HEAD
 <mat-sidenav-container class="example-container" *ngIf="shouldRun">
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
                (closed)="events.push('close!')">
+=======
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side">
+>>>>>>> ef13176cca6d2334406dff38d5105e7f1c8037d1
     Sidenav content
   </mat-sidenav>
 
   <mat-sidenav-content>
+<<<<<<< HEAD
     <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
     <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
     <p>Events:</p>
     <div class="example-events">
       <div *ngFor="let e of events">{{e}}</div>
+=======
+    <p><mat-checkbox>sidenav.opened</mat-checkbox></p>
+    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+    <p>Events:</p>
+    <div class="example-events">
+      <div></div>
+>>>>>>> ef13176cca6d2334406dff38d5105e7f1c8037d1
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
