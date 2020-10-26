@@ -16,7 +16,7 @@ export class SidenavComponent{
   closeOnClick =false
 
   public openDashboard() : void {
-    alert('Yep oneday the dashboard will be shown here')
+    console.log('Called: openDashboard')
   }
 
   public openProduct() : void {
