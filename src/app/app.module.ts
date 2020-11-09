@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopbarComponent } from './main/topbar/topbar.component';
@@ -52,6 +53,7 @@ import { MatButtonModule } from  '@angular/material/button';
     MainComponent,
   ],
   imports: [
+    AppRoutingModule,
     MatCheckboxModule,
     MatButtonModule,
     HttpClientModule,

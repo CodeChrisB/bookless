@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
 import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
@@ -7,6 +8,8 @@ import {Md5} from 'ts-md5/dist/md5';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private router: Router) {}
+  
   title = 'bookless';
   showName:boolean = true;
   showID:boolean = true;
