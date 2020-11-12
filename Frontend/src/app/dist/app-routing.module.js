@@ -14,13 +14,7 @@ var dashboard_component_1 = require("./components/dashboard.component");
 //import { HelloUniverseComponent } from "./hello-universe/hello-universe.component";
 //import { HelloWorldComponent } from "./hello-world/hello-world.component";
 var routes = [
-    { path: "./components/dashboard", component: dashboard_component_1.Dashboard }
-    //{ path: "main", pathMatch: "full", redirectTo: "main" },
-    //{ path: "settings", pathMatch: "full", redirectTo: "settings" },
-    //{ path: "", pathMatch: "full", redirectTo: "dashboard" },
-    // { path: "hello-world", component: HelloWorldComponent },
-    //{ path: "hello-universe", component: HelloUniverseComponent },
-    // { path: "customers/:id", component: CustomerComponent }
+    { path: "components/dashboard", component: dashboard_component_1.Dashboard }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
