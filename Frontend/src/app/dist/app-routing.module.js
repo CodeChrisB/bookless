@@ -9,7 +9,7 @@ exports.__esModule = true;
 exports.AppRoutingModule = void 0;
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var dashboard_component_1 = require("./components/dashboard.component");
+var dashboard_component_1 = require("./components/dashboard/dashboard.component");
 //import { CustomerComponent } from "./customer/customer.component";
 //import { HelloUniverseComponent } from "./hello-universe/hello-universe.component";
 //import { HelloWorldComponent } from "./hello-world/hello-world.component";
