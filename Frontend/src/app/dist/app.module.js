@@ -9,6 +9,7 @@ exports.__esModule = true;
 exports.AppModule = void 0;
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var checkbox_1 = require("@angular/material/checkbox");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
@@ -48,6 +49,7 @@ var sort_1 = require("@angular/material/sort");
 var paginator_1 = require("@angular/material/paginator");
 var http_1 = require("@angular/common/http");
 var button_1 = require("@angular/material/button");
+var profile_component_1 = require("./components/profile/profile.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -60,6 +62,7 @@ var AppModule = /** @class */ (function () {
                 footer_component_1.FooterComponent,
                 view_component_1.ViewComponent,
                 main_component_1.MainComponent,
+                profile_component_1.Profile
             ],
             imports: [
                 app_routing_module_1.AppRoutingModule,
@@ -84,6 +87,7 @@ var AppModule = /** @class */ (function () {
                 card_1.MatCardModule,
                 stepper_1.MatStepperModule,
                 tabs_1.MatTabsModule,
+                forms_1.FormsModule,
                 expansion_1.MatExpansionModule,
                 button_toggle_1.MatButtonToggleModule,
                 chips_1.MatChipsModule,

@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from './app.component';
@@ -42,6 +41,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
+import {Profile} from './components/profile/profile.component'
 
 
 @NgModule({
@@ -52,6 +52,7 @@ import { MatButtonModule } from  '@angular/material/button';
     FooterComponent,
     ViewComponent,
     MainComponent,
+    Profile
   ],
   imports: [
     AppRoutingModule,
@@ -76,6 +77,7 @@ import { MatButtonModule } from  '@angular/material/button';
     MatCardModule,
     MatStepperModule,
     MatTabsModule,
+    FormsModule,
     MatExpansionModule,
     MatButtonToggleModule,
     MatChipsModule,
