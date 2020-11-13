@@ -32,3 +32,13 @@
     justify-content: center;
     width: 120px;
   }
+
+  .mat-toolbar{
+    height: 8vh;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 4vh;
+    width: 4vh;
+  }
