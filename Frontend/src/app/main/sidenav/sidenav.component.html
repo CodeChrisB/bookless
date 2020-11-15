@@ -17,11 +17,11 @@
         <div *ngIf="crmOpen">
           <p>
             <mat-icon>perm_identity</mat-icon>
-            <button mat-button>Kunden</button>
+            <button mat-button routerLink="crm/customer">Kunden</button>
           </p>
           <p>
             <mat-icon>business</mat-icon>
-            <button mat-button>Firmen</button>
+            <button mat-button routerLink="crm/company">Firmen</button>
           </p>
         </div>
     <mat-divider></mat-divider>
@@ -32,7 +32,7 @@
         <div *ngIf="billOpen">
           <p>
             <mat-icon>account_circle</mat-icon>
-            <button disabled="true" mat-button>Angebot</button>
+            <button  mat-button routerLink="bill/offer">Angebot</button>
           </p>
         </div>
     <mat-divider></mat-divider>
@@ -43,7 +43,7 @@
         <div *ngIf="productOpen">
           <p>
             <mat-icon>panorama_wide_angle</mat-icon>
-            <button disabled="true" mat-button >Wärmetauscher</button>
+            <button mat-button routerLink="products/heatexchanger">Wärmetauscher</button>
           </p>
         </div>
   </mat-sidenav-content>
