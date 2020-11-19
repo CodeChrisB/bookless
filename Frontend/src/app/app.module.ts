@@ -41,8 +41,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
-import {Profile} from './components/profile/profile.component'
-
+import {Profile} from './components/profile/profile.component';
+import { Customer } from './components/crm/customer/customer.component'
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import {Profile} from './components/profile/profile.component'
     FooterComponent,
     ViewComponent,
     MainComponent,
-    Profile
+    Profile,
+    Customer
   ],
   imports: [
     AppRoutingModule,
