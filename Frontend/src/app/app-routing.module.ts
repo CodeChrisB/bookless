@@ -1,16 +1,18 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { Dashboard } from "./components/main/dashboard/dashboard.component";
+//main
+import { Dashboard } from "./components/app/dashboard/dashboard.component";
+import { Company } from "./components/app/crm/company/company.component";
+import { Customer } from "./components/app/crm/customer/customer.component";
+import { Offer } from './components/app/bill/offer.component';
+import { Heatexchanger } from './components/app/products/heatexchanger.component';
+import { MainComponent } from './components/app/main/main/main.component';
+//profile
 import { Profile } from "./components/profile/profile.component";
-import { Company } from "./components/main/crm/company/company.component";
-import { Customer } from "./components/main/crm/customer/customer.component";
-import { Offer } from './components/main/bill/offer.component';
-import { Heatexchanger } from './components/main/products/heatexchanger.component';
-import { MainComponent } from './main/main/main.component';
-//import { CustomerComponent } from "./customer/customer.component";
-//import { HelloUniverseComponent } from "./hello-universe/hello-universe.component";
-//import { HelloWorldComponent } from "./hello-world/hello-world.component";
+//settings
 
+import { SettingsComponent } from './components/settings/settings/Settings.component';
+import { SettingsDashboard } from "./components/settings/dashboard/dashboard.component"
 const routes: Routes = [
     //if you have problems with the component 
     //check the name of it in the name.component.ts file
@@ -20,9 +22,15 @@ const routes: Routes = [
         { path: "crm/customer",  component: Customer, },
         { path: "crm/company",  component: Company, },
         { path: "bill/offer",  component: Offer, },  
-        { path: "products/heatexchanger",  component: Heatexchanger, },
+        { path: "products/heatexchanger",  component: Heatexchanger, }
 
       ] },
+
+
+      { path: 'settings', component: SettingsComponent,
+        children: [
+          { path: "dashboard",  component: SettingsDashboard, }
+        ] },
 
     { path: "profile/user",  component: Profile,children:[]},
 
@@ -30,12 +38,6 @@ const routes: Routes = [
     { path: "*", redirectTo:"app/dashboard"}, //redirect wrong urls to the dashboard
     
 ];
-
-
-
-
-
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { enableTracing: true })],

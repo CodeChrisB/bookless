@@ -6,11 +6,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TopbarComponent } from './main/topbar/topbar.component';
-import { SidenavComponent } from './main/sidenav/sidenav.component';
-import { FooterComponent } from './main/footer/footer.component';
-import { ViewComponent } from './main/view/view.component';
-import { MainComponent } from './main/main/main.component';
+import { TopbarComponent } from './components/app/main/topbar/topbar.component';
+import { SidenavComponent } from './components/app/main//sidenav/sidenav.component';
+import { FooterComponent } from './components/app/main//footer/footer.component';
+import { ViewComponent } from './components/app/main//view/view.component';
+import { MainComponent } from './components/app/main//main/main.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -42,7 +42,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
 import {Profile} from './components/profile/profile.component';
-import { Customer } from './components/main/crm/customer/customer.component'
+import { Customer } from './components/app/crm/customer/customer.component'
 @NgModule({
   declarations: [
     AppComponent,
