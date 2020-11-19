@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopbarComponent } from './components/app/main/topbar/topbar.component';
 import { SidenavComponent } from './components/app/main//sidenav/sidenav.component';
 import { FooterComponent } from './components/app/main//footer/footer.component';
-import { ViewComponent } from './components/app/main//view/view.component';
 import { MainComponent } from './components/app/main//main/main.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -49,7 +48,6 @@ import { Customer } from './components/app/crm/customer/customer.component'
     TopbarComponent,
     SidenavComponent,
     FooterComponent,
-    ViewComponent,
     MainComponent,
     Profile,
     Customer
