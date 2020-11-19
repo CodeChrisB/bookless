@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { Dashboard } from "./components/dashboard/dashboard.component";
+import { Dashboard } from "./components/main/dashboard/dashboard.component";
 import { Profile } from "./components/profile/profile.component";
-import { Company } from "./components/crm/company/company.component";
-import { Customer } from "./components/crm/customer/customer.component";
-import { Offer } from './components/bill/offer.component';
-import { Heatexchanger } from './components/products/heatexchanger.component';
+import { Company } from "./components/main/crm/company/company.component";
+import { Customer } from "./components/main/crm/customer/customer.component";
+import { Offer } from './components/main/bill/offer.component';
+import { Heatexchanger } from './components/main/products/heatexchanger.component';
 import { MainComponent } from './main/main/main.component';
 //import { CustomerComponent } from "./customer/customer.component";
 //import { HelloUniverseComponent } from "./hello-universe/hello-universe.component";
@@ -23,10 +23,14 @@ const routes: Routes = [
         { path: "products/heatexchanger",  component: Heatexchanger, },
 
       ] },
-    { path: '', pathMatch: 'full', redirectTo: 'app' },
+
+    { path: "profile/user",  component: Profile,children:[]},
+
+    { path: '', pathMatch: 'full', redirectTo: 'app/dashboard' }, //standard path
     { path: "*", redirectTo:"app/dashboard"}, //redirect wrong urls to the dashboard
-    { path: "profile",  component: Profile, },
+    
 ];
+
 
 
 

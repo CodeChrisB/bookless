@@ -42,8 +42,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
 import {Profile} from './components/profile/profile.component';
-import { Customer } from './components/crm/customer/customer.component'
-
+import { Customer } from './components/main/crm/customer/customer.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,9 +89,11 @@ import { Customer } from './components/crm/customer/customer.component'
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
