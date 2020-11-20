@@ -15,7 +15,6 @@ export class TopbarComponent implements OnInit {
 
  
   backToHome(){
-    alert('dfs')
     this.route.navigate(['/']);
  }
 }
