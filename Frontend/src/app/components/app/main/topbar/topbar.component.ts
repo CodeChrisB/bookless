@@ -15,6 +15,6 @@ export class TopbarComponent implements OnInit {
 
  
   backToHome(){
-    this.route.navigate(['/']);
+    this.route.navigate(['app/dashboard']);
  }
 }
