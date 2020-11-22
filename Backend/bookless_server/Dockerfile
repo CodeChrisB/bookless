@@ -1,6 +1,8 @@
-FROM node:9-slim
-WORKDIR /server
-COPY package.json ./server
-RUN npm install
-COPY . /server
-CMD ["npm", "run", "devStart"]
+FROM node:latest
+WORKDIR /usr/app
+COPY package.json .
+RUN npm install -g nodemon
+RUN npm install --quiet
+COPY . .
+# dev
+CMD [ "nodemon", "server.js" ]

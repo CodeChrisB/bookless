@@ -1,8 +1,10 @@
 const express = require('express');
+//const { Pool, Client } = require('pg');// Constants
+const PORT = 3000;
+const HOST = '0.0.0.0';// App
 const app = express();
-
-app.listen(3000, ()=>{
-    console.log('server runs on port 3000');
-});
-
-app.get('/', (req, res) => res.send('hello world 213'));
+app.listen(PORT, HOST);
+app.get('/', (req, res) => {
+  res.send('Welcome on the Bookless-Server!');
+})
+console.log(`Running on http://${HOST}:${PORT}`);
