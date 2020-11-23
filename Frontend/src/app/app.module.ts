@@ -89,9 +89,9 @@ import { Customer } from './components/app/crm/customer/customer.component'
     MatSortModule,
     MatPaginatorModule,
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
-  
+
 })
 export class AppModule { }
