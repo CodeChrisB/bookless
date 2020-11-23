@@ -42,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
 import {Profile} from './components/profile/profile.component';
 import { Customer } from './components/app/crm/customer/customer.component'
+
 @NgModule({
   declarations: [
     AppComponent,

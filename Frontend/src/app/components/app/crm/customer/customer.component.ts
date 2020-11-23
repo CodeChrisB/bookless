@@ -4,20 +4,38 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { CustomerDataSource, CustomerItem } from './customer-datasource';
 
+
+export interface User{
+  name:string;
+  age:number;
+  subject:string;
+  country:string;
+}
+
+const ELEMENT_DATA: User[] = [
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
+]
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class Customer implements  OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  dataSource: CustomerDataSource;
-
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'amount'];
-
-  ngOnInit() {
-    this.dataSource = new CustomerDataSource(this.paginator,this.sort);
-  }
+export class Customer  {
+  //init the data
+  displayedColumns:string[] =['name','age','subject','country'];
+  dataSource = ELEMENT_DATA;
 }
