@@ -36,6 +36,6 @@ const ELEMENT_DATA: User[] = [
 })
 export class Customer  {
   //init the data
-  displayedColumns:string[] =['name','age','subject','country'];
+  displayedColumns:string[] =['name','age','subject', 'country'];
   dataSource = ELEMENT_DATA;
 }
