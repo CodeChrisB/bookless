@@ -1,4 +1,15 @@
 table{
   width: 80vw;
+  max-height: 80vh;
   position: center;
+  overflow: auto;
+}
+
+button{
+  width: 10px;
+}
+
+#cButton{
+  color: lightgray;
+  width: fit-content;
 }

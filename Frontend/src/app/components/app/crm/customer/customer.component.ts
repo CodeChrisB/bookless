@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
 
 
 
@@ -10,22 +11,51 @@ export interface User{
   country:string;
 }
 
-const ELEMENT_DATA: User[] = [
-  {name:'Chris',age:19,subject:'Project Manager', country:'America'},
-  {name:'Sebi',age:19,subject:'Project Manager', country:'America'},
-  {name:'Robert',age:19,subject:'Project Manager', country:'America'},
-  {name:'Marc',age:19,subject:'Project Manager', country:'America'},
-  {name:'Markus',age:19,subject:'Project Manager', country:'America'},
-  {name:'Florian',age:19,subject:'Project Manager', country:'America'},
-  {name:'Kemal',age:19,subject:'Project Manager', country:'America'},
-  {name:'Stöttigner',age:19,subject:'Project Manager', country:'America'},
-  {name:'Stütz',age:19,subject:'Project Manager', country:'America'},
-  {name:'Auernig',age:19,subject:'Project Manager', country:'America'},
-  {name:'Da Chef',age:19,subject:'Project Manager', country:'America'},
-  {name:'Haslinger',age:19,subject:'Project Manager', country:'America'},
-  {name:'Kiesenhofer',age:19,subject:'Project Manager', country:'America'},
-  {name:'Rene',age:19,subject:'Project Manager', country:'America'},
+const customers: PrivateCustomer[] = [
+  {id:1,fName:'Christopher',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
+  {id:2,fName:'Sebi',lName:'Egger',adress:'Blümelguberstraße 9',phoneNumber:'06502232282',email:'c.knoll@gmail.com',gender:'m'},
+  {id:3,fName:'Robert',lName:'Freißi',adress:'Blümelguberstraße 9',phoneNumber:'06502232283',email:'c.knoll@gmail.com',gender:'m'},
+  {id:4,fName:'Marc',lName:'Kruiß',adress:'Blümelguberstraße 9',phoneNumber:'06502232284',email:'c.knoll@gmail.com',gender:'m'},
+  {id:5,fName:'Markus',lName:'Happo',adress:'Blümelguberstraße 9',phoneNumber:'06502232285',email:'c.knoll@gmail.com',gender:'m'},
+  {id:6,fName:'Franz',lName:'Auernig',adress:'Blümelguberstraße 9',phoneNumber:'06502232286',email:'c.knoll@gmail.com',gender:'m'},
+  {id:7,fName:'Maximillian',lName:'Kiesenhofer',adress:'Blümelguberstraße 9',phoneNumber:'06502232287',email:'m.knoll@gmail.com',gender:'m'},
+  {id:8,fName:'Markus',lName:'Hasi',adress:'Blümelguberstraße 9',phoneNumber:'06502232288',email:'m.hasi@gmail.com',gender:'m'},
+  {id:9,fName:'Thomi',lName:'Stütz',adress:'Blümelguberstraße 9',phoneNumber:'06502232289',email:'t.Stütz@gmail.com',gender:'m'},
+  {id:10,fName:'Kemal',lName:'Yavuz',adress:'Blümelguberstraße 9',phoneNumber:'06502232290',email:'k.yavuz@gmail.com',gender:'f'},
+  {id:1,fName:'Christopher',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
+  {id:2,fName:'Sebi',lName:'Egger',adress:'Blümelguberstraße 9',phoneNumber:'06502232282',email:'c.knoll@gmail.com',gender:'m'},
+  {id:3,fName:'Robert',lName:'Freißi',adress:'Blümelguberstraße 9',phoneNumber:'06502232283',email:'c.knoll@gmail.com',gender:'m'},
+  {id:4,fName:'Marc',lName:'Kruiß',adress:'Blümelguberstraße 9',phoneNumber:'06502232284',email:'c.knoll@gmail.com',gender:'m'},
+  {id:5,fName:'Markus',lName:'Happo',adress:'Blümelguberstraße 9',phoneNumber:'06502232285',email:'c.knoll@gmail.com',gender:'m'},
+  {id:6,fName:'Franz',lName:'Auernig',adress:'Blümelguberstraße 9',phoneNumber:'06502232286',email:'c.knoll@gmail.com',gender:'m'},
+  {id:7,fName:'Maximillian',lName:'Kiesenhofer',adress:'Blümelguberstraße 9',phoneNumber:'06502232287',email:'m.knoll@gmail.com',gender:'m'},
+  {id:8,fName:'Markus',lName:'Hasi',adress:'Blümelguberstraße 9',phoneNumber:'06502232288',email:'m.hasi@gmail.com',gender:'m'},
+  {id:9,fName:'Thomi',lName:'Stütz',adress:'Blümelguberstraße 9',phoneNumber:'06502232289',email:'t.Stütz@gmail.com',gender:'m'},
+  {id:10,fName:'Kemal',lName:'Yavuz',adress:'Blümelguberstraße 9',phoneNumber:'06502232290',email:'k.yavuz@gmail.com',gender:'f'},
+  {id:1,fName:'Christopher',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
+  {id:2,fName:'Sebi',lName:'Egger',adress:'Blümelguberstraße 9',phoneNumber:'06502232282',email:'c.knoll@gmail.com',gender:'m'},
+  {id:3,fName:'Robert',lName:'Freißi',adress:'Blümelguberstraße 9',phoneNumber:'06502232283',email:'c.knoll@gmail.com',gender:'m'},
+  {id:4,fName:'Marc',lName:'Kruiß',adress:'Blümelguberstraße 9',phoneNumber:'06502232284',email:'c.knoll@gmail.com',gender:'m'},
+  {id:5,fName:'Markus',lName:'Happo',adress:'Blümelguberstraße 9',phoneNumber:'06502232285',email:'c.knoll@gmail.com',gender:'m'},
+  {id:6,fName:'Franz',lName:'Auernig',adress:'Blümelguberstraße 9',phoneNumber:'06502232286',email:'c.knoll@gmail.com',gender:'m'},
+  {id:7,fName:'Maximillian',lName:'Kiesenhofer',adress:'Blümelguberstraße 9',phoneNumber:'06502232287',email:'m.knoll@gmail.com',gender:'m'},
+  {id:8,fName:'Markus',lName:'Hasi',adress:'Blümelguberstraße 9',phoneNumber:'06502232288',email:'m.hasi@gmail.com',gender:'m'},
+  {id:9,fName:'Thomi',lName:'Stütz',adress:'Blümelguberstraße 9',phoneNumber:'06502232289',email:'t.Stütz@gmail.com',gender:'m'},
+  {id:10,fName:'Kemal',lName:'Yavuz',adress:'Blümelguberstraße 9',phoneNumber:'06502232290',email:'k.yavuz@gmail.com',gender:'f'},
+  {id:1,fName:'Christopher',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
+  {id:2,fName:'Sebi',lName:'Egger',adress:'Blümelguberstraße 9',phoneNumber:'06502232282',email:'c.knoll@gmail.com',gender:'m'},
+  {id:3,fName:'Robert',lName:'Freißi',adress:'Blümelguberstraße 9',phoneNumber:'06502232283',email:'c.knoll@gmail.com',gender:'m'},
+  {id:4,fName:'Marc',lName:'Kruiß',adress:'Blümelguberstraße 9',phoneNumber:'06502232284',email:'c.knoll@gmail.com',gender:'m'},
+  {id:5,fName:'Markus',lName:'Happo',adress:'Blümelguberstraße 9',phoneNumber:'06502232285',email:'c.knoll@gmail.com',gender:'m'},
+  {id:6,fName:'Franz',lName:'Auernig',adress:'Blümelguberstraße 9',phoneNumber:'06502232286',email:'c.knoll@gmail.com',gender:'m'},
+  {id:7,fName:'Maximillian',lName:'Kiesenhofer',adress:'Blümelguberstraße 9',phoneNumber:'06502232287',email:'m.knoll@gmail.com',gender:'m'},
+  {id:8,fName:'Markus',lName:'Hasi',adress:'Blümelguberstraße 9',phoneNumber:'06502232288',email:'m.hasi@gmail.com',gender:'m'},
+  {id:9,fName:'Thomi',lName:'Stütz',adress:'Blümelguberstraße 9',phoneNumber:'06502232289',email:'t.Stütz@gmail.com',gender:'m'},
+  {id:10,fName:'Kemal',lName:'Yavuz',adress:'Blümelguberstraße 9',phoneNumber:'06502232290',email:'k.yavuz@gmail.com',gender:'f'},
+  {id:11,fName:'Flock',lName:'Wilfi',adress:'Blümelguberstraße 9',phoneNumber:'06502232291',email:'f.wilfi@gmail.com',gender:'m'}
 ]
+
+
 
 @Component({
 selector: 'customer-component',
@@ -34,23 +64,31 @@ styleUrls: ['./customer.component.css']
 })
 export class Customer  {
   //init the data
-  displayedColumns = ["seqNo", "description", "duration"];
-  dataSource = ELEMENT_DATA.slice(0,15);
+  displayedColumns = ["id", "fName", "lName","adress","phoneNumber","email","gender","actions"];
+
 
    // MatPaginator Inputs
-   length = ELEMENT_DATA.length;
+   length = customers.length;
    pageSize = 10;
-   pageSizeOptions: number[] = [5, 10, 25];
-
+   pageSizeOptions: number[] = [5, 10];
+   dataSource = customers.slice(0,this.pageSize);
    goToPage($event){
-     console.dir($event);
-     console.dir($event.length)
+
      this.length = $event.length;
      this.pageSize =$event.pageSize;
-     this.dataSource = ELEMENT_DATA.slice(this.pageSize* $event.pageIndex,this.pageSize* $event.pageIndex+this.pageSize)
+     this.dataSource = customers.slice(this.pageSize* $event.pageIndex,this.pageSize* $event.pageIndex+this.pageSize)
    }
 
   onRowClicked(row) {
     console.log('Row clicked: ', row);
-}
+  }
+
+  updateCustomer(row){
+    alert(row.name)
+  }
+
+  deleteCustomer(row){
+    alert(row.name + " kann momentan nicht gelöscht werden, weil "+row.name+" zu cool ist.")
+  }
+
 }
