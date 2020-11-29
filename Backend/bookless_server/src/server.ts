@@ -9,8 +9,8 @@ async function main() {
 
     console.log('db works')
     try{
-        client.query("delete from test")
-        client.query("insert into test values('ddDASf')");
+        client.query("DELETE FROM test")
+        client.query("INSERT INTO test values('ddDASf')");
         const resultIterator = client.query("select * from test")
  
         for await (const row of resultIterator) {
@@ -30,5 +30,5 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => {
     main()
-    console.log('Running ');
+    console.log('Running on Port 3000');
 });
