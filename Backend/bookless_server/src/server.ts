@@ -9,9 +9,7 @@ async function main() {
 
     console.log('db works')
     try{
-        client.query("DELETE FROM test")
-        client.query("INSERT INTO test values('ddDASf')");
-        const resultIterator = client.query("select * from test")
+        const resultIterator = client.query("select * from product")
  
         for await (const row of resultIterator) {
             console.log(row); // output data in the console
@@ -25,7 +23,7 @@ async function main() {
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Hello Bookless');
+    res.send('Hello Bookless 213');
 });
 
 app.listen(3000, () => {
