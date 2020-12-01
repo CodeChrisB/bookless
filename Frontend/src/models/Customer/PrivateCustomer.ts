@@ -1,5 +1,6 @@
+import { Customer } from './Customer';
 
-class PrivateCustomer extends Customer
+export class PrivateCustomer extends Customer
 {
     phoneNumber : string;
     email: string;
@@ -7,11 +8,11 @@ class PrivateCustomer extends Customer
     lName : string;
     gender : string;
 
-    public getPhoneNumber(): number {
+    public getPhoneNumber(): string {
         return this.phoneNumber;
     }
 
-    public setPhoneNumber( _phoneNumber: number): void {
+    public setPhoneNumber( _phoneNumber: string): void {
         this.phoneNumber = _phoneNumber;
     }
 

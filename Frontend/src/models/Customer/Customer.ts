@@ -1,4 +1,4 @@
-class Customer
+export class Customer
 {
     id : number;
     adress : string;
@@ -9,14 +9,6 @@ class Customer
 
     public setId(_id: number): void {
         this.id = _id;
-    }
-
-    public getName(): string {
-        return this.name;
-    }
-
-    public setName(_name: string): void {
-        this.name = _name;
     }
 
     public getAdress(): string {

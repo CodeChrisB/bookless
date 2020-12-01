@@ -1,3 +1,5 @@
+import { Customer } from "./Customer";
+
 class CompanyCustomer extends Customer
 {
     shippingAdress : string[];
@@ -20,4 +22,4 @@ class CompanyCustomer extends Customer
     }
 
 
-} 
+}
