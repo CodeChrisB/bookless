@@ -1,0 +1,12 @@
+.mat-card{
+    width: 40%; 
+    float:left; 
+    height: 80vh; 
+    background:gray; 
+    margin:10px;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+}

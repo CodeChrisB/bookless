@@ -39,9 +39,9 @@
 </ng-container>
 
   <ng-container matColumnDef="gender">
-    <mat-header-cell *matHeaderCellDef>Geschlecht</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Anrede</mat-header-cell>
     <mat-cell class="duration-cell"
-              *matCellDef="let lesson">{{lesson.gender}}</mat-cell>
+              *matCellDef="let lesson">{{lesson.gender == 'm' ? 'Herr' : 'Frau'}}</mat-cell>
   </ng-container>
 
 
