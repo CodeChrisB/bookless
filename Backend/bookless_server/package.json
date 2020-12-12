@@ -10,7 +10,11 @@
     "build": "tsc -p ."
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.9",
+    "@types/helmet": "^4.0.0",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/jwt-simple": "^0.5.33",
     "@types/node": "^14.14.10",
     "@types/pg": "^7.14.7",
     "express": "^4.17.1",
@@ -23,6 +27,11 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "env": "0.0.2",
+    "helmet": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-simple": "^0.5.6",
     "ts-postgres": "^1.1.3"
   }
 }

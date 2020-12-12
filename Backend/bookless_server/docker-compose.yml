@@ -19,6 +19,7 @@ services:
     command: nodemon --legacy-watch src/*.ts
     depends_on: 
       - database
+    env_file: .env
     volumes: 
       - ./src :/usr/app/src/
       - /app/node_modules

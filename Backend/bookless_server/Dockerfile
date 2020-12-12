@@ -7,4 +7,5 @@ RUN npm install --quiet
 RUN npm install express
 RUN npm install -D ts-node
 RUN npm install -D typescript  @types/express @types/node 
+RUN npm i --save jwt-simple && npm i --save-dev @types/jwt-simple
 COPY . .
