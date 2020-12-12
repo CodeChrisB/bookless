@@ -34,7 +34,7 @@ const routes: Routes = [
 
     { path: "profile/user",  component: Profile,children:[]},
 
-    //{ path: '', pathMatch: 'full', redirectTo: 'app/dashboard' }, //standard path
+    { path: '', pathMatch: 'full', redirectTo: 'app/dashboard' }, //standard path
    // { path: "*", redirectTo:"app/dashboard"}, //redirect wrong urls to the dashboard
 ];
 

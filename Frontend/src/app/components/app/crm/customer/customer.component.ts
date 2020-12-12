@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IPrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
 import {MatDialog} from '@angular/material/dialog';
-import { DeleteDialog } from 'src/app/components/misc/deleteDialog/deleteDialog.component';
+
 
 
 const customers: IPrivateCustomer[] = [
