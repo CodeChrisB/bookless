@@ -17,7 +17,17 @@ export class Profile  {
 
     user: User = {name: 'Chris',employeeRank:'Master',created : new Date("2019-01-16") }
     url;
-	msg = "";
+    msg = "";
+    password = {
+      "current":"",
+      "newFirst":"",
+      "newSecond":"nope12345"
+    }
+
+    hashed ={
+      "current":"",
+      "new":""
+    }
 
 	selectFile(event) {
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
@@ -43,7 +53,46 @@ export class Profile  {
   }
 
   submitNewPassword():void{
-    alert('Naja dafür würden wir jetzt ein Backend brauchen')
+
+    let regexPassword =  new RegExp('^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+
+    //Check if the password follows the rules
+    if(!(regexPassword.test(this.password.current) && regexPassword.test(this.password.newFirst) && regexPassword.test(this.password.newSecond)))
+    {
+      alert("Das Passwort muss folgende Regeln befolgen :\n1 Großbuchstabe\n1 Kleinbuchstaben\n1 Zahl");
+      this.clearPassFields();
+      return;
+    }
+
+    if(this.password.newFirst != this.password.newSecond)
+    {
+      alert("Bitte geben sie zweimal das gleiche Passwort ein.");
+      this.clearPassFields();
+      return;
+    }
+
+    //hash passwords
+    this.hashed.current = this.hash(this.password.current);
+    this.hashed.new = this.hash(this.password.newFirst);
+    //api sent
+    //roberts.backend.subscribe(backend =>{backend.sent(this.hashed.current,this.hashed.new)})
+
   }
+
+  hash(pass:string):string{
+    return pass;
+  }
+
+  clearPassFields(){
+    this.password = {
+      "current":"",
+      "newFirst":"",
+      "newSecond":""
+    }
+  }
+
+
+
+
 
 }

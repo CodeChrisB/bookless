@@ -34,13 +34,13 @@
   <div>
     <form>
       <label for="fname">Momentanes Passwort</label>
-      <input type="password" id="fname" name="firstname" placeholder="Passwort">
+      <input [(ngModel)]="password.current" type="password" id="fname" name="firstname" placeholder="Passwort">
 
       <label for="lname">Neues Passwort</label>
-      <input type="password" id="lname" name="lastname" placeholder="Neues Passwort">
+      <input [(ngModel)]="password.newFirst" type="password" id="lname" name="lastname" placeholder="Neues Passwort">
 
       <label for="lname">Bestätige Passwort</label>
-      <input type="password" id="lname" name="lastname" placeholder="Neues Passwort">
+      <input [(ngModel)]="password.newSecond" type="password" id="lname" name="lastname" placeholder="Neues Passwort">
 
       <input (click)="submitNewPassword()" type="submit" value="Submit">
     </form>
