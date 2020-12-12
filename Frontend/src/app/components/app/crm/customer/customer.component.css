@@ -13,3 +13,7 @@ button{
   color: lightgray;
   width: fit-content;
 }
+
+.container{
+ height: 100px;
+}

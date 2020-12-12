@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IPrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
-
+import {MatDialog} from '@angular/material/dialog';
+import { DeleteDialog } from 'src/app/components/misc/deleteDialog/deleteDialog.component';
 
 
 const customers: IPrivateCustomer[] = [
@@ -62,10 +63,14 @@ export class Customer  {
     alert(row.fName)
   }
 
+  constructor(public dialog: MatDialog) {}
+
   deleteCustomer(row : IPrivateCustomer){
-    this.dataSource = this.dataSource.filter(customers => customers.id !== row.id);
-    this.length = this.dataSource.length;
-    this.refresh();
+     if(confirm('Wollen Sie ' + row.fName +' '+row.lName +' löschen?')){
+          this.dataSource = this.dataSource.filter(customers => customers.id !== row.id);
+          this.length = this.dataSource.length;
+          this.refresh();
+     }
   }
 
   addCustomer(){
