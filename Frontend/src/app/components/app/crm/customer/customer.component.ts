@@ -74,7 +74,7 @@ export class Customer  {
   }
 
   addCustomer(){
-
+    alert('Mhh das geht noch nicht ganz')
   }
 
   refresh() {

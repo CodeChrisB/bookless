@@ -24,6 +24,7 @@ export class Profile  {
       "newSecond":"nope12345"
     }
 
+    //the password data that will be sent to the server for change
     hashed ={
       "current":"",
       "new":""

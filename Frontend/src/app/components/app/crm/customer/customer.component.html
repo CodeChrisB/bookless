@@ -62,12 +62,18 @@
           <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
         </mat-table>
-
+        <button id="addButton" (click)="addCustomer()">
+          <mat-icon>
+              add
+          </mat-icon>
+        </button>
         <mat-paginator [length]="length"
         [pageSize]="pageSize"
         [pageIndex]="pageIndex"
         [pageSizeOptions]="pageSizeOptions"
-        (page)="goToPage($event)"></mat-paginator>
+        (page)="goToPage($event)">
+
+      </mat-paginator>
 
   </mat-card>
 </div>
