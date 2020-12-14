@@ -3,6 +3,17 @@
   height: 71vh;
   overflow-y: scroll;
   overflow-x: scroll;
+
+}
+
+.mat-card{
+  max-height: 79vh;
+  min-height: 79vh;
+  height: 79vh;
+  border-radius: 0px;
+}
+div.mat-paginator-conatainer{
+  height:50vh;
 }
 
 .mat-cell,.mat-header-cell{
@@ -28,9 +39,6 @@ table{
   width: 80vw;
 
   position: center;
-
-
-
 }
 
 button{
