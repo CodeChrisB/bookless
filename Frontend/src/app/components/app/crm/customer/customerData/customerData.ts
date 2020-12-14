@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { CustomerService } from 'src/app/components/services/customerlist';
 import {IPrivateCustomer} from '../../../../../../models/Customer/PrivateCustomer'
 import { Customer } from '../customer.component';
-
+import { DOCUMENT } from '@angular/common';
 
 
 
@@ -81,9 +81,10 @@ export class addCustomer implements OnInit  {
 
 
   ngOnInit() {
-    if(history.state.mode ==undefined){
+    if(history.state.mode ==undefined && this.route.url.includes('edit')){
       this.route.navigate(['/app/crm/customer'])
-    }else{
+    }
+    else{
       this.editMode = history.state.mode =='edit';
       if(this.editMode){
         this.initEdit()
