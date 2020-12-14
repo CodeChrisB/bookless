@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/components/services/customerlist';
 import {IPrivateCustomer} from '../../../../../../models/Customer/PrivateCustomer'
 
 
@@ -27,10 +29,28 @@ export class addCustomer  {
     }
   }
 
+
+  id : number;
+  adress : string;
+  phoneNumber : string;
+  email: string;
+  fName : string;
+  lName : string;
+  gender : string;
+
+  customerObject : IPrivateCustomer = {id:0,adress:"",phoneNumber:"",email:"",fName:"",lName:"",gender:""};
+  constructor(private route :Router) {}
+
+
   addCustomer():void{
-    console.dir(this.customer)
-    alert("Waiting for eggers service")
+    this.customerObject.fName = this.customer.fName;
+    this.customerObject.lName = this.customer.lName;
+    this.customerObject.adress = this.customer.location.domicile;
+    this.customerObject.email = this.customer.email;
+    this.customerObject.gender =this.customer.gender;
+    this.customerObject.id = 100;
+
+    CustomerService.addPrivatCustomer(this.customerObject);
+    this.route.navigate(['/app/crm/customer']);
   }
-
-
 }

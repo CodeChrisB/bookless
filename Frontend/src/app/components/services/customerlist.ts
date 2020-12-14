@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {IPrivateCustomer} from '../../../models/Customer/PrivateCustomer'
 
-const customers: IPrivateCustomer[] = [
+var customers: IPrivateCustomer[] = [
     {id:1,fName:'Sebi',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
     {id:2,fName:'Chris',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
     {id:3,fName:'Christopher',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
@@ -35,8 +35,14 @@ export class CustomerService {
     return customers;
   }
 
+  static addPrivatCustomer(newCustomer:IPrivateCustomer)
+  {
+    newCustomer.id = customers.length + 1;
+    customers.push(newCustomer);
+  }
+
   http: HttpClient;
-  constructor(http: HttpClient) { 
+  constructor(http: HttpClient) {
     this.http = http;
   }
 

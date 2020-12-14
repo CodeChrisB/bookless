@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IPrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
 import {MatDialog} from '@angular/material/dialog';
 import {CustomerService} from '../../../services/customerlist'
+import { Router } from '@angular/router';
 
 
 const customers: IPrivateCustomer[] = CustomerService.getData();
@@ -40,7 +41,7 @@ export class Customer  {
     alert(row.fName)
   }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,private route :Router) {}
 
   deleteCustomer(row : IPrivateCustomer){
      if(confirm('Wollen Sie ' + row.fName +' '+row.lName +' löschen?')){
@@ -51,7 +52,7 @@ export class Customer  {
   }
 
   addCustomer(){
-    alert('Mhh das geht noch nicht ganz')
+    this.route.navigate(['/app/crm/new']);
   }
 
   refresh() {
