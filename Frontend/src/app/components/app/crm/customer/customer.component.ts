@@ -22,7 +22,7 @@ export class Customer  {
    // MatPaginator Inputs
    length = customers.length;
    pageSize = 10;
-   pageSizeOptions: number[] = [5, 10];
+   pageSizeOptions: number[] = [5, 10,25,100];
    dataSource = customers.slice(0,this.pageSize);
    pageIndex = 0
    goToPage($event){

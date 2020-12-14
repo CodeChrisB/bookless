@@ -2,7 +2,26 @@
   max-height: 71vh;
   height: 71vh;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
+}
+
+.mat-cell,.mat-header-cell{
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 100px !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+#big{
+  flex: 0 0 200px !important;
 }
 
 table{
