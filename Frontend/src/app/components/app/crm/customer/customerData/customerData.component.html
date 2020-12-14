@@ -16,6 +16,7 @@
     <input type="text" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
 <br>
 
-    <input (click)="addCustomer()" type="submit" value="Hinzufügen">
+    <input (click)="addCustomer()" type="submit" value={{msg}}>
+    <h1 *ngIf=editMode>Customer ID to edit: {{id}}</h1>
   </form>
 </mat-card>

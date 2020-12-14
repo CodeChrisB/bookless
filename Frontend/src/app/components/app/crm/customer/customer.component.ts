@@ -10,9 +10,9 @@ const customers: IPrivateCustomer[] = CustomerService.getData();
 
 
 @Component({
-selector: 'customer-component',
-templateUrl: './customer.component.html',
-styleUrls: ['./customer.component.css']
+  selector: 'customer-component',
+  templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.css']
 })
 export class Customer  {
   //init the data
@@ -38,6 +38,7 @@ export class Customer  {
 
   updateCustomer(row : IPrivateCustomer){
     console.dir(row)
+    this.route.navigate(['/app/crm/customer/edit'], { state: { id: row.id } });
     alert(row.fName)
   }
 
@@ -50,9 +51,8 @@ export class Customer  {
           this.refresh();
      }
   }
-
   addCustomer(){
-    this.route.navigate(['/app/crm/new']);
+    this.route.navigate(['/app/crm/customer/new']);
   }
 
   refresh() {

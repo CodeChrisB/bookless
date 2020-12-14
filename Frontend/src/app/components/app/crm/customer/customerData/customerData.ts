@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CustomerService } from 'src/app/components/services/customerlist';
 import {IPrivateCustomer} from '../../../../../../models/Customer/PrivateCustomer'
 
@@ -12,10 +13,17 @@ import {IPrivateCustomer} from '../../../../../../models/Customer/PrivateCustome
 
 @Component({
 selector: 'customer-component',
-templateUrl: './addCustomer.component.html',
-styleUrls: ['./addCustomer.component.css','../../../../css/forms.css']
+templateUrl: './customerData.component.html',
+styleUrls: ['./customerData.component.css','../../../../css/forms.css']
 })
 export class addCustomer  {
+
+  // if this number is undefined it means we
+  //are currently adding a new customer and not editing an existing one
+  id:number = undefined;
+  editMode = true;
+  msg:string="";
+
   customer={
     "fName":"",
     "lName":"",
@@ -30,16 +38,11 @@ export class addCustomer  {
   }
 
 
-  id : number;
-  adress : string;
-  phoneNumber : string;
-  email: string;
-  fName : string;
-  lName : string;
-  gender : string;
 
   customerObject : IPrivateCustomer = {id:0,adress:"",phoneNumber:"",email:"",fName:"",lName:"",gender:""};
-  constructor(private route :Router) {}
+  constructor(private route :Router,public activatedRoute: ActivatedRoute) {
+
+  }
 
 
   addCustomer():void{
@@ -53,4 +56,19 @@ export class addCustomer  {
     CustomerService.addPrivatCustomer(this.customerObject);
     this.route.navigate(['/app/crm/customer']);
   }
+
+
+  ngOnInit() {
+    this.id = history.state.id;
+    console.dir(this.id)
+
+    if(this.id==undefined)
+      this.editMode=false;
+
+    this.msg = this.editMode? "Änderungen speichern" : "Hinzufügen"
+  }
+
+
+
 }
+
