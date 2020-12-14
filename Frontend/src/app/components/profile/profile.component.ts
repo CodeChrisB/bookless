@@ -9,7 +9,7 @@ interface User {
 @Component({
 selector: 'profile-component',
 templateUrl: './profile.component.html',
-styleUrls: ['./profile.component.css','../css/forms.css']
+styleUrls: ['./profile.component.css','../css/passform.css']
 })
 
 export class Profile  {
@@ -81,6 +81,7 @@ export class Profile  {
   }
 
   hash(pass:string):string{
+    //call a hash function idk
     return pass;
   }
 
