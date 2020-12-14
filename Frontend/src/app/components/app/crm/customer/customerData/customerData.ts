@@ -81,11 +81,15 @@ export class addCustomer implements OnInit  {
 
 
   ngOnInit() {
-    this.editMode = history.state.mode =='edit';
-    if(this.editMode){
-      this.initEdit()
+    if(history.state.mode ==undefined){
+      this.route.navigate(['/app/crm/customer'])
     }else{
-      this.initAdd()
+      this.editMode = history.state.mode =='edit';
+      if(this.editMode){
+        this.initEdit()
+      }else{
+        this.initAdd()
+      }
     }
   }
 
