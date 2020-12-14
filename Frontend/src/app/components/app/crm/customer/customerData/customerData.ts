@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CustomerService } from 'src/app/components/services/customerlist';
 import {IPrivateCustomer} from '../../../../../../models/Customer/PrivateCustomer'
+import { Customer } from '../customer.component';
 
 
 
@@ -16,7 +17,7 @@ selector: 'customer-component',
 templateUrl: './customerData.component.html',
 styleUrls: ['./customerData.component.css','../../../../css/forms.css']
 })
-export class addCustomer  {
+export class addCustomer implements OnInit  {
 
   // if this number is undefined it means we
   //are currently adding a new customer and not editing an existing one
@@ -44,6 +45,14 @@ export class addCustomer  {
 
   }
 
+  doCustomer():void{
+    if(this.editMode){
+      this.updateCustomer();
+    }else{
+      this.addCustomer();
+    }
+  }
+
 
   addCustomer():void{
     this.customerObject.fName = this.customer.fName;
@@ -57,17 +66,45 @@ export class addCustomer  {
     this.route.navigate(['/app/crm/customer']);
   }
 
+  updateCustomer():void{
+    this.customerObject.fName = this.customer.fName;
+    this.customerObject.lName = this.customer.lName;
+    this.customerObject.adress = this.customer.location.domicile;
+    this.customerObject.email = this.customer.email;
+    this.customerObject.gender =this.customer.gender;
+    this.customerObject.phoneNumber = this.customer.phone;
+    this.customerObject.id = this.id;
 
-  ngOnInit() {
-    this.id = history.state.id;
-    console.dir(this.id)
-
-    if(this.id==undefined)
-      this.editMode=false;
-
-    this.msg = this.editMode? "Änderungen speichern" : "Hinzufügen"
+    CustomerService.setCustomer(this.id,this.customerObject);
+    this.route.navigate(['/app/crm/customer']);
   }
 
+
+  ngOnInit() {
+    this.editMode = history.state.mode =='edit';
+    if(this.editMode){
+      this.initEdit()
+    }else{
+      this.initAdd()
+    }
+  }
+
+  initEdit(){
+
+    this.msg = "Änaaaderungen speichern";
+    this.id = history.state.id;
+    var customer = CustomerService.getCustomer(this.id)
+   this.customer.fName = customer.fName;
+   this.customer.lName = customer.lName;
+   this.customer.location.domicile = 'Nope'
+   this.customer.email = customer.email;
+   this.customer.gender = this.customer.gender;
+  }
+
+  initAdd(){
+    this.msg = "Hinzufügen";
+
+  }
 
 
 }

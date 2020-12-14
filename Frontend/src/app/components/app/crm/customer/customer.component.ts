@@ -38,8 +38,7 @@ export class Customer  {
 
   updateCustomer(row : IPrivateCustomer){
     console.dir(row)
-    this.route.navigate(['/app/crm/customer/edit'], { state: { id: row.id } });
-    alert(row.fName)
+    this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'edit', id: row.id } });
   }
 
   constructor(public dialog: MatDialog,private route :Router) {}
@@ -51,8 +50,11 @@ export class Customer  {
           this.refresh();
      }
   }
+
+
+
   addCustomer(){
-    this.route.navigate(['/app/crm/customer/new']);
+    this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
   }
 
   refresh() {

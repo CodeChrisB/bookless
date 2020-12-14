@@ -41,9 +41,18 @@ export class CustomerService {
     customers.push(newCustomer);
   }
 
-  http: HttpClient;
-  constructor(http: HttpClient) {
-    this.http = http;
+  static getCustomer(id:number){
+    return customers.filter(a=> a.id==id)[0];
   }
+
+  static setCustomer(id:number,newCustomer:IPrivateCustomer){
+    const index = customers.indexOf(customers.filter(a=> a.id==id)[0]);
+    customers[index] = newCustomer;
+  }
+
+  static removeCustomer(id:number){
+    customers = customers.slice(id,id+1);
+  }
+
 
 }
