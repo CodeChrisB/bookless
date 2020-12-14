@@ -95,7 +95,7 @@ export class addCustomer implements OnInit  {
 
   initEdit(){
 
-    this.msg = "Änaaaderungen speichern";
+    this.msg = "Änderungen speichern";
     this.id = history.state.id;
     var customer = CustomerService.getCustomer(this.id)
    this.customer.fName = customer.fName;
