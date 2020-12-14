@@ -1,8 +1,17 @@
+.mat-table {
+  max-height: 71vh;
+  height: 71vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 table{
   width: 80vw;
-  max-height: 80vh;
+
   position: center;
-  overflow: auto;
+
+
+
 }
 
 button{
@@ -14,9 +23,7 @@ button{
   width: fit-content;
 }
 
-.container{
- height: 100px;
-}
+
 
 #addButton
 {
