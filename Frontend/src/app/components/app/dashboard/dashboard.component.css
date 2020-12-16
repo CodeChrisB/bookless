@@ -1,0 +1,36 @@
+.left-container{
+  position: absolute;
+  left: 15vw;
+  max-width: 66%;;
+}
+
+.right-container{
+  position: absolute;
+  right: 14vw;
+  top: 0;
+}
+
+
+.mat-card{
+  white-space: normal;
+  width: 25vw;
+  height: 38vh;
+  display: inline-block;
+  margin: 0.5vw;
+  margin-bottom: 0vh;
+
+    /*Padding 0px to remove changes on zoom*/
+    padding: 0px;
+}
+
+.big{
+  height: 78vh;
+  width: 32vw;
+  position: absolute;
+  float: right;
+}
+
+.mat-card{
+
+  border-radius: 4px;
+}
