@@ -33,3 +33,18 @@
 .mat-card{
   border-radius: 4px;
 }
+
+
+div.header{
+  font-size: 20px;
+  margin-top: 1vh;
+  margin-left: 0.5vw;
+}
+
+div.content{
+  width: 100%;
+  height: 100%;
+}
+div.content.hr{
+  padding: -3px;
+}
