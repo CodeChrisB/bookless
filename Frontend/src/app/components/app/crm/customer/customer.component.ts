@@ -32,8 +32,9 @@ export class Customer  {
      this.pageIndex = $event.pageIndex;
     }
 
-  onRowClicked(row) {
-    console.log('Row clicked: ', row);
+  onRowClicked(row : IPrivateCustomer) {
+   alert('dfs')
+   this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'show', id: row.id } });
   }
 
   updateCustomer(row : IPrivateCustomer){

@@ -19,11 +19,33 @@ styleUrls: ['./customerData.component.css','../../../../css/forms.css']
 })
 export class addCustomer implements OnInit  {
 
+  ngOnInit() {
+    if(history.state.mode ==undefined && this.route.url.includes('edit')){
+      this.route.navigate(['/app/crm/customer'])
+    }
+    else{
+
+      if(history.state.mode =='show'){
+        this.locked=true;
+        this.initShow();
+      }else{
+        this.editMode = history.state.mode =='edit';
+        if(this.editMode){
+          this.initEdit()
+        }else{
+          this.initAdd()
+        }
+      }
+    }
+  }
+
   // if this number is undefined it means we
   //are currently adding a new customer and not editing an existing one
   id:number = undefined;
   editMode = true;
   msg:string="";
+
+  locked:boolean =false;
 
   customer={
     "fName":"",
@@ -46,12 +68,18 @@ export class addCustomer implements OnInit  {
   }
 
   doCustomer():void{
+    if(history.state.mode="show"){
+    this.route.navigate(['/app/crm/customer']);
+    return
+    }
+
     if(this.editMode){
       this.updateCustomer();
     }else{
       this.addCustomer();
     }
   }
+
 
 
   addCustomer():void{
@@ -80,25 +108,21 @@ export class addCustomer implements OnInit  {
   }
 
 
-  ngOnInit() {
-    if(history.state.mode ==undefined && this.route.url.includes('edit')){
-      this.route.navigate(['/app/crm/customer'])
-    }
-    else{
-      this.editMode = history.state.mode =='edit';
-      if(this.editMode){
-        this.initEdit()
-      }else{
-        this.initAdd()
-      }
-    }
+  initShow(){
+   this.msg = "Zurück";
+   this.id = history.state.id;
+   var customer = CustomerService.getCustomer(this.id)
+   this.customer.fName = customer.fName;
+   this.customer.lName = customer.lName;
+   this.customer.location.domicile = 'Nope'
+   this.customer.email = customer.email;
   }
 
   initEdit(){
 
     this.msg = "Änderungen speichern";
-    this.id = history.state.id;
-    var customer = CustomerService.getCustomer(this.id)
+   this.id = history.state.id;
+   var customer = CustomerService.getCustomer(this.id)
    this.customer.fName = customer.fName;
    this.customer.lName = customer.lName;
    this.customer.location.domicile = 'Nope'
