@@ -8,11 +8,12 @@ styleUrls: ['./dashboard.component.css']
 export class Dashboard implements OnInit {
 
   public now: String = "."
+  timer =null;
 
   private weekDays=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sontag'];
   private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
   constructor() {
-      setInterval(() => {
+      this.timer = setInterval(() => {
         this.setTime()
       }, 1000);
   }
@@ -29,4 +30,10 @@ export class Dashboard implements OnInit {
 ngOnInit(){
   this.setTime()
 }
+
+ngOnDestroy() {
+  // Will clear when component is destroyed e.g. route is navigated away from.
+  clearInterval(this.timer);
+}
+
 }
