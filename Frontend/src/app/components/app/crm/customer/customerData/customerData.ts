@@ -101,11 +101,7 @@ export class addCustomer implements OnInit  {
   doCustomer():void{
     if(history.state.mode=="show"){
     this.route.navigate(['/app/crm/customer']);
-    return
-    }
-
-    if(this.editMode){
-
+    }else if(this.editMode){
       this.updateCustomer();
     }else{
       this.addCustomer();

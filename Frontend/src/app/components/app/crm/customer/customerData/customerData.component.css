@@ -12,6 +12,9 @@ input, select{
   margin-right: 20px;
 }
 
+input:disabled{
+  background-color: white;
+}
 div.block{
   padding-top: 10px;
   border-radius: 0px 50px 50px 0px;
