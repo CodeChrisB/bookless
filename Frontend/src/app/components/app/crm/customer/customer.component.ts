@@ -32,14 +32,17 @@ export class Customer  {
      this.pageIndex = $event.pageIndex;
     }
 
-  onRowClicked(row : IPrivateCustomer) {
-   alert('dfs')
+  showCustomer(row : IPrivateCustomer) {
    this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'show', id: row.id } });
   }
 
   updateCustomer(row : IPrivateCustomer){
     console.dir(row)
     this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'edit', id: row.id } });
+  }
+
+  addCustomer(){
+    this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
   }
 
   constructor(public dialog: MatDialog,private route :Router) {}
@@ -54,9 +57,7 @@ export class Customer  {
 
 
 
-  addCustomer(){
-    this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
-  }
+
 
   refresh() {
       this.dataSource = this.dataSource;

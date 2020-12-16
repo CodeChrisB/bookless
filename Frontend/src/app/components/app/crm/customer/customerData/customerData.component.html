@@ -3,17 +3,17 @@
     <div class="block">
       <h1>Personen Daten</h1>
     </div>
-    <input type="text" [attr.readonly]="locked" [(ngModel)]="customer.fName" name="fname" placeholder="Vorname">
-    <input type="text" [attr.readonly]="locked" [(ngModel)]="customer.lName" name="lname" placeholder="Nachname">
-    <input type="text" [attr.readonly]="locked" [(ngModel)]="customer.gender"  name="gender" placeholder="Anrede">
-    <input type="text" [attr.readonly]="locked" [(ngModel)]="customer.phone"  name="gender" placeholder="Telefonnummer">
-    <input type="text" [attr.readonly]="locked" [(ngModel)]="customer.email"  name="gender" placeholder="E-Mail">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.fName" name="fname" placeholder="Vorname">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.lName" name="lname" placeholder="Nachname">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.gender"  name="gender" placeholder="Anrede">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.phone"  name="gender" placeholder="Telefonnummer">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.email"  name="gender" placeholder="E-Mail">
     <div class="block">
       <h1>Orts Daten</h1>
     </div>
-    <input type="text"  [attr.readOnly]="locked" [(ngModel)]="customer.location.domicile"  name="domicile"  placeholder="Wohnort">
-    <input type="text"  [attr.readOnly]="locked" [(ngModel)]="customer.location.orderAdress" name="adress"  placeholder="Lieferadresse">
-    <input type="text"  [attr.readOnly]="locked" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
+    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.domicile"  name="domicile"  placeholder="Wohnort">
+    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.orderAdress" name="adress"  placeholder="Lieferadresse">
+    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
 <br>
 
     <input (click)="doCustomer()" type="submit" value={{msg}}>
