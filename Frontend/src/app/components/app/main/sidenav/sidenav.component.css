@@ -19,6 +19,13 @@
 
   button{
     text-align: left;
+    margin-left: 1.5vw;
+  }
+
+  .mat-icon{
+    position: absolute;
+    float: left;
+    margin-top: 1vh;
   }
 
 
@@ -27,6 +34,10 @@
     width: 100%;
     padding: 10px;
   }
+
+  div[_ngcontent-lgl-c156] {
+    padding: 0px;
+}
 
 mat-sidenav-container{
   overflow-y: hidden;
