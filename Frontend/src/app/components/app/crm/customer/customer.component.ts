@@ -33,7 +33,7 @@ export class Customer  {
     }
 
   showCustomer(row : IPrivateCustomer) {
-   this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'show', id: row.id } });
+   this.route.navigate(['/app/crm/customer/show'], { state: {mode:'show', id: row.id } });
   }
 
   updateCustomer(row : IPrivateCustomer){

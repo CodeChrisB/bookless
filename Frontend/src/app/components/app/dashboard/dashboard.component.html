@@ -1,58 +1,59 @@
 <div>
-  <div class="left-container">
-    <mat-card>
-      <div class="content">
-       <div class="header">Heute</div>
-        <hr>
-        <div class="time">{{now}}</div>
-      </div>
-    </mat-card>
-    <mat-card>
-      <div class="content">
-        <div class="header">Aufträge</div>
-        <hr>
-        <div class="text">
-          Placeholder Text
-         </div>
-       </div>
-    </mat-card>
-    <mat-card>
-      <div class="content">
-        <div class="header">Umsatz</div>
-        <hr>
-        <div class="text">
-         Placeholder Text
-        </div>
-       </div>
-    </mat-card>
-    <mat-card>
-      <div class="content">
-        <div class="header">Rechnugen</div>
-        <hr>
-        <div class="text">
-          Placeholder Text
-         </div>
-       </div>
-    </mat-card>
   <div>
-  <div class="right-container">
-    <mat-card class="big">
-      <div class="header">Top Kunden</div>
-      <table>
-        <tr>
-          <th>Vorname</th>
-          <th>Nachname</th>
-          <th>Email</th>
-        </tr>
-        <tr *ngFor="let c of customers">
-          <td>{{c.fName}}</td>
-          <td>{{c.lName}}</td>
-          <td>{{c.email}}</td>
-        </tr>
-      </table>
-
-
-    </mat-card>
+    <div class='row'>
+      <div class='column'>
+        <mat-card>
+         Heute
+          <hr>
+          {{now}}
+        </mat-card>
+      </div>
+      <div class='column'>
+        <mat-card>
+          Aufträge
+          <hr>
+        </mat-card>
+      </div>
+      <div class='column'>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='column'>
+        <mat-card>
+          Rechnungen
+          <hr>
+        </mat-card>
+      </div>
+      <div class='column'>
+        <mat-card>
+         Angebote
+          <hr>
+        </mat-card>
+      </div>
+      <div class='column'>
+      </div>
+    </div>
   </div>
-
 </div>
+
+<mat-card class="big">
+  <div class="box">
+    <h1>Top Kunden</h1>
+    <hr>
+    <table>
+      <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Email</th>
+      </tr>
+      <tr *ngFor="let c of customers">
+        <td>{{c.fName}}</td>
+        <td>{{c.lName}}</td>
+        <td>{{c.email}}</td>
+      </tr>
+    </table>
+    <div style="height: 2vh;"></div>
+  </div>
+</mat-card>
+
+

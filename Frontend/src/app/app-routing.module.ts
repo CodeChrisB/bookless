@@ -22,6 +22,7 @@ const routes: Routes = [
         { path: "crm/company",  component: Company, },
         { path: "crm/customer/new",  component: addCustomer, },
         { path: "crm/customer/edit",  component: addCustomer, },
+        { path: "crm/customer/show",  component: addCustomer, },
         { path: "bill/offer",  component: Offer, },
         { path: "products/heatexchanger",  component: Heatexchanger, }
 

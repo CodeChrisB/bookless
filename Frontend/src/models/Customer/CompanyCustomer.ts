@@ -1,4 +1,4 @@
-export interface CompanyCustomer
+export interface ICompanyCustomer
 {
     shippingAdress : string[];
     contactPersons : ContactPerson[];
