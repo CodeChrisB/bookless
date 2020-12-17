@@ -42,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
 import {Profile} from './components/profile/profile.component';
 import { Customer } from './components/app/crm/customer/customer.component'
+import { addCustomer } from './components/app/crm/customer/customerData/customerData';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { Customer } from './components/app/crm/customer/customer.component'
     FooterComponent,
     MainComponent,
     Profile,
-    Customer
+    Customer,
+    addCustomer
   ],
   imports: [
     AppRoutingModule,

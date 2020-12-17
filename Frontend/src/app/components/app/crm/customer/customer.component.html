@@ -1,9 +1,10 @@
-<div class="container">
+
   <mat-card>
+
     <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
 
       <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
           <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
       </ng-container>
 
@@ -21,22 +22,23 @@
       </ng-container>
 
       <ng-container matColumnDef="adress">
-        <mat-header-cell *matHeaderCellDef>Adresse</mat-header-cell>
-        <mat-cell class="duration-cell"
+        <mat-header-cell *matHeaderCellDef  id="big">Adresse</mat-header-cell>
+        <mat-cell class="duration-cell"  id="big"
                   *matCellDef="let lesson">{{lesson.adress}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="phoneNumber">
-      <mat-header-cell *matHeaderCellDef>Telefon Nummber</mat-header-cell>
-      <mat-cell class="duration-cell"
+      <mat-header-cell *matHeaderCellDef id="big">Telefon Nummber</mat-header-cell>
+      <mat-cell class="duration-cell" id="big"
                 *matCellDef="let lesson">{{lesson.phoneNumber}}</mat-cell>
-  </ng-container>
+      </ng-container>
 
-  <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-    <mat-cell class="duration-cell"
-              *matCellDef="let lesson">{{lesson.email}}</mat-cell>
-</ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef  id="big">Email</mat-header-cell>
+        <mat-cell class="duration-cell"  id="big"
+                  *matCellDef="let lesson">{{lesson.email}}</mat-cell>
+    </ng-container>
+
 
   <ng-container matColumnDef="gender">
     <mat-header-cell *matHeaderCellDef>Anrede</mat-header-cell>
@@ -44,26 +46,32 @@
               *matCellDef="let lesson">{{lesson.gender == 'm' ? 'Herr' : 'Frau'}}</mat-cell>
   </ng-container>
 
+          <ng-container matColumnDef="actions">
+            <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+            <mat-cell *matCellDef="let row" >
+                <button id="cButton" mat-button (click)="updateCustomer(row)"  ><mat-icon>create</mat-icon></button>
+                <button id="cButton" mat-button (click)="deleteCustomer(row)" ><mat-icon>delete</mat-icon></button>
+            </mat-cell>
+          </ng-container>
 
 
-      <ng-container matColumnDef="actions">
-        <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
-        <mat-cell *matCellDef="let row" >
-             <button id="cButton" mat-button (click)="updateCustomer(row)"  ><mat-icon>create</mat-icon></button>
-             <button id="cButton" mat-button (click)="deleteCustomer(row)" ><mat-icon>delete</mat-icon></button>
-        </mat-cell>
-      </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        </mat-table>
+        <button id="addButton" (click)="addCustomer()">
+          <mat-icon>
+              add
+          </mat-icon>
+        </button>
+        <mat-paginator [length]="length"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="goToPage($event)">
 
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-paginator>
 
-    </mat-table>
-
-    <mat-paginator [length]="length"
-                  [pageSize]="pageSize"
-                  [pageSizeOptions]="pageSizeOptions"
-                  (page)="goToPage($event)"></mat-paginator>
   </mat-card>
-</div>
+

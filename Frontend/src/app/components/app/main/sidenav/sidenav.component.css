@@ -2,16 +2,16 @@
     height: 92vh;
     border: 1px solid rgba(0, 0, 0, 0.5);
     float: left;
-    width: 190px;
+    width: 15vw;
   }
-  
+
   .example-sidenav-content {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
   }
-  
+
   .example-sidenav {
     padding: 20px;
 
@@ -22,7 +22,7 @@
   }
 
 
-  div{ 
+  div{
     margin: auto;
     width: 100%;
     padding: 10px;

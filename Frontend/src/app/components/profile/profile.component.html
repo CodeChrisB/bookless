@@ -1,12 +1,15 @@
-<mat-card>
+<mat-card id='full'>
     <div style="text-align:center">
         <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
-        <div><img [src]="url" *ngIf="url"></div>
+        <div class="container">
+          <a>
+            <img [src]="url">
+          </a>
+        </div>
         <p>
             <input type="file" (change)="selectFile($event)">
         </p>
     </div>
-    
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name"
@@ -14,11 +17,6 @@
                [(ngModel)]="user.name" name="name">
       </div>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Input</mat-label>
-            <input matInput>
-        </mat-form-field>
-      
       <div class="form-group">
         <label for="alterEgo">Alter Ego</label>
         <input type="text"  class="form-control" id="alterEgo"
@@ -30,4 +28,24 @@
 
 
 
-<mat-card>Simple card</mat-card>
+<mat-card >
+
+
+  <div>
+    <form>
+      <label for="fname">Momentanes Passwort</label>
+      <input [(ngModel)]="password.current" type="password" id="fname" name="firstname" placeholder="Passwort">
+
+      <label for="lname">Neues Passwort</label>
+      <input [(ngModel)]="password.newFirst" type="password" id="lname" name="lastname" placeholder="Neues Passwort">
+
+      <label for="lname">Bestätige Passwort</label>
+      <input [(ngModel)]="password.newSecond" type="password" id="lname" name="lastname" placeholder="Neues Passwort">
+
+      <input (click)="submitNewPassword()" type="submit" value="Submit">
+    </form>
+  </div>
+
+
+
+</mat-card>

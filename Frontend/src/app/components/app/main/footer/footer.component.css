@@ -2,5 +2,6 @@ div{
     position: fixed;
     bottom: 0;
     width: 100%;
-    margin-left: 190px;
+    height: max-content;
+    margin-left: 15vw;
 }
