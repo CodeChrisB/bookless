@@ -19,11 +19,11 @@ styleUrls: ['./customerData.component.css','../../../../css/forms.css']
 })
 export class addCustomer implements OnInit  {
 
-  // if this number is undefined it means we
-  //are currently adding a new customer and not editing an existing one
   id:number = undefined;
   editMode = true;
   msg:string="";
+
+  locked:boolean =false;
 
   customer={
     "fName":"",
@@ -38,21 +38,75 @@ export class addCustomer implements OnInit  {
     }
   }
 
+ customerObject : IPrivateCustomer = {id:0,adress:"",phoneNumber:"",email:"",fName:"",lName:"",gender:""};
+ constructor(private route :Router,public activatedRoute: ActivatedRoute) {}
+
+  //#region All the Init Methods
 
 
-  customerObject : IPrivateCustomer = {id:0,adress:"",phoneNumber:"",email:"",fName:"",lName:"",gender:""};
-  constructor(private route :Router,public activatedRoute: ActivatedRoute) {
 
+
+  ngOnInit() {
+    if(history.state.mode ==undefined && this.route.url.includes('edit')){
+      this.route.navigate(['/app/crm/customer'])
+    }
+    else{
+
+      if(history.state.mode =='show'){
+        this.locked=true;
+        this.initShow();
+      }else{
+        this.editMode = history.state.mode =='edit';
+        if(this.editMode){
+          this.initEdit()
+        }else{
+          this.initAdd()
+        }
+      }
+    }
   }
 
+
+  initShow(){
+    this.msg = "Zurück";
+    this.id = history.state.id;
+    var customer = CustomerService.getCustomer(this.id)
+    this.customer.fName = customer.fName;
+    this.customer.lName = customer.lName;
+    this.customer.location.domicile = 'Nope'
+    this.customer.email = customer.email;
+   }
+
+   initEdit(){
+
+     this.msg = "Änderungen speichern";
+    this.id = history.state.id;
+    var customer = CustomerService.getCustomer(this.id)
+    this.customer.fName = customer.fName;
+    this.customer.lName = customer.lName;
+    this.customer.location.domicile = 'Nope'
+    this.customer.email = customer.email;
+    this.customer.gender = this.customer.gender;
+   }
+
+   initAdd(){
+     this.msg = "Hinzufügen";
+   }
+
+
+
+   //#endregion
+
+  //decides what should happen when the green button is pressed
   doCustomer():void{
-    if(this.editMode){
+    if(history.state.mode=="show"){
+    this.route.navigate(['/app/crm/customer']);
+    }else if(this.editMode){
       this.updateCustomer();
     }else{
       this.addCustomer();
     }
   }
-
 
   addCustomer():void{
     this.customerObject.fName = this.customer.fName;
@@ -78,39 +132,5 @@ export class addCustomer implements OnInit  {
     CustomerService.setCustomer(this.id,this.customerObject);
     this.route.navigate(['/app/crm/customer']);
   }
-
-
-  ngOnInit() {
-    if(history.state.mode ==undefined && this.route.url.includes('edit')){
-      this.route.navigate(['/app/crm/customer'])
-    }
-    else{
-      this.editMode = history.state.mode =='edit';
-      if(this.editMode){
-        this.initEdit()
-      }else{
-        this.initAdd()
-      }
-    }
-  }
-
-  initEdit(){
-
-    this.msg = "Änderungen speichern";
-    this.id = history.state.id;
-    var customer = CustomerService.getCustomer(this.id)
-   this.customer.fName = customer.fName;
-   this.customer.lName = customer.lName;
-   this.customer.location.domicile = 'Nope'
-   this.customer.email = customer.email;
-   this.customer.gender = this.customer.gender;
-  }
-
-  initAdd(){
-    this.msg = "Hinzufügen";
-
-  }
-
-
 }
 

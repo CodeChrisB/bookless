@@ -1,0 +1,75 @@
+.left-container{
+  position: absolute;
+  left: 15vw;
+  max-width: 66%;;
+}
+
+.right-container{
+  position: absolute;
+  right: 14vw;
+  top: 0;
+}
+
+
+.mat-card{
+  white-space: normal;
+  width: 25vw;
+  height: 40vh;
+  display: inline-block;
+  margin: 0.5vw;
+  margin-bottom: 0vh;
+
+    /*Padding 0px to remove changes on zoom*/
+    padding: 0px;
+}
+
+.big{
+  height: 81vh;
+  width: 32vw;
+  position: absolute;
+  float: right;
+}
+
+.mat-card{
+  border-radius: 4px;
+}
+
+
+div.header{
+  font-size: 20px;
+  margin-top: 1vh;
+  margin-left: 0.6vw;
+}
+
+div.content{
+  width: 100%;
+  height: 100%;
+}
+
+
+.time{
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+table {
+  margin-top: 1vh;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #585252;
+}
+
+
+div.text{
+  margin-left: 10px;
+}

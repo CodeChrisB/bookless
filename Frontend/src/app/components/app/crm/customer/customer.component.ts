@@ -32,8 +32,8 @@ export class Customer  {
      this.pageIndex = $event.pageIndex;
     }
 
-  onRowClicked(row) {
-    console.log('Row clicked: ', row);
+  showCustomer(row : IPrivateCustomer) {
+   this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'show', id: row.id } });
   }
 
   updateCustomer(row : IPrivateCustomer){
@@ -41,7 +41,11 @@ export class Customer  {
     this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'edit', id: row.id } });
   }
 
-  constructor(private route :Router) {}
+  addCustomer(){
+    this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
+  }
+
+  constructor(public dialog: MatDialog,private route :Router) {}
 
   deleteCustomer(row : IPrivateCustomer){
      if(confirm('Wollen Sie ' + row.fName +' '+row.lName +' löschen?')){
@@ -53,9 +57,7 @@ export class Customer  {
 
 
 
-  addCustomer(){
-    this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
-  }
+
 
   refresh() {
       this.dataSource = this.dataSource;

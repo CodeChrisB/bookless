@@ -5,45 +5,42 @@
 
 
   <mat-sidenav-content>
-    <p>
+    <p class="button-container" routerLink="dashboard"  (click)="openDashboard()" >
       <mat-icon>dashboard</mat-icon>
-      <button routerLink="dashboard" (click)="openDashboard()" mat-button>Dashboard</button>
+      <button mat-button>Dashboard</button>
     </p>
-    <mat-divider></mat-divider>
-    <p>
+    <p class="button-container"  (click)="openCrm()">
       <mat-icon>account_circle</mat-icon>
-      <button mat-button (click)="openCrm()">CRM</button>
+      <button mat-button>CRM</button>
     </p>
         <div *ngIf="crmOpen">
-          <p>
+          <p class="button-container" routerLink="crm/customer">
             <mat-icon>perm_identity</mat-icon>
-            <button mat-button routerLink="crm/customer">Kunden</button>
+            <button mat-button >Kunden</button>
           </p>
-          <p>
+          <p class="button-container" routerLink="crm/company">
             <mat-icon>business</mat-icon>
-            <button mat-button routerLink="crm/company">Firmen</button>
+            <button mat-button >Firmen</button>
           </p>
         </div>
-    <mat-divider></mat-divider>
-    <p>
+    <p class="button-container"  (click)="openBill()">
       <mat-icon>payments</mat-icon>
-      <button mat-button (click)="openBill()">Rechnungen</button>
+      <button mat-button>Rechnungen</button>
     </p>
         <div *ngIf="billOpen">
-          <p>
+          <p class="button-container">
             <mat-icon>account_circle</mat-icon>
             <button  mat-button routerLink="bill/offer">Angebot</button>
           </p>
         </div>
-    <mat-divider></mat-divider>
-    <p>
+    <p class="button-container" (click)="openProduct()">
       <mat-icon>shopping_basket</mat-icon>
-      <button mat-button (click)="openProduct()">Produkte</button>
+      <button mat-button >Produkte</button>
     </p> 
         <div *ngIf="productOpen">
-          <p>
+          <p class="button-container" routerLink="products/heatexchanger">
             <mat-icon>panorama_wide_angle</mat-icon>
-            <button mat-button routerLink="products/heatexchanger">Wärmetauscher</button>
+            <button mat-button >Wärmetauscher</button>
           </p>
         </div>
   </mat-sidenav-content>
