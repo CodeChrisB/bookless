@@ -5,6 +5,8 @@ import { CustomerService } from 'src/app/components/services/customerlist';
 import {IPrivateCustomer} from '../../../../../../models/Customer/PrivateCustomer'
 import { Customer } from '../customer.component';
 import { DOCUMENT } from '@angular/common';
+import { EmailHandler } from 'src/app/components/services/emailHandler';
+import { IEmailData } from 'src/models/email/emailData';
 
 
 
@@ -20,8 +22,13 @@ styleUrls: ['./customerData.component.css','../../../../css/forms.css']
 export class addCustomer implements OnInit  {
 
   id:number = undefined;
-  editMode = true;
+  editMode = false;
+  showMode = false;
+  addMode = false;
   msg:string="";
+
+
+
 
   locked:boolean =false;
 
@@ -38,13 +45,7 @@ export class addCustomer implements OnInit  {
     }
   }
 
-  message =  {
-    "email":'',
-    "cc":'',
-    "bcc":'',
-    "subject":'',
-    "text":''
-  };
+
 
  customerObject : IPrivateCustomer = {id:0,adress:"",phoneNumber:"",email:"",fName:"",lName:"",gender:""};
  constructor(private route :Router,public activatedRoute: ActivatedRoute) {}
@@ -63,12 +64,15 @@ export class addCustomer implements OnInit  {
       if(history.state.mode =='show'){
         this.locked=true;
         this.initShow();
+        this.showMode=true;
       }else{
         this.editMode = history.state.mode =='edit';
         if(this.editMode){
           this.initEdit()
+          this.editMode=true;
         }else{
           this.initAdd()
+          this.addMode=true;
         }
       }
     }
@@ -79,25 +83,11 @@ export class addCustomer implements OnInit  {
     this.msg = "Zurück";
     this.id = history.state.id;
     var customer = CustomerService.getCustomer(this.id)
+    console.dir(customer)
     this.customer.fName = customer.fName;
     this.customer.lName = customer.lName;
     this.customer.location.domicile = 'Nope'
     this.customer.email = customer.email;
-
-
-    //message
-    var text = "Sehr "+ (customer.gender =='m' ? 'geehrter Herr,' :'geehrte Frau,') +this.customer.lName
-    alert(text)
-
-    this.message = {
-      email:this.customer.email,
-      cc:' ',
-      bcc:' ',
-      subject:' ',
-      text: text
-    };
-
-
 
    }
 
@@ -170,15 +160,9 @@ export class addCustomer implements OnInit  {
 
 
   mailCustomer(){
-    window.location.href = "mailto:"+this.message.email+
-    "?cc="+this.message.cc+
-    "&bcc="+this.message.bcc+
-    "&subject="+this.message.subject+
-    "&body="+this.message.text;
-
-    //"mailto:m.mustermann@domain.de?subject=Hier%20steht%20der%20Betreff&amp?text=Hi";
-
-    console.log(this.customer)
+    var text = "Sehr "+ (this.customer.gender =='m' ? 'geehrter Herr,' :'geehrte Frau,') +this.customer.lName
+    var emailData: IEmailData = {email:this.customer.email,subject:'Subject ',content:text}
+    EmailHandler.sendEmail(emailData)
   }
 
 }

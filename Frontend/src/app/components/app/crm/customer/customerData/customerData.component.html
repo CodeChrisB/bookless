@@ -5,7 +5,13 @@
     </div>
     <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.fName" name="fname" placeholder="Vorname">
     <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.lName" name="lname" placeholder="Nachname">
-    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.gender"  name="gender" placeholder="Anrede">
+
+    <select type="text" [disabled]="locked ? 'disabled':null">
+      <option value="m">Herr</option>
+      <option value="f">Frau</option>
+    </select>
+
+
     <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.phone"  name="phone" placeholder="Telefonnummer">
     <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.email"  name="email" placeholder="E-Mail">
     <div class="block">
@@ -16,7 +22,8 @@
     <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
 <br>
 
-<div>
+<div *ngIf="showMode">
+  Email
   <button id="cButton" mat-button (click)="mailCustomer()" ><mat-icon>add</mat-icon></button>
  </div>
 
