@@ -4,6 +4,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {CustomerService} from '../../../services/customerlist'
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { IEmailData } from 'src/models/email/emailData';
+import { EmailHandler } from 'src/app/components/services/emailHandler';
 
 
 const customers: IPrivateCustomer[] = CustomerService.getAllCustomers();
@@ -64,6 +66,12 @@ export class Customer  {
      }
   }
 
+  mailCustomer(row: IPrivateCustomer){
+    var customer = CustomerService.getCustomer(row.id)
+      var text = "Sehr "+ (customer.gender =='m' ? 'geehrter Herr,' :'geehrte Frau,') +customer.lName
+      var emailData: IEmailData = {email:customer.email,subject:'Subject ',content:text}
+      EmailHandler.sendEmail(emailData)
+  }
 
 
 

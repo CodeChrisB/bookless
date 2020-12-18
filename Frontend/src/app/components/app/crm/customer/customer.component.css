@@ -63,3 +63,16 @@ button{
   height: 50px;
   width: 50px;
 }
+
+
+.mat-menu-item{
+  font-size: 12pt;
+}
+
+.email{
+  cursor: pointer;
+}
+
+.email:hover{
+  color:#0000EE;
+}
