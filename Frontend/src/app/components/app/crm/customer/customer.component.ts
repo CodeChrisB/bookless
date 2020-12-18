@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {IPrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
 import {MatDialog} from '@angular/material/dialog';
 import {CustomerService} from '../../../services/customerlist'
 import { Router } from '@angular/router';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 
 const customers: IPrivateCustomer[] = CustomerService.getAllCustomers();
@@ -17,6 +18,11 @@ const customers: IPrivateCustomer[] = CustomerService.getAllCustomers();
 export class Customer  {
   //init the data
   displayedColumns = ["id", "fName", "lName","adress","phoneNumber","email","gender","actions"];
+
+  @ViewChild(MatMenuTrigger)
+  contextMenu: MatMenuTrigger;
+
+  contextMenuPosition = { x: '0px', y: '0px' };
 
 
    // MatPaginator Inputs
@@ -44,6 +50,8 @@ export class Customer  {
   addCustomer(){
     this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
   }
+
+
 
 
   constructor(public dialog: MatDialog,private route :Router) {}
