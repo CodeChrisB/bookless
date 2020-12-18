@@ -14,7 +14,6 @@
 
   .example-sidenav {
     padding: 20px;
-
   }
 
   button{
@@ -30,6 +29,7 @@
 
 
   div{
+    all: unset;
     margin: auto;
     width: 100%;
     padding: 10px;
@@ -44,13 +44,28 @@ mat-sidenav-container{
 }
 
 div{
-  margin-left: 5%;
+  padding-left: 5%;
+  margin:0px
 }
 
-mat-sidenav-content{
-  margin: 10px;
-}
 
 p:hover{
   background-color: black;
+}
+
+p.button-container{
+  width: 100%;
+  padding-left: 1vw;
+  margin-bottom: 0px;
+}
+
+
+.mat-typography p {
+  margin: 0px;
+}
+
+
+#child{
+ margin: 0px;
+  padding-left: 32px;
 }

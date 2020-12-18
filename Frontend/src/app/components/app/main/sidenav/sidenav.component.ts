@@ -13,7 +13,7 @@ export class SidenavComponent{
   productOpen =false;
 
   //close others tabs when open a new one
-  closeOnClick =false
+  closeOnClick =true;
 
   public openDashboard() : void {
     console.log('Called: openDashboard')
@@ -30,7 +30,7 @@ export class SidenavComponent{
 
   public openBill() : void {
     this.billOpen=!this.billOpen;
-    
+
     if(this.closeOnClick){
       this.productOpen=false;
       this.crmOpen=false
@@ -39,7 +39,7 @@ export class SidenavComponent{
 
   public openCrm() : void {
     this.crmOpen=!this.crmOpen;
-    
+
     if(this.closeOnClick){
       this.productOpen=false;
       this.billOpen=!this.crmOpen;
