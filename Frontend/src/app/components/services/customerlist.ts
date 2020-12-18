@@ -31,7 +31,7 @@ var customers: IPrivateCustomer[] = [
   providedIn: 'root',
 })
 export class CustomerService {
-  static getData(): IPrivateCustomer[] {
+  static getAllCustomers(): IPrivateCustomer[] {
     return customers;
   }
 

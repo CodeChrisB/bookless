@@ -11,7 +11,7 @@ export class Dashboard implements OnInit {
 
   public now: String = "."
   timer =null;
-  customers: IPrivateCustomer[] = CustomerService.getData().filter(c=>c.id<10);
+  customers: IPrivateCustomer[] = CustomerService.getAllCustomers().filter(c=>c.id<10);
 
   private weekDays=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sontag'];
   private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];

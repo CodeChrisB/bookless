@@ -9,11 +9,6 @@ import { EmailHandler } from 'src/app/components/services/emailHandler';
 import { IEmailData } from 'src/models/email/emailData';
 
 
-
-
-
-
-
 @Component({
 selector: 'customer-component',
 templateUrl: './customerData.component.html',
@@ -164,6 +159,14 @@ export class addCustomer implements OnInit  {
     var emailData: IEmailData = {email:this.customer.email,subject:'Subject ',content:text}
     EmailHandler.sendEmail(emailData)
   }
+
+
+  mailAllCustomers(){
+    const emailData: string[] =CustomerService.getAllCustomers().map(x=>x.email)
+    EmailHandler.sendBulkEmail(emailData)
+  }
+
+
 
 }
 

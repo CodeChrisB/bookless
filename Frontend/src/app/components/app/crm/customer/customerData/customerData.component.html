@@ -22,11 +22,10 @@
     <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
 <br>
 
-<div *ngIf="showMode">
-  Email
-  <button id="cButton" mat-button (click)="mailCustomer()" ><mat-icon>add</mat-icon></button>
- </div>
 
     <input (click)="doCustomer()" type="submit" value={{msg}}>
+    <mat-button-toggle  *ngIf="showMode" (click)="mailCustomer()" (click)="mailCustomer()">
+      <mat-icon>local_post_office</mat-icon>
+    </mat-button-toggle>
   </form>
 </mat-card>

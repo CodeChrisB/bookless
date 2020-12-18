@@ -5,7 +5,7 @@ import {CustomerService} from '../../../services/customerlist'
 import { Router } from '@angular/router';
 
 
-const customers: IPrivateCustomer[] = CustomerService.getData();
+const customers: IPrivateCustomer[] = CustomerService.getAllCustomers();
 
 
 
