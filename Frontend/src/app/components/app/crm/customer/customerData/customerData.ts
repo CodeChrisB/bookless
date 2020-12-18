@@ -38,6 +38,14 @@ export class addCustomer implements OnInit  {
     }
   }
 
+  message =  {
+    "email":'',
+    "cc":'',
+    "bcc":'',
+    "subject":'',
+    "text":''
+  };
+
  customerObject : IPrivateCustomer = {id:0,adress:"",phoneNumber:"",email:"",fName:"",lName:"",gender:""};
  constructor(private route :Router,public activatedRoute: ActivatedRoute) {}
 
@@ -93,13 +101,7 @@ export class addCustomer implements OnInit  {
 
    }
 
-   message =  {
-     email:'',
-     cc:'',
-     bcc:'',
-     subject:'',
-     text:''
-   };
+
 
    initEdit(){
 
