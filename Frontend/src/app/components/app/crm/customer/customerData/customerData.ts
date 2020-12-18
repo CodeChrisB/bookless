@@ -47,7 +47,7 @@ export class addCustomer implements OnInit  {
 
 
   ngOnInit() {
-    if(history.state.mode ==undefined && this.route.url.includes('edit')){
+    if(history.state.mode ==undefined && this.route.url.includes('edit')|| history.state.mode ==undefined &&this.route.url.includes('show')){
       this.route.navigate(['/app/crm/customer'])
     }
     else{
@@ -75,11 +75,35 @@ export class addCustomer implements OnInit  {
     this.customer.lName = customer.lName;
     this.customer.location.domicile = 'Nope'
     this.customer.email = customer.email;
+
+
+    //message
+    var text = "Sehr "+ (customer.gender =='m' ? 'geehrter Herr,' :'geehrte Frau,') +this.customer.lName
+    alert(text)
+
+    this.message = {
+      email:this.customer.email,
+      cc:' ',
+      bcc:' ',
+      subject:' ',
+      text: text
+    };
+
+
+
    }
+
+   message =  {
+     email:'',
+     cc:'',
+     bcc:'',
+     subject:'',
+     text:''
+   };
 
    initEdit(){
 
-     this.msg = "Änderungen speichern";
+    this.msg = "Änderungen speichern";
     this.id = history.state.id;
     var customer = CustomerService.getCustomer(this.id)
     this.customer.fName = customer.fName;
@@ -87,6 +111,11 @@ export class addCustomer implements OnInit  {
     this.customer.location.domicile = 'Nope'
     this.customer.email = customer.email;
     this.customer.gender = this.customer.gender;
+
+
+
+
+
    }
 
    initAdd(){
@@ -132,5 +161,23 @@ export class addCustomer implements OnInit  {
     CustomerService.setCustomer(this.id,this.customerObject);
     this.route.navigate(['/app/crm/customer']);
   }
+
+
+
+
+
+
+  mailCustomer(){
+    window.location.href = "mailto:"+this.message.email+
+    "?cc="+this.message.cc+
+    "&bcc="+this.message.bcc+
+    "&subject="+this.message.subject+
+    "&body="+this.message.text;
+
+    //"mailto:m.mustermann@domain.de?subject=Hier%20steht%20der%20Betreff&amp?text=Hi";
+
+    console.log(this.customer)
+  }
+
 }
 

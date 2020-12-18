@@ -24,8 +24,7 @@ const routes: Routes = [
         { path: "crm/customer/edit",  component: addCustomer, },
         { path: "crm/customer/show",  component: addCustomer, },
         { path: "bill/offer",  component: Offer, },
-        { path: "products/heatexchanger",  component: Heatexchanger, }
-
+        { path: "products/heatexchanger",  component: Heatexchanger }
       ]
     },
 

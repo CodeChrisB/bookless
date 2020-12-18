@@ -45,6 +45,7 @@ export class Customer  {
     this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
   }
 
+
   constructor(public dialog: MatDialog,private route :Router) {}
 
   deleteCustomer(row : IPrivateCustomer){

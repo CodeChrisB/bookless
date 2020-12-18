@@ -32,11 +32,15 @@
             <mat-icon>account_circle</mat-icon>
             <button  mat-button routerLink="bill/offer">Angebot</button>
           </p>
+          <p class="button-container">
+            <mat-icon>account_circle</mat-icon>
+            <button  mat-button routerLink="bill/offer">Rechnung</button>
+          </p>
         </div>
     <p class="button-container" (click)="openProduct()">
       <mat-icon>shopping_basket</mat-icon>
       <button mat-button >Produkte</button>
-    </p> 
+    </p>
         <div *ngIf="productOpen">
           <p class="button-container" routerLink="products/heatexchanger">
             <mat-icon>panorama_wide_angle</mat-icon>
