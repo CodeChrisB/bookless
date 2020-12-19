@@ -7,8 +7,8 @@
 }
 
 .mat-card{
-  height: 82vh;
-  min-height: 82vh;
+  height: 100%;
+  min-height: 100%;
   border-radius: 0px;
 }
 
@@ -85,5 +85,4 @@ table > thead > tr > th.mat-header-cell.cdk-column-position.mat-column-position 
 #content{
   height: 85vh;
   background-color: #424242;
-  overflow: auto;
 }
