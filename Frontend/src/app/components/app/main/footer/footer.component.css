@@ -1,4 +1,5 @@
 .mat-toolbar{
+  bottom: 0;
   margin: 0px;
   position: absolute;
   width: 100%;
