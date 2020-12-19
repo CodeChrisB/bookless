@@ -1,4 +1,5 @@
 #content{
   height: 85vh;
   background-color: hotpink;
+  overflow-x: auto;
 }
