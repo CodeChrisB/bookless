@@ -7,13 +7,14 @@
 }
 
 .mat-card{
-  max-height: 79vh;
-  min-height: 79vh;
-  height: 79vh;
+  height: 82vh;
+  min-height: 82vh;
   border-radius: 0px;
 }
+
+
 div.mat-paginator-conatainer{
-  height:50vh;
+  max-height:1vh;
 }
 
 .mat-cell,.mat-header-cell{
@@ -55,13 +56,12 @@ button{
 #addButton
 {
   margin-top: 10px;
-  background-color: #c2185b;
-  border-color: #c2185b;
+  background-color: #294B93;
+  border-color: #294B93;
   border-radius: 50px;
   position: relative;
   float: right;
-  height: 50px;
-  width: 50px;
+  width: 80px;
 }
 
 
@@ -80,4 +80,10 @@ button{
 
 table > thead > tr > th.mat-header-cell.cdk-column-position.mat-column-position {
   white-space: nowrap;
+}
+
+#content{
+  height: 85vh;
+  background-color: #424242;
+  overflow: auto;
 }

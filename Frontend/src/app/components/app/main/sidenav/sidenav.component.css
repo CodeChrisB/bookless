@@ -1,5 +1,5 @@
 .example-container {
-    height: 92vh;
+    height: 85vh;
     border: 1px solid rgba(0, 0, 0, 0.5);
     float: left;
     width: 15vw;
@@ -69,3 +69,5 @@ p.button-container{
  margin: 0px;
   padding-left: 32px;
 }
+
+
