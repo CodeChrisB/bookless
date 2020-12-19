@@ -13,7 +13,7 @@ export class EmailHandler {
   static sendEmail(emailData : IEmailData){
     window.location.href = "mailto:"+emailData.email+
     "?subject="+emailData.subject+
-    "&body="+emailData.content+this.footer();//test
+    "&body="+emailData.content+this.footer();//test1
   }
 
   static sendBulkEmail(emailData: string[]){
