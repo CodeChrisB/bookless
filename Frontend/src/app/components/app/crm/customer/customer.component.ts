@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { IEmailData } from 'src/models/email/emailData';
 import { EmailHandler } from 'src/app/components/services/emailHandler';
+import { StringShortener } from 'src/app/components/services/tools/StringShortner';
 
 
 const customers: IPrivateCustomer[] = CustomerService.getAllCustomers();
@@ -53,6 +54,9 @@ export class Customer  {
   }
 
 
+  short( string:string,number:number){
+    return StringShortener.Trim(string,number);
+  }
 
 
   constructor(public dialog: MatDialog,private route :Router) {}
