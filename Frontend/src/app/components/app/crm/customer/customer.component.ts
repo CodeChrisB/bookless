@@ -5,7 +5,7 @@ import {CustomerService} from '../../../services/customerlist'
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { IEmailData } from 'src/models/email/emailData';
-import { EmailHandler } from 'src/app/components/services/emailHandler';
+import { EmailHandler } from 'src/app/components/services/tools/emailHandler';
 import { StringShortener } from 'src/app/components/services/tools/StringShortner';
 
 

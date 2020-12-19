@@ -5,7 +5,7 @@ import { CustomerService } from 'src/app/components/services/customerlist';
 import {IPrivateCustomer} from '../../../../../../models/Customer/PrivateCustomer'
 import { Customer } from '../customer.component';
 import { DOCUMENT } from '@angular/common';
-import { EmailHandler } from 'src/app/components/services/emailHandler';
+import { EmailHandler } from 'src/app/components/services/tools/emailHandler';
 import { IEmailData } from 'src/models/email/emailData';
 
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {IPrivateCustomer} from '../../../models/Customer/PrivateCustomer'
-import {IEmailData} from '../../../models/email/emailData'
+import {IPrivateCustomer} from '../../../../models/Customer/PrivateCustomer'
+import {IEmailData} from '../../../../models/email/emailData'
 
 
 @Injectable({
