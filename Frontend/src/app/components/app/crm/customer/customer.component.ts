@@ -19,13 +19,12 @@ const customers: IPrivateCustomer[] = CustomerService.getAllCustomers();
 })
 export class Customer  {
   //init the data
-  displayedColumns = ["id", "fName", "lName","adress","phoneNumber","email","gender","actions"];
+  displayedColumns = ["fName", "lName","adress","phoneNumber","email","gender","actions"];
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
 
   contextMenuPosition = { x: '0px', y: '0px' };
-
 
    // MatPaginator Inputs
    length = customers.length;

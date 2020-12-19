@@ -2,7 +2,7 @@
   <mat-card>
 
     <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
-        <ng-container  matColumnDef="id">
+        <ng-container matColumnDef="id">
             <mat-header-cell  *matHeaderCellDef>Id</mat-header-cell>
             <mat-cell  *matCellDef="let lesson">{{lesson.id}}</mat-cell>
         </ng-container>

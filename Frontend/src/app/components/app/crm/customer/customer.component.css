@@ -76,3 +76,8 @@ button{
 .email:hover{
   color: grey;
 }
+
+
+table > thead > tr > th.mat-header-cell.cdk-column-position.mat-column-position {
+  white-space: nowrap;
+}
