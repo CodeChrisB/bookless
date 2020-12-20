@@ -73,6 +73,10 @@ p.button-container{
 .mock-hover:hover{
   background-color: #1d3a78;
 }
+
+.mat-icon{
+margin-right: 1vw;
+}
 p:hover,button:hover{
   
   background-color: #1d3a78;
