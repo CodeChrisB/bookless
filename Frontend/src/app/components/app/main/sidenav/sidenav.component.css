@@ -40,7 +40,7 @@
 }
 
 mat-sidenav-container{
-  overflow-y: hidden;
+  background-color: --main-color;
 }
 
 div{
