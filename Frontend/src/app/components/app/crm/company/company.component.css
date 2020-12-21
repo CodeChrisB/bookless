@@ -1,0 +1,32 @@
+table{
+    width: 80vw;
+    max-height: 80vh;
+    position: center;
+    overflow: auto;
+  }
+  
+  button{
+    width: 10px;
+  }
+  
+  #cButton{
+    color: lightgray;
+    width: fit-content;
+  }
+  
+  .container{
+   height: 100px;
+  }
+  
+  #addButton
+  {
+    margin-top: 10px;
+    background-color: #c2185b;
+    border-color: #c2185b;
+    border-radius: 50px;
+    position: relative;
+    float: right;
+    height: 50px;
+    width: 50px;
+  }
+  
