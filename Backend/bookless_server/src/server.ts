@@ -1,35 +1,15 @@
-import { DH_UNABLE_TO_CHECK_GENERATOR } from "constants";
-import e, { json, response } from "express";
 import express from "express";
 import { Client, DataType }  from "ts-postgres";
-import { format } from "path";
-import { NextFunction, Request, Response } from "express";
 import jwt, { verify } from "jsonwebtoken";
-import { User } from "./models/Authorisation/User";
-import { UserService } from "./services/UserService";
+import bycrypt from "bcryptjs";
+import { UserRepository } from "./services/UserService";
 
 
 
-async function main() {
-    const client = new Client({"host":"database", "port": 5432, "user": "user", "password":"pass", "database":"booklessdb"});
-    await client.connect();
-
-    console.log('db works')
-    try{
-        const resultIterator = client.query("select * from product")
-        console.log('ddd');
-
-        for await (const row of resultIterator) {
-            console.log(row); // output data in the console
-            console.log('ddd');
-        }
-    } finally{
-        await client.end();
-    }
-}
 
 
 const app = express();
+
 
 app.get('/api', function(req, res) {
     res.json({
@@ -52,23 +32,26 @@ app.post('/api/posts', verifyToken, (req:any, res:any) => {
   });
 
  
-  app.post('/api/login', (req, res) => {
-    // Mock user
-    const user = {
-      id: 1, 
-      username: 'brad',
-      email: 'brad@gmail.com',
-      admin:true
-    };
-  
-    jwt.sign({user}, 'secretkey', { expiresIn: '30s' }, (err:any, token:any) => {
-        if(err){
-            res.sendStatus(403);
-        }
-      res.json({
-        token
+  app.post('/api/login', async (req, res) => {
+    const userRepo: UserRepository = new UserRepository();
+    try {
+      const salt = (await bycrypt.genSalt()).toString();
+      const hashedPassword = await bycrypt.hash(req.body.password, salt)
+      console.log(salt);
+      console.log(hashedPassword);
+    }
+
+    finally{
+      userRepo.getAllUsers();
+      jwt.sign(userRepo.users, 'secretkey', { expiresIn: '30s' }, (err, token) => {
+          if(err){
+              res.sendStatus(403);
+          }
+        res.json({
+          token
+        });
       });
-    });
+    }
   });
 // Format Of Token
 // Authorization: Bearer <access_token> 
@@ -90,7 +73,6 @@ function verifyToken(req:any, res:any, next:any) {
       // Forbidden
       res.sendStatus(403); 
     }
-  
   }
 
 app.listen(3000, () => {
