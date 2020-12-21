@@ -46,3 +46,38 @@
 span{
   margin-left: 10px;
 }
+
+button.home{
+  height: 100%;
+  width: 15vw;
+  position: absolute;
+  left: 0;
+  padding: 3vw;
+}
+
+mat-icon.home-icon{
+  position: absolute;
+  left: 1vw;
+}
+
+p.button-container{
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 14vw;
+  height: 8vh;
+  padding-left: 1vw;
+  margin-bottom: 0px;
+}
+.mock-hover:hover{
+  background-color: #1d3a78;
+}
+
+.mat-icon{
+margin-right: 1vw;
+}
+p:hover,button:hover{
+  
+  background-color: #1d3a78;
+}
