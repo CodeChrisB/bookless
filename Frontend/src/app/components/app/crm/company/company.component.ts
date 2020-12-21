@@ -57,20 +57,23 @@ export class Company  {
     }
 
 
-    getFirstContactPerson():string{
-      //get the first contact person phone number
-      return '214141344551'
-    }
 
-    getFirstAdress() :string{
+
+    getFirstAdress(p:ICompanyCustomer):string{
       //get the first shipping adress
-      return 'Linz'
+
+      return p.shippingAdress[0];
     }
 
-    //customerData methods
+    getFirstContactPerson(p:ContactPerson):string{
+      //get the first contact person phone number
+      return p[0].email;
+    }
+
+
+    //customerData routing methods
 
     showCustomer(row : IPrivateCustomer) {
-      alert('hello')
       this.route.navigate(['/app/crm/company/show'], { state: {mode:'show', id: row.id } });
      }
 

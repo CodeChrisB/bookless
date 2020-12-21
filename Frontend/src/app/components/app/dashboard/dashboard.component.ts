@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
 import { IPrivateCustomer } from 'src/models/Customer/PrivateCustomer';
+import { CompanyService } from '../../services/crm/companylist';
 import { CustomerService } from '../../services/crm/customerlist';
 
 @Component({
@@ -12,6 +14,8 @@ export class Dashboard implements OnInit {
   public now: String = "."
   timer =null;
   customers: IPrivateCustomer[] = CustomerService.getAllCustomers().filter(c=>c.id<10);
+  companies: ICompanyCustomer[] = CompanyService.getData().filter(c=>c.id<10);
+  show=true;
 
   private weekDays=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sontag'];
   private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];

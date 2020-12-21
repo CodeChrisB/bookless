@@ -133,3 +133,17 @@ h2{
   font-size: 5vh;
 }
 
+#changeTop{
+  background-color: #294b93;
+  border-color: #294b93;
+  color:white;
+  height: fit-content;
+  text-align: center;
+  cursor: pointer;
+  width: 28vw;
+  margin-top: 1vh;
+  margin-left: 1vw;
+  border-radius: 0px;
+}
+
+

@@ -3,6 +3,7 @@
     border: 1px solid rgba(0, 0, 0, 0.5);
     float: left;
     width: 15vw;
+    overflow: hidden;
   }
 
   .example-sidenav-content {

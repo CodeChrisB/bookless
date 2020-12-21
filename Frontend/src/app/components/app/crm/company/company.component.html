@@ -26,13 +26,13 @@
         <ng-container matColumnDef="shippingAdress">
           <mat-header-cell *matHeaderCellDef>Lieferadresse</mat-header-cell>
           <mat-cell class="duration-cell"
-                    *matCellDef="let company">{{getFirstAdress(company.shippingAdress)}}</mat-cell>
+                    *matCellDef="let company">{{getFirstAdress(company)}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="contactPerson">
         <mat-header-cell *matHeaderCellDef>Kontakt Person</mat-header-cell>
         <mat-cell class="duration-cell"
-                  *matCellDef="let company">{{getFirstContactPerson(company.contactPerson)}}</mat-cell>
+                  *matCellDef="let company">{{getFirstContactPerson(company.contactPersons)}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">

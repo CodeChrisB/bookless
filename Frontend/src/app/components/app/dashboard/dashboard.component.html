@@ -38,20 +38,35 @@
 
 <mat-card class="big">
   <div class="box">
-    <h1>Top Kunden</h1>
-    <hr>
-    <table>
-      <tr>
-        <th>Vorname</th>
-        <th>Nachname</th>
-        <th>Email</th>
-      </tr>
-      <tr *ngFor="let c of customers">
-        <td>{{c.fName}}</td>
-        <td>{{c.lName}}</td>
-        <td>{{c.email}}</td>
-      </tr>
-    </table>
+    <button id="changeTop" (click)="show=!show">{{"Wechseln zu "+ (show ? 'Firmen':"Kunden")}}</button>
+    <div *ngIf="show">
+      <table>
+        <tr>
+          <th>Vorname</th>
+          <th>Nachname</th>
+          <th>Email</th>
+        </tr>
+        <tr *ngFor="let c of customers">
+          <td>{{c.fName}}</td>
+          <td>{{c.lName}}</td>
+          <td>{{c.email}}</td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="!show">
+      <table id="topCustomer-table">
+        <tr>
+          <th>Firmename</th>
+          <th>Vertreter</th>
+          <th>Lieferadresse</th>
+        </tr>
+        <tr *ngFor="let c of companies">
+          <td>{{c.name}}</td>
+          <td>{{c.contactPersons[0].lName}}</td>
+          <td>{{c.shippingAdress[0]}}</td>
+        </tr>
+      </table>
+    </div>
     <div style="height: 2vh;"></div>
   </div>
 </mat-card>
