@@ -42,14 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
 import {Profile} from './components/profile/profile.component';
 import { Customer } from './components/app/crm/customer/customer.component'
-<<<<<<< HEAD
-import { addCustomer } from './components/app/crm/customer/addCustomer/addCustomer.component';
-import { Company } from './components/app/crm/company/company.component';
-
-=======
 import { addCustomer } from './components/app/crm/customer/customerData/customerData';
 import { Dashboard } from './components/app/dashboard/dashboard.component';
->>>>>>> 456d0a03286bfff7468f05cfa60a17ad11d64ff1
 
 @NgModule({
   declarations: [
@@ -61,11 +55,7 @@ import { Dashboard } from './components/app/dashboard/dashboard.component';
     Profile,
     Customer,
     addCustomer,
-<<<<<<< HEAD
-    Company
-=======
     Dashboard
->>>>>>> 456d0a03286bfff7468f05cfa60a17ad11d64ff1
   ],
   imports: [
     AppRoutingModule,

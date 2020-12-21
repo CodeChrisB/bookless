@@ -41,10 +41,6 @@ export class CustomerService {
     customers.push(newCustomer);
   }
 
-<<<<<<< HEAD
-
-}
-=======
   static getCustomer(id:number){
     return customers.filter(a=> a.id==id)[0];
   }
@@ -60,4 +56,3 @@ export class CustomerService {
 
 
 }
->>>>>>> 456d0a03286bfff7468f05cfa60a17ad11d64ff1
