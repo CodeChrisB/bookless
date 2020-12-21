@@ -45,6 +45,7 @@ import { Customer } from './components/app/crm/customer/customer.component'
 import { addCustomer } from './components/app/crm/customer/customerData/customerData';
 import { Dashboard } from './components/app/dashboard/dashboard.component';
 import { Company } from './components/app/crm/company/company.component';
+import { addCompanyCustomer } from './components/app/crm/company/companyData/customerData';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { Company } from './components/app/crm/company/company.component';
     Customer,
     addCustomer,
     Dashboard,
-    Company
+    Company,
+    addCompanyCustomer,
   ],
   imports: [
     AppRoutingModule,

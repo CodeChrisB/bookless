@@ -14,15 +14,22 @@ import { Profile } from "./components/profile/profile.component";
 import { SettingsComponent } from './components/settings/settings/Settings.component';
 import { SettingsDashboard } from "./components/settings/dashboard/dashboard.component"
 import { addCustomer } from "./components/app/crm/customer/customerData/customerData";
+import { addCompanyCustomer } from "./components/app/crm/company/companyData/customerData";
 const routes: Routes = [
     { path: 'app', component: MainComponent,
       children: [
         { path: "dashboard",  component: Dashboard, },
+        //crm
         { path: "crm/customer",  component: Customer, },
         { path: "crm/company",  component: Company, },
         { path: "crm/customer/new",  component: addCustomer, },
         { path: "crm/customer/edit",  component: addCustomer, },
         { path: "crm/customer/show",  component: addCustomer, },
+        { path: "crm/company/show",  component: addCompanyCustomer, },
+        { path: "crm/company/edit",  component: addCompanyCustomer, },
+        { path: "crm/company/new",  component: addCompanyCustomer, },
+
+        //bills
         { path: "bill/offer",  component: Offer, },
         { path: "products/heatexchanger",  component: Heatexchanger }
       ]

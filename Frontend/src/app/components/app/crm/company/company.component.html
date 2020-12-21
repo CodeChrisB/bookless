@@ -44,11 +44,9 @@
               </mat-icon>
             </div>
             <mat-menu #menu="matMenu" >
-              <button mat-menu-item  >Ansehen</button>
-              <button mat-menu-item >Bearbeiten</button>
-              <button mat-menu-item  >Löschen</button>
-              <button mat-menu-item >Email an {{row.lName}}</button>
-
+              <button mat-menu-item (click)="showCustomer(row)" >Ansehen</button>
+              <button mat-menu-item (click)="updateCustomer(row)">Bearbeiten</button>
+              <button mat-menu-item (click)="deleteCustomer(row)" >Löschen</button>
             </mat-menu>
             </mat-cell>
         </ng-container>

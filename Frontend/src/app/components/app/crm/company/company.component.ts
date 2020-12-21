@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {CompanyService} from '../../../services/crm/companylist'
 import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
 import { ContactPerson } from 'src/models/ContactPerson';
+import { Router } from '@angular/router';
 
 
 
@@ -38,12 +39,8 @@ export class Company  {
     console.log('Row clicked: ', row);
   }
 
-  updateCustomer(row : ICompanyCustomer){
-    console.dir(row)
-    alert(row.contactPersons)
-  }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,public route: Router) {}
 
   deleteCustomer(row : ICompanyCustomer){
      if(confirm('Wollen Sie ' + row.contactPersons +'löschen?')){
@@ -53,9 +50,7 @@ export class Company  {
      }
   }
 
-  addCustomer(){
-    alert('Mhh das geht noch nicht ganz')
-  }
+
 
   refresh() {
       this.dataSource = this.dataSource;
@@ -63,12 +58,34 @@ export class Company  {
 
 
     getFirstContactPerson():string{
+      //get the first contact person phone number
       return '214141344551'
     }
 
     getFirstAdress() :string{
+      //get the first shipping adress
       return 'Linz'
     }
+
+    //customerData methods
+
+    showCustomer(row : IPrivateCustomer) {
+      alert('hello')
+      this.route.navigate(['/app/crm/company/show'], { state: {mode:'show', id: row.id } });
+     }
+
+     updateCustomer(row : IPrivateCustomer){
+       console.dir(row)
+       this.route.navigate(['/app/crm/company/edit'], { state: {mode:'edit', id: row.id } });
+     }
+
+     addCustomer(){
+       this.route.navigate(['/app/crm/company/new'] , { state: {mode:'add' } });
+     }
+
+
+
+
 
 
 }

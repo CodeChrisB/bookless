@@ -1,0 +1,33 @@
+<mat-card>
+  <form>
+    <div class="block">
+      <h1>Firmen Daten</h1>
+    </div>
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.fName" name="fname" placeholder="Firmenname">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.lName" name="lname" placeholder="Nachname">
+
+    <select type="text" [disabled]="locked ? 'disabled':null">
+      <option value="k">Kleinhändler</option>
+      <option value="g">Großhändler</option>
+    </select>
+
+
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.phone"  name="phone" placeholder="Telefonnummer">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.email"  name="email" placeholder="E-Mail">
+    <div class="block">
+      <h1>Liefer Daten</h1>
+    </div>
+    <!---here should be a table of all the shippind adresses-->
+    <!---with a scroll bar, a add button, a menu -> show edit add and-->
+    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.domicile"  name="domicile"  placeholder="Wohnort">
+    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.orderAdress" name="adress"  placeholder="Lieferadresse">
+    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
+<br>
+
+
+    <input (click)="doCustomer()" type="submit" value={{msg}}>
+    <mat-button-toggle  *ngIf="showMode" (click)="mailCustomer()">
+      <mat-icon>local_post_office</mat-icon>
+    </mat-button-toggle>
+  </form>
+</mat-card>
