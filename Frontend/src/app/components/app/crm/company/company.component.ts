@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {IPrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
 import {MatDialog} from '@angular/material/dialog';
-import {CompanyService} from '../../../services/companylist'
+import {CompanyService} from '../../../services/crm/companylist'
 import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
+import { ContactPerson } from 'src/models/ContactPerson';
 
 
 
@@ -17,7 +18,7 @@ styleUrls: ['./company.component.css']
 })
 export class Company  {
   //init the data
-  displayedColumns = ["id", "name", "companyLocation","shippingAdress","contactPerson"];
+  displayedColumns = ["id", "name", "companyLocation","shippingAdress","contactPerson","actions"];
 
 
    // MatPaginator Inputs
@@ -59,5 +60,15 @@ export class Company  {
   refresh() {
       this.dataSource = this.dataSource;
     }
+
+
+    getFirstContactPerson():string{
+      return '214141344551'
+    }
+
+    getFirstAdress() :string{
+      return 'Linz'
+    }
+
 
 }

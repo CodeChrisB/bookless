@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IPrivateCustomer } from 'src/models/Customer/PrivateCustomer';
-import { CustomerService } from '../../services/customerlist';
+import { CustomerService } from '../../services/crm/customerlist';
 
 @Component({
 selector: 'dashboard-component',

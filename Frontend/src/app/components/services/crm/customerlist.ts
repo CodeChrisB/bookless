@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {IPrivateCustomer} from '../../../models/Customer/PrivateCustomer'
+import {IPrivateCustomer} from '../../../../models/Customer/PrivateCustomer'
 
 var customers: IPrivateCustomer[] = [
     {id:1,fName:'Sebi',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
