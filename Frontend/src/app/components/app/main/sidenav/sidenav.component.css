@@ -1,41 +1,73 @@
 .example-container {
-    height: 92vh;
+    height: 85vh;
     border: 1px solid rgba(0, 0, 0, 0.5);
     float: left;
-    width: 190px;
+    width: 15vw;
   }
-  
+
   .example-sidenav-content {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
   }
-  
+
   .example-sidenav {
     padding: 20px;
-
   }
 
   button{
     text-align: left;
+    margin-left: 1.5vw;
+  }
+
+  .mat-icon{
+    position: absolute;
+    float: left;
+    margin-top: 1vh;
   }
 
 
-  div{ 
+  div{
+    all: unset;
     margin: auto;
     width: 100%;
     padding: 10px;
   }
 
+  div[_ngcontent-lgl-c156] {
+    padding: 0px;
+}
+
 mat-sidenav-container{
-  overflow-y: hidden;
+  background-color: --main-color;
 }
 
 div{
-  margin-left: 5%;
+  padding-left: 5%;
+  margin:0px
 }
 
-mat-sidenav-content{
-  margin: 10px;
+
+p:hover{
+  background-color: black;
 }
+
+p.button-container{
+  width: 100%;
+  padding-left: 1vw;
+  margin-bottom: 0px;
+}
+
+
+.mat-typography p {
+  margin: 0px;
+}
+
+
+#child{
+ margin: 0px;
+  padding-left: 32px;
+}
+
+

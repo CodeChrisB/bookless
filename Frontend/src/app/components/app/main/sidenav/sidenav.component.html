@@ -5,47 +5,46 @@
 
 
   <mat-sidenav-content>
-    <p>
+    <!--Dashboard-->
+    <p class="button-container" routerLink="dashboard"  (click)="openDashboard()" >
       <mat-icon>dashboard</mat-icon>
-      <button routerLink="dashboard" (click)="openDashboard()" mat-button>Dashboard</button>
+      <button mat-button>Dashboard</button>
     </p>
-    <mat-divider></mat-divider>
-    <p>
+    <!--CRM-->
+    <p class="button-container"  (click)="openCrm()">
       <mat-icon>account_circle</mat-icon>
-      <button mat-button (click)="openCrm()">CRM</button>
+      <button mat-button>CRM</button>
     </p>
-        <div *ngIf="crmOpen">
-          <p>
-            <mat-icon>perm_identity</mat-icon>
-            <button mat-button routerLink="crm/customer">Kunden</button>
-          </p>
-          <p>
-            <mat-icon>business</mat-icon>
-            <button mat-button routerLink="crm/company">Firmen</button>
-          </p>
-        </div>
-    <mat-divider></mat-divider>
-    <p>
+    <p  *ngIf="crmOpen" id="child" class="button-container" routerLink="crm/customer">
+      <mat-icon>perm_identity</mat-icon>
+      <button mat-button >Kunden</button>
+    </p>
+    <p  *ngIf="crmOpen" id="child" class="button-container" routerLink="crm/company">
+      <mat-icon>business</mat-icon>
+      <button mat-button >Firmen</button>
+    </p>
+    <!--Bill-->
+    <p class="button-container"  (click)="openBill()">
       <mat-icon>payments</mat-icon>
-      <button mat-button (click)="openBill()">Rechnungen</button>
+      <button mat-button>Rechnungen</button>
     </p>
-        <div *ngIf="billOpen">
-          <p>
-            <mat-icon>account_circle</mat-icon>
-            <button  mat-button routerLink="bill/offer">Angebot</button>
-          </p>
-        </div>
-    <mat-divider></mat-divider>
-    <p>
+    <p  *ngIf="billOpen" id="child" class="button-container">
+      <mat-icon>account_circle</mat-icon>
+      <button  mat-button routerLink="bill/offer">Angebot</button>
+    </p>
+    <p  *ngIf="billOpen" id="child" class="button-container">
+      <mat-icon>account_circle</mat-icon>
+      <button  mat-button routerLink="bill/offer">Rechnung</button>
+    </p>
+    <!--Produkte-->
+    <p class="button-container" (click)="openProduct()">
       <mat-icon>shopping_basket</mat-icon>
-      <button mat-button (click)="openProduct()">Produkte</button>
-    </p> 
-        <div *ngIf="productOpen">
-          <p>
-            <mat-icon>panorama_wide_angle</mat-icon>
-            <button mat-button routerLink="products/heatexchanger">Wärmetauscher</button>
-          </p>
-        </div>
+      <button mat-button >Produkte</button>
+    </p>
+    <p *ngIf="productOpen" id="child" class="button-container" routerLink="products/heatexchanger">
+      <mat-icon>panorama_wide_angle</mat-icon>
+      <button mat-button >Wärmetauscher</button>
+    </p>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

@@ -1,8 +1,45 @@
+.mat-table {
+  max-height: 71vh;
+  height: 71vh;
+  overflow-y: scroll;
+  overflow-x: scroll;
+
+}
+
+.mat-card{
+  height: 100%;
+  min-height: 100%;
+  border-radius: 0px;
+}
+
+
+div.mat-paginator-conatainer{
+  max-height:1vh;
+}
+
+.mat-cell,.mat-header-cell{
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 100px !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+#big{
+  flex: 0 0 200px !important;
+}
+
 table{
   width: 80vw;
-  max-height: 80vh;
+
   position: center;
-  overflow: auto;
 }
 
 button{
@@ -14,18 +51,40 @@ button{
   width: fit-content;
 }
 
-.container{
- height: 100px;
-}
+
 
 #addButton
 {
   margin-top: 10px;
-  background-color: #c2185b;
-  border-color: #c2185b;
+  background-color: #294B93;
+  border-color: #294B93;
   border-radius: 50px;
   position: relative;
   float: right;
-  height: 50px;
-  width: 50px;
+  width: 80px;
 }
+
+
+.mat-menu-item{
+  font-size: 12pt;
+}
+
+.email{
+  cursor: pointer;
+}
+
+.email:hover{
+  color: grey;
+}
+
+
+table > thead > tr > th.mat-header-cell.cdk-column-position.mat-column-position {
+  white-space: nowrap;
+}
+
+#content{
+  height: 85vh;
+  background-color: #424242;
+}
+
+

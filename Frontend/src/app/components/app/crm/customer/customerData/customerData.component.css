@@ -12,6 +12,9 @@ input, select{
   margin-right: 20px;
 }
 
+input:disabled,select:disabled{
+  background-color: white;
+}
 div.block{
   padding-top: 10px;
   border-radius: 0px 50px 50px 0px;
@@ -36,3 +39,6 @@ div.block h1{
   height: 50px;
   width: 50px;
 }
+
+
+

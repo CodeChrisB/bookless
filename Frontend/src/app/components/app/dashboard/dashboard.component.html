@@ -1,1 +1,59 @@
-<h1> dashboard.component component generated </h1>
+<div>
+  <div>
+    <div class='row'>
+      <div class='column'>
+        <mat-card>
+         Heute
+          <hr>
+          {{now}}
+        </mat-card>
+      </div>
+      <div class='column'>
+        <mat-card>
+          Aufträge
+          <hr>
+        </mat-card>
+      </div>
+      <div class='column'>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='column'>
+        <mat-card>
+          Umsatz
+          <hr>
+        </mat-card>
+      </div>
+      <div class='column'>
+        <mat-card>
+         Rechnung
+          <hr>
+        </mat-card>
+      </div>
+      <div class='column'>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-card class="big">
+  <div class="box">
+    <h1>Top Kunden</h1>
+    <hr>
+    <table>
+      <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Email</th>
+      </tr>
+      <tr *ngFor="let c of customers">
+        <td>{{c.fName}}</td>
+        <td>{{c.lName}}</td>
+        <td>{{c.email}}</td>
+      </tr>
+    </table>
+    <div style="height: 2vh;"></div>
+  </div>
+</mat-card>
+
+

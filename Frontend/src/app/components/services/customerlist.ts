@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {IPrivateCustomer} from '../../../models/Customer/PrivateCustomer'
 
-const customers: IPrivateCustomer[] = [
+var customers: IPrivateCustomer[] = [
     {id:1,fName:'Sebi',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
     {id:2,fName:'Chris',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
     {id:3,fName:'Christopher',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
@@ -31,7 +31,7 @@ const customers: IPrivateCustomer[] = [
   providedIn: 'root',
 })
 export class CustomerService {
-  static getData(): IPrivateCustomer[] {
+  static getAllCustomers(): IPrivateCustomer[] {
     return customers;
   }
 
@@ -41,5 +41,23 @@ export class CustomerService {
     customers.push(newCustomer);
   }
 
+<<<<<<< HEAD
 
 }
+=======
+  static getCustomer(id:number){
+    return customers.filter(a=> a.id==id)[0];
+  }
+
+  static setCustomer(id:number,newCustomer:IPrivateCustomer){
+    const index = customers.indexOf(customers.filter(a=> a.id==id)[0]);
+    customers[index] = newCustomer;
+  }
+
+  static removeCustomer(id:number){
+    customers = customers.slice(id,id+1);
+  }
+
+
+}
+>>>>>>> 456d0a03286bfff7468f05cfa60a17ad11d64ff1

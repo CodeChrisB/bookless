@@ -1,27 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {IPrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
 import {MatDialog} from '@angular/material/dialog';
 import {CustomerService} from '../../../services/customerlist'
+import { Router } from '@angular/router';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { IEmailData } from 'src/models/email/emailData';
+import { EmailHandler } from 'src/app/components/services/tools/emailHandler';
+import { StringShortener } from 'src/app/components/services/tools/StringShortner';
 
 
-const customers: IPrivateCustomer[] = CustomerService.getData();
+const customers: IPrivateCustomer[] = CustomerService.getAllCustomers();
 
 
 
 @Component({
-selector: 'customer-component',
-templateUrl: './customer.component.html',
-styleUrls: ['./customer.component.css']
+  selector: 'customer-component',
+  templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.css']
 })
 export class Customer  {
   //init the data
-  displayedColumns = ["id", "fName", "lName","adress","phoneNumber","email","gender","actions"];
+  displayedColumns = ["fName", "lName","adress","phoneNumber","email","gender","actions"];
 
+  @ViewChild(MatMenuTrigger)
+  contextMenu: MatMenuTrigger;
+
+  contextMenuPosition = { x: '0px', y: '0px' };
 
    // MatPaginator Inputs
    length = customers.length;
    pageSize = 10;
-   pageSizeOptions: number[] = [5, 10];
+   pageSizeOptions: number[] = [5, 10,25,100];
    dataSource = customers.slice(0,this.pageSize);
    pageIndex = 0
    goToPage($event){
@@ -31,16 +40,26 @@ export class Customer  {
      this.pageIndex = $event.pageIndex;
     }
 
-  onRowClicked(row) {
-    console.log('Row clicked: ', row);
+  showCustomer(row : IPrivateCustomer) {
+   this.route.navigate(['/app/crm/customer/show'], { state: {mode:'show', id: row.id } });
   }
 
   updateCustomer(row : IPrivateCustomer){
     console.dir(row)
-    alert(row.fName)
+    this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'edit', id: row.id } });
   }
 
-  constructor(public dialog: MatDialog) {}
+  addCustomer(){
+    this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
+  }
+
+
+  short( string:string,number:number){
+    return StringShortener.Trim(string,number);
+  }
+
+
+  constructor(public dialog: MatDialog,private route :Router) {}
 
   deleteCustomer(row : IPrivateCustomer){
      if(confirm('Wollen Sie ' + row.fName +' '+row.lName +' löschen?')){
@@ -50,9 +69,15 @@ export class Customer  {
      }
   }
 
-  addCustomer(){
-    alert('Mhh das geht noch nicht ganz')
+  mailCustomer(row: IPrivateCustomer){
+    var customer = CustomerService.getCustomer(row.id)
+      var text = "Sehr "+ (customer.gender =='m' ? 'geehrter Herr,' :'geehrte Frau,') +customer.lName
+      var emailData: IEmailData = {email:customer.email,subject:'Subject ',content:text}
+      EmailHandler.sendEmail(emailData)
   }
+
+
+
 
   refresh() {
       this.dataSource = this.dataSource;
