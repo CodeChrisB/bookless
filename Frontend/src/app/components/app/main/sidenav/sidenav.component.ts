@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/components/services/profile/UserService';
+import { IUser } from 'src/models/Profile/User';
 
 @Component({
   selector: 'sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent{
+export class SidenavComponent implements OnInit{
 
+  ngOnInit(){
+    this.user = UserService.getUser(1);
+  }
+
+  public user:IUser;
   //current stat of the tabs
   crmOpen = false;
   billOpen =false;

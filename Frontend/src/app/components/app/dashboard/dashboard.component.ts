@@ -27,6 +27,7 @@ export class Dashboard implements OnInit {
 
   setTime(){
     var date = new Date();
+    //todo rework this part this has to be done easier
     this.now = this.weekDays[date.getUTCDay()-1]
     this.now += date.toString().substring(7,11)
     this.now+= this.months[date.getUTCMonth()]
@@ -38,7 +39,7 @@ ngOnInit(){
 }
 
 ngOnDestroy() {
-  // Will clear the timer on component change
+  // Will remove the timer on component change
   clearInterval(this.timer);
 }
 

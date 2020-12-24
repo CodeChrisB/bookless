@@ -20,8 +20,18 @@
       <div class="form-group">
         <label for="alterEgo">Alter Ego</label>
         <input type="text"  class="form-control" id="alterEgo"
-               [(ngModel)]="user.employeeRank" name="rank">
+               [(ngModel)]="user.rank" name="rank">
       </div>
+
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip *ngIf=user.premissions.admin id="admin">Admin</mat-chip>
+        <mat-chip *ngIf=user.premissions.dashboard id="dashbaord">Dashboard</mat-chip>
+        <mat-chip *ngIf=user.premissions.crm id="crm">CRM</mat-chip>
+        <mat-chip *ngIf=user.premissions.bills id="bill">Rechnungen</mat-chip>
+        <mat-chip *ngIf=user.premissions.admin id="product">Produkte</mat-chip>
+      </mat-chip-list>
+
+
 
 
 </mat-card>

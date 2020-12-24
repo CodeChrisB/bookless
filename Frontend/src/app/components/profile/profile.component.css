@@ -2,11 +2,13 @@
     width: 40%;
     float:left;
     background:gray;
-    margin:10px;
+    margin:1vh;
+
 }
 
 #full{
-  height: 80vh;
+  height:80vh;
+  max-height: 80vh;
 }
 
 img{
@@ -25,4 +27,23 @@ img{
   position: relative;
   text-align: center;
   color: white;
+}
+
+
+#admin{
+  background-color:crimson;
+}
+
+#dashbaord{
+  background-color:darkorange;
+}
+
+#crm{
+  background-color:darkolivegreen
+}
+#bill{
+  background-color: dodgerblue;
+}
+#product{
+  background-color: mediumpurple;
 }

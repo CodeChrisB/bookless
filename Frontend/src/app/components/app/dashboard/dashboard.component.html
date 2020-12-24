@@ -40,7 +40,7 @@
   <div class="box">
     <button id="changeTop" (click)="show=!show">{{"Wechseln zu "+ (show ? 'Firmen':"Kunden")}}</button>
     <div *ngIf="show">
-      <table>
+      <table id="topCustomer-table">
         <tr>
           <th>Vorname</th>
           <th>Nachname</th>

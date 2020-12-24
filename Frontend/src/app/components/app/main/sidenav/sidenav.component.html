@@ -6,12 +6,12 @@
 
   <mat-sidenav-content>
     <!--Dashboard-->
-    <p class="button-container" routerLink="dashboard"  (click)="openDashboard()" >
+    <p *ngIf=user.premissions.dashboard class="button-container" routerLink="dashboard"  (click)="openDashboard()" >
       <mat-icon>dashboard</mat-icon>
       <button mat-button>Dashboard</button>
     </p>
     <!--CRM-->
-    <p class="button-container"  (click)="openCrm()">
+    <p *ngIf=user.premissions.crm class="button-container"  (click)="openCrm()">
       <mat-icon>account_circle</mat-icon>
       <button mat-button>CRM</button>
     </p>
@@ -24,7 +24,7 @@
       <button mat-button >Firmen</button>
     </p>
     <!--Bill-->
-    <p class="button-container"  (click)="openBill()">
+    <p *ngIf=user.premissions.bills class="button-container"  (click)="openBill()">
       <mat-icon>payments</mat-icon>
       <button mat-button>Rechnungen</button>
     </p>
@@ -37,7 +37,7 @@
       <button  mat-button routerLink="bill/offer">Rechnung</button>
     </p>
     <!--Produkte-->
-    <p class="button-container" (click)="openProduct()">
+    <p *ngIf=user.premissions.products class="button-container" (click)="openProduct()">
       <mat-icon>shopping_basket</mat-icon>
       <button mat-button >Produkte</button>
     </p>

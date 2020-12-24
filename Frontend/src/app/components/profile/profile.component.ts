@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from 'src/models/Profile/User';
+import { UserService } from '../services/profile/UserService';
 
 interface User {
     name:    string;
@@ -12,10 +14,16 @@ templateUrl: './profile.component.html',
 styleUrls: ['./profile.component.css','../css/passform.css']
 })
 
-export class Profile  {
+export class Profile implements OnInit  {
+
+  user : IUser;
+
+  ngOnInit(){
+    //when we have backend access we need to specify which user we want to get.
+    this.user = UserService.getUser(1);
+  }
 
 
-    user: User = {name: 'Chris',employeeRank:'Master',created : new Date("2019-01-16") }
     url;
     msg = "";
     password = {
