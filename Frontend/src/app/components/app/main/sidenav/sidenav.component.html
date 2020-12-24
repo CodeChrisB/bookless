@@ -1,9 +1,4 @@
 <mat-sidenav-container class="example-container" ngIF="isMenuOpen">
-  <mat-sidenav #sidenav mode="side">
-    Sidenav content
-  </mat-sidenav>
-
-
   <mat-sidenav-content>
     <!--Dashboard-->
     <p *ngIf=user.premissions.dashboard class="button-container" routerLink="dashboard"  (click)="openDashboard()" >
