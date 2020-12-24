@@ -29,6 +29,9 @@ img{
   color: white;
 }
 
+.mat-chip{
+  cursor: pointer;
+}
 
 #admin{
   background-color:crimson;

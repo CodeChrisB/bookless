@@ -1,8 +1,12 @@
-import { IPremissions } from "./Premissions";
-
 export interface IUser {
   name:string
   rank:string
-  premissions:IPremissions;
+  premissions:{
+    admin:boolean;
+    dashboard:boolean;
+    crm:boolean;
+    bills:boolean;
+    products:boolean;
+  }
   image:string;
 }

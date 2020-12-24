@@ -3,7 +3,7 @@
         <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
         <div class="container">
           <a>
-            <img [src]="url">
+            <img [src]="image">
           </a>
         </div>
         <p>
@@ -19,16 +19,16 @@
 
       <div class="form-group">
         <label for="alterEgo">Alter Ego</label>
-        <input type="text"  class="form-control" id="alterEgo"
+        <input type="text" [disabled]="user.premissions.admin ? 'disabled':null" class="form-control" id="alterEgo"
                [(ngModel)]="user.rank" name="rank">
       </div>
 
       <mat-chip-list aria-label="Fish selection">
         <mat-chip *ngIf=user.premissions.admin id="admin">Admin</mat-chip>
-        <mat-chip *ngIf=user.premissions.dashboard id="dashbaord">Dashboard</mat-chip>
-        <mat-chip *ngIf=user.premissions.crm id="crm">CRM</mat-chip>
-        <mat-chip *ngIf=user.premissions.bills id="bill">Rechnungen</mat-chip>
-        <mat-chip *ngIf=user.premissions.admin id="product">Produkte</mat-chip>
+        <mat-chip (click)='routeTo("dashboard")' *ngIf=user.premissions.dashboard id="dashbaord">Dashboard</mat-chip>
+        <mat-chip (click)='routeTo("crm/customer")' *ngIf=user.premissions.crm id="crm">CRM</mat-chip>
+        <mat-chip (click)='routeTo("bill/offer")' *ngIf=user.premissions.bills id="bill">Rechnungen</mat-chip>
+        <mat-chip (click)='routeTo("products/heatexchanger")' *ngIf=user.premissions.products id="product">Produkte</mat-chip>
       </mat-chip-list>
 
 
@@ -39,8 +39,6 @@
 
 
 <mat-card >
-
-
   <div>
     <form>
       <label for="fname">Momentanes Passwort</label>

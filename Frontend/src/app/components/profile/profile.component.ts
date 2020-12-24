@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/models/Profile/User';
 import { UserService } from '../services/profile/UserService';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 interface User {
     name:    string;
@@ -16,11 +18,15 @@ styleUrls: ['./profile.component.css','../css/passform.css']
 
 export class Profile implements OnInit  {
 
-  user : IUser;
+  constructor(private _sanitizer: DomSanitizer,private route: Router) { }
 
+  user : IUser;
+  image;
   ngOnInit(){
     //when we have backend access we need to specify which user we want to get.
     this.user = UserService.getUser(1);
+    //get the imge from the user
+    this.image = this._sanitizer.bypassSecurityTrustUrl(this.user.image)
   }
 
 
@@ -29,7 +35,7 @@ export class Profile implements OnInit  {
     password = {
       "current":"",
       "newFirst":"",
-      "newSecond":"nope12345"
+      "newSecond":""
     }
 
     //the password data that will be sent to the server for change
@@ -40,7 +46,7 @@ export class Profile implements OnInit  {
 
 	selectFile(event) {
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.msg = 'You must select an image';
+			this.image = 'You must select an image';
 			return;
 		}
 
@@ -56,8 +62,7 @@ export class Profile implements OnInit  {
 
 		reader.onload = (_event) => {
 			this.msg = "";
-            this.url = reader.result;
-            console.dir(this.url);
+            this.image = reader.result;
 		}
   }
 
@@ -99,6 +104,10 @@ export class Profile implements OnInit  {
       "newFirst":"",
       "newSecond":""
     }
+  }
+
+  routeTo(route:string){
+    this.route.navigate([('/app/'+route)]);
   }
 
 
