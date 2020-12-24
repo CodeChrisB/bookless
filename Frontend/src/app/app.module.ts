@@ -6,11 +6,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TopbarComponent } from './main/topbar/topbar.component';
-import { SidenavComponent } from './main/sidenav/sidenav.component';
-import { FooterComponent } from './main/footer/footer.component';
-import { ViewComponent } from './main/view/view.component';
-import { MainComponent } from './main/main/main.component';
+import { TopbarComponent } from './components/app/main/topbar/topbar.component';
+import { SidenavComponent } from './components/app/main//sidenav/sidenav.component';
+import { FooterComponent } from './components/app/main//footer/footer.component';
+import { MainComponent } from './components/app/main//main/main.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -41,8 +40,12 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
-import {Profile} from './components/profile/profile.component'
-
+import {Profile} from './components/profile/profile.component';
+import { Customer } from './components/app/crm/customer/customer.component'
+import { addCustomer } from './components/app/crm/customer/customerData/customerData';
+import { Dashboard } from './components/app/dashboard/dashboard.component';
+import { Company } from './components/app/crm/company/company.component';
+import { addCompanyCustomer } from './components/app/crm/company/companyData/customerData';
 
 @NgModule({
   declarations: [
@@ -50,9 +53,13 @@ import {Profile} from './components/profile/profile.component'
     TopbarComponent,
     SidenavComponent,
     FooterComponent,
-    ViewComponent,
     MainComponent,
-    Profile
+    Profile,
+    Customer,
+    addCustomer,
+    Dashboard,
+    Company,
+    addCompanyCustomer,
   ],
   imports: [
     AppRoutingModule,
@@ -89,9 +96,11 @@ import {Profile} from './components/profile/profile.component'
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

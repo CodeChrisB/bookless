@@ -1,0 +1,74 @@
+.example-container {
+    height: 85vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    float: left;
+    width: 15vw;
+    overflow: hidden;
+  }
+
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .example-sidenav {
+    padding: 20px;
+  }
+
+  button{
+    text-align: left;
+    margin-left: 1.5vw;
+  }
+
+  .mat-icon{
+    position: absolute;
+    float: left;
+    margin-top: 1vh;
+  }
+
+
+  div{
+    all: unset;
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+  }
+
+  div[_ngcontent-lgl-c156] {
+    padding: 0px;
+}
+
+mat-sidenav-container{
+  background-color: --main-color;
+}
+
+div{
+  padding-left: 5%;
+  margin:0px
+}
+
+
+p:hover{
+  background-color: black;
+}
+
+p.button-container{
+  width: 100%;
+  padding-left: 1vw;
+  margin-bottom: 0px;
+}
+
+
+.mat-typography p {
+  margin: 0px;
+}
+
+
+#child{
+ margin: 0px;
+  padding-left: 32px;
+}
+
+

@@ -1,0 +1,17 @@
+
+<mat-toolbar color="primary">
+  <p class="mat-elevation-z5 icon button-container" routerLink="dashboard" (click)="backToHome()" >
+    <mat-icon>home</mat-icon>
+    Bookless
+  </p>
+
+
+  <span class="spacer"></span>
+  <button routerLink="profile/user" mat-button class="icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <img src="https://lh3.googleusercontent.com/ogw/ADGmqu89dz9UjM2XbXTLLoWXK11myVeeBaoL8YU50Ohx=s83-c-mo" alt="Buchibär">
+  </button>
+  <button mat-button class="-icon" aria-label="Example icon-button with share icon">
+   <mat-icon routerLink="settings/dashboard">settings</mat-icon>
+ </button>
+ </mat-toolbar>
+<!--https://material.angular.io/components/toolbar/overview--->
