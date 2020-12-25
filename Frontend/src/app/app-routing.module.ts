@@ -4,7 +4,8 @@ import { Routes, RouterModule } from "@angular/router";
 import { Dashboard } from "./components/app/dashboard/dashboard.component";
 import { Company } from "./components/app/crm/company/company.component";
 import { Customer } from "./components/app/crm/customer/customer.component";
-import { Offer } from './components/app/bill/offer.component';
+import { Offer } from './components/app/bill/offer/list/offer.component';
+import { OfferView } from './components/app/bill/offer/offerView/offerView.component'
 import { Heatexchanger } from './components/app/products/heatexchanger.component';
 import { MainComponent } from './components/app/main/main/main.component';
 //profile
@@ -31,6 +32,7 @@ const routes: Routes = [
 
         //bills
         { path: "bill/offer",  component: Offer, },
+        { path: "bill/offer/pdf", component:OfferView},
         { path: "products/heatexchanger",  component: Heatexchanger }
       ]
     },

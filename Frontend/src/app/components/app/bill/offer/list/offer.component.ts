@@ -10,6 +10,10 @@ export class Offer implements OnInit {
 constructor() {
 }
 
+pdf(){
+
+}
+
 ngOnInit(){
 
 }
