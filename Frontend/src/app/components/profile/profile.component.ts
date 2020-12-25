@@ -114,5 +114,8 @@ export class Profile implements OnInit  {
     return UserService.getUserCount();
   }
 
+  toSettings(){
+    this.route.navigate(['/settings/dashboard'])
+  }
 
 }
