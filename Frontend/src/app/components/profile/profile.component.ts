@@ -110,8 +110,9 @@ export class Profile implements OnInit  {
     this.route.navigate([('/app/'+route)]);
   }
 
-
-
+  getUserCount() {
+    return UserService.getUserCount();
+  }
 
 
 }

@@ -1,3 +1,4 @@
+<!--USER-->
 <mat-card id='full'>
     <div style="text-align:center">
         <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
@@ -18,42 +19,45 @@
       </div>
 
       <div class="form-group">
-        <label for="alterEgo">Alter Ego</label>
-        <input type="text" [disabled]="user.premissions.admin ? 'disabled':null" class="form-control" id="alterEgo"
+        <label for="alterEgo">Firmen Rang</label>
+        <input type="text" [disabled]="!user.premissions.admin ? 'disabled':null" class="form-control" id="alterEgo"
                [(ngModel)]="user.rank" name="rank">
       </div>
 
-      <mat-chip-list aria-label="Fish selection">
-        <mat-chip *ngIf=user.premissions.admin id="admin">Admin</mat-chip>
-        <mat-chip (click)='routeTo("dashboard")' *ngIf=user.premissions.dashboard id="dashbaord">Dashboard</mat-chip>
-        <mat-chip (click)='routeTo("crm/customer")' *ngIf=user.premissions.crm id="crm">CRM</mat-chip>
-        <mat-chip (click)='routeTo("bill/offer")' *ngIf=user.premissions.bills id="bill">Rechnungen</mat-chip>
-        <mat-chip (click)='routeTo("products/heatexchanger")' *ngIf=user.premissions.products id="product">Produkte</mat-chip>
-      </mat-chip-list>
-
-
-
-
+      <label for="name">Berechtigungen</label>
+      <div class="chip-container">
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip *ngIf=user.premissions.admin id="admin">Admin</mat-chip>
+          <mat-chip (click)='routeTo("dashboard")' *ngIf=user.premissions.dashboard id="dashbaord">Dashboard</mat-chip>
+          <mat-chip (click)='routeTo("crm/customer")' *ngIf=user.premissions.crm id="crm">CRM</mat-chip>
+          <mat-chip (click)='routeTo("bill/offer")' *ngIf=user.premissions.bills id="bill">Rechnungen</mat-chip>
+          <mat-chip (click)='routeTo("products/heatexchanger")' *ngIf=user.premissions.products id="product">Produkte</mat-chip>
+          <mat-chip (click)='routeTo("settings/dashboard")' *ngIf=user.premissions.settings id="product">Einstellungen</mat-chip>
+        </mat-chip-list>
+      </div>
 </mat-card>
-
-
-
-<mat-card >
+<!--PASSWORD-->
+<mat-card id="pass-window">
   <div>
     <form>
-      <label for="fname">Momentanes Passwort</label>
-      <input [(ngModel)]="password.current" type="password" id="fname" name="firstname" placeholder="Passwort">
-
-      <label for="lname">Neues Passwort</label>
-      <input [(ngModel)]="password.newFirst" type="password" id="lname" name="lastname" placeholder="Neues Passwort">
-
-      <label for="lname">Bestätige Passwort</label>
-      <input [(ngModel)]="password.newSecond" type="password" id="lname" name="lastname" placeholder="Neues Passwort">
-
+      <input [(ngModel)]="password.current" type="password" id="fname" name="current" placeholder="Momentanes Passwor">
+      <input [(ngModel)]="password.newFirst" type="password" id="lname" name="first" placeholder="Neues Passwort">
+      <input [(ngModel)]="password.newSecond" type="password" id="lname" name="second" placeholder="Erneute Eingabe">
       <input (click)="submitNewPassword()" type="submit" value="Submit">
     </form>
   </div>
-
-
-
+</mat-card>
+<!--ADMIN-->
+<mat-card *ngIf=user.premissions.admin id=admin-window>
+  <div class="left-half">
+    <button id=admin-button>User Verwaltung</button>
+    <h4>User Anzahl {{getUserCount()}}</h4><br>
+    <button id=admin-button>Kunden Verwaltung</button>
+    <h4>User Anzahl {{getUserCount()}}</h4><br>
+    <button id=admin-button>Produkt Verwaltung</button>
+    <h4>User Anzahl {{getUserCount()}}</h4>
+  </div>
+  <div class="right-half" >
+    <img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=Ich+wei%C3%9F+nicht+warum+aber+hier+geh%C3%B6rt+ein+Qr+Code+hin&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" />
+  </div>
 </mat-card>

@@ -3,9 +3,10 @@ export interface IUser {
   rank:string
   premissions:{
     admin:boolean;
-    dashboard:boolean;
-    crm:boolean;
     bills:boolean;
+    crm:boolean;
+    dashboard:boolean;
+    settings:boolean
     products:boolean;
   }
   image:string;
