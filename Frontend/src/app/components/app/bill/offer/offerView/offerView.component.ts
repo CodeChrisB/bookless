@@ -16,10 +16,18 @@ export class OfferView implements OnInit {
 constructor() {
 }
 
-public pdf(){
+public downloadPdf(){
 
   const documentDefinition = { content: 'Das ist eine Rechnung'};
-  pdfMake.createPdf(documentDefinition).download()
+  pdfMake.createPdf(documentDefinition).download('Angebot.pdf')
+
+}
+
+
+public viewPdf(){
+
+  const documentDefinition = { content: 'Das ist eine Rechnung'};
+  pdfMake.createPdf(documentDefinition).open()
 
 }
 
