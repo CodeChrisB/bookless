@@ -10,7 +10,7 @@
   <button routerLink="profile/user" mat-button class="icon favorite-icon" aria-label="Example icon-button with heart icon">
     <img [src]="image" matBadge="1" matBadgeSize="large" alt="Profil">
   </button>
-  <button *ngIf=user.premissions.settings mat-button class="-icon" aria-label="Example icon-button with share icon">
+  <button *ngIf=user.premissions.settings.read mat-button class="-icon" aria-label="Example icon-button with share icon">
    <mat-icon routerLink="settings/dashboard">settings</mat-icon>
  </button>
  </mat-toolbar>

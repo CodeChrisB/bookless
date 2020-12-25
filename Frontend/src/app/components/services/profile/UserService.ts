@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import {IPrivateCustomer} from '../../../../models/Customer/PrivateCustomer'
 import { IUser } from 'src/models/Profile/User';
 
-var prems = {admin:true,dashboard:true,crm:true,bills:true,products:true,settings:true};
+var prems = {admin:{read:true,write:true},dashboard:{read:true,write:true},crm:{read:true,write:true},bills:{read:true,write:true},products:{read:true,write:false},settings:{read:true,write:true}};
 var user: IUser = {name:'Chris',rank:'Boss',premissions:prems,image:null}
 
 //#region init the image

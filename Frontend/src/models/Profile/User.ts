@@ -2,12 +2,30 @@ export interface IUser {
   name:string
   rank:string
   premissions:{
-    admin:boolean;
-    bills:boolean;
-    crm:boolean;
-    dashboard:boolean;
-    settings:boolean
-    products:boolean;
+    admin:{
+      read:boolean;
+      write:boolean;
+    }
+    dashboard:{
+      read:boolean;
+      write:boolean;
+    }
+    crm:{
+      read:boolean;
+      write:boolean;
+    }
+    bills:{
+      read:boolean;
+      write:boolean;
+    }
+    products:{
+      read:boolean;
+      write:boolean;
+    }
+    settings:{
+      read:boolean;
+      write:boolean;
+    }
   }
   image:string;
 }

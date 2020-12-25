@@ -27,12 +27,36 @@
       <label for="name">Berechtigungen</label>
       <div class="chip-container">
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip *ngIf=user.premissions.admin id="admin">Admin</mat-chip>
-          <mat-chip (click)='routeTo("dashboard")' *ngIf=user.premissions.dashboard id="dashbaord">Dashboard</mat-chip>
-          <mat-chip (click)='routeTo("crm/customer")' *ngIf=user.premissions.crm id="crm">CRM</mat-chip>
-          <mat-chip (click)='routeTo("bill/offer")' *ngIf=user.premissions.bills id="bill">Rechnungen</mat-chip>
-          <mat-chip (click)='routeTo("products/heatexchanger")' *ngIf=user.premissions.products id="product">Produkte</mat-chip>
-          <mat-chip (click)='routeTo("settings/dashboard")' *ngIf=user.premissions.settings id="product">Einstellungen</mat-chip>
+          <!--ADMIN-->
+          <mat-chip matTooltip="{{user.premissions.crm.write ? 'Einstellungen bearbeiten' : 'Einstellungen sehen'}}" matTooltipPosition="above"
+          *ngIf=user.premissions.admin.read id="admin">Admin
+            <mat-icon>{{user.premissions.admin.write ? 'edit' :'visibility'}}</mat-icon>
+          </mat-chip>
+          <!--DASHBOARD-->
+          <mat-chip matTooltip="{{user.premissions.dashboard.write ? 'Dashboard bearbeiten' : 'Dashboard sehen'}}" matTooltipPosition="above"
+          (click)='routeTo("dashboard")' *ngIf=user.premissions.dashboard.read id="dashbaord">Dashboard
+            <mat-icon>{{user.premissions.dashboard.write ? 'edit' :'visibility'}}</mat-icon>
+          </mat-chip>
+          <!--CUSTOMER-->
+          <mat-chip  matTooltip="{{user.premissions.crm.write ? 'Kunden bearbeiten' : 'Kunden sehen'}}" matTooltipPosition="above"
+          (click)='routeTo("crm/customer")' *ngIf=user.premissions.crm.read id="crm">CRM
+            <mat-icon>{{user.premissions.crm.write ? 'edit' :'visibility'}}</mat-icon>
+          </mat-chip>
+          <!--BILL-->
+          <mat-chip matTooltip="{{user.premissions.bills.write ? 'Rechnungen bearbeiten' : 'Rechnungen sehen'}}" matTooltipPosition="above"
+           (click)='routeTo("bill/offer")' *ngIf=user.premissions.bills.read id="bill">Rechnungen
+            <mat-icon>{{user.premissions.bills.write ? 'edit' :'visibility'}}</mat-icon>
+          </mat-chip>
+          <!--PRODUCTS-->
+          <mat-chip matTooltip="{{user.premissions.products.write ? 'Produkte bearbeiten' : 'Produkte sehen'}}" matTooltipPosition="above"
+          (click)='routeTo("products/heatexchanger")' *ngIf=user.premissions.products.read id="product">Produkte
+            <mat-icon>{{user.premissions.products.write ? 'edit' :'visibility'}}</mat-icon>
+          </mat-chip>
+
+          <mat-chip  matTooltip="{{user.premissions.settings.write ? 'Einstellungen bearbeiten' : 'Einstellungen sehen'}}" matTooltipPosition="above"
+          (click)='routeTo("settings/dashboard")' *ngIf=user.premissions.settings.read id="settings">Einstellungen
+            <mat-icon>{{user.premissions.settings.write ? 'edit' :'visibility'}}</mat-icon>
+          </mat-chip>
         </mat-chip-list>
       </div>
 </mat-card>

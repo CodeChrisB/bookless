@@ -40,8 +40,11 @@ img{
   cursor: pointer;
 }
 
+.mat-chip mat-icon{
+  margin-left: 0.5vw;
+}
+
 .chip-container{
-  background-color: darkgray;
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -75,6 +78,9 @@ img{
 }
 #product{
   background-color: mediumpurple;
+}
+#settings{
+  background-color: #0AD3FF;
 }
 
 
