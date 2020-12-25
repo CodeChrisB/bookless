@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 selector: 'offer-component',
@@ -7,7 +8,7 @@ styleUrls: ['./offer.component.css']
 })
 export class Offer implements OnInit {
 
-constructor() {
+constructor(public route:Router) {
 }
 
 pdf(){
