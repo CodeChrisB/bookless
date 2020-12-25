@@ -39,6 +39,7 @@
 <mat-card class="big">
   <div class="box">
     <button id="changeTop" (click)="show=!show">{{"Wechseln zu "+ (show ? 'Firmen':"Kunden")}}</button>
+
     <div *ngIf="show">
       <table id="topCustomer-table">
         <tr>
@@ -71,4 +72,12 @@
   </div>
 </mat-card>
 
+<mat-card class="small">
+  Daten
+  <hr>
+<h4>Kunden insgesamt : {{totalCustomers}}</h4>
+<h4>Neue Kunden : {{newCustomers}}</h4>
+
+
+</mat-card>
 

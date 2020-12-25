@@ -3,6 +3,7 @@ import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
 import { IPrivateCustomer } from 'src/models/Customer/PrivateCustomer';
 import { CompanyService } from '../../services/crm/companylist';
 import { CustomerService } from '../../services/crm/customerlist';
+import { TotalCustomerService } from '../../services/crm/customerData';
 
 @Component({
 selector: 'dashboard-component',
@@ -16,6 +17,8 @@ export class Dashboard implements OnInit {
   customers: IPrivateCustomer[] = CustomerService.getAllCustomers().filter(c=>c.id<10);
   companies: ICompanyCustomer[] = CompanyService.getData().filter(c=>c.id<10);
   show=true;
+  totalCustomers:number=100;
+  newCustomers:number=100;
 
   private weekDays=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sontag'];
   private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -23,6 +26,8 @@ export class Dashboard implements OnInit {
       this.timer = setInterval(() => {
         this.setTime()
       }, 1000);
+      this.totalCustomers = TotalCustomerService.getTotalCustomerAmount();
+      this.newCustomers = TotalCustomerService.getNewCustomerAmount();
   }
 
   setTime(){
