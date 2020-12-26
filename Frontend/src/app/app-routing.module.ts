@@ -6,7 +6,7 @@ import { Company } from "./components/app/crm/company/company.component";
 import { Customer } from "./components/app/crm/customer/customer.component";
 import { Offer } from './components/app/bill/offer/list/offer.component';
 import { OfferView } from './components/app/bill/offer/offerView/offerView.component'
-import { Heatexchanger } from './components/app/products/heatexchanger.component';
+import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 import { MainComponent } from './components/app/main/main/main.component';
 //profile
 import { Profile } from "./components/profile/profile.component";

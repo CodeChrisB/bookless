@@ -46,6 +46,7 @@ import { addCustomer } from './components/app/crm/customer/customerData/customer
 import { Dashboard } from './components/app/dashboard/dashboard.component';
 import { Company } from './components/app/crm/company/company.component';
 import { addCompanyCustomer } from './components/app/crm/company/companyData/customerData';
+import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { addCompanyCustomer } from './components/app/crm/company/companyData/cus
     Dashboard,
     Company,
     addCompanyCustomer,
+    Heatexchanger
   ],
   imports: [
     AppRoutingModule,
