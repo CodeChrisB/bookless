@@ -45,17 +45,17 @@ export class Heatexchanger  {
      this.pageIndex = $event.pageIndex;
     }
 
-  showCustomer(row : IPrivateCustomer) {
-   this.route.navigate(['/app/crm/customer/show'], { state: {mode:'show', id: row.id } });
+  showCustomer(row : IRawProduct) {
+   this.route.navigate(['/app/products/heatexchanger/show'], { state: {mode:'show', id: row.productId } });
   }
 
-  updateCustomer(row : IPrivateCustomer){
+  updateCustomer(row : IRawProduct){
     console.dir(row)
-    this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'edit', id: row.id } });
+    this.route.navigate(['/app/products/heatexchanger/edit'], { state: {mode:'edit', id: row.productId } });
   }
 
   addCustomer(){
-    this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
+    this.route.navigate(['/app/products/heatexchanger/new'] , { state: {mode:'add' } });
   }
 
 

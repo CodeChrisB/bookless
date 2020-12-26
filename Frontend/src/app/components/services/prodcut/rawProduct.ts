@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
 import { ContactPerson } from 'src/models/ContactPerson';
@@ -26,17 +26,14 @@ var raw :IRawProduct[] = [
   providedIn: 'root',
 })
 
-export class RawProductService implements OnInit {
+export class RawProductService {
 
-
-
-
-  ngOnInit(){
-    }
-
-
-  static getAllProducts(){
+  static getAllProducts() :IRawProduct[]{
     return raw;
+  }
+
+  static getProduct(id:number): IRawProduct{
+    return raw.filter(x=>x.productId=id)[0];
   }
 
 

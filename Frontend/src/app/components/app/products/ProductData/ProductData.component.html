@@ -1,0 +1,19 @@
+<mat-card>
+  <form>
+    <div class="block">
+      <h1>Produkt Daten</h1>
+    </div>
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="product.productId" name="fname" placeholder="Produktname"><br>
+    <input type="text" id="big-Input" [disabled]="locked ? 'disabled':null" [(ngModel)]="product.description" name="lname" placeholder="Beschreibung"><br>
+    <div class="block">
+      <h1>Standard Preis</h1>
+    </div>
+    <!---here should be a table of all the shippind adresses-->
+    <!---with a scroll bar, a add button, a menu -> show edit add and-->
+    <input type="number"  [disabled]="locked ? 'disabled':null" [(ngModel)]="product.price"  name="domicile"  placeholder="Standard Preis">
+<br>
+
+
+    <input (click)="doCustomer()" type="submit" value={{msg}}>
+  </form>
+</mat-card>

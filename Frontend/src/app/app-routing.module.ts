@@ -16,6 +16,7 @@ import { SettingsComponent } from './components/settings/settings/Settings.compo
 import { SettingsDashboard } from "./components/settings/dashboard/dashboard.component"
 import { addCustomer } from "./components/app/crm/customer/customerData/customerData";
 import { addCompanyCustomer } from "./components/app/crm/company/companyData/customerData";
+import { HeatexchangerData } from "./components/app/products/ProductData/ProductData";
 const routes: Routes = [
     { path: 'app', component: MainComponent,
       children: [
@@ -33,7 +34,10 @@ const routes: Routes = [
         //bills
         { path: "bill/offer",  component: Offer, },
         { path: "bill/offer/pdf", component:OfferView},
-        { path: "products/heatexchanger",  component: Heatexchanger }
+        { path: "products/heatexchanger",  component: Heatexchanger },
+        { path: "products/heatexchanger/edit",  component: HeatexchangerData },
+        { path: "products/heatexchanger/show",  component: HeatexchangerData },
+        { path: "products/heatexchanger/new",  component: HeatexchangerData }
       ]
     },
 
