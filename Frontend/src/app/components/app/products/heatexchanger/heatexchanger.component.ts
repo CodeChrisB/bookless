@@ -22,7 +22,7 @@ const products: IRawProduct[] = RawProductService.getAllProducts();
 })
 export class Heatexchanger  {
   //init the data
-  displayedColumns = ["id","name","description","actions"];
+  displayedColumns = ["id","name","description","price","actions"];
   productId:number
   name:string
   description:string

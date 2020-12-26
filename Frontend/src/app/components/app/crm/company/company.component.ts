@@ -73,11 +73,11 @@ export class Company  {
 
     //customerData routing methods
 
-    showCustomer(row : IPrivateCustomer) {
+    showCustomer(row : ICompanyCustomer) {
       this.route.navigate(['/app/crm/company/show'], { state: {mode:'show', id: row.id } });
      }
 
-     updateCustomer(row : IPrivateCustomer){
+     updateCustomer(row : ICompanyCustomer){
        console.dir(row)
        this.route.navigate(['/app/crm/company/edit'], { state: {mode:'edit', id: row.id } });
      }

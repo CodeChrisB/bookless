@@ -3,31 +3,39 @@
     <div class="block">
       <h1>Firmen Daten</h1>
     </div>
-    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.fName" name="fname" placeholder="Firmenname">
-    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.lName" name="lname" placeholder="Nachname">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomers.id" name="id" placeholder="Firmen Nummber">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomers.name" name="name" placeholder="Firmenname">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomers.companyLocation" name="location" placeholder="Firmensitz">
 
-    <select type="text" [disabled]="locked ? 'disabled':null">
-      <option value="k">Kleinhändler</option>
-      <option value="g">Großhändler</option>
-    </select>
-
-
-    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.phone"  name="phone" placeholder="Telefonnummer">
-    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.email"  name="email" placeholder="E-Mail">
     <div class="block">
       <h1>Liefer Daten</h1>
+      <mat-button-toggle (click)="addShipping()"  *ngIf="!showMode">
+        <mat-icon>add</mat-icon>
+      </mat-button-toggle>
     </div>
-    <!---here should be a table of all the shippind adresses-->
-    <!---with a scroll bar, a add button, a menu -> show edit add and-->
-    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.domicile"  name="domicile"  placeholder="Wohnort">
-    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.orderAdress" name="adress"  placeholder="Lieferadresse">
-    <input type="text"  [disabled]="locked ? 'disabled':null" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
+    <input *ngFor="let shippingAdress of companyCustomers.shippingAdress"  type="text" [disabled]="locked ? 'disabled':null" value={{shippingAdress}}  name="phone" placeholder="Lieferadresse ">
+
+    <div class="block">
+      <h1>Kontakt Personen</h1>
+      <mat-button-toggle (click)="addContact()"  *ngIf="!showMode">
+        <mat-icon>add</mat-icon>
+      </mat-button-toggle>
 <br>
+
+    </div>
+    <div id="contact-person" *ngFor="let person of companyCustomers.contactPersons" >
+      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="fname"  value={{person.fName}} placeholder="Vorname">
+      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="lname"  value={{person.lName}} placeholder="Nachname">
+      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="rank"  value={{person.companyRank}} placeholder="Nachname">
+      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="adress" value={{person.adress}} placeholder="Adresse">
+      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="phone"  value={{person.phoneNumber}} placeholder="Tel.">
+      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="email"  value={{person.email}} placeholder="Email">
+      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="gender" value={{person.gender}} placeholder="Geschlecht">
+    </div>
+
+
 
 
     <input (click)="doCustomer()" type="submit" value={{msg}}>
-    <mat-button-toggle  *ngIf="showMode" (click)="mailCustomer()">
-      <mat-icon>local_post_office</mat-icon>
-    </mat-button-toggle>
   </form>
 </mat-card>

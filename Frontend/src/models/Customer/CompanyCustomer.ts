@@ -7,5 +7,4 @@ export interface ICompanyCustomer
     companyLocation : string;
     shippingAdress : string[];
     contactPersons : ContactPerson[];
-
 }

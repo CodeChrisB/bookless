@@ -51,6 +51,10 @@ div.block h1{
   margin-bottom: 0px;
 }
 
+#id{
+  width: 5vw;
+}
+
 #row{
   float: left;
   position: absolute;

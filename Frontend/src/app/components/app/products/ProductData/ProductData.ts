@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CustomerService } from 'src/app/components/services/crm/customerlist';
 
 import { DOCUMENT } from '@angular/common';
 import { EmailHandler } from 'src/app/components/services/tools/emailHandler';
@@ -54,7 +53,7 @@ export class HeatexchangerData implements OnInit  {
   ngOnInit() {
     //checks wheter we are in edit or show mode without data passed to the component
     if(history.state.mode ==undefined && this.route.url.includes('edit')|| history.state.mode ==undefined &&this.route.url.includes('show')){
-      this.route.navigate(['/app/crm/customer'])
+      this.route.navigate(['/app/products/heatexchanger'])
     }
     else{
       if(history.state.mode =='show'){
@@ -62,9 +61,6 @@ export class HeatexchangerData implements OnInit  {
         this.initShow();
         this.showMode=true;
       }else{
-        //get the rawproduct
-        this.id = history.state.id;
-        this.product = RawProductService.getProduct(this.id)
         //set the correct mode
         this.editMode = history.state.mode =='edit';
         if(this.editMode){
@@ -82,12 +78,16 @@ export class HeatexchangerData implements OnInit  {
   initShow(){
     this.msg='Zurück'
     this.locked=true;
+    this.id = history.state.id;
+    this.product = RawProductService.getProduct(this.id)
   }
 
 
 
    initEdit(){
     this.msg='Bearbeiten'
+    this.id = history.state.id;
+    this.product = RawProductService.getProduct(this.id)
    }
 
    initAdd(){
@@ -101,7 +101,7 @@ export class HeatexchangerData implements OnInit  {
   //decides what should happen when the green button is pressed
   doCustomer():void{
     if(history.state.mode=="show"){
-    this.route.navigate(['/app/crm/customer']);
+    this.route.navigate(['/app/products/heatexchanger']);
     }else if(this.editMode){
       this.updateCustomer();
     }else{
