@@ -23,14 +23,18 @@
 <br>
 
     </div>
-    <div id="contact-person" *ngFor="let person of companyCustomers.contactPersons" >
-      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="fname"  value={{person.fName}} placeholder="Vorname">
-      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="lname"  value={{person.lName}} placeholder="Nachname">
-      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="rank"  value={{person.companyRank}} placeholder="Nachname">
-      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="adress" value={{person.adress}} placeholder="Adresse">
-      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="phone"  value={{person.phoneNumber}} placeholder="Tel.">
-      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="email"  value={{person.email}} placeholder="Email">
-      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name="gender" value={{person.gender}} placeholder="Geschlecht">
+    <div id="contact-person" *ngFor="let person of companyCustomers.contactPersons let i = index;">
+      <input type="text" [(ngModel)]="companyCustomers.contactPersons[i].fName" id="contact-person" [disabled]="locked ? 'disabled':null"        name={{i*8-7}} value={{person.fName}} placeholder="Vorname">
+      <input type="text" [(ngModel)]="companyCustomers.contactPersons[i].lName" id="contact-person" [disabled]="locked ? 'disabled':null"        name={{i*8-5}} value={{person.lName}} placeholder="Nachname">
+      <input type="text" [(ngModel)]="companyCustomers.contactPersons[i].companyRank" id="contact-person" [disabled]="locked ? 'disabled':null"  name={{i*8-4}} value={{person.companyRank}} placeholder="Nachname">
+      <input type="text" [(ngModel)]="companyCustomers.contactPersons[i].adress" id="contact-person" [disabled]="locked ? 'disabled':null"       name={{i*8-3}} value={{person.adress}} placeholder="Adresse">
+      <input type="text" [(ngModel)]="companyCustomers.contactPersons[i].phoneNumber" id="contact-person" [disabled]="locked ? 'disabled':null"  name={{i*8-2}} value={{person.phoneNumber}} placeholder="Tel.">
+      <input type="text" [(ngModel)]="companyCustomers.contactPersons[i].email" id="contact-person" [disabled]="locked ? 'disabled':null"        name={{i*8-1}} value={{person.email}} placeholder="Email">
+      <!--Todo make the gender input a select box-->
+      <input type="text" id="contact-person" [disabled]="locked ? 'disabled':null" name={{i*8}}  value={{person.gender}} placeholder="Geschlecht">
+      <mat-button-toggle (click)="deleteContact(i)"  *ngIf="!showMode">
+        <mat-icon>delete</mat-icon>
+      </mat-button-toggle>
     </div>
 
 

@@ -6,9 +6,11 @@ import { ContactPerson } from 'src/models/ContactPerson';
 
 const companyCustomers : ICompanyCustomer[] = [
 {id:1,name:'ChrisGmbh',companyLocation:'Ansfelden',
-shippingAdress:['Ansfelden','Wolfern'],
-contactPersons:[{id:1, adress:'KA', phoneNumber:'4940300'
-,email:'chris.gmx.at', fName:'Hallo', lName:'Gewinne',companyRank:'Sales', gender:'M'}]},
+shippingAdress:['Ritzlhofstraße 28 4052 Ansfelden','Leonding'],
+contactPersons:[
+  {id:1, adress:'Ritzlhof 28', phoneNumber:'067762390005',email:'chris.gmx.at', fName:'Chirstopher', lName:'Buchberger',companyRank:'Chef', gender:'M'},
+  {id:1, adress:'Limes 24', phoneNumber:'067762390005',email:'chris.htl.at', fName:'Chris', lName:'Buchi',companyRank:'Schüler', gender:'M'},
+  {id:1, adress:'Styrerweg 24', phoneNumber:'067762390005',email:'chris.rk.at', fName:'Christoph', lName:'Herr Buchberger',companyRank:'Sanitäter', gender:'M'}]},
 
 
 {id:2,name:'EggerGmbh',companyLocation:'Ansfelden',
@@ -43,11 +45,22 @@ export class CompanyService {
     return companyCustomers;
   }
 
-  static addPrivatCustomer(newCustomer:ICompanyCustomer)
+  static addCustomer(newCustomer:ICompanyCustomer)
   {
     newCustomer.id = companyCustomers.length + 1;
     companyCustomers.push(newCustomer);
   }
+
+  static getCustomer(id:number): ICompanyCustomer{
+    return companyCustomers.filter(x=>x.id==id)[0];
+  }
+
+  static updateCustomer(customer:ICompanyCustomer){
+    companyCustomers.find(c => c.id==customer.id) == customer
+    console.dir(companyCustomers.find(c => c.id==customer.id))
+    alert('d')
+  }
+
 
 
 }

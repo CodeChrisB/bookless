@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { CompanyService } from 'src/app/components/services/crm/companylist';
+import { CustomerService } from 'src/app/components/services/crm/customerlist';
 import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
 
 
@@ -15,6 +17,8 @@ export class addCompanyCustomer implements OnInit  {
   showMode = false;
   addMode = false;
   msg:string="";
+  maxAdresses=5;
+  maxContacts=10;
 
 
 
@@ -23,11 +27,11 @@ export class addCompanyCustomer implements OnInit  {
 
   companyCustomers : ICompanyCustomer =
     {
-    id:1,name:'ChrisGmbh',companyLocation:'Ansfelden',
-    shippingAdress:['Ansfelden','Wolfern','Wolfern','Wolfern','Wolfern','Wolfern','Wolfern'],
+    id:0,name:'',companyLocation:'',
+    shippingAdress:[],
     contactPersons:[
-      {id:1, adress:'KA', phoneNumber:'4940300'
-    ,email:'chris.gmx.at',companyRank:'Sales', fName:'Hallo', lName:'Gewinne', gender:'M'
+      {id:0, adress:'', phoneNumber:''
+    ,email:'',companyRank:'', fName:'', lName:'', gender:''
   }]}
 
 
@@ -69,12 +73,15 @@ export class addCompanyCustomer implements OnInit  {
 
   initShow(){
     this.msg = "Zurück";
+    this.companyCustomers = CompanyService.getCustomer(history.state.id)
+    alert(history.state.id)
    }
 
 
 
    initEdit(){
     this.msg = "Bearbeiten";
+    this.companyCustomers = CompanyService.getCustomer(history.state.id)
    }
 
    initAdd(){
@@ -101,16 +108,24 @@ export class addCompanyCustomer implements OnInit  {
   }
 
   updateCustomer():void{
-
+    CompanyService.updateCustomer(this.companyCustomers)
     this.route.navigate(['/app/crm/company']);
   }
 
   addShipping(){
+    if(this.companyCustomers.shippingAdress.length>=this.maxAdresses){
+      alert('Es können nur '+this.maxAdresses+' Lieferadressen gespeichert werden.')
+      return;
+    }
     this.companyCustomers.shippingAdress.push("");
     console.dir(this.companyCustomers)
   }
 
   addContact(){
+    if(this.companyCustomers.contactPersons.length>=this.maxContacts){
+      alert('Es können nur '+this.maxContacts+' Kontakte gespeichert werden.')
+      return;
+    }
     this.companyCustomers.contactPersons.push(
       {
         id:1,
@@ -123,6 +138,10 @@ export class addCompanyCustomer implements OnInit  {
         gender:''
       });
     console.dir(this.companyCustomers)
+  }
+
+  deleteContact(index:number){
+    this.companyCustomers.contactPersons.splice(index,index+1);
   }
 
 

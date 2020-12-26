@@ -1,6 +1,6 @@
 
 input[type=text], select,textarea,button#form {
-  padding: 12px 20px;
+  padding: 12px 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -12,7 +12,7 @@ padding-left: 2vw;
 }
 
 input[type=number], select,textarea {
-  padding: 12px 20px;
+  padding: 12px 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -20,7 +20,7 @@ input[type=number], select,textarea {
 }
 
 input[type=password], select {
-  padding: 12px 20px;
+  padding: 12px 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
