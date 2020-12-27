@@ -30,7 +30,7 @@
     <div id="contact-person" *ngFor="let person of companyCustomer.contactPersons let i = index;">
       <input type="text" [(ngModel)]="companyCustomer.contactPersons[i].fName" id="contact-person" [disabled]="locked ? 'disabled':null"        name={{i*8+7}} value={{person.fName}} placeholder="Vorname">
       <input type="text" [(ngModel)]="companyCustomer.contactPersons[i].lName" id="contact-person" [disabled]="locked ? 'disabled':null"        name={{i*8+5}} value={{person.lName}} placeholder="Nachname">
-      <input type="text" [(ngModel)]="companyCustomer.contactPersons[i].companyRank" id="contact-person" [disabled]="locked ? 'disabled':null"  name={{i*8+4}} value={{person.companyRank}} placeholder="Nachname">
+      <input type="text" [(ngModel)]="companyCustomer.contactPersons[i].companyRank" id="contact-person" [disabled]="locked ? 'disabled':null"  name={{i*8+4}} value={{person.companyRank}} placeholder="Job Beschreibung">
       <input type="text" [(ngModel)]="companyCustomer.contactPersons[i].adress" id="contact-person" [disabled]="locked ? 'disabled':null"       name={{i*8+3}} value={{person.adress}} placeholder="Adresse">
       <input type="text" [(ngModel)]="companyCustomer.contactPersons[i].phoneNumber" id="contact-person" [disabled]="locked ? 'disabled':null"  name={{i*8+2}} value={{person.phoneNumber}} placeholder="Tel.">
       <input type="text" [(ngModel)]="companyCustomer.contactPersons[i].email" id="contact-person" [disabled]="locked ? 'disabled':null"        name={{i*8+1}} value={{person.email}} placeholder="Email">

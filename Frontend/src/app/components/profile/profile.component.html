@@ -3,28 +3,41 @@
   <div style="text-align:center">
       <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
       <div class="container">
-        <a>
-          <img [src]="image">
-        </a>
+        <div id="left">
+          <img [src]=image>
+          <input type="file" (change)="selectFile($event)">
+        </div>
+        <div id="right">
+
+          <mat-form-field>
+            <mat-label>Vorname</mat-label>
+            <input matInput  [(ngModel)]="user.fname" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nachname</mat-label>
+            <input matInput  [(ngModel)]="user.lname" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Firmen Rang</mat-label>
+            <input [disabled]="!user.premissions.admin ? 'disabled':null"
+                   matInput placeholder="Christopher" [(ngModel)]="user.rank">
+          </mat-form-field>
+
+
+
+
+
+        </div>
       </div>
       <p>
-          <input type="file" (change)="selectFile($event)">
+
       </p>
   </div>
-  <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name"
-             required
-             [(ngModel)]="user.name" name="name">
-    </div>
 
-    <div class="form-group">
-      <label for="alterEgo">Firmen Rang</label>
-      <input type="text" [disabled]="!user.premissions.admin ? 'disabled':null" class="form-control" id="alterEgo"
-             [(ngModel)]="user.rank" name="rank">
-    </div>
 
-    <label for="name">Berechtigungen</label>
+
     <div class="chip-container">
       <mat-chip-list aria-label="Fish selection">
         <!--ADMIN-->
@@ -63,24 +76,41 @@
 <!--PASSWORD-->
 <mat-card id="pass-window">
 <div>
-  <form>
-    <input [(ngModel)]="password.current" type="password" id="fname" name="current" placeholder="Momentanes Passwor">
-    <input [(ngModel)]="password.newFirst" type="password" id="lname" name="first" placeholder="Neues Passwort">
-    <input [(ngModel)]="password.newSecond" type="password" id="lname" name="second" placeholder="Erneute Eingabe">
-    <input (click)="submitNewPassword()" type="submit" value="Submit">
-  </form>
+  <!--FIRST PASS ROW--->
+    <mat-form-field id="pass">
+      <mat-label>Momentanes Passwort</mat-label>
+      <input  [type]="showPass.old ? 'text' : 'password'" matInput name="old" [(ngModel)]="password.current" >
+    </mat-form-field>
+    <mat-icon (click)="showPass.old=!showPass.old">{{showPass.old ? 'visibility' : 'visibility_off'}}</mat-icon>
+    <br>
+  <!--SECOND PASS ROW--->
+    <mat-form-field id="pass">
+      <mat-label>Neues Passwort</mat-label>
+      <input [type]="showPass.first ? 'text' : 'password'"  matInput name="new" [(ngModel)]="password.newFirst" >
+    </mat-form-field>
+    <mat-icon (click)="showPass.first=!showPass.first">{{showPass.first ? 'visibility' : 'visibility_off'}}</mat-icon>
+    <br>
+  <!--THIRD PASS ROW--->
+    <mat-form-field id="pass">
+      <mat-label>Neues Passwort</mat-label>
+      <input  [type]="showPass.second ? 'text' : 'password'"  matInput name="new" [(ngModel)]="password.newSecond" >
+    </mat-form-field>
+    <mat-icon (click)="showPass.second=!showPass.second">{{showPass.second ? 'visibility' : 'visibility_off'}}</mat-icon>
 </div>
+  <!--SUBMIT PASS--->
+<input id=admin-button (click)="submitNewPassword()" type="submit" value="Submit">
+
+<!--ADMIN PANEL-->
 </mat-card>
-<!--ADMIN-->
 <mat-card *ngIf=user.premissions.admin id=admin-window>
-<div class="left-half">
-  <button id=admin-button>User Verwaltung</button>
-  <h4>User Anzahl {{getUserCount()}}</h4><br>
-  <button id=admin-button>Kunden Verwaltung</button>
-  <h4>User Anzahl {{getUserCount()}}</h4><br>
-  <button id=admin-button>Produkt Verwaltung</button>
-  <h4>User Anzahl {{getUserCount()}}</h4>
-</div>
+  <div class="left-half">
+    <button id=admin-button>User Verwaltung</button>
+    <h4>User Anzahl {{getUserCount()}}</h4><br>
+    <button id=admin-button>Kunden Verwaltung</button>
+    <h4>User Anzahl {{getUserCount()}}</h4><br>
+    <button id=admin-button>Produkt Verwaltung</button>
+    <h4>User Anzahl {{getUserCount()}}</h4>
+  </div>
 <div class="right-half" >
   <img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=Ich+wei%C3%9F+zwar+nicht+wieso%2C+aber+ein+Qr+Code+hier+%2Csieht+einfach+gut+aus%2C+eventuell+k%C3%B6nnte+der+bei+der+Kommunikation+zwischen+einem+Pc+und+einem+Smartphone+stehen%2C+also+k%C3%B6nnte+es+vielleicht+bei+der+Diplomarbeit+helfen.+Um+über+das+Smartphone+sich+anzumelden+oder+als+2+factor+verifikation+keine+ahnung+es+ist+nach+mitternacht+hier. &qzone=1&margin=0&size=400x400&ecc=L" alt="qr code" />
 </div>

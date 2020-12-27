@@ -5,14 +5,6 @@
     margin:1vh;
 }
 
-input[type="password"] {
-  height: 5vh;
-  margin: 0;
-  display: inline-block;
-  border: 0.1vw solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
 
 #full{
   height:80vh;
@@ -32,10 +24,16 @@ img{
 
 .container {
   position: relative;
-  text-align: center;
+  text-align: left;
   color: white;
 }
 
+#side-form{
+  width: 20vw;
+}
+div.container a *{
+  display: inline;
+}
 .mat-chip{
   cursor: pointer;
 }
@@ -108,4 +106,14 @@ h4{
   position: absolute;
   right: 1%;
   width: 49%;
+}
+
+
+.container{width:40vw}
+#left{float:left;width:20vw;}
+#right{float:right;width:20vw}
+
+
+#pass{
+  width: 50%;
 }

@@ -64,7 +64,7 @@
         <tr *ngFor="let c of companies">
           <td (click)="goToShowCompanyPage(c.id)">{{c.name}}</td>
           <td (click)="goToShowCompanyPage(c.id)">{{c.contactPersons[0].lName}}</td>
-          <td (click)="goToShowCompanyPage(c.id)">{{c.shippingAdress[0]}}</td>
+          <td (click)="goToShowCompanyPage(c.id)">{{c.shippingAdress[0].adress}}</td>
         </tr>
       </table>
     </div>

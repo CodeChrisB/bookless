@@ -22,7 +22,7 @@ export class Dashboard implements OnInit {
   totalCustomers:number=100;
   newCustomers:number=100;
 
-  private weekDays=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sontag'];
+  private weekDays=['Sontag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
   private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 
   constructor(private route :Router) {
@@ -36,7 +36,7 @@ export class Dashboard implements OnInit {
   setTime(){
     var date = new Date();
     //todo rework this part this has to be done easier
-    this.now = this.weekDays[date.getUTCDay()-1]
+    this.now = this.weekDays[date.getUTCDay()]
     this.now += date.toString().substring(7,11)
     this.now+= this.months[date.getUTCMonth()]
     this.now +=date.toString().substring(15,25)

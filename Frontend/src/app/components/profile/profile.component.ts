@@ -13,7 +13,7 @@ interface User {
 @Component({
 selector: 'profile-component',
 templateUrl: './profile.component.html',
-styleUrls: ['./profile.component.css','../css/passform.css']
+styleUrls: ['./profile.component.css']
 })
 
 export class Profile implements OnInit  {
@@ -22,11 +22,17 @@ export class Profile implements OnInit  {
 
   user : IUser;
   image;
+  showPass;
   ngOnInit(){
     //when we have backend access we need to specify which user we want to get.
     this.user = UserService.getUser(1);
     //get the imge from the user
     this.image = this._sanitizer.bypassSecurityTrustUrl(this.user.image)
+    this.showPass={
+      old:false,
+      first:false,
+      second:false
+    }
   }
 
 
