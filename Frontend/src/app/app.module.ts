@@ -48,6 +48,7 @@ import { Company } from './components/app/crm/company/company.component';
 import { addCompanyCustomer } from './components/app/crm/company/companyData/customerData';
 import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 import { HeatexchangerData } from './components/app/products/ProductData/ProductData';
+import { Offer } from './components/app/bill/offer/list/offer.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { HeatexchangerData } from './components/app/products/ProductData/Product
     Company,
     addCompanyCustomer,
     Heatexchanger,
-    HeatexchangerData
+    HeatexchangerData,
+    Offer
   ],
   imports: [
     AppRoutingModule,

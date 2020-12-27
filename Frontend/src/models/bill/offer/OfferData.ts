@@ -1,4 +1,4 @@
-import { IRawProduct } from "src/models/Product/RawProduct";
+import { IBillProduct } from "src/models/Product/BillProduct";
 
 export interface IOfferData{
 
@@ -6,6 +6,7 @@ export interface IOfferData{
     number:number;
     date:Date;
     customerId:number;
+    isCompany:boolean;
     name:string;
     plz:string;
     town:string;
@@ -17,11 +18,6 @@ export interface IOfferData{
       lastname:string;
     }
     stages:{
-      /*
-      Stages define the current state of a order
-      for example the bill boolean will be true if we sent the customer a bill
-      the finished boolean when this interaction with the customer is finished
-      */
       offer:boolean;
       order:boolean;
       bill:boolean;
@@ -29,9 +25,5 @@ export interface IOfferData{
       canceld:boolean;
     }
   }
-  prodcuts:IRawProduct[];
+  prodcuts:IBillProduct[];
 }
-
-/*
-
-*/

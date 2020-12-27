@@ -21,13 +21,13 @@ constructor() {}
 
 
 public downloadPdf(){
- const ops = new OfferPdfService(null,null,null)
+ const ops = new OfferPdfService(null)
  ops.download('Angebot.pdf')
 }
 
 
 public viewPdf(){
-  const ops = new OfferPdfService(null,null,null)
+  const ops = new OfferPdfService(null)
   ops.open()
 }
 

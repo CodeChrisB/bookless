@@ -151,7 +151,8 @@ input#small, .mat-form-field#small{
 #submit-user{
   background-color: #294b93;
   border-color: #294b93;
-  color: black;
+  border-radius: 0px;
+  color: white;
   height: 100%;
   margin-left: 2vw;
   width: 100%;
