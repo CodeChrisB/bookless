@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { CompanyService } from 'src/app/components/services/crm/companylist';
 import { CustomerService } from 'src/app/components/services/crm/customerlist';
-import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
+import { ICompanyCustomer, IShippingAdress } from 'src/models/Customer/CompanyCustomer';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class addCompanyCustomer implements OnInit  {
 
   locked:boolean =false;
 
-  companyCustomers : ICompanyCustomer =
+  companyCustomer : ICompanyCustomer =
     {
     id:0,name:'',companyLocation:'',
     shippingAdress:[],
@@ -39,12 +39,13 @@ export class addCompanyCustomer implements OnInit  {
 
 
 
-
  constructor(private route :Router,public activatedRoute: ActivatedRoute) {}
 
   //#region All the Init Methods
 
-
+  trackBy(index: number, obj: any): string {
+    return obj;
+}
 
 
   ngOnInit() {
@@ -73,15 +74,14 @@ export class addCompanyCustomer implements OnInit  {
 
   initShow(){
     this.msg = "Zurück";
-    this.companyCustomers = CompanyService.getCustomer(history.state.id)
-    alert(history.state.id)
+    this.companyCustomer = CompanyService.getCustomer(history.state.id)
    }
 
 
 
    initEdit(){
     this.msg = "Bearbeiten";
-    this.companyCustomers = CompanyService.getCustomer(history.state.id)
+    this.companyCustomer = CompanyService.getCustomer(history.state.id)
    }
 
    initAdd(){
@@ -94,39 +94,39 @@ export class addCompanyCustomer implements OnInit  {
 
   //decides what should happen when the green button is pressed
   doCustomer():void{
-    if(history.state.mode=="show"){
-    this.route.navigate(['/app/crm/company']);
-    }else if(this.editMode){
+    if(this.editMode){
       this.updateCustomer();
     }else{
       this.addCustomer();
     }
+    this.route.navigate(['/app/crm/company']);
   }
 
   addCustomer():void{
-
+    console.dir(this.companyCustomer)
+    CompanyService.addCustomer(this.companyCustomer)
   }
 
   updateCustomer():void{
-    CompanyService.updateCustomer(this.companyCustomers)
+    CompanyService.updateCustomer(this.companyCustomer)
     this.route.navigate(['/app/crm/company']);
   }
 
   addShipping(){
-    if(this.companyCustomers.shippingAdress.length>=this.maxAdresses){
+    if(this.companyCustomer.shippingAdress.length>=this.maxAdresses){
       alert('Es können nur '+this.maxAdresses+' Lieferadressen gespeichert werden.')
       return;
     }
-    this.companyCustomers.shippingAdress.push("");
-    console.dir(this.companyCustomers)
+    this.companyCustomer.shippingAdress.push({adress:''});
+    console.dir(this.companyCustomer)
   }
 
   addContact(){
-    if(this.companyCustomers.contactPersons.length>=this.maxContacts){
+    if(this.companyCustomer.contactPersons.length>=this.maxContacts){
       alert('Es können nur '+this.maxContacts+' Kontakte gespeichert werden.')
       return;
     }
-    this.companyCustomers.contactPersons.push(
+    this.companyCustomer.contactPersons.push(
       {
         id:1,
         adress:'',
@@ -137,11 +137,11 @@ export class addCompanyCustomer implements OnInit  {
         lName:'',
         gender:''
       });
-    console.dir(this.companyCustomers)
+    console.dir(this.companyCustomer)
   }
 
   deleteContact(index:number){
-    this.companyCustomers.contactPersons.splice(index,index+1);
+    this.companyCustomer.contactPersons.splice(index,index+1);
   }
 
 

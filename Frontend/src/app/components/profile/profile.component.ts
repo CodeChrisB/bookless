@@ -77,8 +77,7 @@ export class Profile implements OnInit  {
       this.clearPassFields();
       return;
     }
-
-    if(this.password.newFirst != this.password.newSecond)
+    else if(this.password.newFirst != this.password.newSecond)
     {
       alert("Bitte geben sie zweimal das gleiche Passwort ein.");
       this.clearPassFields();
@@ -117,5 +116,4 @@ export class Profile implements OnInit  {
   toSettings(){
     this.route.navigate(['/settings/dashboard'])
   }
-
 }

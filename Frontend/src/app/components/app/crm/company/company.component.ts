@@ -62,7 +62,7 @@ export class Company  {
     getFirstAdress(p:ICompanyCustomer):string{
       //get the first shipping adress
 
-      return p.shippingAdress[0];
+      return p.shippingAdress[0].adress;
     }
 
     getFirstContactPerson(p:ContactPerson):string{

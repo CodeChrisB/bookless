@@ -4,6 +4,7 @@ import { IPrivateCustomer } from 'src/models/Customer/PrivateCustomer';
 import { CompanyService } from '../../services/crm/companylist';
 import { CustomerService } from '../../services/crm/customerlist';
 import { TotalCustomerService } from '../../services/crm/customerData';
+import { Router } from '@angular/router';
 
 @Component({
 selector: 'dashboard-component',
@@ -11,6 +12,7 @@ templateUrl: './dashboard.component.html',
 styleUrls: ['./dashboard.component.css']
 })
 export class Dashboard implements OnInit {
+
 
   public now: String = "."
   timer =null;
@@ -22,7 +24,8 @@ export class Dashboard implements OnInit {
 
   private weekDays=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sontag'];
   private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
-  constructor() {
+
+  constructor(private route :Router) {
       this.timer = setInterval(() => {
         this.setTime()
       }, 1000);
@@ -46,6 +49,14 @@ ngOnInit(){
 ngOnDestroy() {
   // Will remove the timer on component change
   clearInterval(this.timer);
+}
+
+goToShowCustomerPage(id:number){
+  this.route.navigate(['/app/crm/customer/show'], { state: {mode:'show', id: id } });
+}
+
+goToShowCompanyPage(id:number){
+  this.route.navigate(['/app/crm/company/show'], { state: {mode:'show', id: id } });
 }
 
 }

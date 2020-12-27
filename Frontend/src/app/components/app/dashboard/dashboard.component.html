@@ -47,10 +47,10 @@
           <th>Nachname</th>
           <th>Email</th>
         </tr>
-        <tr *ngFor="let c of customers">
-          <td>{{c.fName}}</td>
-          <td>{{c.lName}}</td>
-          <td>{{c.email}}</td>
+        <tr *ngFor="let c of customers" >
+          <td (click)="goToShowCustomerPage(c.id)">{{c.fName}}</td>
+          <td (click)="goToShowCustomerPage(c.id)">{{c.lName}}</td>
+          <td (click)="goToShowCustomerPage(c.id)">{{c.email}}</td>
         </tr>
       </table>
     </div>
@@ -62,9 +62,9 @@
           <th>Lieferadresse</th>
         </tr>
         <tr *ngFor="let c of companies">
-          <td>{{c.name}}</td>
-          <td>{{c.contactPersons[0].lName}}</td>
-          <td>{{c.shippingAdress[0]}}</td>
+          <td (click)="goToShowCompanyPage(c.id)">{{c.name}}</td>
+          <td (click)="goToShowCompanyPage(c.id)">{{c.contactPersons[0].lName}}</td>
+          <td (click)="goToShowCompanyPage(c.id)">{{c.shippingAdress[0]}}</td>
         </tr>
       </table>
     </div>

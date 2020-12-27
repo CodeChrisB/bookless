@@ -5,6 +5,11 @@ export interface ICompanyCustomer
     id : number;
     name : string;
     companyLocation : string;
-    shippingAdress : string[];
+    shippingAdress : IShippingAdress[];
     contactPersons : ContactPerson[];
+}
+
+export interface IShippingAdress
+{
+  adress:string
 }
