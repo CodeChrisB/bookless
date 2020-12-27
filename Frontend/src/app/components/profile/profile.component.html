@@ -3,38 +3,53 @@
   <div style="text-align:center">
       <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
       <div class="container">
+        <div class="image-upload">
+          <label for="file-input">
+            <img id="userImage" [src]=image/>
+          </label>
+
+          <input id="file-input"type="file" (change)="selectFile($event)">
         <div id="left">
-          <img [src]=image>
-          <input type="file" (change)="selectFile($event)">
+
         </div>
         <div id="right">
-
-          <mat-form-field>
-            <mat-label>Vorname</mat-label>
-            <input matInput  [(ngModel)]="user.fname" >
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Nachname</mat-label>
-            <input matInput  [(ngModel)]="user.lname" >
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Firmen Rang</mat-label>
-            <input [disabled]="!user.premissions.admin ? 'disabled':null"
-                   matInput placeholder="Christopher" [(ngModel)]="user.rank">
-          </mat-form-field>
-
-
-
-
-
+            <div class="flex-container">
+              <mat-form-field id="small">
+                <mat-label>Vorname</mat-label>
+                <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                      matInput placeholder="Christopher" [(ngModel)]="user.fname">
+              </mat-form-field>
+              <mat-form-field id="small">
+                <mat-label>Nachname</mat-label>
+                <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                      matInput placeholder="Christopher" [(ngModel)]="user.lname">
+              </mat-form-field>
+            </div>
+            <div class="flex-container">
+              <mat-form-field id="small">
+                <mat-label>Telefon Nummer</mat-label>
+                <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                      matInput placeholder="Christopher" [(ngModel)]="user.phone">
+              </mat-form-field>
+              <mat-form-field id="small">
+                <mat-label>Email</mat-label>
+                <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                      matInput placeholder="Christopher" [(ngModel)]="user.email">
+              </mat-form-field>
+            </div>
+            <div class="flex-container">
+              <mat-form-field id="small">
+                <mat-label>Firmen Rang</mat-label>
+                <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                      matInput placeholder="Christopher" [(ngModel)]="user.rank">
+              </mat-form-field>
+                <mat-button-toggle color="primary" class="mat-elevation-z5" id="submit-user" type="submit" value="Speichern">Speichern</mat-button-toggle>
+            </div>
+          </div>
         </div>
       </div>
-      <p>
-
-      </p>
   </div>
+
 
 
 
@@ -108,8 +123,8 @@
     <h4>User Anzahl {{getUserCount()}}</h4><br>
     <button id=admin-button>Kunden Verwaltung</button>
     <h4>User Anzahl {{getUserCount()}}</h4><br>
-    <button id=admin-button>Produkt Verwaltung</button>
-    <h4>User Anzahl {{getUserCount()}}</h4>
+    <button id=admin-button>Email an alle Kunden</button>
+    <h4>Z.b Preisänderungen</h4>
   </div>
 <div class="right-half" >
   <img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=Ich+wei%C3%9F+zwar+nicht+wieso%2C+aber+ein+Qr+Code+hier+%2Csieht+einfach+gut+aus%2C+eventuell+k%C3%B6nnte+der+bei+der+Kommunikation+zwischen+einem+Pc+und+einem+Smartphone+stehen%2C+also+k%C3%B6nnte+es+vielleicht+bei+der+Diplomarbeit+helfen.+Um+über+das+Smartphone+sich+anzumelden+oder+als+2+factor+verifikation+keine+ahnung+es+ist+nach+mitternacht+hier. &qzone=1&margin=0&size=400x400&ecc=L" alt="qr code" />

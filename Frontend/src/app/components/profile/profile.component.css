@@ -1,5 +1,5 @@
 .mat-card{
-    width: 46%;
+    width: 45vw;
     float:left;
     background:gray;
     margin:1vh;
@@ -12,10 +12,9 @@
 }
 
 img{
-  width: 200px;
-  height: 200px;
+  width: 12vw;
+  height: 12vw
 }
-
 .centered {
   position: absolute;
   top: 50%;
@@ -26,10 +25,11 @@ img{
   position: relative;
   text-align: left;
   color: white;
+  padding: 2vh;
 }
 
 #side-form{
-  width: 20vw;
+  width: 15vw;
 }
 div.container a *{
   display: inline;
@@ -109,11 +109,50 @@ h4{
 }
 
 
-.container{width:40vw}
-#left{float:left;width:20vw;}
-#right{float:right;width:20vw}
+/*The Big container for image and user stuff*/
+.container
+{
+  width:42vw
+}
+#left{
+  float:left;
+  width:12vw;
+}
+#right{float:right;width:30vw}
+/*the inside container for 2 columns of user stuff*/
+
+input#small, .mat-form-field#small{
+  width: 15vw;
+}
 
 
 #pass{
   width: 50%;
+}
+
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container > mat-form-field {
+  margin-left: 1vw;
+}
+
+/*fake image button*/
+.image-upload>input {
+  display: none;
+}
+
+#userImage{
+  cursor: pointer;
+}
+
+#submit-user{
+  background-color: #294b93;
+  border-color: #294b93;
+  color: black;
+  height: 100%;
+  margin-left: 2vw;
+  width: 100%;
 }

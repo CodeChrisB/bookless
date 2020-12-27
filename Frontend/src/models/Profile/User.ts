@@ -1,6 +1,8 @@
 export interface IUser {
   fname:string
   lname:string
+  phone:string
+  email:string
   rank:string
   premissions:{
     admin:{
