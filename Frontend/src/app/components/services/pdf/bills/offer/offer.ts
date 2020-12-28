@@ -152,7 +152,7 @@ export class OfferPdfService{
         },
         //customer salutation
         {
-            text:'Angebot an-1/2020- Thermen-Wärmetauscher',
+            text:'Angebot an ' +this.pdfData.upperTextBlock.orderName,
             style:'bold'
         },
         {

@@ -11,7 +11,7 @@
         <!--DATE-->
         <ng-container matColumnDef="date">
           <mat-header-cell  *matHeaderCellDef>Datum</mat-header-cell>
-          <mat-cell  *matCellDef="let offer">{{offer.offer.date}}</mat-cell>
+          <mat-cell  *matCellDef="let offer">{{offer.offer.date.toString().substring(0,10)}}</mat-cell>
         </ng-container>
         <!--CUSTOMER NR-->
         <ng-container matColumnDef="cId">
