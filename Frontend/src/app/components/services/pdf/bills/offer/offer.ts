@@ -3,7 +3,7 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { IOfferData } from "src/models/bill/offer/OfferData";
 import { off } from "process";
-import { IBillProduct } from "src/models/Product/BillProduct";
+import { IPdfTableProduct } from "src/models/Product/PdfTableProduct";
 import { of } from "rxjs";
 import { CompanyService } from "../../../crm/companylist";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -11,12 +11,25 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class OfferPdfService{
 
   offer;
-  products:IBillProduct[]
+  break= {};
 
+  public products: Array<string[]> = [['Pos.','Bezeichnung','Menge','Preis','Gesamt']]
+  total:number=0;
   constructor(offer:IOfferData){
     this.offer = offer.offer;
-    this.products =offer.prodcuts;
 
+    offer.prodcuts.forEach(p=>{
+      this.products.push(
+        [p.product.productId.toString()
+        ,p.product.description,p.amount.toString()+" Stk."
+        ,this.numberFormatter(p.product.price.toFixed(2).toString())+"€"
+        ,this.numberFormatter((p.amount*p.product.price).toFixed(2).toString())+"€"])
+      this.total+=(p.amount*p.product.price)
+    });
+
+    if(this.products.length>8){
+     this.break={text:"",pageBreak: 'before'}
+    }
     this.initData(offer.offer.customerId,offer.offer.isCompany);
   }
 
@@ -67,7 +80,10 @@ export class OfferPdfService{
 
   }
 
-
+  //prints a number with commas as thoudsands separators
+  numberFormatter(num:string){
+    return num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   download(name:string){
     pdfMake.createPdf(dd).download(name)
@@ -151,57 +167,10 @@ export class OfferPdfService{
                 style: 'productTable',
                 table: {
             headerRows: 1,
-            widths:['20%','20%','20%','20%','20%'],
-            body: [
-                //header defintion
-                [
-                'Pos',
-                'Bezeichnung',
-                'Menge',
-                'Preis',
-                'Gesamt'
-                ],
-              //the rows todo add the products dynamically
-
-            ]
+            widths:['10%','30%','20%','20%','20%'],
+            body:  this.products
           },
-          layout: 'noBorders'
-            },
-            {
-                canvas: [
-                   {
-                       type: 'line',
-                       x1: 0, y1: 5,
-                       x2: 515, y2: 5,
-                       lineWidth: 1
-                   }
-               ]
-            },
-            {
-                style: 'productTable',
-                table: {
-            headerRows: 1,
-            widths:['20%','20%','20%','20%','20%'],
-            body: [
-                //header defintion
-                [
-                'Pos',
-                'Bezeichnung',
-                'Menge',
-                'Preis',
-                'Gesamt'
-                ],
-              //the rows todo add the products dynamically
-              //if more than 5 rows of prodcuts we need to make a break
-              //after the brutto part
-              ['45a', 'Zc-42', '3', '250€', '750€'],
-              ['46b', 'Zc-43', '2', '350€', '700€'],
-              ['27a', 'Zc-44', '1', '450€', '450€'],
-              ['17c', 'Zc-45', '1', '600€', '600€'],
-              ['17c', 'Zc-45', '1', '600€', '600€'],
-            ]
-          },
-          layout: 'noBorders'
+          layout: 'headerLineOnly'
             },
             {
                 canvas: [
@@ -225,10 +194,8 @@ export class OfferPdfService{
                 '',
                 '',
                 'Summe',
-                '2300€'
+                this.numberFormatter(this.total.toFixed(2).toString()) +"€"
                 ],
-              //the rows todo add the products dynamically
-              ['', '', '', 'Rabatt.', '-100€'],
             ]
           },
           layout: 'noBorders'
@@ -254,12 +221,11 @@ export class OfferPdfService{
                 '',
                 '',
                 '',
-                'Netto',
-                '1840€'
+                'Ust',
+                this.numberFormatter((this.total*0.16).toFixed(2))+'€'
                 ],
               //the rows todo add the products dynamically
-              ['', '', '', 'USt.', '460€'],
-              ['', '', '', 'Brutto', '2200€']
+              ['', '', '', 'Brutto', this.numberFormatter((this.total*1.16).toFixed(2).toString())+'€']
             ]
           },
           layout: 'noBorders'
@@ -268,15 +234,16 @@ export class OfferPdfService{
                 canvas: [
                    {
                        type: 'line',
-                       x1: 300, y1: 5,
+                       x1: 370, y1: 5,
                        x2: 515, y2: 5,
                        lineWidth: 1
                    }
                ]
             },
+            this.break,
             {
                 text:'\nWir würden uns freuen Ihren Auftrag zu erhalten. Bei Fragen zögern Sie nicht uns zu kontaktieren.\n'+
-                'Mit freundlichen Grüßen\n\nChristopher Buchberger'
+                'Mit freundlichen Grüßen\n\n'+this.pdfData.rightBlock.consultant
             },
             {
                 text:'POWER SOLAR Wärmetauscher AUSTRIA · Ritzlhofstrasse 28 · Österreich 4052 Ansfelden'+
@@ -295,7 +262,8 @@ export class OfferPdfService{
              margin: 20
           },
           productTable:{
-              margin: [0, 5, 0, 0]
+              margin: [0, 5, 0, 0],
+              alignment: 'right',
           },
           link:{
                margin: [330, 0, 0, 0],
