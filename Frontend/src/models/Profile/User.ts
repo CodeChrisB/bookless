@@ -1,4 +1,5 @@
 export interface IUser {
+  id:number;
   fname:string
   lname:string
   phone:string
@@ -29,6 +30,9 @@ export interface IUser {
       read:boolean;
       write:boolean;
     }
+  }
+  globals:{
+    generateEmailText:boolean;
   }
   image:string;
 }

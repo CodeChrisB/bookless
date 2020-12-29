@@ -75,7 +75,7 @@ export class Offer  {
 
     downloadPdf(row:IOfferData){
         var ops = new OfferPdfService(row)
-        ops.download('Data');
+        ops.download('Angebot.pdf');
     }
 
 }

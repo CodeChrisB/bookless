@@ -40,7 +40,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
-import {Profile} from './components/profile/profile.component';
+import {Profile} from './components/profile/profile/profile.component';
 import { Customer } from './components/app/crm/customer/customer.component'
 import { addCustomer } from './components/app/crm/customer/customerData/customerData';
 import { Dashboard } from './components/app/dashboard/dashboard.component';
@@ -49,6 +49,7 @@ import { addCompanyCustomer } from './components/app/crm/company/companyData/cus
 import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 import { HeatexchangerData } from './components/app/products/ProductData/ProductData';
 import { Offer } from './components/app/bill/offer/list/offer.component';
+import { ProfileSettings } from './components/profile/settings/profileSettings.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { Offer } from './components/app/bill/offer/list/offer.component';
     addCompanyCustomer,
     Heatexchanger,
     HeatexchangerData,
-    Offer
+    Offer,
+    ProfileSettings
   ],
   imports: [
     AppRoutingModule,

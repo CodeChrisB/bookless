@@ -11,13 +11,16 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class OfferPdfService{
 
   offer;
-  break= {};
+
+
+  brea
 
   public products: Array<string[]> = [['Pos.','Bezeichnung','Menge','Preis','Gesamt']]
   total:number=0;
   constructor(offer:IOfferData){
     this.offer = offer.offer;
 
+    //format the prodcuts into a string array for the table
     offer.prodcuts.forEach(p=>{
       this.products.push(
         [p.product.productId.toString()
@@ -27,20 +30,18 @@ export class OfferPdfService{
       this.total+=(p.amount*p.product.price)
     });
 
-    if(this.products.length>8){
-     this.break={text:"",pageBreak: 'before'}
-    }
+    //fill in all the data in the pdf structrue
     this.initData(offer.offer.customerId,offer.offer.isCompany);
   }
 
   //the biggest problem is the two different type of customers
   //to fit the diffrent variables into a single document
-
   pdfData = {
     leftBlock:{
       sentTo:'',
       street:'',
       town:'',
+      plz:'',
       country:'',
     },
     rightBlock:{
@@ -54,14 +55,26 @@ export class OfferPdfService{
     },
     prodcuts:null
   }
+
+  /*
+    MAX PRODUCTS PAGE
+
+    FIRST: 15
+    EVERY OTHER
+    LAST
+
+  */
+
+
   initData(id:number,isCompany:boolean){
     if(isCompany){
       var customer = CompanyService.getCustomer(id);
       //leftblock
       this.pdfData.leftBlock.sentTo = customer.name;
-      this.pdfData.leftBlock.street = customer.companyLocation;
-      //this.pdfData.leftBlock.town  =
-      //this.pdfData.leftBlock.country =
+      this.pdfData.leftBlock.street = customer.companyLocation.street;
+      this.pdfData.leftBlock.town  =customer.companyLocation.town;
+      this.pdfData.leftBlock.country = customer.companyLocation.country;
+      this.pdfData.leftBlock.plz = customer.companyLocation.plz;
 
       //rightblock
       this.pdfData.rightBlock.date = this.offer.date.toString().substring(0,10);
@@ -128,28 +141,162 @@ export class OfferPdfService{
             text:this.pdfData.leftBlock.sentTo
         },
         {
+            text:+this.pdfData.leftBlock.plz +' '+this.pdfData.leftBlock.town
+        },
+        {
             text:this.pdfData.leftBlock.street
         },
         {
-            text:"XXXXXXXXXXXXXXXXXX"
-        },
-        {
-            text:"XXXXXXXXXXXXXXXXXXXXX"
+            text:this.pdfData.leftBlock.country
         },
 
         //order data
-        {
-            style:'right',
-            text: 'Datum: '+this.pdfData.rightBlock.date.toString()
-        },
-        {
-            style:'right',
-            text: 'Angebot: '+this.pdfData.rightBlock.orderNr
-        },
-        {
-            style:'right',
-            text: this.pdfData.rightBlock.consultant
-        },
+       {
+          columns: [
+              { width: '*', text: '' },
+              {
+                  width: 'auto',
+                  fontSize: '10',
+                      table: {
+                              body: [
+                                      [
+                                        {
+                                          text:'Angebotsinformationen',
+                                          border: [true, true, false, true]
+                                        },
+                                        {
+                                          text:'',
+                                          border: [false, true, true, true]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Angebotsnummer',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:this.pdfData.rightBlock.orderNr,
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Datum',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Kundennummer',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Anfrage',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Mögl. Liefertermin',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'UID Nummer',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Sachbearbeiter/-in',
+                                          border: [true, true, false, true]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, true, true, true]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Name',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Telefon',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Fax',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'E-Mail',
+                                          border: [true, false, false, false]
+                                        },
+                                        {
+                                          text:'XXXXXXXXXX',
+                                          border: [false, false, true, false]
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          text:'Gültigkeit ',
+                                          border: [true, false, false, true]
+                                        },
+                                        {
+                                          text:'2 Monate ab Erstellung',
+                                          border: [false, false, true, true]
+                                        }
+                                      ],
+                              ]
+                      },
+
+              }
+          ]
+      },
+
+
         //customer salutation
         {
             text:'Angebot an ' +this.pdfData.upperTextBlock.orderName,
@@ -240,7 +387,6 @@ export class OfferPdfService{
                    }
                ]
             },
-            this.break,
             {
                 text:'\nWir würden uns freuen Ihren Auftrag zu erhalten. Bei Fragen zögern Sie nicht uns zu kontaktieren.\n'+
                 'Mit freundlichen Grüßen\n\n'+this.pdfData.rightBlock.consultant
@@ -250,7 +396,6 @@ export class OfferPdfService{
                 '\nUID-Nummer : ATU 69449849',
                 style:'footer'
             }
-
         ],
       styles: {
           right:{

@@ -9,7 +9,7 @@ import { OfferView } from './components/app/bill/offer/offerView/offerView.compo
 import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 import { MainComponent } from './components/app/main/main/main.component';
 //profile
-import { Profile } from "./components/profile/profile.component";
+import { Profile } from "./components/profile/profile/profile.component";
 //settings
 
 import { SettingsComponent } from './components/settings/settings/Settings.component';
@@ -17,6 +17,7 @@ import { SettingsDashboard } from "./components/settings/dashboard/dashboard.com
 import { addCustomer } from "./components/app/crm/customer/customerData/customerData";
 import { addCompanyCustomer } from "./components/app/crm/company/companyData/customerData";
 import { HeatexchangerData } from "./components/app/products/ProductData/ProductData";
+import { ProfileSettings } from "./components/profile/settings/profileSettings.component";
 const routes: Routes = [
     { path: 'app', component: MainComponent,
       children: [
@@ -45,8 +46,8 @@ const routes: Routes = [
         children: [
           { path: "dashboard",  component: SettingsDashboard, }
         ] },
-
-    { path: "profile/user",  component: Profile,children:[]},
+    { path: "profile/user",  component: Profile},
+    { path: "profile/settings",  component: ProfileSettings},
 
     { path: '', pathMatch: 'full', redirectTo: 'app/dashboard' }, //standard path
     { path: "*", redirectTo:"app/dashboard"}, //redirect wrong urls to the dashboard

@@ -4,7 +4,12 @@ export interface ICompanyCustomer
 {
     id : number;
     name : string;
-    companyLocation : string;
+    companyLocation : {
+      town : string;
+      plz:string;
+      street : string;
+      country : string;
+    };
     shippingAdress : IShippingAdress[];
     contactPersons : ContactPerson[];
 }

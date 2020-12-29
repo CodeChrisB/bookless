@@ -5,7 +5,10 @@
     </div>
     <input type="text" disabled="disabled" [(ngModel)]="companyCustomer.id" name="id" placeholder="Firmen Nummber">
     <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomer.name" name="name" placeholder="Firmenname">
-    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomer.companyLocation" name="location" placeholder="Firmensitz">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomer.companyLocation.town" name="town" placeholder="Ort">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomer.companyLocation.plz" name="plz" placeholder="Postleitzahl">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomer.companyLocation.street" name="street" placeholder="Straße">
+    <input type="text" [disabled]="locked ? 'disabled':null" [(ngModel)]="companyCustomer.companyLocation.country" name="country" placeholder="Land">
 
     <div class="block">
       <h1>Liefer Daten</h1>

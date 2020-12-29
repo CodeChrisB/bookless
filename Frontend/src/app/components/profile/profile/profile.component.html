@@ -1,0 +1,138 @@
+<!--USER-->
+<mat-card id='full'>
+<!--LINK TO SETTINGS PAGE-->
+
+
+<!--USER DATA-->
+<!--USER IMAGE-->
+  <div style="text-align:center">
+      <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+      <div class="container">
+        <div class="image-upload">
+          <label for="file-input">
+            <img matTooltipPosition="right" matTooltip="Klicken Sie um ihr Profilbild zu ändern" id="userImage" [src]=image/>
+          </label>
+          <input id="file-input"type="file" (change)="selectFile($event)">
+      </div>
+        <br>
+        <div class="flex-container">
+          <!--FNAME-->
+          <mat-form-field id="small">
+            <mat-label>Vorname</mat-label>
+            <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                  matInput placeholder="Christopher" [(ngModel)]="user.fname">
+          </mat-form-field>
+          <mat-form-field id="small">
+            <!--LNAME-->
+            <mat-label>Nachname</mat-label>
+            <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                  matInput placeholder="Christopher" [(ngModel)]="user.lname">
+          </mat-form-field>
+        </div>
+        <div class="flex-container">
+          <!--PHONE-->
+          <mat-form-field id="small">
+            <mat-label>Telefon Nummer</mat-label>
+            <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                  matInput placeholder="Christopher" [(ngModel)]="user.phone">
+          </mat-form-field>
+          <!--FAX-->
+          <mat-form-field id="small">
+            <mat-label>FAX</mat-label>
+            <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                  matInput placeholder="Christopher" [(ngModel)]="user.email">
+          </mat-form-field>
+        </div>
+        <div class="flex-container">
+           <!--EMAIL-->
+           <mat-form-field id="small">
+           <mat-label>Email</mat-label>
+           <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                 matInput placeholder="Christopher" [(ngModel)]="user.email">
+         </mat-form-field>
+         <!--RANK-->
+         <mat-form-field id="small">
+           <mat-label>Firmen Rang</mat-label>
+              <input id="small" [disabled]="!user.premissions.admin ? 'disabled':null"
+                   matInput placeholder="Christopher" [(ngModel)]="user.rank">
+           </mat-form-field>
+         </div>
+    </div>
+    <div class="flex-container">
+      <mat-button-toggle (click)="saveUser()"color="primary" class="mat-elevation-z5" id="admin-button" type="submit" value="Speichern">Speichern</mat-button-toggle>
+      <mat-button-toggle (click)="userSettings()"color="primary" class="mat-elevation-z5" id="admin-button" type="submit" value="Speichern">Einstelungen</mat-button-toggle>
+    </div>
+  </div>
+
+
+
+
+    <div class="chip-container">
+      <mat-chip-list>
+        <!--ADMIN-->
+        <mat-chip matTooltip="Sie sind Administrator" matTooltipPosition="above"
+        *ngIf=user.premissions.admin.read id="admin">Admin
+        </mat-chip>
+        <!--DASHBOARD-->
+        <mat-chip matTooltip="{{'Sie können das '+(user.premissions.dashboard.write ? 'Dashboard bearbeiten' : 'Dashboard sehen')}}" matTooltipPosition="above"
+        (click)='routeTo("dashboard")' *ngIf=user.premissions.dashboard.read id="dashbaord">Dashboard
+        </mat-chip>
+        <!--CUSTOMER-->
+        <mat-chip  matTooltip="{{'Sie könen den CRM Bereich '+(user.premissions.crm.write ? 'bearbeiten' : 'sehen')}}" matTooltipPosition="above"
+        (click)='routeTo("crm/customer")' *ngIf=user.premissions.crm.read id="crm">CRM</mat-chip>
+        <!--BILL-->
+        <mat-chip matTooltip="{{'Sie können den Einkaufsbreich '+(user.premissions.bills.write ? 'bearbeiten' : 'sehen')}}" matTooltipPosition="above"
+         (click)='routeTo("bill/offer")' *ngIf=user.premissions.bills.read id="bill">Einkauf</mat-chip>
+        <!--PRODUCTS-->
+        <mat-chip matTooltip="{{'Sie können die '+(user.premissions.products.write ? 'Produkte bearbeiten' : 'Produkte sehen')}}" matTooltipPosition="above"
+        (click)='routeTo("products/heatexchanger")' *ngIf=user.premissions.products.read id="product">Produkte</mat-chip>
+        <!--SETTINGS-->
+        <mat-chip  matTooltip="{{'Sie können die '+(user.premissions.settings.write ? 'Einstellungen bearbeiten' : 'Einstellungen sehen')}}" matTooltipPosition="above"
+        (click)='toSettings()' *ngIf=user.premissions.settings.read id="settings">Einstellungen</mat-chip>
+      </mat-chip-list>
+    </div>
+</mat-card>
+
+
+<!--PASSWORD PANEL-->
+<mat-card id="pass-window">
+<div>
+  <!--FIRST PASS ROW--->
+    <mat-form-field id="pass">
+      <mat-label>Momentanes Passwort</mat-label>
+      <input  [type]="showPass.old ? 'text' : 'password'" matInput name="old" [(ngModel)]="password.current" >
+    </mat-form-field>
+    <mat-icon (click)="showPass.old=!showPass.old">{{showPass.old ? 'visibility' : 'visibility_off'}}</mat-icon>
+    <br>
+  <!--SECOND PASS ROW--->
+    <mat-form-field id="pass">
+      <mat-label>Neues Passwort</mat-label>
+      <input [type]="showPass.first ? 'text' : 'password'"  matInput name="new" [(ngModel)]="password.newFirst" >
+    </mat-form-field>
+    <mat-icon (click)="showPass.first=!showPass.first">{{showPass.first ? 'visibility' : 'visibility_off'}}</mat-icon>
+    <br>
+  <!--THIRD PASS ROW--->
+    <mat-form-field id="pass">
+      <mat-label>Neues Passwort</mat-label>
+      <input  [type]="showPass.second ? 'text' : 'password'"  matInput name="new" [(ngModel)]="password.newSecond" >
+    </mat-form-field>
+    <mat-icon (click)="showPass.second=!showPass.second">{{showPass.second ? 'visibility' : 'visibility_off'}}</mat-icon>
+</div>
+  <!--SUBMIT PASS--->
+<input id=admin-button (click)="submitNewPassword()" type="submit" value="Submit">
+
+<!--ADMIN PANEL-->
+</mat-card>
+<mat-card *ngIf=user.premissions.admin id=admin-window>
+  <div class="left-half">
+    <mat-button-toggle id=admin-button>User Verwaltung</mat-button-toggle>
+    <h4>User Anzahl {{getUserCount()}}</h4><br>
+    <mat-button-toggle id=admin-button>Kunden Verwaltung</mat-button-toggle>
+    <h4>User Anzahl {{getUserCount()}}</h4><br>
+    <mat-button-toggle id=admin-button>Email an alle Kunden</mat-button-toggle>
+    <h4>Z.b Preisänderungen</h4>
+  </div>
+<div class="right-half" >
+  <img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=Ich+wei%C3%9F+zwar+nicht+wieso%2C+aber+ein+Qr+Code+hier+%2Csieht+einfach+gut+aus%2C+eventuell+k%C3%B6nnte+der+bei+der+Kommunikation+zwischen+einem+Pc+und+einem+Smartphone+stehen%2C+also+k%C3%B6nnte+es+vielleicht+bei+der+Diplomarbeit+helfen.+Um+über+das+Smartphone+sich+anzumelden+oder+als+2+factor+verifikation+keine+ahnung+es+ist+nach+mitternacht+hier. &qzone=1&margin=0&size=400x400&ecc=L" alt="qr code" />
+</div>
+</mat-card>

@@ -5,10 +5,29 @@
     margin:1vh;
 }
 
-
 #full{
   height:80vh;
   max-height: 80vh;
+}
+
+#globals{
+  width: 90%;
+}
+
+.mat-checkbox{
+  margin: 2vw;
+  background-color: rgba(255, 0, 0, 0.4);
+  padding: 0.5vw;
+  border-radius: 2vw;
+}
+
+#gear{
+  position: absolute;
+  top:2%;
+  right: 2%;
+}
+#pointer{
+  cursor: pointer;
 }
 
 img{
@@ -23,9 +42,10 @@ img{
 
 .container {
   position: relative;
-  text-align: left;
+  text-align: center;
   color: white;
   padding: 2vh;
+  padding: 1vw;
 }
 
 #side-form{
@@ -36,11 +56,10 @@ div.container a *{
 }
 .mat-chip{
   cursor: pointer;
+  font-size: 5pt;
 }
 
-.mat-chip mat-icon{
-  margin-left: 0.5vw;
-}
+
 
 .chip-container{
   display: flex;
@@ -77,18 +96,19 @@ div.container a *{
 #product{
   background-color: mediumpurple;
 }
-#settings{
-  background-color: #0AD3FF;
-}
+
 
 
 #admin-button{
-  background-color: greenyellow;
-  border-color: greenyellow;
+  background-color: #294b93;
+  border-color: #294b93;
+  color:white;
   min-height: 5vh;
-  min-width: 50%;
+  min-width: 45%;
   width: 50%;
   margin-bottom: 5vh;
+  margin-right:1vw;
+  flex-grow:1;
 }
 h4{
   display: inline;
@@ -122,7 +142,7 @@ h4{
 /*the inside container for 2 columns of user stuff*/
 
 input#small, .mat-form-field#small{
-  width: 15vw;
+  width: 21vw;
 }
 
 
@@ -154,6 +174,5 @@ input#small, .mat-form-field#small{
   border-radius: 0px;
   color: white;
   height: 100%;
-  margin-left: 2vw;
   width: 100%;
 }

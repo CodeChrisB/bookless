@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/models/Profile/User';
-import { UserService } from '../services/profile/UserService';
+import { UserService } from '../../services/profile/UserService';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -121,5 +121,12 @@ export class Profile implements OnInit  {
 
   toSettings(){
     this.route.navigate(['/settings/dashboard'])
+  }
+  saveUser(){
+
+  }
+
+  userSettings(){
+    this.route.navigate(['/profile/settings'], { state: {id:this.user.id } });
   }
 }
