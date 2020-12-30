@@ -6,7 +6,8 @@ export class UserRepository {
 
     users:User[] = []
 
-    constructor() {}
+    constructor() {
+    }
 
     public async getAllUsers() {
         const client = new Client({
@@ -15,10 +16,10 @@ export class UserRepository {
              "user": "user",
             "password":"pass", 
             "database":"booklessdb"
-        });
+        }); 
         await client.connect();
         try{
-            const resultIterator = await client.query("select id, name, password from product");
+            const resultIterator = await client.query("select id, name, password from users");
             console.log('Get Users from DB');
     
             for await (const row of resultIterator) {
