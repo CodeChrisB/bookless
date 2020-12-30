@@ -2,7 +2,7 @@ import express from "express";
 import { Client, DataType }  from "ts-postgres";
 import jwt from "jsonwebtoken";
 import bycrypt, { hash } from "bcryptjs";
-import { UserRepository } from "./services/UserService";
+import { UserRepository } from "./services/UserRepo";
 import { User } from "./models/Authorisation/User";
 import * as bodyParser from 'body-parser';
 
@@ -12,8 +12,11 @@ import * as bodyParser from 'body-parser';
 
 const app = express();
 const userRepo = new UserRepository();
+
 app.use(bodyParser.json());
 app.get('/api', (req, res) => {
+  userRepo.getAllUsers();
+  console.log(userRepo.users)
   res.send(userRepo.users);
 });
 
@@ -40,7 +43,7 @@ app.post('/api/posts', verifyToken, (req:any, res:any) => {
       console.log(salt);
       console.log(hashedPassword);
       const user = new User(1, req.body.user, hashedPassword);
-      userRepo.users.push(user);
+      userRepo.addUser(user); 
       res.status(201).send();
     } catch {
       
@@ -50,7 +53,7 @@ app.post('/api/posts', verifyToken, (req:any, res:any) => {
 
  
   app.post('/api/login', async (req, res) => {
-    const user = userRepo.users.find(u => u.username = req.body.user);
+    const user = userRepo.users.find(u => u.username = req.body.user && u.id === req.body.id);
     if(user == null){
       return res.status(400).send('Can not find user');
     }
