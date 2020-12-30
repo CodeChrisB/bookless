@@ -5,6 +5,7 @@ import { CompanyService } from '../../services/crm/companylist';
 import { CustomerService } from '../../services/crm/customerlist';
 import { TotalCustomerService } from '../../services/crm/customerData';
 import { Router } from '@angular/router';
+import { DateFormatter } from '../../services/tools/dateFormatter';
 
 @Component({
 selector: 'dashboard-component',
@@ -27,23 +28,14 @@ export class Dashboard implements OnInit {
 
   constructor(private route :Router) {
       this.timer = setInterval(() => {
-        this.setTime()
+        this.now = DateFormatter.getCurrentTimeAsString();
       }, 1000);
       this.totalCustomers = TotalCustomerService.getTotalCustomerAmount();
       this.newCustomers = TotalCustomerService.getNewCustomerAmount();
   }
 
-  setTime(){
-    var date = new Date();
-    //todo rework this part this has to be done easier
-    this.now = this.weekDays[date.getUTCDay()]
-    this.now += date.toString().substring(7,11)
-    this.now+= this.months[date.getUTCMonth()]
-    this.now +=date.toString().substring(15,25)
-  }
-
 ngOnInit(){
-  this.setTime()
+  this.now = DateFormatter.getCurrentTimeAsString();
 }
 
 ngOnDestroy() {

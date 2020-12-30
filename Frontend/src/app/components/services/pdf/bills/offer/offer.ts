@@ -6,6 +6,7 @@ import { off } from "process";
 import { IPdfTableProduct } from "src/models/Product/PdfTableProduct";
 import { of } from "rxjs";
 import { CompanyService } from "../../../crm/companylist";
+import { DateFormatter } from "../../../tools/dateFormatter";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class OfferPdfService{
@@ -45,9 +46,18 @@ export class OfferPdfService{
       country:'',
     },
     rightBlock:{
-      date:'',
+      date:null,
       orderNr:'',
-      consultant:'',
+      projectName:'',
+      possibleDelivery:null,
+      uid:'',
+      consultant:{
+        name:'',
+        phone:'',
+        fax:'',
+        email:''
+      },
+      customerId:''
     },
     upperTextBlock:{
       orderName:'',
@@ -67,6 +77,9 @@ export class OfferPdfService{
 
 
   initData(id:number,isCompany:boolean){
+
+
+    console.dir(this.offer.possibleDelivery);
     if(isCompany){
       var customer = CompanyService.getCustomer(id);
       //leftblock
@@ -77,9 +90,16 @@ export class OfferPdfService{
       this.pdfData.leftBlock.plz = customer.companyLocation.plz;
 
       //rightblock
-      this.pdfData.rightBlock.date = this.offer.date.toString().substring(0,10);
+      this.pdfData.rightBlock.date = this.offer.date;
       this.pdfData.rightBlock.orderNr = this.offer.number;
-      this.pdfData.rightBlock.consultant = this.offer.administrator.firstname+' '+this.offer.administrator.lastname;
+      this.pdfData.rightBlock.customerId = 'FK-'+this.offer.customerId;
+      this.pdfData.rightBlock.projectName = this.offer.projectName;
+      this.pdfData.rightBlock.possibleDelivery = this.offer.possibleDelivery;
+      this.pdfData.rightBlock.uid = this.offer.uid;
+      this.pdfData.rightBlock.consultant.name = this.offer.administrator.firstname+' '+this.offer.administrator.lastname;
+      this.pdfData.rightBlock.consultant.phone = this.offer.administrator.phone;
+      this.pdfData.rightBlock.consultant.fax = this.offer.administrator.fax;
+      this.pdfData.rightBlock.consultant.email = this.offer.administrator.email;
       //upperTextBlock
       this.pdfData.upperTextBlock.orderName = this.offer.name;
       this.pdfData.upperTextBlock.salutation = 'Sehr geehrtes Team von ' +customer.name+',\n';
@@ -162,11 +182,13 @@ export class OfferPdfService{
                                       [
                                         {
                                           text:'Angebotsinformationen',
-                                          border: [true, true, false, true]
+                                          border: [true, true, false, true],
+                                          fillColor: '#cccccc'
                                         },
                                         {
                                           text:'',
-                                          border: [false, true, true, true]
+                                          border: [false, true, true, true],
+                                          fillColor: '#cccccc'
                                         }
                                       ],
                                       [
@@ -185,7 +207,7 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text: DateFormatter.getDateAsString(this.pdfData.rightBlock.date),
                                           border: [false, false, true, false]
                                         }
                                       ],
@@ -195,7 +217,7 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text:this.pdfData.rightBlock.customerId,
                                           border: [false, false, true, false]
                                         }
                                       ],
@@ -205,7 +227,7 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text:this.pdfData.rightBlock.projectName,
                                           border: [false, false, true, false]
                                         }
                                       ],
@@ -215,7 +237,7 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text:DateFormatter.getDateAsString(this.pdfData.rightBlock.possibleDelivery),
                                           border: [false, false, true, false]
                                         }
                                       ],
@@ -225,18 +247,20 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text:this.pdfData.rightBlock.uid,
                                           border: [false, false, true, false]
                                         }
                                       ],
                                       [
                                         {
                                           text:'Sachbearbeiter/-in',
-                                          border: [true, true, false, true]
+                                          border: [true, true, false, true],
+                                          fillColor: '#cccccc'
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
-                                          border: [false, true, true, true]
+                                          text:'',
+                                          border: [false, true, true, true],
+                                          fillColor: '#cccccc',
                                         }
                                       ],
                                       [
@@ -245,7 +269,7 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text: this.pdfData.rightBlock.consultant.name,
                                           border: [false, false, true, false]
                                         }
                                       ],
@@ -255,7 +279,7 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text:this.pdfData.rightBlock.consultant.phone,
                                           border: [false, false, true, false]
                                         }
                                       ],
@@ -265,7 +289,7 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text:this.pdfData.rightBlock.consultant.fax,
                                           border: [false, false, true, false]
                                         }
                                       ],
@@ -275,7 +299,7 @@ export class OfferPdfService{
                                           border: [true, false, false, false]
                                         },
                                         {
-                                          text:'XXXXXXXXXX',
+                                          text:this.pdfData.rightBlock.consultant.email,
                                           border: [false, false, true, false]
                                         }
                                       ],

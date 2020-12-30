@@ -5,7 +5,7 @@ import { ContactPerson } from 'src/models/ContactPerson';
 
 
 const companyCustomers : ICompanyCustomer[] = [
-{id:1,name:'ChrisGmbh',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhofstraße 28',country:'Österreich'},
+{id:12265,name:'ChrisGmbh',uid:'4321234562',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhofstraße 28',country:'Österreich'},
 shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],
 contactPersons:[
   {id:1, adress:'Ritzlhof 28', phoneNumber:'067762390005',email:'chris@gmx.at', fName:'Chirstopher', lName:'Buchberger',companyRank:'Chef', gender:'M'},
@@ -13,25 +13,25 @@ contactPersons:[
   {id:1, adress:'Styrerweg 24', phoneNumber:'067762390005',email:'chris@rk.at', fName:'Christoph', lName:'Herr Buchberger',companyRank:'Sanitäter', gender:'M'}]},
 
 
-{id:2,name:'Autech',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
+{id:2,name:'Autech',uid:'4321234562',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
 shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],contactPersons:[{id:1, adress:'KA', phoneNumber:'4940300'
 ,email:'egger.gemx.at', fName:'Hallo', lName:'Gewinne',companyRank:'Sales', gender:'M'}]},
-{id:3,name:'Stroptech',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
+{id:3,uid:'4321234562',name:'Stroptech',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
 shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],contactPersons:[{id:1, adress:'KA', phoneNumber:'4940300'
 ,email:'chrizzly.gemx.at', fName:'Hallo', lName:'Gewinne',companyRank:'Sales', gender:'M'}]},
-{id:4,name:'BauTech CO',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
+{id:4,uid:'4321234562',name:'BauTech CO',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
 shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],contactPersons:[{id:1, adress:'KA', phoneNumber:'4940300'
 ,email:'hans.gemx.at', fName:'Hallo', lName:'Gewinne',companyRank:'Sales', gender:'M'}]},
-{id:5,name:'TomTech',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
+{id:5,uid:'4321234562',name:'TomTech',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
 shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],contactPersons:[{id:1, adress:'KA', phoneNumber:'4940300'
 ,email:'wolf.gemx.at', fName:'Hallo', lName:'Gewinne',companyRank:'Sales', gender:'M'}]},
-{id:6,name:'Auernig Syp Gmbh',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
+{id:6,uid:'4321234562',name:'Auernig Syp Gmbh',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
 shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],contactPersons:[{id:1, adress:'KA', phoneNumber:'4940300'
 ,email:'franz.gemx.at', fName:'Hallo', lName:'Gewinne',companyRank:'Sales', gender:'M'}]},
-{id:7,name:'SchroTech',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
+{id:7,uid:'4321234562',name:'SchroTech',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
 shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],contactPersons:[{id:1, adress:'KA', phoneNumber:'4940300'
 ,email:'hans.gemx.at', fName:'Hallo', lName:'Gewinne',companyRank:'Sales', gender:'M'}]},
-{id:8,name:'Stropek Gmbh',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
+{id:8,uid:'4321234562',name:'Stropek Gmbh',companyLocation:{town:'Ansfelden',plz:'4052',street:'Ritzlhof 28',country:'Austria'},
 shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],contactPersons:[{id:1, adress:'KA', phoneNumber:'4940300'
 ,email:'master.gemx.at', fName:'Hallo', lName:'Gewinne',companyRank:'Sales', gender:'M'}]},
 ]

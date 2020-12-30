@@ -4,6 +4,7 @@ export interface ICompanyCustomer
 {
     id : number;
     name : string;
+    uid:string;
     companyLocation : {
       town : string;
       plz:string;

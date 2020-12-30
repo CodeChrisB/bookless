@@ -27,7 +27,7 @@ export class addCompanyCustomer implements OnInit  {
 
   companyCustomer : ICompanyCustomer =
     {
-    id:0,name:'',companyLocation:{town:'',plz:'',street:'',country:''},
+    id:0,name:'',uid:'',companyLocation:{town:'',plz:'',street:'',country:''},
     shippingAdress:[],
     contactPersons:[
       {id:0, adress:'', phoneNumber:''
