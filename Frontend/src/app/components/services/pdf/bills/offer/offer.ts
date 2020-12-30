@@ -413,7 +413,7 @@ export class OfferPdfService{
             },
             {
                 text:'\nWir würden uns freuen Ihren Auftrag zu erhalten. Bei Fragen zögern Sie nicht uns zu kontaktieren.\n'+
-                'Mit freundlichen Grüßen\n\n'+this.pdfData.rightBlock.consultant
+                'Mit freundlichen Grüßen\n\n'+this.pdfData.rightBlock.consultant.name
             },
             {
                 text:'POWER SOLAR Wärmetauscher AUSTRIA · Ritzlhofstrasse 28 · Österreich 4052 Ansfelden'+
