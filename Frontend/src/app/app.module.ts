@@ -50,6 +50,7 @@ import { Heatexchanger } from './components/app/products/heatexchanger/heatexcha
 import { HeatexchangerData } from './components/app/products/ProductData/ProductData';
 import { Offer } from './components/app/bill/offer/list/offer.component';
 import { ProfileSettings } from './components/profile/settings/profileSettings.component';
+import { OfferData } from './components/app/bill/offer/offerData/offerData.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ProfileSettings } from './components/profile/settings/profileSettings.c
     Heatexchanger,
     HeatexchangerData,
     Offer,
-    ProfileSettings
+    ProfileSettings,
+    OfferData
   ],
   imports: [
     AppRoutingModule,

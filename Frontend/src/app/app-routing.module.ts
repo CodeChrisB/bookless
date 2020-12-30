@@ -5,7 +5,6 @@ import { Dashboard } from "./components/app/dashboard/dashboard.component";
 import { Company } from "./components/app/crm/company/company.component";
 import { Customer } from "./components/app/crm/customer/customer.component";
 import { Offer } from './components/app/bill/offer/list/offer.component';
-import { OfferView } from './components/app/bill/offer/offerView/offerView.component'
 import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 import { MainComponent } from './components/app/main/main/main.component';
 //profile
@@ -18,6 +17,7 @@ import { addCustomer } from "./components/app/crm/customer/customerData/customer
 import { addCompanyCustomer } from "./components/app/crm/company/companyData/customerData";
 import { HeatexchangerData } from "./components/app/products/ProductData/ProductData";
 import { ProfileSettings } from "./components/profile/settings/profileSettings.component";
+import { OfferData } from "./components/app/bill/offer/offerData/offerData.component";
 const routes: Routes = [
     { path: 'app', component: MainComponent,
       children: [
@@ -32,9 +32,14 @@ const routes: Routes = [
         { path: "crm/company/edit",  component: addCompanyCustomer, },
         { path: "crm/company/new",  component: addCompanyCustomer, },
 
-        //bills
-        { path: "bill/offer",  component: Offer, },
-        { path: "bill/offer/pdf", component:OfferView},
+        //sales
+        { path: "sales/offer",  component: Offer, },
+        { path: "sales/offer/show", component:OfferData},
+        { path: "sales/offer/edit", component:OfferData},
+        { path: "sales/offer/new", component:OfferData},
+
+
+        //products
         { path: "products/heatexchanger",  component: Heatexchanger },
         { path: "products/heatexchanger/edit",  component: HeatexchangerData },
         { path: "products/heatexchanger/show",  component: HeatexchangerData },

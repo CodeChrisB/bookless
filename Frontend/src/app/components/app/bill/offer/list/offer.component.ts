@@ -42,16 +42,16 @@ export class Offer  {
     }
 
   showCustomer(row : IOfferData) {
-   this.route.navigate(['/app/crm/customer/show'], { state: {mode:'show', id: row.offer.number } });
+   this.route.navigate(['/app/sales/offer/show'], { state: {mode:'show', id: row.offer.number } });
   }
 
   updateCustomer(row : IOfferData){
     console.dir(row)
-    this.route.navigate(['/app/crm/customer/edit'], { state: {mode:'edit', id: row.offer.number } });
+    this.route.navigate(['/app/sales/offer/edit'], { state: {mode:'edit', id: row.offer.number } });
   }
 
   addCustomer(){
-    this.route.navigate(['/app/crm/customer/new'] , { state: {mode:'add' } });
+    this.route.navigate(['/app/sales/offer/new'] , { state: {mode:'add' } });
   }
 
 
