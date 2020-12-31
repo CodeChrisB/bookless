@@ -7,6 +7,7 @@ import { IPdfTableProduct } from "src/models/Product/PdfTableProduct";
 import { of } from "rxjs";
 import { CompanyService } from "../../../crm/companylist";
 import { DateFormatter } from "../../../tools/dateFormatter";
+import { CustomerService } from "../../../crm/customerlist";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class OfferPdfService{
@@ -78,8 +79,19 @@ export class OfferPdfService{
 
   initData(id:number,isCompany:boolean){
 
+    //rightblock static data
+    this.pdfData.rightBlock.date = this.offer.date;
+    this.pdfData.rightBlock.orderNr = this.offer.number;
+    this.pdfData.rightBlock.projectName = this.offer.projectName;
+    this.pdfData.rightBlock.consultant.name = this.offer.administrator.firstname+' '+this.offer.administrator.lastname;
+    this.pdfData.rightBlock.consultant.phone = this.offer.administrator.phone;
+    this.pdfData.rightBlock.consultant.fax = this.offer.administrator.fax;
+    this.pdfData.rightBlock.consultant.email = this.offer.administrator.email;
 
-    console.dir(this.offer.possibleDelivery);
+    //upperTextBlock static data
+    this.pdfData.upperTextBlock.orderName = this.offer.name;
+
+
     if(isCompany){
       var customer = CompanyService.getCustomer(id);
       //leftblock
@@ -90,22 +102,27 @@ export class OfferPdfService{
       this.pdfData.leftBlock.plz = customer.companyLocation.plz;
 
       //rightblock
-      this.pdfData.rightBlock.date = this.offer.date;
-      this.pdfData.rightBlock.orderNr = this.offer.number;
       this.pdfData.rightBlock.customerId = 'FK-'+this.offer.customerId;
-      this.pdfData.rightBlock.projectName = this.offer.projectName;
-      this.pdfData.rightBlock.possibleDelivery = this.offer.possibleDelivery;
       this.pdfData.rightBlock.uid = this.offer.uid;
-      this.pdfData.rightBlock.consultant.name = this.offer.administrator.firstname+' '+this.offer.administrator.lastname;
-      this.pdfData.rightBlock.consultant.phone = this.offer.administrator.phone;
-      this.pdfData.rightBlock.consultant.fax = this.offer.administrator.fax;
-      this.pdfData.rightBlock.consultant.email = this.offer.administrator.email;
+
       //upperTextBlock
-      this.pdfData.upperTextBlock.orderName = this.offer.name;
       this.pdfData.upperTextBlock.salutation = 'Sehr geehrtes Team von ' +customer.name+',\n';
 
-
     }else{
+      var privateCustomer = CustomerService.getCustomer(id);
+      //leftblock
+      this.pdfData.leftBlock.sentTo = privateCustomer.fName;
+      this.pdfData.leftBlock.street = 'XXXXXXX';
+      this.pdfData.leftBlock.town  = 'XXXXXXX';
+      this.pdfData.leftBlock.country = 'XXXXXXX';
+      this.pdfData.leftBlock.plz = 'XXXXXXX';
+
+      //rightblock
+      this.pdfData.rightBlock.customerId = 'PK-40000';
+      this.pdfData.rightBlock.uid = 'PK-OUID-EVK' //Private Kunde Ohne UID Einmal VerKauf
+
+      //upperTextBlock
+      this.pdfData.upperTextBlock.salutation = 'Sehr geehrte'+(privateCustomer.gender == 'm' ? 'r Herr' : ' Frau')+' ' +privateCustomer.lName+',';
 
     }
 

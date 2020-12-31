@@ -51,6 +51,7 @@ import { HeatexchangerData } from './components/app/products/ProductData/Product
 import { Offer } from './components/app/bill/offer/list/offer.component';
 import { ProfileSettings } from './components/profile/settings/profileSettings.component';
 import { OfferData } from './components/app/bill/offer/offerData/offerData.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,8 @@ import { OfferData } from './components/app/bill/offer/offerData/offerData.compo
     OfferData
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule ,
     AppRoutingModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -109,7 +112,7 @@ import { OfferData } from './components/app/bill/offer/offerData/offerData.compo
     MatPaginatorModule,
   ],
 
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 
 })

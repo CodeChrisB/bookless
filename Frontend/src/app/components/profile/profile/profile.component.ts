@@ -21,13 +21,11 @@ export class Profile implements OnInit  {
   constructor(private _sanitizer: DomSanitizer,private route: Router) { }
 
   user : IUser;
-  image;
   showPass;
   ngOnInit(){
     //when we have backend access we need to specify which user we want to get.
     this.user = UserService.getUser(1);
     //get the imge from the user
-    this.image = this._sanitizer.bypassSecurityTrustUrl(this.user.image)
     this.showPass={
       old:false,
       first:false,
@@ -52,7 +50,7 @@ export class Profile implements OnInit  {
 
 	selectFile(event) {
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.image = 'You must select an image';
+			this.user.image = 'You must select an image';
 			return;
 		}
 
@@ -68,7 +66,7 @@ export class Profile implements OnInit  {
 
 		reader.onload = (_event) => {
 			this.msg = "";
-            this.image = reader.result;
+            this.user.image = reader.result.toString();
 		}
   }
 
@@ -122,8 +120,9 @@ export class Profile implements OnInit  {
   toSettings(){
     this.route.navigate(['/settings/dashboard'])
   }
-  saveUser(){
 
+  saveUser(){
+    UserService.updateUser(this.user)
   }
 
   userSettings(){

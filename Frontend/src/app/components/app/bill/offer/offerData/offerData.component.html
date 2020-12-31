@@ -1,9 +1,30 @@
 <mat-card>
   <form>
     <div class="block">
-      <h1>Angebots Daten</h1>
+      <h1>Angebots Informationen</h1>
     </div>
+    <input type="text" [disabled]="locked ? 'disabled':null" name="country" placeholder="Kundennummer">
+    <input type="text" [disabled]="locked ? 'disabled':null" name="country" placeholder="Anfrage">
+    <input type="text" [disabled]="locked ? 'disabled':null" name="country" placeholder="Liefertermin">
+    <!--DATE PICKER START-->
+    <input placeholder="Liefertermin" type="text" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <!--DATE PICKER END-->
 
+    <!--CONSULTANT-->
+    <div class="block">
+      <h1>Sachbearbeiter</h1>
+    </div>
+    <select type="text" [disabled]="locked ? 'disabled':null">
+      <option *ngFor="let val of consultant" value="val.id">{{val.string}}</option>
+
+    </select>
+    <!--PRODUCTS-->
+    <div class="block">
+      <h1>Produkte</h1>
+    </div>
+    <h1>Todo talk with PowerSolar Dev about this</h1>
 
   </form>
 </mat-card>

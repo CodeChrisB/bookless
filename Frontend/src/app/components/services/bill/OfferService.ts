@@ -38,7 +38,7 @@ var offer: IOfferData[] =
     {product:{productId:1122,name:'ZC-12',description:'WT-Kelleranlage',price:1950},amount:1},
   ]},
 
-    {offer:{number:2,date:date1,uid:'21341234',possibleDelivery:date2,projectName:'An-17525',customerId:1,isCompany:true,name:'Thermenbad',plz:"4052",town:'Ansgefelden',street:'Ritzlhofstraße',bruttoValue:2750,status:'laufend',administrator:{firstname:'Michaela',lastname:'Buchberger',phone:'0677 62390006',fax:'0623 6952323',email:'michaela.buchberger@power-solar.at'},stages:{offer:true,order:false,bill:true,finished:true,canceld:true}},
+    {offer:{number:2,date:date1,uid:'',possibleDelivery:date2,projectName:'An-17525',customerId:1,isCompany:false,name:'Thermenbad',plz:"4052",town:'Ansgefelden',street:'Ritzlhofstraße',bruttoValue:2750,status:'laufend',administrator:{firstname:'Michaela',lastname:'Buchberger',phone:'0677 62390006',fax:'0623 6952323',email:'michaela.buchberger@power-solar.at'},stages:{offer:true,order:false,bill:true,finished:true,canceld:true}},
     prodcuts:[
       {product:{productId:1,name:'ZC-43',description:'Wärmetauscher',price:1},amount:1},
       {product:{productId:2,name:'ZC-44',description:'Wellrohrschlauch',price:12},amount:21},

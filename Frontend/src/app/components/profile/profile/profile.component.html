@@ -10,7 +10,7 @@
       <div class="container">
         <div class="image-upload">
           <label for="file-input">
-            <img matTooltipPosition="right" matTooltip="Klicken Sie um ihr Profilbild zu ändern" id="userImage" [src]=image/>
+            <img matTooltipPosition="right" matTooltip="Klicken Sie um ihr Profilbild zu ändern" id="userImage" [src]="user.image"/>
           </label>
           <input id="file-input"type="file" (change)="selectFile($event)">
       </div>

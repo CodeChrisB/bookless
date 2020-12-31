@@ -1,7 +1,7 @@
 {
   "name": "bookless",
   "version": "0.0.0",
-  "main": "main",
+  "main" : "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
