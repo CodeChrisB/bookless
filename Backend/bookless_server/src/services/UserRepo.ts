@@ -1,3 +1,4 @@
+import { exception } from "console";
 import { text } from "express";
 import { Client } from "ts-postgres";
 import { User } from "../models/Authorisation/User";
@@ -37,12 +38,10 @@ export class UserRepository {
 
     public async addUser(user:User){
         await this.client.connect();
-        try{
-      
+        try{ 
            await this.client.query(`insert into users (username, password) values('${user.username}', '${user.password}')`);
         } catch {
-
-            console.log("noooooooooo")
+            throw exception("Insert failed");
         } finally {
             await this.client.end();
         }
