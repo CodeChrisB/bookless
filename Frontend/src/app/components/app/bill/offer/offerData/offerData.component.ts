@@ -6,6 +6,7 @@ import { EmailHandler } from 'src/app/components/services/tools/emailHandler';
 import { IEmailData } from 'src/models/email/emailData';
 import { UserService } from 'src/app/components/services/profile/UserService';
 import { IStringId } from 'src/models/misc/IStringID';
+import { IUser } from 'src/models/Profile/User';
 
 
 @Component({
@@ -16,9 +17,18 @@ styleUrls: ['./offerData.component.css','../../../../css/forms.css']
 export class OfferData implements OnInit  {
 
   locked=false;
-  consultant : IStringId[];
+  consultantList : IStringId[];
+  consultant : IUser =null;
+  showConsultant =false;
+
   ngOnInit() {
-    this.consultant = UserService.getUserNameList();
+    this.consultantList = UserService.getUserNameList();
+    console.dir(this.consultantList)
+  }
+
+  onConsultantChange(val){
+    this.consultant = UserService.getUser(val);
+    this.showConsultant=true;
   }
 
 

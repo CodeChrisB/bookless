@@ -7,7 +7,7 @@
     <input type="text" [disabled]="locked ? 'disabled':null" name="country" placeholder="Anfrage">
     <input type="text" [disabled]="locked ? 'disabled':null" name="country" placeholder="Liefertermin">
     <!--DATE PICKER START-->
-    <input placeholder="Liefertermin" type="text" matInput [matDatepicker]="picker">
+    <input placeholder="Liefertermin"  type="text" matInput [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <!--DATE PICKER END-->
@@ -16,10 +16,25 @@
     <div class="block">
       <h1>Sachbearbeiter</h1>
     </div>
-    <select type="text" [disabled]="locked ? 'disabled':null">
-      <option *ngFor="let val of consultant" value="val.id">{{val.string}}</option>
+    <div id="consultant-select">
+      <select placeholder="h" (change)="onConsultantChange($event.target.value)" placeholder="Sachbearbeiter" type="text" [disabled]="locked ? 'disabled':null">
+        <option hidden>Sachbearbeiter auswählen</option>
+        <option *ngFor="let val of consultantList" value={{val.id}}>{{val.string}}</option>
+      </select>
+      <mat-icon id=cursor matTooltip="Zeigt oder verdeckt die Sachbearbeiter Daten" (click)="showConsultant=!showConsultant">{{showConsultant ?  'visibility' :'visibility_off' }}</mat-icon>
+    </div>
+       <!--Consultant Data-->
+      <div *ngIf=showConsultant>
+        <input disabled=disabled id="small" type="text" placeholder="Vorname"  name="consultant1" [(ngModel)]="consultant.fname">
+        <input disabled=disabled id="small" type="text" placeholder="Nachname"  name="consultant2" [(ngModel)]="consultant.lname">
+        <input disabled=disabled id="small" type="text" placeholder="Telefon Nummer"  name="consultant3" [(ngModel)]="consultant.phone">
+        <input disabled=disabled id="small" type="text" placeholder="E-Mail"  name="consultant4" [(ngModel)]="consultant.email">
+        <input disabled=disabled type="text" id="small" placeholder="Fax"  name="consultant4" >
+       </div>
 
-    </select>
+
+
+
     <!--PRODUCTS-->
     <div class="block">
       <h1>Produkte</h1>

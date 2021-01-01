@@ -15,12 +15,21 @@ input, select{
 input:disabled,select:disabled{
   background-color: white;
 }
+
+#cursor{
+  cursor: pointer;
+}
 div.block{
   padding-top: 10px;
   border-radius: 0px 50px 50px 0px;
   height: 50px;
   width: 100%;
   background-color: #303030 ;
+}
+
+#consultant-select{
+  display: flex;
+  align-items: center;
 }
 
 div.block h1{
