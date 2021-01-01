@@ -11,13 +11,13 @@ var image ='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYGBgYHBgcIC
 
 var prems = {admin:{read:true,write:true},dashboard:{read:true,write:true},crm:{read:true,write:true},bills:{read:true,write:true},products:{read:true,write:true},settings:{read:true,write:true}};
 var user: IUser[] = [
-  {id:1,fname:'Chris',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
-  {id:2,fname:'Max',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
-  {id:3,fname:'Manuel',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
-  {id:4,fname:'Niklas',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
-  {id:5,fname:'Franz',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
+  {id:1,fname:'Chris',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',fax:'+43 06473/42221',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
+  {id:2,fname:'Max',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',fax:'+43 06473/42221',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
+  {id:3,fname:'Manuel',lname:'Brandstätter',phone:'06776239005',email:'c.buchberger01@gmail.com',fax:'+43 06473/42221',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
+  {id:4,fname:'Niklas',lname:'Moser',phone:'06776239005',email:'c.buchberger01@gmail.com',fax:'+43 06473/42221',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
+  {id:5,fname:'Franz',lname:'Auernig',phone:'06776239005',email:'c.buchberger01@gmail.com',fax:'+43 06473/42221',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},
 
-  {id:6,fname:'Peter',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},  {id:1,fname:'Chris',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',rank:'Project Manager',premissions:prems,image:null,globals:{generateEmailText:true}},
+  {id:6,fname:'Peter',lname:'Bauer',phone:'06776239005',email:'c.buchberger01@gmail.com',fax:'+43 06473/42221',rank:'Project Manager',premissions:prems,image:image,globals:{generateEmailText:true}},  {id:1,fname:'Chris',lname:'Buchberger',phone:'06776239005',email:'c.buchberger01@gmail.com',fax:'+43 06473/42221',rank:'Project Manager',premissions:prems,image:null,globals:{generateEmailText:true}},
 ]
 
 

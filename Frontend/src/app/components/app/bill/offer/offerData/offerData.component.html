@@ -3,13 +3,13 @@
     <div class="block">
       <h1>Angebots Informationen</h1>
     </div>
-    <input type="text" [disabled]="locked ? 'disabled':null" name="country" placeholder="Kundennummer">
-    <input type="text" [disabled]="locked ? 'disabled':null" name="country" placeholder="Anfrage">
-    <input type="text" [disabled]="locked ? 'disabled':null" name="country" placeholder="Liefertermin">
+    <input type="text" [readonly]="locked" name="country" placeholder="Kundennummer">
+    <input type="text" [readonly]="locked" name="country" placeholder="Anfrage">
+    <input type="text" [readonly]="locked" name="country" placeholder="Liefertermin">
     <!--DATE PICKER START-->
-    <input placeholder="Liefertermin"  type="text" matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+      <input readonly placeholder="Möglicher Liefertermin" type="text" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     <!--DATE PICKER END-->
 
     <!--CONSULTANT-->
@@ -17,7 +17,7 @@
       <h1>Sachbearbeiter</h1>
     </div>
     <div id="consultant-select">
-      <select placeholder="h" (change)="onConsultantChange($event.target.value)" placeholder="Sachbearbeiter" type="text" [disabled]="locked ? 'disabled':null">
+      <select placeholder="h" (change)="onConsultantChange($event.target.value)" placeholder="Sachbearbeiter" type="text">
         <option hidden>Sachbearbeiter auswählen</option>
         <option *ngFor="let val of consultantList" value={{val.id}}>{{val.string}}</option>
       </select>
@@ -25,11 +25,11 @@
     </div>
        <!--Consultant Data-->
       <div *ngIf=showConsultant>
-        <input disabled=disabled id="small" type="text" placeholder="Vorname"  name="consultant1" [(ngModel)]="consultant.fname">
-        <input disabled=disabled id="small" type="text" placeholder="Nachname"  name="consultant2" [(ngModel)]="consultant.lname">
-        <input disabled=disabled id="small" type="text" placeholder="Telefon Nummer"  name="consultant3" [(ngModel)]="consultant.phone">
-        <input disabled=disabled id="small" type="text" placeholder="E-Mail"  name="consultant4" [(ngModel)]="consultant.email">
-        <input disabled=disabled type="text" id="small" placeholder="Fax"  name="consultant4" >
+        <input readonly id="small" type="text" placeholder="Vorname"  name="consultant1" [(ngModel)]="consultant.fname">
+        <input readonly id="small" type="text" placeholder="Nachname"  name="consultant2" [(ngModel)]="consultant.lname">
+        <input readonly id="small" type="text" placeholder="Telefon Nummer"  name="consultant3" [(ngModel)]="consultant.phone">
+        <input readonly id="small" type="text" placeholder="E-Mail"  name="consultant4" [(ngModel)]="consultant.email">
+        <input readonly type="text" id="small" placeholder="Fax"  name="consultant5" [(ngModel)]="consultant.fax">
        </div>
 
 
