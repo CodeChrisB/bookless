@@ -3,6 +3,8 @@ import { HttpClient} from '@angular/common/http';
 import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
 import { ContactPerson } from 'src/models/ContactPerson';
 import { IRawProduct } from 'src/models/Product/RawProduct';
+import { StringShortener } from '../tools/StringShortner';
+import { IStringId } from 'src/models/misc/IStringID';
 
 var raw :IRawProduct[] = [
   {productId:1,name:'ZC-43',description:'Wärmetauscher',price:643},
@@ -36,6 +38,11 @@ export class RawProductService {
     return raw.filter(x=>x.productId=id)[0];
   }
 
+  static getProductNameList():IStringId[]{
+    var list : IStringId[] = []
+    raw.forEach(product=>list.push({id:product.productId,string:product.name+" "+StringShortener.Trim(product.description,154)}));
+    return list;
+  }
 
   static getProductsById(ids:number[]):IRawProduct[]{
     var selectedProducts :IRawProduct[] = [];

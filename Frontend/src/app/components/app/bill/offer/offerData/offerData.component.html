@@ -39,7 +39,30 @@
     <div class="block">
       <h1>Produkte</h1>
     </div>
-    <h1>Todo talk with PowerSolar Dev about this</h1>
-
+    <div *ngFor="let product of offerData.prodcuts">
+      <!--Auto Picker-->
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+        <!--ProductID-->
+        <input id="productId" readonly type="text"  placeholder="ID"  name="prod1">
+        <!--Name-->
+        <input readonly type="text" id="small" placeholder="Name"  name="prod2">
+        <!--Description-->
+        <input readonly type="text" id="small" placeholder="Beschreibung"  name="prod3">
+        <!--Price-->
+        <input readonly type="text" id="small" placeholder="Preis"  name="prod4">
+        <!--Price-->
+        <input readonly type="text" id="small" placeholder="Gesammt Preis"  name="prod5">
+    </div>
+    <br>
+<button (click)="newProduct()">d</button>
   </form>
 </mat-card>

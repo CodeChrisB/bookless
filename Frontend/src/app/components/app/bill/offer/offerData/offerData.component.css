@@ -3,6 +3,11 @@ mat-card{
   border-radius: 0px;
 }
 
+form{
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 input, select{
   position: relative;
   left: 10px;
@@ -49,5 +54,7 @@ div.block h1{
   width: 50px;
 }
 
-
+input#productId{
+  width: 30px;
+}
 
