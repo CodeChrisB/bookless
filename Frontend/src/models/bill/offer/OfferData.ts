@@ -16,13 +16,7 @@ export interface IOfferData{
     bruttoValue:number;
     status:string;
     possibleDelivery:Date;
-    administrator:{
-      firstname:string;
-      lastname:string;
-      phone:string;
-      fax:string;
-      email:string
-    }
+    consultantId:number;
     stages:{
       offer:boolean;
       order:boolean;

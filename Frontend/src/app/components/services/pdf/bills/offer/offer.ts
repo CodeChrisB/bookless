@@ -8,14 +8,14 @@ import { of } from "rxjs";
 import { CompanyService } from "../../../crm/companylist";
 import { DateFormatter } from "../../../tools/dateFormatter";
 import { CustomerService } from "../../../crm/customerlist";
+import { UserService } from "../../../profile/UserService";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class OfferPdfService{
 
-  offer;
+  offer
 
 
-  brea
 
   public products: Array<string[]> = [['Pos.','Bezeichnung','Menge','Preis','Gesamt']]
   total:number=0;
@@ -80,13 +80,14 @@ export class OfferPdfService{
   initData(id:number,isCompany:boolean){
 
     //rightblock static data
+    var user = UserService.getUser(this.offer.consultantId)
     this.pdfData.rightBlock.date = this.offer.date;
     this.pdfData.rightBlock.orderNr = this.offer.number;
     this.pdfData.rightBlock.projectName = this.offer.projectName;
-    this.pdfData.rightBlock.consultant.name = this.offer.administrator.firstname+' '+this.offer.administrator.lastname;
-    this.pdfData.rightBlock.consultant.phone = this.offer.administrator.phone;
-    this.pdfData.rightBlock.consultant.fax = this.offer.administrator.fax;
-    this.pdfData.rightBlock.consultant.email = this.offer.administrator.email;
+    this.pdfData.rightBlock.consultant.name = user.fname +" "+user.lname
+    this.pdfData.rightBlock.consultant.phone =user.phone
+    this.pdfData.rightBlock.consultant.fax = user.fax
+    this.pdfData.rightBlock.consultant.email = user.email
 
     //upperTextBlock static data
     this.pdfData.upperTextBlock.orderName = this.offer.name;

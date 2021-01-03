@@ -7,7 +7,11 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { RawProductService } from 'src/app/components/services/prodcut/rawProduct';
+import { IConsultant  } from 'src/models/Profile/Consultant';
+
 import { IOfferData } from 'src/models/bill/offer/OfferData';
+import { CompanyService } from 'src/app/components/services/crm/companylist';
+import { CustomerService } from 'src/app/components/services/crm/customerlist';
 
 
 @Component({
@@ -19,21 +23,53 @@ export class OfferData implements OnInit  {
 
   locked=false;
   consultantList : IStringId[];
+  customerList: IStringId[];
   consultant : IUser =null;
   showConsultant =false;
-
-  onConsultantChange(val){
-    this.consultant = UserService.getUser(val);
-    this.showConsultant=true;
-  }
-
-
-
-
+  showProducts = true;
+  msg="Do"
   myControl = new FormControl();
   options: number[] = RawProductService.getProductIdList();
   filteredOptions: Observable<number[]>;
   search:string
+
+
+  doOffer(){
+    this.fillInOffer()
+    console.dir(this.offerData)
+
+  }
+
+
+  fillInOffer(){
+    this.offerData.offer.possibleDelivery = new Date(this.offerData.offer.possibleDelivery)
+
+    //brutto value
+    //name
+    //number
+    //plz
+    //status
+    //street
+    //town
+    //uid
+  }
+
+  changeCustomerType(){
+    this.offerData.offer.isCompany=!this.offerData.offer.isCompany;
+    this.customerList =  this.offerData.offer.isCompany ? CompanyService.getCompanyCustomerIdList():CustomerService.getPrivateCustomerIdList();
+  }
+
+  onCustomerChange(val:number){
+    this.offerData.offer.customerId=val
+  }
+
+  onConsultantChange(val:number){
+    this.offerData.offer.consultantId=val
+    this.consultant = UserService.getUser(val);
+  }
+
+
+
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -43,19 +79,17 @@ export class OfferData implements OnInit  {
 
     //consultant init
      this.consultantList = UserService.getUserNameList();
+    //customer init
+    this.customerList = CompanyService.getCompanyCustomerIdList();
   }
 
   private _filter(value: string): number[] {
-    const filterValue = value.toLowerCase();
-
     return this.options
   }
 
 
 
-  newProduct(){
-    this.offerData.prodcuts.push({product:{productId:0,name:'',description:'',price:0},amount:0})
-  }
+
 
   setProdcutData(productId:number){
     this.search=""
@@ -64,6 +98,13 @@ export class OfferData implements OnInit  {
 
   getProductNameById(id:number):String{
     return RawProductService.getProductFullName(id);
+  }
+
+  removeProduct(id:number){
+    alert(this.offerData.prodcuts[id].product.name)
+    console.dir(this.offerData.prodcuts)
+
+    this.offerData.prodcuts.splice(id,1)
   }
 
 
@@ -83,13 +124,7 @@ export class OfferData implements OnInit  {
       bruttoValue:0,
       status:'',
       possibleDelivery:null,
-      administrator:{
-        firstname:'',
-        lastname:'',
-        phone:'',
-        fax:'',
-        email:''
-    },
+      consultantId:-1,
     // at start a offer is just a offer it is not transformed yet into anything else
     stages:{
       offer:false,
@@ -99,7 +134,7 @@ export class OfferData implements OnInit  {
       canceld:false,
     }
   },
-  prodcuts:[{product:{productId:0,name:'',description:'',price:0},amount:0}]
+  prodcuts:[]
   }
 }
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
 import { ContactPerson } from 'src/models/ContactPerson';
+import { IStringId } from 'src/models/misc/IStringID';
 
 
 const companyCustomers : ICompanyCustomer[] = [
@@ -57,6 +58,12 @@ export class CompanyService {
 
   static updateCustomer(customer:ICompanyCustomer){
     companyCustomers.find(c => c.id==customer.id) == customer
+  }
+
+  static getCompanyCustomerIdList():IStringId[]{
+    var arr : IStringId[] = [];
+    companyCustomers.forEach(c=>arr.push({id:c.id,string:c.name}))
+    return arr;
   }
 
 
