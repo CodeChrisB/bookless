@@ -35,7 +35,7 @@ export class RawProductService {
   }
 
   static getProduct(id:number): IRawProduct{
-    return raw.filter(x=>x.productId=id)[0];
+    return raw.filter(x=>x.productId==id)[0];
   }
 
   static getProductNameList():IStringId[]{
@@ -43,6 +43,20 @@ export class RawProductService {
     raw.forEach(product=>list.push({id:product.productId,string:product.name+" "+StringShortener.Trim(product.description,154)}));
     return list;
   }
+
+  static getProductIdList():number[]{
+    var list : number[] = []
+    raw.forEach(product=>list.push(product.productId));
+    console.dir(list)
+    return list;
+  }
+  static getProductFullName(id:number) : String{
+    var item = raw.filter(x=>x.productId==id)[0];
+    if(item !=undefined)
+    return item.name+" "+item.description;
+    return ""
+  }
+
 
   static getProductsById(ids:number[]):IRawProduct[]{
     var selectedProducts :IRawProduct[] = [];

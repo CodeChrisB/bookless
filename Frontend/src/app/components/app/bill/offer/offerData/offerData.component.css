@@ -57,4 +57,17 @@ div.block h1{
 input#productId{
   width: 30px;
 }
+input#name{
+  width: 30px;
+}
+input#desc{
+  width: 30px;
+}
+
+input#price{
+  width: 30px;
+}
+input#total{
+  width: 30px;
+}
 

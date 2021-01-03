@@ -27,54 +27,43 @@ export class OfferData implements OnInit  {
     this.showConsultant=true;
   }
 
+
+
+
   myControl = new FormControl();
-  options: IStringId[];
-  filteredOptions: Observable<String[]>;
-
+  options: number[] = RawProductService.getProductIdList();
+  filteredOptions: Observable<number[]>;
+  search:string
   ngOnInit() {
-
-
-    //set up autocomplete
-    this.options = RawProductService.getProductNameList();
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
       );
 
-      console.clear()
-
-
+    //consultant init
+     this.consultantList = UserService.getUserNameList();
   }
 
-  private _filter(value: any): String[] {
-    if(value.hasOwnProperty('id')){
-      alert(value.id)
-    }else{
+  private _filter(value: string): number[] {
+    const filterValue = value.toLowerCase();
 
-      console.dir(this.options)
-      var filterd :String[]=[];
-      var id:number=-1;
-      this.options.forEach(obj=>{
-        if(obj.string==value)
-        {
-        id = obj.id;
-        console.dir(RawProductService.getProduct(obj.id))
-        }
-
-      })
-
-      this.options.forEach(o=>filterd.push(o.string))
-
-
-
-      const filterValue = value.toLowerCase();
-      return filterd.filter(option => option.toLowerCase().includes(filterValue));
-    }
+    return this.options
   }
+
+
 
   newProduct(){
     this.offerData.prodcuts.push({product:{productId:0,name:'',description:'',price:0},amount:0})
+  }
+
+  setProdcutData(productId:number){
+    this.search=""
+    this.offerData.prodcuts.push({product:RawProductService.getProduct(productId),amount:1})
+  }
+
+  getProductNameById(id:number):String{
+    return RawProductService.getProductFullName(id);
   }
 
 
@@ -110,7 +99,7 @@ export class OfferData implements OnInit  {
       canceld:false,
     }
   },
-  prodcuts:[{product:{productId:-1,name:'',description:'',price:0},amount:0}]
+  prodcuts:[{product:{productId:0,name:'',description:'',price:0},amount:0}]
   }
 }
 

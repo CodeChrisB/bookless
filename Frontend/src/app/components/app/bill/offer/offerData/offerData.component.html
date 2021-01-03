@@ -39,30 +39,40 @@
     <div class="block">
       <h1>Produkte</h1>
     </div>
-    <div *ngFor="let product of offerData.prodcuts">
-      <!--Auto Picker-->
+     <!--Auto Picker-->
+
+
+     <form class="example-form">
+      <mat-form-field class="example-full-width">
         <input type="text"
                placeholder="Pick one"
                aria-label="Number"
+               matInput
                [formControl]="myControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
+               [matAutocomplete]="auto"
+               [(ngModel)]="search">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="setProdcutData($event.option.value)">
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+            {{getProductNameById(option)}}
           </mat-option>
         </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+
+
+    <div *ngFor="let product of offerData.prodcuts ; let i = index">
         <!--ProductID-->
-        <input id="productId" readonly type="text"  placeholder="ID"  name="prod1">
+        <input id="productId" type="text"  placeholder="ID" [ngModel]="offerData.prodcuts[i].amount" name={{i*5+4}}>
         <!--Name-->
-        <input readonly type="text" id="small" placeholder="Name"  name="prod2">
+        <input readonly type="text" id="small" placeholder="Name" [ngModel]="offerData.prodcuts[i].product.name"  name={{i*5+3}}>
         <!--Description-->
-        <input readonly type="text" id="small" placeholder="Beschreibung"  name="prod3">
+        <input readonly type="text" id="small" placeholder="Beschreibung"  [ngModel]="offerData.prodcuts[i].product.description"   name={{i*5+2}}>
         <!--Price-->
-        <input readonly type="text" id="small" placeholder="Preis"  name="prod4">
+        <input readonly type="text" id="small" placeholder="Preis"  [ngModel]="offerData.prodcuts[i].product.price"    name={{i*5+1}}>
         <!--Price-->
-        <input readonly type="text" id="small" placeholder="Gesammt Preis"  name="prod5">
+        <input readonly type="text" id="small" placeholder="Gesammt Preis"  value={{offerData.prodcuts[i].amount*offerData.prodcuts[i].product.price}}  name={{i*5}}>
     </div>
     <br>
-<button (click)="newProduct()">d</button>
   </form>
 </mat-card>
