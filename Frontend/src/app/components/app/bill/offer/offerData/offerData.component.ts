@@ -12,6 +12,8 @@ import { IConsultant  } from 'src/models/Profile/Consultant';
 import { IOfferData } from 'src/models/bill/offer/OfferData';
 import { CompanyService } from 'src/app/components/services/crm/companylist';
 import { CustomerService } from 'src/app/components/services/crm/customerlist';
+import { OfferService } from 'src/app/components/services/bill/OfferService';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -32,27 +34,47 @@ export class OfferData implements OnInit  {
   options: number[] = RawProductService.getProductIdList();
   filteredOptions: Observable<number[]>;
   search:string
+  constructor(private route :Router) {}
 
 
   doOffer(){
     this.fillInOffer()
-    console.dir(this.offerData)
-
+    OfferService.addOffer(this.offerData);
+    this.route.navigate(['/app/sales/offer']);
   }
 
-
+  //#region Fill in the Offer Data
   fillInOffer(){
     this.offerData.offer.possibleDelivery = new Date(this.offerData.offer.possibleDelivery)
 
     //brutto value
-    //name
-    //number
-    //plz
+    this.offerData.offer.bruttoValue = this.getBruttoValue()
+    //number --> will be provided by backend
     //status
-    //street
-    //town
+    this.offerData.offer.status = 'Erstellt'
+    //this.offerData.offer.town = this.getTown()
     //uid
+    this.offerData.offer.uid = this.getCustomerUID()
+    //date of creation
+    this.offerData.offer.date = new Date();
   }
+
+  getBruttoValue():number{
+    let sum: number = 0;
+    this.offerData.prodcuts.forEach(a => sum += a.product.price*a.amount);
+    return sum;
+  }
+
+  getTown():string{
+    return 'this.offerData.offer.isCompany ?  CompanyService.getCustomer(this.offerData.offer.customerId).'
+  }
+
+  getCustomerUID():string{
+    return this.offerData.offer.isCompany ? CompanyService.getCustomer(this.offerData.offer.customerId).uid : 'PK-EK-40000';
+  }
+
+  //#endregion
+
 
   changeCustomerType(){
     this.offerData.offer.isCompany=!this.offerData.offer.isCompany;
@@ -106,6 +128,12 @@ export class OfferData implements OnInit  {
 
     this.offerData.prodcuts.splice(id,1)
   }
+
+
+
+
+
+
 
 
 

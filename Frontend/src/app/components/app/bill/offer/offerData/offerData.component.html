@@ -3,7 +3,11 @@
     <div class="block">
       <h1>Angebots Informationen</h1>
     </div>
-   <input type="text" [(ngModel)]="offerData.offer.projectName" [readonly]="locked" name="offer" placeholder="Anfrage">
+
+    <input type="text" [(ngModel)]="offerData.offer.projectName" [readonly]="locked" name="offer" placeholder="Anfrage">
+   <input type="text" [(ngModel)]="offerData.offer.plz" [readonly]="locked" name="plz" placeholder="Postleitzahl">
+   <input type="text" [(ngModel)]="offerData.offer.town" [readonly]="locked" name="town" placeholder="Ort">
+   <input type="text" [(ngModel)]="offerData.offer.street" [readonly]="locked" name="street" placeholder="Straße">
     <!--DATE PICKER START-->
       <input readonly  [(ngModel)]="offerData.offer.possibleDelivery" placeholder="Möglicher Liefertermin" name="possibleDate" type="text" [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -14,14 +18,13 @@
     <div class="block">
       <h1>Kunde</h1>
     </div>
-    <mat-button-toggle (click)="changeCustomerType()">{{offerData.offer.isCompany ? 'Firmen Kunde' : 'Privat Kunde'}}</mat-button-toggle>
-    <br>
     <div id="center-select">
-      <select placeholder="h" (change)="onConsultantChange($event.target.value)" placeholder="customerId" type="text">
+    <mat-button-toggle id="customer-button" (click)="changeCustomerType()">{{offerData.offer.isCompany ? 'Firmen Kunde' : 'Privat Kunde'}}</mat-button-toggle>
+      <select placeholder="h" (change)="onCustomerChange($event.target.value)" placeholder="customerId" type="text">
         <option hidden>Kunde auswählen</option>
         <option *ngFor="let val of customerList" value={{val.id}}>{{val.string}}</option>
       </select>
-  </div>
+    </div>
     <!--CONSULTANT-->
     <div class="block">
       <h1>Sachbearbeiter</h1>

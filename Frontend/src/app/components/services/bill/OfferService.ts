@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { IOfferData } from 'src/models/bill/offer/OfferData';
 
@@ -113,6 +114,10 @@ export class OfferService {
 
   static getOffers():IOfferData[]{
     return offer;
+  }
+
+  static addOffer(newOffer:IOfferData){
+    offer.push(newOffer);
   }
 
 }

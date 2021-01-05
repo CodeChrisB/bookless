@@ -42,6 +42,12 @@ div.block h1{
  left: 10px;
 }
 
+#customer-button{
+  background-color: white;
+  color: black;
+  margin-left: 1vw;
+}
+
 #addButton
 {
   margin-top: 10px;
