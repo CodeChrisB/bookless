@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {IPrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
 import {MatDialog} from '@angular/material/dialog';
-import {CompanyService} from '../../../services/companylist'
+import {CompanyService} from '../../../services/crm/companylist'
 import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
+import { ContactPerson } from 'src/models/ContactPerson';
+import { Router } from '@angular/router';
 
 
 
@@ -17,7 +19,7 @@ styleUrls: ['./company.component.css']
 })
 export class Company  {
   //init the data
-  displayedColumns = ["id", "name", "companyLocation","shippingAdress","contactPerson"];
+  displayedColumns = ["id", "name", "companyLocation","shippingAdress","contactPerson","actions"];
 
 
    // MatPaginator Inputs
@@ -37,12 +39,8 @@ export class Company  {
     console.log('Row clicked: ', row);
   }
 
-  updateCustomer(row : ICompanyCustomer){
-    console.dir(row)
-    alert(row.contactPersons)
-  }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,public route: Router) {}
 
   deleteCustomer(row : ICompanyCustomer){
      if(confirm('Wollen Sie ' + row.contactPersons +'löschen?')){
@@ -52,12 +50,45 @@ export class Company  {
      }
   }
 
-  addCustomer(){
-    alert('Mhh das geht noch nicht ganz')
-  }
+
 
   refresh() {
       this.dataSource = this.dataSource;
     }
+
+
+
+
+    getFirstAdress(p:ICompanyCustomer):string{
+      //get the first shipping adress
+
+      return p.shippingAdress[0].adress;
+    }
+
+    getFirstContactPerson(p:ContactPerson):string{
+      //get the first contact person phone number
+      return p[0].email;
+    }
+
+
+    //customerData routing methods
+
+    showCustomer(row : ICompanyCustomer) {
+      this.route.navigate(['/app/crm/company/show'], { state: {mode:'show', id: row.id } });
+     }
+
+     updateCustomer(row : ICompanyCustomer){
+       console.dir(row)
+       this.route.navigate(['/app/crm/company/edit'], { state: {mode:'edit', id: row.id } });
+     }
+
+     addCustomer(){
+       this.route.navigate(['/app/crm/company/new'] , { state: {mode:'add' } });
+     }
+
+
+
+
+
 
 }

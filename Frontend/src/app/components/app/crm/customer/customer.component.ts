@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {IPrivateCustomer} from '../../../../../models/Customer/PrivateCustomer'
 import {MatDialog} from '@angular/material/dialog';
-import {CustomerService} from '../../../services/customerlist'
+import {CustomerService} from '../../../services/crm/customerlist'
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { IEmailData } from 'src/models/email/emailData';

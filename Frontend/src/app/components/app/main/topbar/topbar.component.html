@@ -8,9 +8,9 @@
 
   <span class="spacer"></span>
   <button routerLink="profile/user" mat-button class="icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <img src="https://lh3.googleusercontent.com/ogw/ADGmqu89dz9UjM2XbXTLLoWXK11myVeeBaoL8YU50Ohx=s83-c-mo" alt="Buchibär">
+    <img [src]="image" matBadge="1" matBadgeSize="large" alt="Profil">
   </button>
-  <button mat-button class="-icon" aria-label="Example icon-button with share icon">
+  <button *ngIf=user.premissions.settings.read mat-button class="-icon" aria-label="Example icon-button with share icon">
    <mat-icon routerLink="settings/dashboard">settings</mat-icon>
  </button>
  </mat-toolbar>

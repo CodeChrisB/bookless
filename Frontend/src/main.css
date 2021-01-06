@@ -727,7 +727,7 @@ input.mat-input-element {
 .cdk-global-scrollblock {
 	position: fixed;
 	width: 100%;
-	overflow-y: scroll
+	overflow-y: auto
 }
 
 @keyframes cdk-text-field-autofill-start {
