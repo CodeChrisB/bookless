@@ -63,9 +63,9 @@
                     </mat-icon>
                   </div>
                   <mat-menu #menu="matMenu" >
-                    <button mat-menu-item (click)="showCustomer(row)" >Ansehen</button>
-                    <button mat-menu-item (click)="updateCustomer(row)">Bearbeiten</button>
-                    <button mat-menu-item (click)="deleteCustomer(row)" >Löschen</button>
+                    <button mat-menu-item (click)="showOffer(row)" >Ansehen</button>
+                    <button mat-menu-item (click)="updateOffer(row)">Bearbeiten</button>
+                    <button mat-menu-item (click)="deleteOffer(row)" >Löschen</button>
                     <button mat-menu-item (click)="downloadPdf(row)" >Download</button>
                   </mat-menu>
                   </mat-cell>
@@ -76,7 +76,7 @@
 
             <mat-row  *matRowDef="let row; columns: displayedColumns"></mat-row>
           </mat-table>
-          <button id="addButton" (click)="addCustomer()">
+          <button id="addButton" (click)="addOffer()">
             <mat-icon>
                 add
             </mat-icon>

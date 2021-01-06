@@ -120,4 +120,8 @@ export class OfferService {
     offer.push(newOffer);
   }
 
+  static deleteOffer(number:number){
+    offer = offer.filter(o=>o.offer.number!=number)
+  }
+
 }

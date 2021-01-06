@@ -41,16 +41,17 @@ export class Offer  {
      this.pageIndex = $event.pageIndex;
     }
 
-  showCustomer(row : IOfferData) {
-   this.route.navigate(['/app/sales/offer/show'], { state: {mode:'show', id: row.offer.number } });
+  showOffer(row : IOfferData) {
+    var ops = new OfferPdfService(row)
+    ops.open();
   }
 
-  updateCustomer(row : IOfferData){
+  updateOffer(row : IOfferData){
     console.dir(row)
     this.route.navigate(['/app/sales/offer/edit'], { state: {mode:'edit', id: row.offer.number } });
   }
 
-  addCustomer(){
+  addOffer(){
     this.route.navigate(['/app/sales/offer/new'] , { state: {mode:'add' } });
   }
 
@@ -62,10 +63,11 @@ export class Offer  {
 
   constructor(public dialog: MatDialog,private route :Router) {}
 
-  deleteCustomer(row : IOfferData){
+  deleteOffer(row : IOfferData){
      if(confirm('Wollen Sie ' + row.offer.name +' löschen?')){
-          this.length = this.dataSource.length;
-          this.refresh();
+        OfferService.deleteOffer(row.offer.number)
+        this.length = this.dataSource.length;
+        this.dataSource =  OfferService.getOffers()
      }
   }
 
