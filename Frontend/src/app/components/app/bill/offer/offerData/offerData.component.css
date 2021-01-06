@@ -24,6 +24,13 @@ input:disabled,select:disabled{
 #cursor{
   cursor: pointer;
 }
+#scroll{
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  padding-top: 16px;
+}
 div.block{
   padding-top: 10px;
   border-radius: 0px 50px 50px 0px;

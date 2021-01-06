@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card id="scroll">
   <form>
     <div class="block">
       <h1>Angebots Informationen</h1>
@@ -74,17 +74,21 @@
 
       <div *ngIf="showProducts">
         <div  *ngFor="let product of offerData.prodcuts ; let i = index">
-            <!--ProductID-->
-            <input id="productId" type="text"  placeholder="ID" [ngModel]="offerData.prodcuts[i].amount" name={{i*5+4}}>
-            <!--Name-->
-            <input readonly type="text" id="small" placeholder="Name" [ngModel]="offerData.prodcuts[i].product.name"  name={{i*5+3}}>
-            <!--Description-->
-            <input readonly type="text" id="small" placeholder="Beschreibung"  [ngModel]="offerData.prodcuts[i].product.description"   name={{i*5+2}}>
-            <!--Price-->
-            <input readonly type="text" id="small" placeholder="Preis"  [ngModel]="offerData.prodcuts[i].product.price"    name={{i*5+1}}>
-            <!--Price-->
-            <input readonly type="text" id="small" placeholder="Gesammt Preis"  value={{offerData.prodcuts[i].amount*offerData.prodcuts[i].product.price}}  name={{i*5}}>
-          <button (click)="removeProduct(i)"><mat-icon>delete</mat-icon></button>
+          <hr>
+            <div id="center-select">
+              <!--ProductID-->
+              <input id="productId" type="text"  placeholder="ID" [ngModel]="offerData.prodcuts[i].amount" name={{i*5+4}}>
+              <!--Name-->
+              <input readonly type="text" id="small" placeholder="Name" [ngModel]="offerData.prodcuts[i].product.name"  name={{i*5+3}}>
+              <!--Description-->
+              <input readonly type="text" id="small" placeholder="Beschreibung"  [ngModel]="offerData.prodcuts[i].product.description"   name={{i*5+2}}>
+              <!--Price-->
+              <input readonly type="text" id="small" placeholder="Preis"  [ngModel]="offerData.prodcuts[i].product.price"    name={{i*5+1}}>
+              <!--Price-->
+              <input readonly type="text" id="small" placeholder="Gesammt Preis"  value={{offerData.prodcuts[i].amount*offerData.prodcuts[i].product.price}}  name={{i*5}}>
+              <!--Delete-->
+              <button (click)="removeProduct(i)"><mat-icon>delete</mat-icon></button>
+            </div>
         </div>
       </div>
     <br>
