@@ -39,6 +39,7 @@
 <mat-card class="big">
   <div class="box">
     <button id="changeTop" (click)="show=!show">{{"Wechseln zu "+ (show ? 'Firmen':"Kunden")}}</button>
+
     <div *ngIf="show">
       <table id="topCustomer-table">
         <tr>
@@ -46,10 +47,10 @@
           <th>Nachname</th>
           <th>Email</th>
         </tr>
-        <tr *ngFor="let c of customers">
-          <td>{{c.fName}}</td>
-          <td>{{c.lName}}</td>
-          <td>{{c.email}}</td>
+        <tr *ngFor="let c of customers" >
+          <td (click)="goToShowCustomerPage(c.id)">{{c.fName}}</td>
+          <td (click)="goToShowCustomerPage(c.id)">{{c.lName}}</td>
+          <td (click)="goToShowCustomerPage(c.id)">{{c.email}}</td>
         </tr>
       </table>
     </div>
@@ -61,9 +62,9 @@
           <th>Lieferadresse</th>
         </tr>
         <tr *ngFor="let c of companies">
-          <td>{{c.name}}</td>
-          <td>{{c.contactPersons[0].lName}}</td>
-          <td>{{c.shippingAdress[0]}}</td>
+          <td (click)="goToShowCompanyPage(c.id)">{{c.name}}</td>
+          <td (click)="goToShowCompanyPage(c.id)">{{c.contactPersons[0].lName}}</td>
+          <td (click)="goToShowCompanyPage(c.id)">{{c.shippingAdress[0].adress}}</td>
         </tr>
       </table>
     </div>
@@ -71,4 +72,12 @@
   </div>
 </mat-card>
 
+<mat-card class="small">
+  Daten
+  <hr>
+<h4>Kunden insgesamt : {{totalCustomers}}</h4>
+<h4>Neue Kunden : {{newCustomers}}</h4>
+
+
+</mat-card>
 

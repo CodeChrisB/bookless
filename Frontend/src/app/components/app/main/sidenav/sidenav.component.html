@@ -18,18 +18,18 @@
       <mat-icon>business</mat-icon>
       <button mat-button >Firmen</button>
     </p>
-    <!--Bill-->
+    <!--Sales-->
     <p *ngIf=user.premissions.bills class="button-container"  (click)="openBill()">
       <mat-icon>payments</mat-icon>
-      <button mat-button>Rechnungen</button>
+      <button mat-button>Verkauf</button>
     </p>
     <p  *ngIf="billOpen" id="child" class="button-container">
       <mat-icon>account_circle</mat-icon>
-      <button  mat-button routerLink="bill/offer">Angebot</button>
+      <button  mat-button routerLink="sales/offer">Angebot</button>
     </p>
     <p  *ngIf="billOpen" id="child" class="button-container">
       <mat-icon>account_circle</mat-icon>
-      <button  mat-button routerLink="bill/offer">Rechnung</button>
+      <button  mat-button routerLink="sales/bill">Rechnung</button>
     </p>
     <!--Produkte-->
     <p *ngIf=user.premissions.products class="button-container" (click)="openProduct()">

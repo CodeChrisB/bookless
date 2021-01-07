@@ -20,7 +20,7 @@
         <ng-container matColumnDef="companyLocation">
             <mat-header-cell *matHeaderCellDef>Company Location</mat-header-cell>
             <mat-cell class="duration-cell"
-                      *matCellDef="let company">{{company.companyLocation}}</mat-cell>
+                      *matCellDef="let company">{{company.companyLocation.country}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="shippingAdress">

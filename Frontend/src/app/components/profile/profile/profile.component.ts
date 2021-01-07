@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/models/Profile/User';
-import { UserService } from '../services/profile/UserService';
+import { UserService } from '../../services/profile/UserService';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 interface User {
     name:    string;
@@ -11,16 +13,24 @@ interface User {
 @Component({
 selector: 'profile-component',
 templateUrl: './profile.component.html',
-styleUrls: ['./profile.component.css','../css/passform.css']
+styleUrls: ['./profile.component.css']
 })
 
 export class Profile implements OnInit  {
 
-  user : IUser;
+  constructor(private _sanitizer: DomSanitizer,private route: Router) { }
 
+  user : IUser;
+  showPass;
   ngOnInit(){
     //when we have backend access we need to specify which user we want to get.
     this.user = UserService.getUser(1);
+    //get the imge from the user
+    this.showPass={
+      old:false,
+      first:false,
+      second:false
+    }
   }
 
 
@@ -29,7 +39,7 @@ export class Profile implements OnInit  {
     password = {
       "current":"",
       "newFirst":"",
-      "newSecond":"nope12345"
+      "newSecond":""
     }
 
     //the password data that will be sent to the server for change
@@ -40,7 +50,7 @@ export class Profile implements OnInit  {
 
 	selectFile(event) {
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.msg = 'You must select an image';
+			this.user.image = 'You must select an image';
 			return;
 		}
 
@@ -56,8 +66,7 @@ export class Profile implements OnInit  {
 
 		reader.onload = (_event) => {
 			this.msg = "";
-            this.url = reader.result;
-            console.dir(this.url);
+            this.user.image = reader.result.toString();
 		}
   }
 
@@ -72,8 +81,7 @@ export class Profile implements OnInit  {
       this.clearPassFields();
       return;
     }
-
-    if(this.password.newFirst != this.password.newSecond)
+    else if(this.password.newFirst != this.password.newSecond)
     {
       alert("Bitte geben sie zweimal das gleiche Passwort ein.");
       this.clearPassFields();
@@ -101,8 +109,23 @@ export class Profile implements OnInit  {
     }
   }
 
+  routeTo(route:string){
+    this.route.navigate([('/app/'+route)]);
+  }
 
+  getUserCount() {
+    return UserService.getUserCount();
+  }
 
+  toSettings(){
+    this.route.navigate(['/settings/dashboard'])
+  }
 
+  saveUser(){
+    UserService.updateUser(this.user)
+  }
 
+  userSettings(){
+    this.route.navigate(['/profile/settings'], { state: {id:this.user.id } });
+  }
 }

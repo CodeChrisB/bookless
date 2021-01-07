@@ -1,0 +1,11 @@
+.mat-card{
+    width: 96vw;
+    float:left;
+    background:gray;
+    margin:1vh;
+}
+
+#full{
+  height:80vh;
+  max-height: 80vh;
+}

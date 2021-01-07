@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from './app.component';
@@ -40,12 +39,23 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
-import {Profile} from './components/profile/profile.component';
+import {Profile} from './components/profile/profile/profile.component';
 import { Customer } from './components/app/crm/customer/customer.component'
 import { addCustomer } from './components/app/crm/customer/customerData/customerData';
 import { Dashboard } from './components/app/dashboard/dashboard.component';
 import { Company } from './components/app/crm/company/company.component';
 import { addCompanyCustomer } from './components/app/crm/company/companyData/customerData';
+import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
+import { HeatexchangerData } from './components/app/products/ProductData/ProductData';
+import { Offer } from './components/app/bill/offer/list/offer.component';
+import { ProfileSettings } from './components/profile/settings/profileSettings.component';
+import { OfferData } from './components/app/bill/offer/offerData/offerData.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SettingsComponent } from './components/settings/settings/Settings.component';
+import { MainsettingsComponent } from './components/settings/Main/MainSettings.component';
+import { SettingsdashboardComponent } from './components/settings/Dashboard/SettingsDashboard.component';
+import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
+
 
 @NgModule({
   declarations: [
@@ -60,8 +70,21 @@ import { addCompanyCustomer } from './components/app/crm/company/companyData/cus
     Dashboard,
     Company,
     addCompanyCustomer,
+    Heatexchanger,
+    HeatexchangerData,
+    Offer,
+    ProfileSettings,
+    OfferData,
+    SettingsComponent,
+    MainsettingsComponent,
+    SettingsdashboardComponent,
+    SettingssidenavComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule ,
     AppRoutingModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -99,7 +122,7 @@ import { addCompanyCustomer } from './components/app/crm/company/companyData/cus
     MatPaginatorModule,
   ],
 
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 
 })

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {IPrivateCustomer} from '../../../../models/Customer/PrivateCustomer'
+import { IStringId } from 'src/models/misc/IStringID';
 
 var customers: IPrivateCustomer[] = [
     {id:1,fName:'Sebi',lName:'Knoll',adress:'Blümelguberstraße 9',phoneNumber:'06502232281',email:'c.knoll@gmail.com',gender:'m'},
@@ -53,6 +54,13 @@ export class CustomerService {
   static removeCustomer(id:number){
     customers = customers.slice(id,id+1);
   }
+
+  static getPrivateCustomerIdList():IStringId[]{
+    var arr : IStringId[] = [];
+    customers.forEach(c=>arr.push({id:c.id,string:c.fName+" "+c.lName}))
+    return arr;
+  }
+
 
 
 }

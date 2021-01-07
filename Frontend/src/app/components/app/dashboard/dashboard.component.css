@@ -20,7 +20,7 @@
 .mat-card{
   white-space: normal;
   width: 25vw;
-  height: 44vh;
+  height: 48vh;
   display: inline-block;
   margin-bottom: 0vh;
 
@@ -29,12 +29,19 @@
 }
 
 .big{
-  height: 77.5vh;
+  height: 55.5vh;
   width: 31.5vw;
   position: absolute;
   float: right;
   right: 0.5vw;
   top:9vh
+}
+.small{
+position: absolute;
+right: 1vw;
+height: 25.5vh;
+width: 31vw;
+bottom: 8.8vh;
 }
 
 .mat-card{
@@ -67,12 +74,12 @@ table {
   width: 95%;
   max-width: 95%;
   margin: 1vw;
-  margin-bottom: 3vh;
+  margin-top: 3vh;
 
 }
 
 .box{
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   max-height: 100%;
   height: 98vh;
@@ -93,6 +100,7 @@ td, th,tr {
 td{
   height: 6vh;
   width: 8vw;
+  cursor: pointer;
 }
 
 tr:nth-child(even) {
@@ -117,7 +125,7 @@ div.text{
   display: flex;
   flex-direction: column;
   flex-basis: 66%;
-  height: 38vh;
+  height: 40.1vh;
   flex: 1;
   margin:0.5vw;
 }

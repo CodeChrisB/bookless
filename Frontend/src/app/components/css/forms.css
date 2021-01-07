@@ -1,6 +1,18 @@
 
-input[type=text], select {
-  padding: 12px 20px;
+input[type=text], select,textarea,button#form {
+  padding: 12px 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+padding-left: 2vw;
+}
+
+input[type=number], select,textarea {
+  padding: 12px 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -8,7 +20,7 @@ input[type=text], select {
 }
 
 input[type=password], select {
-  padding: 12px 20px;
+  padding: 12px 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -28,3 +40,26 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+/*Remove number input arrows*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
