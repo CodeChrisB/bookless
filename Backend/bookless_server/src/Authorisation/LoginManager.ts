@@ -1,4 +1,4 @@
-import { User } from "../models/Authorisation/User";
+import { User } from "../models/Authorisation/IUser";
 
 export class LoginManager {
     users: Array<User> = new Array();

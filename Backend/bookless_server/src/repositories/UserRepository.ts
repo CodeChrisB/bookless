@@ -1,11 +1,11 @@
 import { exception } from "console";
 import { text } from "express";
 import { Client } from "ts-postgres";
-import { User } from "../models/Authorisation/User";
+import { IUser } from "../models/Authorisation/IUser";
 
 export class UserRepository {
 
-    users:User[] = []
+    users:IUser[] = []
     private client:Client = new Client({
         "host":"database", 
         "port": 5432,
@@ -22,12 +22,17 @@ export class UserRepository {
         await this.client.connect();
         try{
             this.users = [];
+            
             const resultIterator = await this.client.query("select id, username, password from users");
             console.log('Get Users from DB');
     
             for await (const row of resultIterator) {
-                
-                this.users.push(new User( Number(row.get("id")), String(row.get('username')), String(row.get('password'))));
+       
+                this.users.push( {
+                    id:Number(row.get("id")),
+                    fname:String(row.get('fname')),
+                    lname:String(row.get('lname'))
+                });
             }
 
             console.log(this.users)
@@ -36,10 +41,10 @@ export class UserRepository {
         }
     }
 
-    public async addUser(user:User){
+    public async addUser(user:IUser){
         await this.client.connect();
         try{ 
-           await this.client.query(`insert into users (username, password) values('${user.username}', '${user.password}')`);
+           await this.client.query(`insert into users (username, password) values('${user.fname}', '${user.lname}')`);
         } catch {
             throw exception("Insert failed");
         } finally {
