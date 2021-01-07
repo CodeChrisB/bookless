@@ -34,13 +34,51 @@ export class OfferData implements OnInit  {
   options: number[] = RawProductService.getProductIdList();
   filteredOptions: Observable<number[]>;
   search:string
+  editMode=false;
   constructor(private route :Router) {}
 
 
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+
+    //consultant init
+     this.consultantList = UserService.getUserNameList();
+    //customer init
+    this.customerList = CompanyService.getCompanyCustomerIdList();
+
+    //get the current mode
+    //check if url routing
+    if(history.state.mode == undefined && this.route.url.includes('edit')){
+      this.route.navigate(['/app/sales/offer'])
+    }
+    else{
+        this.editMode = history.state.mode =='edit';
+        if(this.editMode){
+          this.initEdit()
+          this.editMode=true;
+        }
+      }
+  }
+
+  initEdit(){
+    console.log( OfferService.getOffer(history.state.id))
+    this.offerData = OfferService.getOffer(history.state.id)
+  }
+
   doOffer(){
-    this.fillInOffer()
-    OfferService.addOffer(this.offerData);
-    this.route.navigate(['/app/sales/offer']);
+
+
+    if(this.editMode){
+      OfferService.updateOffer(this.offerData)
+    }else{
+      this.fillInOffer()
+      OfferService.addOffer(this.offerData);
+      this.route.navigate(['/app/sales/offer']);
+    }
   }
 
   //#region Fill in the Offer Data
@@ -90,20 +128,6 @@ export class OfferData implements OnInit  {
     this.consultant = UserService.getUser(val);
   }
 
-
-
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-
-    //consultant init
-     this.consultantList = UserService.getUserNameList();
-    //customer init
-    this.customerList = CompanyService.getCompanyCustomerIdList();
-  }
 
   private _filter(value: string): number[] {
     return this.options

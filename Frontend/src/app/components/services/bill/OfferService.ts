@@ -124,4 +124,13 @@ export class OfferService {
     offer = offer.filter(o=>o.offer.number!=number)
   }
 
+  static getOffer(number:number): IOfferData{
+    return offer.filter(o=>o.offer.number == number)[0]
+  }
+
+  static updateOffer(updatedOffer:IOfferData){
+    let itemIndex = offer.findIndex(item => item.offer.number == updatedOffer.offer.number);
+    offer[itemIndex] = updatedOffer;
+  }
+
 }
