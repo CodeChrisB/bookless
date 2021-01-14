@@ -6,4 +6,10 @@ export interface IPrivateCustomer {
     fName : string;
     lName : string;
     gender : string;
+    customerLocation : {
+      town : string;
+      plz:string;
+      street : string;
+      country : string;
+    };
 }

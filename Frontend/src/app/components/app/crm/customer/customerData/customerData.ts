@@ -42,7 +42,19 @@ export class addCustomer implements OnInit  {
 
 
 
- customerObject : IPrivateCustomer = {id:0,adress:"",phoneNumber:"",email:"",fName:"",lName:"",gender:""};
+ customerObject : IPrivateCustomer =
+ {id:0,
+  adress:"",
+  phoneNumber:"",
+  email:"",fName:"",
+  lName:"",gender:"",
+  customerLocation : {
+      town :"Ansfelden",
+      plz:"string",
+      street : "string",
+      country : "string"
+    }
+};
  constructor(private route :Router,public activatedRoute: ActivatedRoute) {}
 
   //#region All the Init Methods

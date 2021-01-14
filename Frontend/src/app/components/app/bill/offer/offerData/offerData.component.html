@@ -4,7 +4,7 @@
       <h1>Angebots Informationen</h1>
     </div>
 
-    <input type="text" [(ngModel)]="offerData.offer.name" [readonly]="locked" name="offer" placeholder="Anfrage">
+   <input type="text" [(ngModel)]="offerData.offer.name" [readonly]="locked" name="offer" placeholder="Anfrage">
    <input type="text" [(ngModel)]="offerData.offer.plz" [readonly]="locked" name="plz" placeholder="Postleitzahl">
    <input type="text" [(ngModel)]="offerData.offer.town" [readonly]="locked" name="town" placeholder="Ort">
    <input type="text" [(ngModel)]="offerData.offer.street" [readonly]="locked" name="street" placeholder="Straße">
@@ -93,6 +93,5 @@
       </div>
     <br>
     <input (click)="doOffer()" type="submit" value={{msg}}>
-
   </form>
 </mat-card>

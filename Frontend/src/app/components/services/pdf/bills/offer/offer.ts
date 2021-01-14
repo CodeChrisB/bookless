@@ -98,7 +98,7 @@ export class OfferPdfService{
       //leftblock
       this.pdfData.leftBlock.sentTo = customer.name;
       this.pdfData.leftBlock.street = customer.companyLocation.street;
-      this.pdfData.leftBlock.town  =customer.companyLocation.town;
+      this.pdfData.leftBlock.town  = customer.companyLocation.plz.concat(" ",customer.companyLocation.town);
       this.pdfData.leftBlock.country = customer.companyLocation.country;
       this.pdfData.leftBlock.plz = customer.companyLocation.plz;
 
@@ -113,10 +113,9 @@ export class OfferPdfService{
       var privateCustomer = CustomerService.getCustomer(id);
       //leftblock
       this.pdfData.leftBlock.sentTo = privateCustomer.fName;
-      this.pdfData.leftBlock.street = 'XXXXXXX';
-      this.pdfData.leftBlock.town  = 'XXXXXXX';
-      this.pdfData.leftBlock.country = 'XXXXXXX';
-      this.pdfData.leftBlock.plz = 'XXXXXXX';
+      this.pdfData.leftBlock.street = privateCustomer.customerLocation.street;
+      this.pdfData.leftBlock.town  = privateCustomer.customerLocation.plz+" "+privateCustomer.customerLocation.town;
+      this.pdfData.leftBlock.country =  privateCustomer.customerLocation.country;
 
       //rightblock
       this.pdfData.rightBlock.customerId = 'PK-40000';
@@ -128,7 +127,7 @@ export class OfferPdfService{
     }
 
     this.fillInData()
-
+    console.dir(this.pdfData)
   }
 
   //prints a number with commas as thoudsands separators
@@ -179,7 +178,7 @@ export class OfferPdfService{
             text:this.pdfData.leftBlock.sentTo
         },
         {
-            text:+this.pdfData.leftBlock.plz +' '+this.pdfData.leftBlock.town
+            text:this.pdfData.leftBlock.town
         },
         {
             text:this.pdfData.leftBlock.street
