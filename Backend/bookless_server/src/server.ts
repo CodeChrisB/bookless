@@ -1,12 +1,29 @@
-import express from "express";
-import { Client, DataType }  from "ts-postgres";
-import jwt from "jsonwebtoken";
-import bycrypt, { hash } from "bcryptjs";
-import { UserRepository } from "./repositories/UserRepository";
-import { IUser } from "./models/Authorisation/IUser";
 import * as bodyParser from 'body-parser';
-import { stringify } from "querystring";
+import "reflect-metadata";
+import { Container } from 'inversify';
+import { interfaces, InversifyExpressServer, TYPE } from 'inversify-express-utils';
 
+// declare metadata by @controller annotation
+import "./controllers/HomeController";
+
+// set up container
+let container = new Container();
+
+// create server
+let server = new InversifyExpressServer(container);
+server.setConfig((app) => {
+  // add body parser
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(bodyParser.json());
+});
+
+let app = server.build();
+app.listen(3000, () => {
+  console.log('Server runs on Port 3000');
+});
+/*
 const app = express();
 const userRepo = new UserRepository();
 app.use(bodyParser.json()); 
@@ -15,7 +32,7 @@ app.get('/api', async (req, res) => {
   console.log(userRepo.users)
   res.send(userRepo.users);
 });
-/*
+ 
 app.get('/api/testget', authenticateToken, (req:any, res:any) => {  
   res.json(userRepo.users);
 });
@@ -72,9 +89,9 @@ function authenticateToken(req:any, res:any, next:any) {
     req.user = user
     next()
   });
-}*/
+}
 
 app.listen(3000, () => {
   userRepo.getAllUsers();
   console.log('Running on Port 3000 . . .');
-});
+});*/

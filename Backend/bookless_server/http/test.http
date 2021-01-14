@@ -25,3 +25,7 @@ GET http://localhost:3000/api
 
 GET http://localhost:3000/api/testget
 Authorization: Bearer <Access-Token>
+
+###
+
+GET http://localhost:3000/greet

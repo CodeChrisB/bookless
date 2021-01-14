@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Node.js on Docker",
   "author": "First Last <first.last@example.com>",
-  "main": "src/server.ts",
+  "main": ".src/index.ts",
   "scripts": {
     "dev": "ts-node-dev bookless_server/src/server.ts",
     "start": "ts-node dist/server.js",
