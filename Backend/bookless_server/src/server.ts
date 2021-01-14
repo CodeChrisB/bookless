@@ -5,10 +5,12 @@ import { interfaces, InversifyExpressServer, TYPE } from 'inversify-express-util
 
 // declare metadata by @controller annotation
 import "./controllers/HomeController";
+import "./controllers/PrivateCustomerController";
+import { PrivateCustomerService } from './services/PrivateCustomerService';
 
 // set up container
 let container = new Container();
-
+container.bind<PrivateCustomerService>('PrivateCustomerService').to(PrivateCustomerService);
 // create server
 let server = new InversifyExpressServer(container);
 server.setConfig((app) => {
