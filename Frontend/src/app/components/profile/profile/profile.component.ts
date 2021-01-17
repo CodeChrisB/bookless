@@ -20,7 +20,9 @@ export class Profile implements OnInit  {
 
   constructor(private _sanitizer: DomSanitizer,private route: Router) { }
 
+  
   user : IUser;
+  
   showPass;
   ngOnInit(){
     //when we have backend access we need to specify which user we want to get.

@@ -48,7 +48,8 @@ const routes: Routes = [
 
       { path: 'settings', component: MainsettingsComponent,
         children: [
-          { path: "dashboard",  component: SettingsdashboardComponent}
+          { path: "dashboard",  component: SettingsdashboardComponent},
+          { path: "sales",  component: SalesComponent}
         ] },
     { path: "profile/user",  component: Profile},
     { path: "profile/settings",  component: ProfileSettings},
@@ -62,6 +63,8 @@ import { MainsettingsComponent } from './components/settings/Main/MainSettings.c
 import { SettingsdashboardComponent } from './components/settings/Dashboard/SettingsDashboard.component';
 
 import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
+
+import { SalesComponent } from './components/settings/Sales/Sales.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { enableTracing: true })],

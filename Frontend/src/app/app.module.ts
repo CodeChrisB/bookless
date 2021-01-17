@@ -55,6 +55,7 @@ import { SettingsComponent } from './components/settings/settings/Settings.compo
 import { MainsettingsComponent } from './components/settings/Main/MainSettings.component';
 import { SettingsdashboardComponent } from './components/settings/Dashboard/SettingsDashboard.component';
 import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
+import { SalesComponent } from './components/settings/Sales/Sales.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { SettingssidenavComponent } from './components/settings/Sidebar/Settings
     SettingsComponent,
     MainsettingsComponent,
     SettingsdashboardComponent,
-    SettingssidenavComponent
+    SettingssidenavComponent,
+    SalesComponent
   ],
   imports: [
     FormsModule,
