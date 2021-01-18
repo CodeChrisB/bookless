@@ -37,6 +37,12 @@ export class addCustomer implements OnInit  {
       "domicile":"",
       "orderAdress":"",
       "orderAdressOptional":""
+    },
+    customerLocation : {
+      town :"",
+      plz:"",
+      street : "",
+      country : ""
     }
   }
 

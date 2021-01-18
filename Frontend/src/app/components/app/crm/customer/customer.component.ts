@@ -63,7 +63,10 @@ export class Customer  {
 
   deleteCustomer(row : IPrivateCustomer){
      if(confirm('Wollen Sie ' + row.fName +' '+row.lName +' löschen?')){
-          this.dataSource = this.dataSource.filter(customers => customers.id !== row.id);
+       console.clear()
+       console.dir(this.dataSource)
+          this.dataSource = CustomerService.getAllCustomers().filter(customers => customers.id !== row.id);
+        console.dir(this.dataSource)
           this.length = this.dataSource.length;
           this.refresh();
      }

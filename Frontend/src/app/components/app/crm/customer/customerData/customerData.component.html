@@ -5,15 +5,22 @@
     </div>
     <input type="text" [readonly]="locked" [(ngModel)]="customer.fName" name="fname" placeholder="Vorname">
     <input type="text" [readonly]="locked" [(ngModel)]="customer.lName" name="lname" placeholder="Nachname">
-
     <select type="text" [disabled]="locked ? 'disabled':null">
       <option value="m">Herr</option>
       <option value="f">Frau</option>
     </select>
-
-
     <input type="text" [readonly]="locked" [(ngModel)]="customer.phone"  name="phone" placeholder="Telefonnummer">
     <input type="text" [readonly]="locked" [(ngModel)]="customer.email"  name="email" placeholder="E-Mail">
+
+    <div class="block">
+      <h1>Adress Daten</h1>
+    </div>
+    <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.town" name="town" placeholder="Ort">
+    <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.plz" name="plz" placeholder="Postleitzahl">
+    <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.street" name="street" placeholder="Straße">
+    <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.country" name="country" placeholder="Land">
+
+
     <div class="block">
       <h1>Orts Daten</h1>
     </div>

@@ -8,8 +8,4 @@ export class TotalCustomerService {
     static getNewCustomerAmount():number{
       return 7;
     }
-
-
-
-
 }
