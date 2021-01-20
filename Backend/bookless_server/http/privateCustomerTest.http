@@ -1,0 +1,18 @@
+GET http://localhost:3000/PrivateCustomer
+###
+GET http://localhost:3000/PrivateCustomer/all
+###
+DELETE http://localhost:3000/PrivateCustomer/1
+###
+POST http://localhost:3000/PrivateCustomer/add
+Content-Type: application/json
+
+{
+    "id":1,
+    "adress":"awsadsf",
+    "phoneNumber":"1233243",
+    "email":"email@gmail.com",
+    "fName":"test",
+    "lName":"test",
+    "gender":"f"
+}

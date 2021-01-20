@@ -1,6 +1,7 @@
 import * as express from "express";
+import { request } from "http";
 import { inject } from "inversify";
-import { controller, httpDelete, httpGet, requestParam, response } from "inversify-express-utils";
+import { controller, httpDelete, httpGet, httpPatch, httpPost, requestParam, response } from "inversify-express-utils";
 import { IPrivateCustomer } from "../models/Customer/PrivateCustomer";
 import { PrivateCustomerService } from "../services/PrivateCustomerService";
 
@@ -9,11 +10,11 @@ export class PrivateCustomerController {
 
     constructor(@inject("PrivateCustomerService") private privateCustomerService:PrivateCustomerService){}
 
-    @httpGet("/GetAll")
+    @httpGet("/all")
     private GetAllCustomers(req:express.Request):IPrivateCustomer[] {
 
         // Get Data from customerService
-        return [];
+        return this.privateCustomerService.getAllPrivateCustomers();
     }
 
     @httpGet("/")
@@ -22,8 +23,13 @@ export class PrivateCustomerController {
     }
 
     @httpDelete("/:id")
-    private delete(@requestParam("id") id: number, @response()  res: express.Request): IPrivateCustomer {
+    private delete(@requestParam("id") id: number, @response()  res: express.Response): IPrivateCustomer {
 
         return this.privateCustomerService.deletePrivateCustomer(id);
+    }
+
+    @httpPost("/add")
+    private add(req:express.Request, res:express.Response):  IPrivateCustomer {
+        return this.privateCustomerService.add(req.body);
     }
 }
