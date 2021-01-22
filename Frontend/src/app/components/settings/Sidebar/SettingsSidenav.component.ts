@@ -16,7 +16,7 @@ export class SettingssidenavComponent implements OnInit {
       public user:IUser;
       //current stat of the tabs
       crmOpen = false;
-      billOpen =false;
+      salesOpen =false;
       productOpen =false;
     
       //close others tabs when open a new one
@@ -26,30 +26,12 @@ export class SettingssidenavComponent implements OnInit {
         console.log('Called: openDashboard')
       }
     
-      public openProduct() : void {
-        this.productOpen=!this.productOpen;
+      public openSales() : void {
+        this.salesOpen=!this.salesOpen;
     
         if(this.closeOnClick){
-          this.billOpen=!this.productOpen;
-          this.crmOpen=false;
+          this.salesOpen=!this.productOpen;
         }
       }
     
-      public openBill() : void {
-        this.billOpen=!this.billOpen;
-    
-        if(this.closeOnClick){
-          this.productOpen=false;
-          this.crmOpen=false
-        }
-      }
-    
-      public openCrm() : void {
-        this.crmOpen=!this.crmOpen;
-    
-        if(this.closeOnClick){
-          this.productOpen=false;
-          this.billOpen=!this.crmOpen;
-        }
-      }
 }
