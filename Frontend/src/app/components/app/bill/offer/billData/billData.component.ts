@@ -33,20 +33,20 @@ export class BilldataComponent implements OnInit {
     search:string
     editMode=false;
     constructor(private route :Router) {}
-  
-  
+
+
     ngOnInit() {
       this.filteredOptions = this.myControl.valueChanges
         .pipe(
           startWith(''),
           map(value => this._filter(value))
         );
-  
+
       //consultant init
        this.consultantList = UserService.getUserNameList();
       //customer init
       this.customerList = CompanyService.getCompanyCustomerIdList();
-  
+
       //get the current mode
       //check if url routing
       if(history.state.mode == undefined && this.route.url.includes('edit')){
@@ -60,15 +60,15 @@ export class BilldataComponent implements OnInit {
           }
         }
     }
-  
+
     initEdit(){
       console.log( BillService.getBill(history.state.id))
       this.billData = BillService.getBill(history.state.id)
     }
-  
+
     doOffer(){
-  
-  
+
+
       if(this.editMode){
         BillService.updateBill(this.billData)
       }else{
@@ -77,11 +77,11 @@ export class BilldataComponent implements OnInit {
         this.route.navigate(['/app/sales/offer']);
       }
     }
-  
+
     //#region Fill in the Offer Data
     fillInOffer(){
       this.billData.bill.possibleDelivery = new Date(this.billData.bill.possibleDelivery)
-  
+
       //brutto value
       this.billData.bill.bruttoValue = this.getBruttoValue()
       //number --> will be provided by backend
@@ -93,73 +93,73 @@ export class BilldataComponent implements OnInit {
       //date of creation
       this.billData.bill.date = new Date();
     }
-  
+
     getBruttoValue():number{
       let sum: number = 0;
       this.billData.prodcuts.forEach(a => sum += a.product.price*a.amount);
       return sum;
     }
-  
+
     getTown():string{
       return 'this.offerData.offer.isCompany ?  CompanyService.getCustomer(this.offerData.offer.customerId).'
     }
-  
+
     getCustomerUID():string{
       return this.billData.bill.isCompany ? CompanyService.getCustomer(this.billData.bill.customerId).uid : 'PK-EK-40000';
     }
-  
+
     //#endregion
-  
-  
+
+
     changeCustomerType(){
       this.billData.bill.isCompany=!this.billData.bill.isCompany;
       this.customerList =  this.billData.bill.isCompany ? CompanyService.getCompanyCustomerIdList():CustomerService.getPrivateCustomerIdList();
     }
-  
+
     onCustomerChange(val:number){
       this.billData.bill.customerId=val
     }
-  
+
     onConsultantChange(val:number){
       this.billData.bill.consultantId=val
       this.consultant = UserService.getUser(val);
     }
-  
-  
+
+
     private _filter(value: string): number[] {
       return this.options
     }
-  
-  
-  
-  
-  
+
+
+
+
+
     setProdcutData(productId:number){
       this.search=""
       this.billData.prodcuts.push({product:RawProductService.getProduct(productId),amount:1})
     }
-  
+
     getProductNameById(id:number):String{
       return RawProductService.getProductFullName(id);
     }
-  
+
     removeProduct(id:number){
       alert(this.billData.prodcuts[id].product.name)
       console.dir(this.billData.prodcuts)
-  
+
       this.billData.prodcuts.splice(id,1)
     }
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     billData :IBillData = {
-      bill:{
+      offer:{
         number:0,
         date:null,
         customerId:0,
