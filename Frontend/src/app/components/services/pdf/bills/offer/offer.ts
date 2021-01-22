@@ -489,7 +489,6 @@ export class OfferPdfService{
       }
     }
   }
-
 }
 
 var dd = {}

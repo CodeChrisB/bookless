@@ -77,7 +77,7 @@
           <hr>
             <div id="center-select">
               <!--ProductID-->
-              <input id="productId" type="text"  placeholder="ID" [ngModel]="offerData.prodcuts[i].amount" name={{i*5+4}}>
+              <input id="productId" (keydown)="setPrice($event)" type="text"  placeholder="ID" [ngModel]="offerData.prodcuts[i].amount" name={{i*5+4}}>
               <!--Name-->
               <input readonly type="text" id="small" placeholder="Name" [ngModel]="offerData.prodcuts[i].product.name"  name={{i*5+3}}>
               <!--Description-->
@@ -87,7 +87,7 @@
               <!--Price-->
               <input readonly type="text" id="small" placeholder="Gesammt Preis"  value={{offerData.prodcuts[i].amount*offerData.prodcuts[i].product.price}}  name={{i*5}}>
               <!--Delete-->
-              <button (click)="removeProduct(i)"><mat-icon>delete</mat-icon></button>
+              <button (click)="removeProduct(i)" name><mat-icon>delete</mat-icon></button>
             </div>
         </div>
       </div>

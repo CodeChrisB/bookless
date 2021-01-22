@@ -55,10 +55,10 @@ export class addCustomer implements OnInit  {
   email:"",fName:"",
   lName:"",gender:"",
   customerLocation : {
-      town :"Ansfelden",
-      plz:"string",
-      street : "string",
-      country : "string"
+      town :"",
+      plz:"",
+      street : "",
+      country : ""
     }
 };
  constructor(private route :Router,public activatedRoute: ActivatedRoute) {}
