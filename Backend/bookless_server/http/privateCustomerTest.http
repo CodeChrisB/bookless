@@ -5,14 +5,14 @@ GET http://localhost:3000/PrivateCustomer/all
 DELETE http://localhost:3000/PrivateCustomer/1
 ###
 POST http://localhost:3000/PrivateCustomer/add
-Content-Type: application/json
+Content-Type: application/json 
 
 {
-    "id":1,
-    "adress":"awsadsf",
-    "phoneNumber":"1233243",
-    "email":"email@gmail.com",
-    "fName":"test",
-    "lName":"test",
-    "gender":"f"
+    "id": 3,
+    "adress": "1",
+    "phoneNumber": "2",
+    "email": "email@gmail.com",
+    "fName": "21",
+    "lName": "21s", 
+    "gender": "f"
 }
