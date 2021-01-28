@@ -1,3 +1,38 @@
 mat-button-toggle{
   background-color: #294b93;
 }
+
+#transfrom-preview{
+  height: 100%;
+  width: 100%;
+  background-color: cadetblue;
+}
+
+#currentPdf{
+  min-height: 80%;
+  width: auto;
+}
+
+#container {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+  height: 100%;
+}
+#container > div#iframe {
+  width: 37.5%;
+  height: 100%;
+}
+
+#container > div#arrow {
+  width: 37.5%;
+  height: 100%;
+}
+
+#arrow{
+  color: red;
+  font-size: 100pt;
+  text-align: center;
+  width: 100%;
+}

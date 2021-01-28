@@ -24,6 +24,7 @@ const offers: IOfferData[] = OfferService.getOffers();
 export class Offer  {
   //init the data
   displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","actions"];
+  constructor(public dialog: MatDialog,private route :Router) {}
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
@@ -60,7 +61,8 @@ export class Offer  {
   transform(offer:IOfferData){
     console.dir(offer)
     const dialogRef = this.dialog.open(TransformComponent, {
-
+      height: '90%',
+      width: '80%',
       data:{offer:offer,type:PdfType.Offer}
     });
 
@@ -75,7 +77,6 @@ export class Offer  {
   }
 
 
-  constructor(public dialog: MatDialog,private route :Router) {}
 
   deleteOffer(row : IOfferData){
      if(confirm('Wollen Sie ' + row.offer.name +' löschen?')){

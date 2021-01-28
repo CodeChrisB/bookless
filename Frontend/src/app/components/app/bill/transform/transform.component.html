@@ -1,8 +1,22 @@
 
 <h1>Transformieren von {{data.offer.offer.number}}</h1>
+<div id="transfrom-group">
+  <mat-button-toggle>Bestätigung</mat-button-toggle>
+  <mat-button-toggle>Rechnung</mat-button-toggle>
+  <mat-button-toggle>Lieferschein</mat-button-toggle>
+</div>
 
-<mat-button-toggle>Bestätigung</mat-button-toggle>
-<mat-button-toggle>Rechnung</mat-button-toggle>
-<mat-button-toggle>Lieferschein</mat-button-toggle>
 
-<iframe [(ngModel)]="currentSrc" id='currentPdf' > </iframe>
+
+
+<div id="container">
+  <div id="iframe">
+    <iframe [(ngModel)]="currentSrc" id='currentPdf' > </iframe>
+  </div>
+  <div id="arrow">
+    <h1 id="arrow">→</h1>
+  </div>
+  <div id="iframe">
+    <iframe [(ngModel)]="currentSrc" id='currentPdf' > </iframe>
+  </div>
+</div>

@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IOfferData } from 'src/models/bill/offer/OfferData';
 import { TransformDialog } from 'src/models/bill/offer/TransformDialog';
-import pdfMake from 'pdfmake/build/pdfmake';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
 @Component({
   selector: 'app-transform',
@@ -19,10 +18,10 @@ export class TransformComponent implements OnInit {
     ngOnInit(): void {
       var ops = new OfferPdfService(this.data.offer)
 
-      ops.create().getDataUrl(function (outDoc) {
-        this.currentSrc = outDoc;
-        alert(outDoc)
-    });
-  }
+      var doc =ops.create()
+      var f = document.getElementById('currentPdf');
+      var callback = function(url) { f.setAttribute('src',url); }
+      doc.getDataUrl(callback, doc);
+    }
 }
 
