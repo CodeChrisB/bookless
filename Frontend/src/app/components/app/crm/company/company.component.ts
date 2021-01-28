@@ -44,7 +44,7 @@ export class Company  {
 
   deleteCustomer(row : ICompanyCustomer){
      if(confirm('Wollen Sie ' + row.contactPersons +'löschen?')){
-          this.dataSource = this.dataSource.filter(companies => companies.contactPersons !== row.contactPersons);
+          this.dataSource = CompanyService.getData().filter(companies => companies.contactPersons !== row.contactPersons);
           this.length = this.dataSource.length;
           this.refresh();
      }

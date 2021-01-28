@@ -14,6 +14,7 @@ import { CompanyService } from 'src/app/components/services/crm/companylist';
 import { CustomerService } from 'src/app/components/services/crm/customerlist';
 import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { Router } from '@angular/router';
+import { EventEmitter } from 'events';
 
 
 @Component({
@@ -79,6 +80,10 @@ export class OfferData implements OnInit  {
       OfferService.addOffer(this.offerData);
       this.route.navigate(['/app/sales/offer']);
     }
+  }
+
+  setPrice(event:KeyboardEvent){
+    event.stopPropagation();
   }
 
   //#region Fill in the Offer Data

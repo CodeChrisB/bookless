@@ -68,7 +68,7 @@ export class Heatexchanger  {
 
   deleteCustomer(row : IRawProduct){
      if(confirm('Wollen Sie löschen?')){
-          this.dataSource = this.dataSource.filter(customers => customers.productId !== row.productId);
+          this.dataSource = RawProductService.getAllProducts().filter(customers => customers.productId !== row.productId);
           this.length = this.dataSource.length;
           this.refresh();
      }
