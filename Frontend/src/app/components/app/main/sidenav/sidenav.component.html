@@ -29,7 +29,7 @@
     </p>
     <p  *ngIf="billOpen" id="child" class="button-container">
       <mat-icon>account_circle</mat-icon>
-      <button  mat-button routerLink="sales/offer">Bestätigung</button>
+      <button  mat-button routerLink="sales/confirmation">Bestätigung</button>
     </p>
     <p  *ngIf="billOpen" id="child" class="button-container">
       <mat-icon>account_circle</mat-icon>
@@ -37,7 +37,7 @@
     </p>
     <p  *ngIf="billOpen" id="child" class="button-container">
       <mat-icon>account_circle</mat-icon>
-      <button disabled mat-button routerLink="sales/bill">Lieferschein</button>
+      <button disabled mat-button routerLink="sales/null">Lieferschein</button>
     </p>
     <!--Produkte-->
     <p *ngIf=user.premissions.products class="button-container" (click)="openProduct()">

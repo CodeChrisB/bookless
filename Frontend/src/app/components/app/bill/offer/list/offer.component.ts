@@ -8,6 +8,8 @@ import { StringShortener } from 'src/app/components/services/tools/StringShortne
 import { IOfferData } from 'src/models/bill/offer/OfferData';
 import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
+import { TransformComponent } from '../../transform/transform.component';
+import { PdfType } from 'src/models/bill/offer/PdfType';
 
 
 const offers: IOfferData[] = OfferService.getOffers();
@@ -53,6 +55,18 @@ export class Offer  {
 
   addOffer(){
     this.route.navigate(['/app/sales/offer/new'] , { state: {mode:'add' } });
+  }
+
+  transform(offer:IOfferData){
+    console.dir(offer)
+    const dialogRef = this.dialog.open(TransformComponent, {
+
+      data:{offer:offer,type:PdfType.Offer}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 
