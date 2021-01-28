@@ -4,7 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { Dashboard } from "./components/app/dashboard/dashboard.component";
 import { Company } from "./components/app/crm/company/company.component";
 import { Customer } from "./components/app/crm/customer/customer.component";
-import { Offer } from './components/app/bill/offer/list/offer.component';
+import { Offer } from './components/app/bill/offer/listOffer/offer.component';
 import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 import { MainComponent } from './components/app/main/main/main.component';
 //profile
@@ -35,18 +35,10 @@ const routes: Routes = [
           { path: "crm/company/edit",  component: addCompanyCustomer, },
           { path: "crm/company/new",  component: addCompanyCustomer, },
         //sales
-          //offer
-          { path: "sales/offer",  component: Offer, },
-          { path: "sales/offer/show", component:OfferData},
-          { path: "sales/offer/edit", component:OfferData},
-          { path: "sales/offer/new", component:OfferData},
-          //confirmation
-          { path: "sales/confirmation",  component: Confirmation, },
-          { path: "sales/offer/show", component:ConfirmationData},
-          { path: "sales/offer/edit", component:ConfirmationData},
-          { path: "sales/offer/new", component:ConfirmationData},
-
-
+        { path: "sales/offer",  component: Offer, },
+        { path: "sales/offer/show", component:OfferData},
+        { path: "sales/offer/edit", component:OfferData},
+        { path: "sales/offer/new", component:OfferData},
 
         //products
         { path: "products/heatexchanger",  component: Heatexchanger },
@@ -58,7 +50,8 @@ const routes: Routes = [
 
       { path: 'settings', component: MainsettingsComponent,
         children: [
-          { path: "dashboard",  component: SettingsdashboardComponent}
+          { path: "dashboard",  component: SettingsdashboardComponent},
+          { path: "sales",  component: SalesComponent}
         ] },
     { path: "profile/user",  component: Profile},
     { path: "profile/settings",  component: ProfileSettings},
@@ -72,6 +65,11 @@ import { MainsettingsComponent } from './components/settings/Main/MainSettings.c
 import { SettingsdashboardComponent } from './components/settings/Dashboard/SettingsDashboard.component';
 
 import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
+
+import { SalesComponent } from './components/settings/Sales/Sales.component';
+
+
+import { BillComponent } from './components/app/bill/offer/listBill/bill.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { enableTracing: true })],

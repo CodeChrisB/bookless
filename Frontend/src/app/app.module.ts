@@ -47,7 +47,7 @@ import { Company } from './components/app/crm/company/company.component';
 import { addCompanyCustomer } from './components/app/crm/company/companyData/customerData';
 import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 import { HeatexchangerData } from './components/app/products/ProductData/ProductData';
-import { Offer } from './components/app/bill/offer/list/offer.component';
+import { Offer } from './components/app/bill/offer/listOffer/offer.component';
 import { ProfileSettings } from './components/profile/settings/profileSettings.component';
 import { OfferData } from './components/app/bill/offer/offerData/offerData.component';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -58,6 +58,7 @@ import { SettingssidenavComponent } from './components/settings/Sidebar/Settings
 import { Confirmation } from './components/app/bill/confirmation/list/confirmation.component';
 import { ConfirmationData } from './components/app/bill/confirmation/confirmationData/offerData.component';
 import { TransformComponent } from './components/app/bill/transform/transform.component';
+import { SalesComponent } from './components/settings/Sales/Sales.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { TransformComponent } from './components/app/bill/transform/transform.co
     SettingssidenavComponent,
     Confirmation,
     ConfirmationData,
-    TransformComponent
+    TransformComponent,
+    SalesComponent
   ],
   imports: [
     FormsModule,
