@@ -21,7 +21,7 @@ const offers: IOfferData[] = OfferService.getOffers();
 })
 export class Offer  {
   //init the data
-  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","actions"];
+  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","offer","order","bill","finished","actions"];
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
@@ -44,6 +44,11 @@ export class Offer  {
   showOffer(row : IOfferData) {
     var ops = new OfferPdfService(row)
     ops.open();
+  }
+
+  getColor(finished: IOfferData)
+  {
+    
   }
 
   updateOffer(row : IOfferData){

@@ -48,13 +48,27 @@
                 <mat-cell *matCellDef="let offer">{{offer.offer.status}}</mat-cell>
             </ng-container>
             <!--OFFER TRANSFORMED-->
-            <ng-container matColumnDef="status">
-                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-                <mat-cell *matCellDef="let offer">{{offer.offer.status}}</mat-cell>
+            <ng-container matColumnDef="offer">
+                <mat-header-cell *matHeaderCellDef>Angebot</mat-header-cell>
+                <mat-cell *matCellDef="let offer">{{offer.offer.stages.offer}}</mat-cell>
             </ng-container>
             <!--ORDER TRANSFORMED-->
+            <ng-container matColumnDef="order">
+                <mat-header-cell *matHeaderCellDef>Auftrag</mat-header-cell>
+                <mat-cell *matCellDef="let order">{{order.offer.stages.order}}</mat-cell>
+            </ng-container>
             <!--BILL TRANSFORMED-->
+            <ng-container matColumnDef="bill">
+                <mat-header-cell *matHeaderCellDef>Rechnung</mat-header-cell>
+                <mat-cell *matCellDef="let bill">{{bill.offer.stages.bill}}</mat-cell>
+            </ng-container>
             <!--FINISHED TRANSFORMED-->
+            <ng-container matColumnDef="finished">
+                <mat-header-cell *matHeaderCellDef>Beendet</mat-header-cell>
+                <mat-cell *matCellDef="let finished">
+                    <button mat-menu-item [style.background-color]="getColor(finished)">...</button>
+                </mat-cell>
+            </ng-container>
             <!--Canceld TRANSFORMED-->
 
             <ng-container matColumnDef="actions">
