@@ -8,8 +8,6 @@ import { StringShortener } from 'src/app/components/services/tools/StringShortne
 import { IOfferData } from 'src/models/bill/offer/OfferData';
 import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
-import { TransformComponent } from '../../transform/transform.component';
-import { PdfType } from 'src/models/bill/offer/PdfType';
 
 
 const offers: IOfferData[] = OfferService.getOffers();
@@ -18,13 +16,12 @@ const offers: IOfferData[] = OfferService.getOffers();
 
 @Component({
   selector: 'customer-component',
-  templateUrl: './offer.component.html',
-  styleUrls: ['./offer.component.css']
+  templateUrl: './confirmation.component.html',
+  styleUrls: ['./confirmation.component.css']
 })
-export class Offer  {
+export class Confirmation  {
   //init the data
-  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","offer","order","bill","finished","actions"];
-  constructor(public dialog: MatDialog,private route :Router) {}
+  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","actions"];
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
@@ -49,26 +46,6 @@ export class Offer  {
     ops.open();
   }
 
-  changeFinishedColor(finished : IOfferData)
-  {
-      finished.offer.stages.finished =! finished.offer.stages.finished;
-  }
-
-  changeOfferColor(offer : IOfferData)
-  {
-    offer.offer.stages.offer =! offer.offer.stages.offer;
-  }
-
-  changeOrderColor(order : IOfferData)
-  {
-    order.offer.stages.order =! order.offer.stages.order;
-  }
-
-  changeBillColor(bill : IOfferData)
-  {
-    bill.offer.stages.bill =! bill.offer.stages.bill;
-  }
-
   updateOffer(row : IOfferData){
     console.dir(row)
     this.route.navigate(['/app/sales/offer/edit'], { state: {mode:'edit', id: row.offer.number } });
@@ -78,25 +55,13 @@ export class Offer  {
     this.route.navigate(['/app/sales/offer/new'] , { state: {mode:'add' } });
   }
 
-  transform(offer:IOfferData){
-    console.dir(offer)
-    const dialogRef = this.dialog.open(TransformComponent, {
-      height: '90%',
-      width: '80%',
-      data:{offer:offer,type:PdfType.Offer}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
 
   short( string:string,number:number){
     return StringShortener.Trim(string,number);
   }
 
 
+  constructor(public dialog: MatDialog,private route :Router) {}
 
   deleteOffer(row : IOfferData){
      if(confirm('Wollen Sie ' + row.offer.name +' löschen?')){

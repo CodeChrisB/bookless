@@ -50,23 +50,29 @@
             <!--OFFER TRANSFORMED-->
             <ng-container matColumnDef="offer">
                 <mat-header-cell *matHeaderCellDef>Angebot</mat-header-cell>
-                <mat-cell *matCellDef="let offer">{{offer.offer.stages.offer}}</mat-cell>
+                <mat-cell *matCellDef="let offer">
+                    <button mat-menu-item (click)="changeOfferColor(offer)" [style.background-color]="offer.offer.stages.offer ? 'Green':'Red'">...</button>
+                </mat-cell>
             </ng-container>
             <!--ORDER TRANSFORMED-->
             <ng-container matColumnDef="order">
                 <mat-header-cell *matHeaderCellDef>Auftrag</mat-header-cell>
-                <mat-cell *matCellDef="let order">{{order.offer.stages.order}}</mat-cell>
+                <mat-cell *matCellDef="let order">
+                    <button mat-menu-item (click)="changeOrderColor(order)" [style.background-color]="order.offer.stages.order ? 'Green':'Red'">...</button>
+                </mat-cell>
             </ng-container>
             <!--BILL TRANSFORMED-->
             <ng-container matColumnDef="bill">
                 <mat-header-cell *matHeaderCellDef>Rechnung</mat-header-cell>
-                <mat-cell *matCellDef="let bill">{{bill.offer.stages.bill}}</mat-cell>
+                <mat-cell *matCellDef="let bill">
+                    <button mat-menu-item (click)="changeBillColor(bill)" [style.background-color]="bill.offer.stages.bill ? 'Green':'Red'">...</button>
+                </mat-cell>
             </ng-container>
             <!--FINISHED TRANSFORMED-->
             <ng-container matColumnDef="finished">
                 <mat-header-cell *matHeaderCellDef>Beendet</mat-header-cell>
                 <mat-cell *matCellDef="let finished">
-                    <button mat-menu-item [style.background-color]="getColor(finished)">...</button>
+                    <button mat-menu-item (click)="changeFinishedColor(finished)" [style.background-color]="finished.offer.stages.finished ? 'Green':'Red'">...</button>
                 </mat-cell>
             </ng-container>
             <!--Canceld TRANSFORMED-->
@@ -84,6 +90,7 @@
                         <button mat-menu-item (click)="updateOffer(row)">Bearbeiten</button>
                         <button mat-menu-item (click)="deleteOffer(row)">Löschen</button>
                         <button mat-menu-item (click)="downloadPdf(row)">Download</button>
+                        <button mat-menu-item (click)="transform(row)">Transformieren</button>
                     </mat-menu>
                 </mat-cell>
             </ng-container>

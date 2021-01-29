@@ -143,6 +143,11 @@ export class OfferPdfService{
     pdfMake.createPdf(dd).open()
   }
 
+  create(){
+    console.dir(pdfMake.createPdf(dd))
+   return pdfMake.createPdf(dd)
+  }
+
   fillInData(){
     dd = {
       content: [

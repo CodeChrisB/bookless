@@ -17,20 +17,23 @@ import { addCompanyCustomer } from "./components/app/crm/company/companyData/cus
 import { HeatexchangerData } from "./components/app/products/ProductData/ProductData";
 import { ProfileSettings } from "./components/profile/settings/profileSettings.component";
 import { OfferData } from "./components/app/bill/offer/offerData/offerData.component";
+import { ConfirmationData } from "./components/app/bill/confirmation/confirmationData/offerData.component";
+import { Confirmation } from "./components/app/bill/confirmation/list/confirmation.component";
 const routes: Routes = [
     { path: 'app', component: MainComponent,
       children: [
         { path: "dashboard",  component: Dashboard, },
         //crm
-        { path: "crm/customer",  component: Customer, },
-        { path: "crm/company",  component: Company, },
-        { path: "crm/customer/new",  component: addCustomer, },
-        { path: "crm/customer/edit",  component: addCustomer, },
-        { path: "crm/customer/show",  component: addCustomer, },
-        { path: "crm/company/show",  component: addCompanyCustomer, },
-        { path: "crm/company/edit",  component: addCompanyCustomer, },
-        { path: "crm/company/new",  component: addCompanyCustomer, },
-
+          //customer
+          { path: "crm/customer",  component: Customer, },
+          { path: "crm/customer/new",  component: addCustomer, },
+          { path: "crm/customer/edit",  component: addCustomer, },
+          { path: "crm/customer/show",  component: addCustomer, },
+          //company
+          { path: "crm/company",  component: Company, },
+          { path: "crm/company/show",  component: addCompanyCustomer, },
+          { path: "crm/company/edit",  component: addCompanyCustomer, },
+          { path: "crm/company/new",  component: addCompanyCustomer, },
         //sales
         { path: "sales/offer",  component: Offer, },
         { path: "sales/offer/show", component:OfferData},
@@ -64,6 +67,8 @@ import { SettingsdashboardComponent } from './components/settings/Dashboard/Sett
 import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
 
 import { SalesComponent } from './components/settings/Sales/Sales.component';
+
+
 @NgModule({
   imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
