@@ -36,7 +36,6 @@ const routes: Routes = [
         { path: "sales/offer/show", component:OfferData},
         { path: "sales/offer/edit", component:OfferData},
         { path: "sales/offer/new", component:OfferData},
-        {path: "sales/bill", component: BilldataComponent,},
 
         //products
         { path: "products/heatexchanger",  component: Heatexchanger },
@@ -65,11 +64,6 @@ import { SettingsdashboardComponent } from './components/settings/Dashboard/Sett
 import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
 
 import { SalesComponent } from './components/settings/Sales/Sales.component';
-import { BilldataComponent } from "./components/app/bill/offer/billData/billData.component";
-
-
-import { BillComponent } from './components/app/bill/offer/listBill/bill.component';
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
