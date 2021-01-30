@@ -1,21 +1,20 @@
 import { exception } from "console";
-import { Client } from "ts-postgres";
+import { Pool, QueryResult } from "pg";
 import { IPrivateCustomer } from "../models/Customer/PrivateCustomer";
 
 export class PrivateCustomerRepository {
 
     public privateCustomers:IPrivateCustomer[] = [];
-    private client:Client =  new Client({
-        "host":"database", 
-        "port": 5432,
-        "user": "user",
-        "password":"pass", 
-        "database":"booklessdb"
+    private pool:Pool =  new Pool({
+        "host":process.env.DB_HOST, 
+        "port":Number(process.env.DB_PORT),
+        "user":process.env.DB_USER,
+        "password":process.env.DB_PASSWORD, 
+        "database":process.env.DB_DATABASE
     }); 
 
     constructor() {
 
-        this.client.connect()
     }
 
     public get():IPrivateCustomer[]{
@@ -27,19 +26,19 @@ export class PrivateCustomerRepository {
         
         try{
             this.privateCustomers = [];
-            const resultIterator = await this.client.query("select id, adress,phoneNumber,email,fName,lName,gender from PrivateCustomer");
+            const result:QueryResult<IPrivateCustomer> = await this.pool.query("select id, adress,phoneNumber,email,fName,lName,gender from PrivateCustomer");
             console.log('Get privateCustomers from DB');
     
-            for await (const row of resultIterator) {
+            for await (const row of result.rows) {
        
                 this.privateCustomers.push( {
-                    id:Number(row.get("id")),
-                    adress:String(row.get('adress')),
-                    phoneNumber:String(row.get('phoneNumber')),
-                    email:String(row.get('email')),
-                    fName:String(row.get('fName')),
-                    lName:String(row.get('lName')),
-                    gender:String(row.get('gender')),
+                    id:row.id,
+                    adress:row.adress,
+                    phoneNumber:row.phoneNumber,
+                    email:row.email,
+                    fName:row.fName,
+                    lName:row.lName,
+                    gender:row.gender,
                 });
             }
 
@@ -54,12 +53,19 @@ export class PrivateCustomerRepository {
     public async addPrivateCustomer(privateCustomer:IPrivateCustomer){
 
         try{ 
-           await this.client.query(`insert into privateCustomer (adress,phoneNumber,email,fName,lName,gender ) 
-           values('${privateCustomer.adress}', '${privateCustomer.email}', '${privateCustomer.email}', '${privateCustomer.email}', '${privateCustomer.email}', '${privateCustomer.gender}')`);
+           await this.pool.query('insert into privateCustomer (adress,phoneNumber,email,fName,lName,gender ) values($1, $2, $3, $4, $5,$6)', 
+           [
+               privateCustomer.adress,
+               privateCustomer.phoneNumber,
+               privateCustomer.email,
+               privateCustomer.fName,
+               privateCustomer.lName,
+               privateCustomer.gender
+           ]);
         } catch { 
             throw exception("Insert failed");
         } finally {
-            await this.client.end();
+
         }
     }
 }
