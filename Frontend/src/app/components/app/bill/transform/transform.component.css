@@ -1,5 +1,6 @@
 mat-button-toggle{
-  background-color: #294b93;
+  max-width: fit-content;
+  max-height: fit-content;
 }
 
 #transfrom-preview{
@@ -10,7 +11,7 @@ mat-button-toggle{
 
 #currentPdf{
   min-height: 80%;
-  width: auto;
+  width: 100%;
 }
 
 #container {
@@ -19,20 +20,22 @@ mat-button-toggle{
   flex-wrap: nowrap;              /* default value; can be omitted */
   justify-content: space-between; /* switched from default (flex-start, see below) */
   height: 100%;
+  padding: 10px;
 }
 #container > div#iframe {
   width: 37.5%;
   height: 100%;
 }
 
-#container > div#arrow {
-  width: 37.5%;
+#arrow{
+  color: red;
+  font-size: 150pt;
+  text-align: center;
+  vertical-align: center;
   height: 100%;
 }
 
-#arrow{
-  color: red;
-  font-size: 100pt;
-  text-align: center;
-  width: 100%;
+mat-button-toggle{
+  width: 33%;
 }
+

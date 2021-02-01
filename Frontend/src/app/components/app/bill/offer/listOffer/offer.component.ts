@@ -23,7 +23,7 @@ const offers: IOfferData[] = OfferService.getOffers();
 })
 export class Offer  {
   //init the data
-  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","offer","order","bill","finished","actions"];
+  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","transform","actions"];
   constructor(public dialog: MatDialog,private route :Router) {}
 
   @ViewChild(MatMenuTrigger)
