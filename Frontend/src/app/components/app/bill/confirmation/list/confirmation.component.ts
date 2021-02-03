@@ -8,6 +8,8 @@ import { StringShortener } from 'src/app/components/services/tools/StringShortne
 import { IOfferData } from 'src/models/bill/offer/OfferData';
 import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
+import { PdfService } from 'src/app/components/services/pdf/bills/PdfService';
+import { PdfType } from 'src/models/bill/PdfType';
 
 
 const offers: IOfferData[] = OfferService.getOffers();
@@ -21,7 +23,8 @@ const offers: IOfferData[] = OfferService.getOffers();
 })
 export class Confirmation  {
   //init the data
-  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","actions"];
+  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","transform","actions"];
+
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
@@ -42,8 +45,7 @@ export class Confirmation  {
     }
 
   showOffer(row : IOfferData) {
-    var ops = new OfferPdfService(row)
-    ops.open();
+    PdfService.OpenPdf(row,PdfType.Offer)
   }
 
   updateOffer(row : IOfferData){
@@ -76,8 +78,7 @@ export class Confirmation  {
     }
 
     downloadPdf(row:IOfferData){
-        var ops = new OfferPdfService(row)
-        ops.download('Angebot.pdf');
+       PdfService.DownloadPdf(row,PdfType.Offer);
     }
 
 }

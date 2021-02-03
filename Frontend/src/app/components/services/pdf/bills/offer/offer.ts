@@ -14,9 +14,6 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class OfferPdfService{
 
   offer
-
-
-
   public products: Array<string[]> = [['Pos.','Bezeichnung','Menge','Preis','Gesamt']]
   total:number=0;
   constructor(offer:IOfferData){

@@ -39,6 +39,10 @@ const routes: Routes = [
         { path: "sales/offer/show", component:OfferData},
         { path: "sales/offer/edit", component:OfferData},
         { path: "sales/offer/new", component:OfferData},
+        { path: "sales/confirmation",  component: Confirmation, },
+        { path: "sales/confirmation/show", component:Confirmation},
+        { path: "sales/confirmation/edit", component:Confirmation},
+        { path: "sales/confirmation/new", component:Confirmation},
 
         //products
         { path: "products/heatexchanger",  component: Heatexchanger },

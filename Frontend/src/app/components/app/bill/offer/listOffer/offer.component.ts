@@ -9,7 +9,8 @@ import { IOfferData } from 'src/models/bill/offer/OfferData';
 import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
 import { TransformComponent } from '../../transform/transform.component';
-import { PdfType } from 'src/models/bill/offer/PdfType';
+import { PdfType } from 'src/models/bill/PdfType';
+import { PdfService } from 'src/app/components/services/pdf/bills/PdfService';
 
 
 const offers: IOfferData[] = OfferService.getOffers();
@@ -44,10 +45,6 @@ export class Offer  {
      this.pageIndex = $event.pageIndex;
     }
 
-  showOffer(row : IOfferData) {
-    var ops = new OfferPdfService(row)
-    ops.open();
-  }
 
   changeFinishedColor(finished : IOfferData)
   {
@@ -110,9 +107,13 @@ export class Offer  {
       this.dataSource = this.dataSource;
     }
 
+
+    showOffer(row : IOfferData) {
+      PdfService.OpenPdf(row,PdfType.Offer)
+    }
+
     downloadPdf(row:IOfferData){
-        var ops = new OfferPdfService(row)
-        ops.download('Angebot.pdf');
+      PdfService.DownloadPdf(row,PdfType.Offer)
     }
 
 }
