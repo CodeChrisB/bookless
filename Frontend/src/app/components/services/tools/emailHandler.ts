@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {IPrivateCustomer} from '../../../../models/Customer/PrivateCustomer'
-import {IEmailData} from '../../../../models/email/emailData'
+import {IPrivateCustomer} from '../../../../models/Customer/PrivateCustomer';
+import {IEmailData} from '../../../../models/email/emailData';
 
 
 @Injectable({
@@ -10,27 +10,27 @@ import {IEmailData} from '../../../../models/email/emailData'
 export class EmailHandler {
 
 
-  static sendEmail(emailData : IEmailData){
-    window.location.href = "mailto:"+emailData.email+
-    "?subject="+emailData.subject+
-    "&body="+emailData.content+this.footer();//test1
+  static sendEmail(emailData: IEmailData){
+    window.location.href = 'mailto:' + emailData.email +
+    '?subject=' + emailData.subject +
+    '&body=' + emailData.content + this.footer(); // test1
   }
 
   static sendBulkEmail(emailData: string[]){
-    var mail:string ='mailto:'
+    let mail = 'mailto:';
 
     emailData.forEach(data => {
-        mail+=data+",\n"
+        mail += data + ',\n';
     });
-    mail=mail.substring(0,mail.length-2)
+    mail = mail.substring(0, mail.length - 2);
 
-    mail+=this.footer();
-    window.location.href =mail;
+    mail += this.footer();
+    window.location.href = mail;
   }
 
-  private static footer():string{
-    var footer:string ='%0D%0A%0D%0A%0D%0A';
-    var message= [
+  private static footer(): string{
+    let footer = '%0D%0A%0D%0A%0D%0A';
+    let message = [
       'POWER SOLAR Wärmetauscher%0D%0A%0D%0A',
       'Inh. Dipl.-Bw. Gerald Buchberger, MBA%0D%0A%0D%0A',
       'Geschäftsleitung%0D%0A%0D%0A',
@@ -45,8 +45,8 @@ export class EmailHandler {
       'Ihr Power Solar Team!'
     ];
 
-   message.forEach(line => {
-      footer+=line;
+    message.forEach(line => {
+      footer += line;
     });
 
 

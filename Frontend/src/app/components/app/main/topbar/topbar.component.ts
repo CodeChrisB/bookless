@@ -12,15 +12,15 @@ import { IUser } from 'src/models/Profile/User';
 export class TopbarComponent implements OnInit {
 
 
-  constructor(private _sanitizer: DomSanitizer,private route: Router) { }
+  constructor(private _sanitizer: DomSanitizer, private route: Router) { }
 
-  user : IUser;
+  user: IUser;
   image;
   ngOnInit(){
-    //when we have backend access we need to specify which user we want to get.
+    // when we have backend access we need to specify which user we want to get.
     this.user = UserService.getUser(1);
-    //get the imge from the user
-    this.image = this._sanitizer.bypassSecurityTrustUrl(this.user.image)
+    // get the imge from the user
+    this.image = this._sanitizer.bypassSecurityTrustUrl(this.user.image);
   }
 
 

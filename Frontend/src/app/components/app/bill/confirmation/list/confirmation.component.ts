@@ -22,8 +22,8 @@ const offers: IOfferData[] = OfferService.getOffers();
   styleUrls: ['./confirmation.component.css']
 })
 export class Confirmation  {
-  //init the data
-  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","transform","actions"];
+  // init the data
+  displayedColumns = ['number', 'date', 'cId', 'name', 'plz', 'town', 'street', 'brutto', 'status', 'transform', 'actions'];
 
 
   @ViewChild(MatMenuTrigger)
@@ -34,42 +34,42 @@ export class Confirmation  {
    // MatPaginator Inputs
    length = offers.length;
    pageSize = 10;
-   pageSizeOptions: number[] = [5, 10,25,100];
-   dataSource = offers.slice(0,this.pageSize);
-   pageIndex = 0
+   pageSizeOptions: number[] = [5, 10, 25, 100];
+   dataSource = offers.slice(0, this.pageSize);
+   pageIndex = 0;
    goToPage($event){
      this.length = $event.length;
-     this.pageSize =$event.pageSize;
-     this.dataSource = offers.slice(this.pageSize* $event.pageIndex,this.pageSize* $event.pageIndex+this.pageSize);
+     this.pageSize = $event.pageSize;
+     this.dataSource = offers.slice(this.pageSize * $event.pageIndex, this.pageSize * $event.pageIndex + this.pageSize);
      this.pageIndex = $event.pageIndex;
     }
 
-  showOffer(row : IOfferData) {
-    PdfService.OpenPdf(row,PdfType.Offer)
+  showOffer(row: IOfferData) {
+    PdfService.OpenPdf(row, PdfType.Offer);
   }
 
-  updateOffer(row : IOfferData){
-    console.dir(row)
-    this.route.navigate(['/app/sales/offer/edit'], { state: {mode:'edit', id: row.offer.number } });
+  updateOffer(row: IOfferData){
+    console.dir(row);
+    this.route.navigate(['/app/sales/offer/edit'], { state: {mode: 'edit', id: row.offer.number } });
   }
 
   addOffer(){
-    this.route.navigate(['/app/sales/offer/new'] , { state: {mode:'add' } });
+    this.route.navigate(['/app/sales/offer/new'] , { state: {mode: 'add' } });
   }
 
 
-  short( string:string,number:number){
-    return StringShortener.Trim(string,number);
+  short( string: string, number: number){
+    return StringShortener.Trim(string, number);
   }
 
 
-  constructor(public dialog: MatDialog,private route :Router) {}
+  constructor(public dialog: MatDialog, private route: Router) {}
 
-  deleteOffer(row : IOfferData){
-     if(confirm('Wollen Sie ' + row.offer.name +' löschen?')){
-        OfferService.deleteOffer(row.offer.number)
+  deleteOffer(row: IOfferData){
+     if (confirm('Wollen Sie ' + row.offer.name + ' löschen?')){
+        OfferService.deleteOffer(row.offer.number);
         this.length = this.dataSource.length;
-        this.dataSource =  OfferService.getOffers()
+        this.dataSource =  OfferService.getOffers();
      }
   }
 
@@ -77,8 +77,8 @@ export class Confirmation  {
       this.dataSource = this.dataSource;
     }
 
-    downloadPdf(row:IOfferData){
-       PdfService.DownloadPdf(row,PdfType.Offer);
+    downloadPdf(row: IOfferData){
+       PdfService.DownloadPdf(row, PdfType.Offer);
     }
 
 }

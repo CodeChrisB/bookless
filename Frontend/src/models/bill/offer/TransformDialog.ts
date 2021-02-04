@@ -1,7 +1,7 @@
-import { IOfferData } from "./OfferData";
-import { PdfType } from "../PdfType";
+import { IOfferData } from './OfferData';
+import { PdfType } from '../PdfType';
 
 export interface TransformDialog{
-  offer:IOfferData;
+  offer: IOfferData;
   type: PdfType;
 }

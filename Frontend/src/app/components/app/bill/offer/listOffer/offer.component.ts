@@ -23,9 +23,9 @@ const offers: IOfferData[] = OfferService.getOffers();
   styleUrls: ['./offer.component.css']
 })
 export class Offer  {
-  //init the data
-  displayedColumns = ["number","date","cId","name","plz","town","street","brutto","status","transform","actions"];
-  constructor(public dialog: MatDialog,private route :Router) {}
+  // init the data
+  displayedColumns = ['number', 'date', 'cId', 'name', 'plz', 'town', 'street', 'brutto', 'status', 'transform', 'actions'];
+  constructor(public dialog: MatDialog, private route: Router) {}
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
@@ -35,52 +35,52 @@ export class Offer  {
    // MatPaginator Inputs
    length = offers.length;
    pageSize = 10;
-   pageSizeOptions: number[] = [5, 10,25,100];
-   dataSource = offers.slice(0,this.pageSize);
-   pageIndex = 0
+   pageSizeOptions: number[] = [5, 10, 25, 100];
+   dataSource = offers.slice(0, this.pageSize);
+   pageIndex = 0;
    goToPage($event){
      this.length = $event.length;
-     this.pageSize =$event.pageSize;
-     this.dataSource = offers.slice(this.pageSize* $event.pageIndex,this.pageSize* $event.pageIndex+this.pageSize);
+     this.pageSize = $event.pageSize;
+     this.dataSource = offers.slice(this.pageSize * $event.pageIndex, this.pageSize * $event.pageIndex + this.pageSize);
      this.pageIndex = $event.pageIndex;
     }
 
 
-  changeFinishedColor(finished : IOfferData)
+  changeFinishedColor(finished: IOfferData)
   {
-      finished.offer.stages.finished =! finished.offer.stages.finished;
+      finished.offer.stages.finished = ! finished.offer.stages.finished;
   }
 
-  changeOfferColor(offer : IOfferData)
+  changeOfferColor(offer: IOfferData)
   {
-    offer.offer.stages.offer =! offer.offer.stages.offer;
+    offer.offer.stages.offer = ! offer.offer.stages.offer;
   }
 
-  changeOrderColor(order : IOfferData)
+  changeOrderColor(order: IOfferData)
   {
-    order.offer.stages.order =! order.offer.stages.order;
+    order.offer.stages.order = ! order.offer.stages.order;
   }
 
-  changeBillColor(bill : IOfferData)
+  changeBillColor(bill: IOfferData)
   {
-    bill.offer.stages.bill =! bill.offer.stages.bill;
+    bill.offer.stages.bill = ! bill.offer.stages.bill;
   }
 
-  updateOffer(row : IOfferData){
-    console.dir(row)
-    this.route.navigate(['/app/sales/offer/edit'], { state: {mode:'edit', id: row.offer.number } });
+  updateOffer(row: IOfferData){
+    console.dir(row);
+    this.route.navigate(['/app/sales/offer/edit'], { state: {mode: 'edit', id: row.offer.number } });
   }
 
   addOffer(){
-    this.route.navigate(['/app/sales/offer/new'] , { state: {mode:'add' } });
+    this.route.navigate(['/app/sales/offer/new'] , { state: {mode: 'add' } });
   }
 
-  transform(offer:IOfferData){
-    console.dir(offer)
+  transform(offer: IOfferData){
+    console.dir(offer);
     const dialogRef = this.dialog.open(TransformComponent, {
       height: '90%',
       width: '80%',
-      data:{offer:offer,type:PdfType.Offer}
+      data: {offer, type: PdfType.Offer}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -89,17 +89,17 @@ export class Offer  {
   }
 
 
-  short( string:string,number:number){
-    return StringShortener.Trim(string,number);
+  short( string: string, number: number){
+    return StringShortener.Trim(string, number);
   }
 
 
 
-  deleteOffer(row : IOfferData){
-     if(confirm('Wollen Sie ' + row.offer.name +' löschen?')){
-        OfferService.deleteOffer(row.offer.number)
+  deleteOffer(row: IOfferData){
+     if (confirm('Wollen Sie ' + row.offer.name + ' löschen?')){
+        OfferService.deleteOffer(row.offer.number);
         this.length = this.dataSource.length;
-        this.dataSource =  OfferService.getOffers()
+        this.dataSource =  OfferService.getOffers();
      }
   }
 
@@ -108,12 +108,12 @@ export class Offer  {
     }
 
 
-    showOffer(row : IOfferData) {
-      PdfService.OpenPdf(row,PdfType.Offer)
+    showOffer(row: IOfferData) {
+      PdfService.OpenPdf(row, PdfType.Offer);
     }
 
-    downloadPdf(row:IOfferData){
-      PdfService.DownloadPdf(row,PdfType.Offer)
+    downloadPdf(row: IOfferData){
+      PdfService.DownloadPdf(row, PdfType.Offer);
     }
 
 }

@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 interface User {
-    name:    string;
+    name: string;
     employeeRank: string;
     created: Date;
  }
@@ -18,101 +18,101 @@ styleUrls: ['./profile.component.css']
 
 export class Profile implements OnInit  {
 
-  constructor(private _sanitizer: DomSanitizer,private route: Router) { }
+  constructor(private _sanitizer: DomSanitizer, private route: Router) { }
 
-  
-  user : IUser;
-  
+
+  user: IUser;
+
   showPass;
-  ngOnInit(){
-    //when we have backend access we need to specify which user we want to get.
-    this.user = UserService.getUser(1);
-    //get the imge from the user
-    this.showPass={
-      old:false,
-      first:false,
-      second:false
-    }
-  }
 
 
     url;
-    msg = "";
+    msg = '';
     password = {
-      "current":"",
-      "newFirst":"",
-      "newSecond":""
-    }
+      current: '',
+      newFirst: '',
+      newSecond: ''
+    };
 
-    //the password data that will be sent to the server for change
-    hashed ={
-      "current":"",
-      "new":""
-    }
+    // the password data that will be sent to the server for change
+    hashed = {
+      current: '',
+      new: ''
+    };
+  ngOnInit(){
+    // when we have backend access we need to specify which user we want to get.
+    this.user = UserService.getUser(1);
+    // get the imge from the user
+    this.showPass = {
+      old: false,
+      first: false,
+      second: false
+    };
+  }
 
 	selectFile(event) {
-		if(!event.target.files[0] || event.target.files[0].length == 0) {
+		if (!event.target.files[0] || event.target.files[0].length == 0) {
 			this.user.image = 'You must select an image';
 			return;
 		}
 
-		var mimeType = event.target.files[0].type;
+		const mimeType = event.target.files[0].type;
 
 		if (mimeType.match(/image\/*/) == null) {
-			this.msg = "Only images are supported";
+			this.msg = 'Only images are supported';
 			return;
 		}
 
-		var reader = new FileReader();
+		const reader = new FileReader();
 		reader.readAsDataURL(event.target.files[0]);
 
 		reader.onload = (_event) => {
-			this.msg = "";
-            this.user.image = reader.result.toString();
-		}
+			this.msg = '';
+   this.user.image = reader.result.toString();
+		};
   }
 
-  submitNewPassword():void{
+  submitNewPassword(): void{
 
-    let regexPassword =  new RegExp('^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+    const regexPassword =  new RegExp('^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
 
-    //Check if the password follows the rules
-    if(!(regexPassword.test(this.password.current) && regexPassword.test(this.password.newFirst) && regexPassword.test(this.password.newSecond)))
+    // Check if the password follows the rules
+    if (!(regexPassword.test(this.password.current) && regexPassword.test(this.password.newFirst) && regexPassword.test(this.password.newSecond)))
     {
-      alert("Das Passwort muss folgende Regeln befolgen :\n1 Großbuchstabe\n1 Kleinbuchstaben\n1 Zahl");
+      alert('Das Passwort muss folgende Regeln befolgen :\n1 Großbuchstabe\n1 Kleinbuchstaben\n1 Zahl');
       this.clearPassFields();
       return;
     }
-    else if(this.password.newFirst != this.password.newSecond)
+    else if (this.password.newFirst != this.password.newSecond)
     {
-      alert("Bitte geben sie zweimal das gleiche Passwort ein.");
+      alert('Bitte geben sie zweimal das gleiche Passwort ein.');
       this.clearPassFields();
       return;
     }
 
-    //hash passwords
+    // hash passwords
     this.hashed.current = this.hash(this.password.current);
     this.hashed.new = this.hash(this.password.newFirst);
-    //api sent
-    //roberts.backend.subscribe(backend =>{backend.sent(this.hashed.current,this.hashed.new)})
+    // api sent
+    // roberts.backend.subscribe(backend =>{backend.sent(this.hashed.current,this.hashed.new)})
 
   }
 
-  hash(pass:string):string{
-    //call a hash function idk
+  hash(pass: string): string{
+    // call a hash function idk
     return pass;
   }
 
   clearPassFields(){
     this.password = {
-      "current":"",
-      "newFirst":"",
-      "newSecond":""
-    }
+      current: '',
+      newFirst: '',
+      newSecond: ''
+    };
   }
 
-  routeTo(route:string){
-    this.route.navigate([('/app/'+route)]);
+  routeTo(route: string){
+    this.route.navigate([('/app/' + route)]);
   }
 
   getUserCount() {
@@ -120,14 +120,14 @@ export class Profile implements OnInit  {
   }
 
   toSettings(){
-    this.route.navigate(['/settings/dashboard'])
+    this.route.navigate(['/settings/dashboard']);
   }
 
   saveUser(){
-    UserService.updateUser(this.user)
+    UserService.updateUser(this.user);
   }
 
   userSettings(){
-    this.route.navigate(['/profile/settings'], { state: {id:this.user.id } });
+    this.route.navigate(['/profile/settings'], { state: {id: this.user.id } });
   }
 }
