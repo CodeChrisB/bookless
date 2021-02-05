@@ -17,8 +17,8 @@ export class PrivateCustomerController {
     }
 
     @httpGet("/")
-    private get(req:express.Request):string{
-        return "CompanyCustomerController works!!";
+    private Get(req:express.Request):string{ 
+        return "PrivateCustomerController works!!";
     }
 
     @httpDelete("/:id")

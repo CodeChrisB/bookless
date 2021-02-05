@@ -44,7 +44,10 @@ export class UserRepository {
     public async addUser(user:IUser){
         await this.client.connect();
         try{ 
-           await this.client.query(`insert into users (username, password) values('${user.fname}', '${user.lname}')`);
+           await this.client.query('insert into users (username, password) values($1, $2)', [
+               user.fname,
+               user.lname
+           ])
         } catch {
             throw exception("Insert failed");
         } finally {

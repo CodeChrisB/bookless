@@ -1,17 +1,19 @@
-import { exception } from "console";
-import { text } from "express";
-import { Client } from "ts-postgres";
-import { ICompanyCustomer } from "../models/Customer/CompanyCustomer";
+import { count, exception } from "console";
+import e, { text } from "express";
+import { Pool, QueryResult } from "pg";
+import { add } from "winston";
+import { IContactPerson } from "../models/ContactPerson";
+import { ICompanyCustomer, IShippingAdress } from "../models/Customer/CompanyCustomer";
 
 export class UserRepository {
 
     compCustomers:ICompanyCustomer[] = []
-    private client:Client = new Client({
-        "host":"database", 
-        "port": 5432,
-        "user": "user",
-        "password":"pass", 
-        "database":"booklessdb"
+    private pool:Pool =  new Pool({
+        "host":process.env.DB_HOST, 
+        "port":Number(process.env.DB_PORT),
+        "user":process.env.DB_USER,
+        "password":process.env.DB_PASSWORD, 
+        "database":process.env.DB_DATABASE
     }); 
 
     constructor() {
@@ -19,35 +21,113 @@ export class UserRepository {
     }
 
     public async getAllCompCustomers() {
-        await this.client.connect();
+
         try{
             this.compCustomers = [];
-            
-            const resultIterator = await this.client.query("select id, shippingAdress, contactPerson from compCustomers");
-            console.log('Get compCustomers from DB');
-    
-            for await (const row of resultIterator) {
-       
-                /*this.compCustomers.push( {
-                    id:Number(row.get("id")),
-                    contactPersons
-                });*/
-            }
 
+
+            const result = await this.pool.query('select id,name, uid, town, plz, street, country from CompanyCustomer');
+
+            for(const item of result.rows){
+                const shipingAddressesToAdd:IShippingAdress[] = []; 
+                const addresses = await this.pool.query('select id, companyCustomerID, adress from Address where companyCustomerID = $1', 
+                [
+                    item.id
+                ]);
+
+                addresses.rows.forEach(element => {
+                    shipingAddressesToAdd.push({adress: element.adress});
+                });
+
+                const contactPersonsToAdd:IContactPerson[] = [];
+
+                const contactPersons = await this.pool.query('select companyCustomerID,adress, phoneNumber, email, companyRank, firstName, lastName, gender from ContactPerson where companyCustomerID = $1', 
+                [
+                    item.id
+                ]);
+
+                contactPersons.rows.forEach(element => {
+                    contactPersonsToAdd.push({
+                        id:element.id,
+                        adress: element.adress,
+                        phoneNumber: element.phoneNumber,
+                        companyRank: element.companyRank,
+                        email: element.email,
+                        fName: element.firstName,
+                        lName: element.lastName,
+                        gender: element.gender
+                    })
+                });
+
+                this.compCustomers.push({
+                    id: item.id,
+                    name: item.name,
+                    uid:item.uid,
+                    companyLocation : {
+                        town: item.town,
+                        plz: item.plz,
+                        street: item.street, 
+                        country: item.country
+                    },
+                    shippingAdress: shipingAddressesToAdd,
+                    contactPersons: contactPersonsToAdd
+
+                });
+
+            }
             console.log(this.compCustomers)
         } finally{
-            await this.client.end();
         }
     }
 
     public async addCompanyCustomer(compCustomer:ICompanyCustomer){
-        await this.client.connect();
         try{ 
-           await this.client.query(`insert into compCustomers (id, shippingAdress,contactPersons ) values('${compCustomer.id}', '${compCustomer.shippingAdress}', '${compCustomer.contactPersons}')`);
+
+            await this.pool.query('insert into CompanyCustomer (name, uid, town, plz, street, country) values($1,$2,$3,$4,$5,$6)',
+            [
+                compCustomer.name,
+                compCustomer.uid,
+                compCustomer.companyLocation.town,
+                compCustomer.companyLocation.plz,
+                compCustomer.companyLocation.street,
+                compCustomer.companyLocation.country 
+            ]);
+
+            // get id 
+            const insertID = await this.pool.query('select id from CompanyCustomer WHERE name LIKE $1',
+            [
+                compCustomer.name
+            ]);
+
+
+            // insert addresses
+            for(const item of compCustomer.shippingAdress){
+                await this.pool.query('insert into Address (companyCustomerID, address) values($1,$2)',
+                [
+                    insertID.rows[0].id,
+                    item.adress
+                ]);
+            }
+
+            // insert contactPersons
+            for(const item of compCustomer.contactPersons){
+                await this.pool.query('insert into ContactPerson (companyCustomerID,adress, phoneNumber, email, companyRank, firstName, lastName, gender) values($1,$2,$3,$4,$5,$6,$7,$8)',
+                [
+                    insertID.rows[0].id,
+                    item.adress,
+                    item.phoneNumber,
+                    item.email,
+                    item.companyRank, 
+                    item.fName,
+                    item.lName,
+                    item.gender
+                ]);
+            }
+
         } catch {
             throw exception("Insert failed");
         } finally {
-            await this.client.end();
+
         }
     }
 }

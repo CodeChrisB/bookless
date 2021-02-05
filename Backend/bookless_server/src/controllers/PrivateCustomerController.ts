@@ -26,7 +26,7 @@ export class PrivateCustomerController {
     private delete(@requestParam("id") id: number, @response()  res: express.Response): IPrivateCustomer[] {
 
         return this.privateCustomerService.deletePrivateCustomer(id);
-    }
+    } 
 
     @httpPost("/add")
     private add(req:express.Request, res:express.Response):  Promise<IPrivateCustomer[]> {

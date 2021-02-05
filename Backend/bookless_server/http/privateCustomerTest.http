@@ -1,6 +1,7 @@
-GET http://localhost:3000/PrivateCustomer
+GET http://localhost:3000/CompanyCustomer
+
 ###
-GET http://localhost:3000/PrivateCustomer/all
+GET http://localhost:3000/CompanyCustomer/all
 ###
 DELETE http://localhost:3000/PrivateCustomer/1
 ###
