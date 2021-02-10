@@ -684,6 +684,8 @@ var PdfService = /** @class */ (function () {
             case _models_bill_PdfType__WEBPACK_IMPORTED_MODULE_0__["PdfType"].Offer:
                 this.downloadOffer(data);
                 break;
+            case _models_bill_PdfType__WEBPACK_IMPORTED_MODULE_0__["PdfType"].Confirmation:
+                break;
         }
     };
     // the generic open method
@@ -2140,9 +2142,10 @@ var ConfirmationData = /** @class */ (function () {
                 consultantId: -1,
                 // at start a offer is just a offer it is not transformed yet into anything else
                 stages: {
-                    offer: false,
-                    order: false,
-                    bill: false,
+                    offer: '',
+                    order: '',
+                    bill: '',
+                    deliveryNote: '',
                     finished: false,
                     canceld: false,
                 }
@@ -2775,30 +2778,21 @@ function Offer_mat_header_cell_31_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function Offer_mat_cell_32_Template(rf, ctx) { if (rf & 1) {
-    var _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-cell");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_32_Template_div_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35); var offer_r33 = ctx.$implicit; var ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r34.changeOfferColor(offer_r33); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_32_Template_div_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35); var offer_r33 = ctx.$implicit; var ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r36.changeOrderColor(offer_r33); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_32_Template_div_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35); var offer_r33 = ctx.$implicit; var ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r37.changeBillColor(offer_r33); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_32_Template_div_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35); var offer_r33 = ctx.$implicit; var ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r38.changeFinishedColor(offer_r33); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     var offer_r33 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("background-color", offer_r33.offer.stages.offer ? "Green" : "Red");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("background-color", offer_r33.offer.stages.offer.length > 0 ? "Green" : "Red");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("background-color", offer_r33.offer.stages.order ? "Green" : "Red");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("background-color", offer_r33.offer.stages.order.length > 0 ? "Green" : "Red");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("matTooltip", "Angebot wurde " + (offer_r33.offer.stages.order ? "in" : "nicht in") + " Best\u00E4tigung verwandelt");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("background-color", offer_r33.offer.stages.bill ? "Green" : "Red");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("background-color", offer_r33.offer.stages.bill.length > 0 ? "Green" : "Red");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("matTooltip", "Angebot wurde " + (offer_r33.offer.stages.bill ? "in" : "nicht in") + " Rechnung verwandelt");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("background-color", offer_r33.offer.stages.finished ? "Green" : "Red");
@@ -2810,7 +2804,7 @@ function Offer_mat_header_cell_34_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function Offer_mat_cell_35_Template(rf, ctx) { if (rf & 1) {
-    var _r42 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    var _r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-cell");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-icon");
@@ -2819,31 +2813,31 @@ function Offer_mat_cell_35_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "mat-menu", null, 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); var row_r39 = ctx.$implicit; var ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r41.showOffer(row_r39); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37); var row_r34 = ctx.$implicit; var ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r36.showOffer(row_r34); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Ansehen");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); var row_r39 = ctx.$implicit; var ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r43.updateOffer(row_r39); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37); var row_r34 = ctx.$implicit; var ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r38.updateOffer(row_r34); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Bearbeiten");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); var row_r39 = ctx.$implicit; var ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r44.deleteOffer(row_r39); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37); var row_r34 = ctx.$implicit; var ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r39.deleteOffer(row_r34); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "L\u00F6schen");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_12_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); var row_r39 = ctx.$implicit; var ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r45.downloadPdf(row_r39); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_12_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37); var row_r34 = ctx.$implicit; var ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r40.downloadPdf(row_r34); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Download");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "button", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_14_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); var row_r39 = ctx.$implicit; var ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r46.transform(row_r39); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Offer_mat_cell_35_Template_button_click_14_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37); var row_r34 = ctx.$implicit; var ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r41.transform(row_r34); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Transformieren");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    var _r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](5);
+    var _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matMenuTriggerFor", _r40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matMenuTriggerFor", _r35);
 } }
 function Offer_mat_header_row_36_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-header-row");
@@ -2871,18 +2865,6 @@ var Offer = /** @class */ (function () {
         this.pageSize = $event.pageSize;
         this.dataSource = offers.slice(this.pageSize * $event.pageIndex, this.pageSize * $event.pageIndex + this.pageSize);
         this.pageIndex = $event.pageIndex;
-    };
-    Offer.prototype.changeFinishedColor = function (finished) {
-        finished.offer.stages.finished = !finished.offer.stages.finished;
-    };
-    Offer.prototype.changeOfferColor = function (offer) {
-        offer.offer.stages.offer = !offer.offer.stages.offer;
-    };
-    Offer.prototype.changeOrderColor = function (order) {
-        order.offer.stages.order = !order.offer.stages.order;
-    };
-    Offer.prototype.changeBillColor = function (bill) {
-        bill.offer.stages.bill = !bill.offer.stages.bill;
     };
     Offer.prototype.updateOffer = function (row) {
         console.dir(row);
@@ -2927,7 +2909,7 @@ var Offer = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.contextMenu = _t.first);
-        } }, decls: 42, vars: 7, consts: [["id", "content"], [1, "lessons-table", "mat-elevation-z8", 3, "dataSource"], ["matColumnDef", "number"], [4, "matHeaderCellDef"], [4, "matCellDef"], ["matColumnDef", "date"], ["matColumnDef", "cId"], ["matColumnDef", "name"], ["matColumnDef", "plz"], ["matColumnDef", "town"], ["matColumnDef", "street"], ["matColumnDef", "brutto"], ["matColumnDef", "status"], ["id", "smallGap", "matColumnDef", "transform"], ["matColumnDef", "actions"], [4, "matHeaderRowDef"], [4, "matRowDef", "matRowDefColumns"], ["id", "addButton", 3, "click"], [3, "length", "pageSize", "pageIndex", "pageSizeOptions", "page"], ["id", "small", "matTooltipPosition", "above", "matTooltip", "Angebot wurde erstellt", "mat-menu-item", "", 3, "click"], ["id", "small", "matTooltipPosition", "above", "mat-menu-item", "", 3, "matTooltip", "click"], [3, "matMenuTriggerFor"], ["menu", "matMenu"], ["mat-menu-item", "", 3, "click"]], template: function Offer_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 42, vars: 7, consts: [["id", "content"], [1, "lessons-table", "mat-elevation-z8", 3, "dataSource"], ["matColumnDef", "number"], [4, "matHeaderCellDef"], [4, "matCellDef"], ["matColumnDef", "date"], ["matColumnDef", "cId"], ["matColumnDef", "name"], ["matColumnDef", "plz"], ["matColumnDef", "town"], ["matColumnDef", "street"], ["matColumnDef", "brutto"], ["matColumnDef", "status"], ["id", "smallGap", "matColumnDef", "transform"], ["matColumnDef", "actions"], [4, "matHeaderRowDef"], [4, "matRowDef", "matRowDefColumns"], ["id", "addButton", 3, "click"], [3, "length", "pageSize", "pageIndex", "pageSizeOptions", "page"], ["id", "small", "matTooltipPosition", "above", "matTooltip", "Angebot wurde erstellt", "mat-menu-item", ""], ["id", "small", "matTooltipPosition", "above", "mat-menu-item", "", 3, "matTooltip"], [3, "matMenuTriggerFor"], ["menu", "matMenu"], ["mat-menu-item", "", 3, "click"]], template: function Offer_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-table", 1);
@@ -4194,7 +4176,7 @@ __webpack_require__.r(__webpack_exports__);
 var date1 = new Date('December 17, 2020');
 var date2 = new Date('January 12, 2021');
 var offer = [
-    { offer: { number: 200045, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 12265, isCompany: true, name: 'Thermenbad', plz: '4050', town: 'Leonding', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: true, order: false, bill: true, finished: true, canceld: true } },
+    { offer: { number: 200045, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 12265, isCompany: true, name: 'Thermenbad', plz: '4050', town: 'Leonding', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: 'AN-500332', order: '', bill: '', deliveryNote: '', finished: false, canceld: false } },
         prodcuts: [
             { product: { productId: 1432, name: 'ZC-43', description: 'Wärmetauscher', price: 1 }, amount: 1 },
             { product: { productId: 4322, name: 'ZC-44', description: 'Wellrohrschlauch', price: 12 }, amount: 21 },
@@ -4226,7 +4208,7 @@ var offer = [
             { product: { productId: 1122, name: 'ZC-12', description: 'WT-Kelleranlage', price: 1950 }, amount: 1 },
             { product: { productId: 1122, name: 'ZC-12', description: 'WT-Kelleranlage', price: 1950 }, amount: 1 },
         ] },
-    { offer: { number: 2, date: date1, uid: '', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: false, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: true, order: false, bill: true, finished: true, canceld: true } },
+    { offer: { number: 2, date: date1, uid: '', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: false, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: 'AN-500332', order: '', bill: '', deliveryNote: '', finished: false, canceld: false } },
         prodcuts: [
             { product: { productId: 1, name: 'ZC-43', description: 'Wärmetauscher', price: 1 }, amount: 1 },
             { product: { productId: 2, name: 'ZC-44', description: 'Wellrohrschlauch', price: 12 }, amount: 21 },
@@ -4235,7 +4217,7 @@ var offer = [
             { product: { productId: 6, name: 'ZC-47', description: 'Verschraubungen', price: 43 }, amount: 2 },
             { product: { productId: 12, name: 'ZC-48', description: 'Sonstiges', price: 50 }, amount: 1 },
         ] },
-    { offer: { number: 3, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: true, order: false, bill: true, finished: true, canceld: true } },
+    { offer: { number: 3, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: 'AN-500332', order: '', bill: '', deliveryNote: '', finished: false, canceld: false } },
         prodcuts: [
             { product: { productId: 1, name: 'ZC-43', description: 'Wärmetauscher', price: 1 }, amount: 1 },
             { product: { productId: 2, name: 'ZC-44', description: 'Wellrohrschlauch', price: 12 }, amount: 21 },
@@ -4244,7 +4226,7 @@ var offer = [
             { product: { productId: 6, name: 'ZC-47', description: 'Verschraubungen', price: 43 }, amount: 2 },
             { product: { productId: 12, name: 'ZC-48', description: 'Sonstiges', price: 50 }, amount: 1 },
         ] },
-    { offer: { number: 4, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: true, order: false, bill: true, finished: true, canceld: true } },
+    { offer: { number: 4, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: 'AN-500332', order: '', bill: '', deliveryNote: '', finished: false, canceld: false } },
         prodcuts: [
             { product: { productId: 1, name: 'ZC-43', description: 'Wärmetauscher', price: 1 }, amount: 1 },
             { product: { productId: 2, name: 'ZC-44', description: 'Wellrohrschlauch', price: 12 }, amount: 21 },
@@ -4253,7 +4235,7 @@ var offer = [
             { product: { productId: 6, name: 'ZC-47', description: 'Verschraubungen', price: 43 }, amount: 2 },
             { product: { productId: 12, name: 'ZC-48', description: 'Sonstiges', price: 50 }, amount: 1 },
         ] },
-    { offer: { number: 5, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: true, order: false, bill: true, finished: true, canceld: true } },
+    { offer: { number: 5, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: 'AN-500332', order: '', bill: '', deliveryNote: '', finished: false, canceld: false } },
         prodcuts: [
             { product: { productId: 1, name: 'ZC-43', description: 'Wärmetauscher', price: 1 }, amount: 1 },
             { product: { productId: 2, name: 'ZC-44', description: 'Wellrohrschlauch', price: 12 }, amount: 21 },
@@ -4262,7 +4244,7 @@ var offer = [
             { product: { productId: 6, name: 'ZC-47', description: 'Verschraubungen', price: 43 }, amount: 2 },
             { product: { productId: 12, name: 'ZC-48', description: 'Sonstiges', price: 50 }, amount: 1 },
         ] },
-    { offer: { number: 6, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: true, order: false, bill: true, finished: true, canceld: true } },
+    { offer: { number: 6, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: 'AN-500332', order: '', bill: '', deliveryNote: '', finished: false, canceld: false } },
         prodcuts: [
             { product: { productId: 1, name: 'ZC-43', description: 'Wärmetauscher', price: 1 }, amount: 1 },
             { product: { productId: 2, name: 'ZC-44', description: 'Wellrohrschlauch', price: 12 }, amount: 21 },
@@ -4271,7 +4253,7 @@ var offer = [
             { product: { productId: 6, name: 'ZC-47', description: 'Verschraubungen', price: 43 }, amount: 2 },
             { product: { productId: 12, name: 'ZC-48', description: 'Sonstiges', price: 50 }, amount: 1 },
         ] },
-    { offer: { number: 7, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: true, order: false, bill: true, finished: true, canceld: true } },
+    { offer: { number: 7, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: 'AN-500332', order: '', bill: '', deliveryNote: '', finished: false, canceld: false } },
         prodcuts: [
             { product: { productId: 1, name: 'ZC-43', description: 'Wärmetauscher', price: 1 }, amount: 1 },
             { product: { productId: 2, name: 'ZC-44', description: 'Wellrohrschlauch', price: 12 }, amount: 21 },
@@ -4280,7 +4262,7 @@ var offer = [
             { product: { productId: 6, name: 'ZC-47', description: 'Verschraubungen', price: 43 }, amount: 2 },
             { product: { productId: 12, name: 'ZC-48', description: 'Sonstiges', price: 50 }, amount: 1 },
         ] },
-    { offer: { number: 8, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: true, order: false, bill: true, finished: true, canceld: true } },
+    { offer: { number: 8, date: date1, uid: '21341234', possibleDelivery: date2, projectName: 'An-17525', customerId: 1, isCompany: true, name: 'Thermenbad', plz: '4052', town: 'Ansgefelden', street: 'Ritzlhofstraße', bruttoValue: 2750, status: 'laufend', consultantId: 1, stages: { offer: 'AN-500332', order: '', bill: '', deliveryNote: '', finished: false, canceld: false } },
         prodcuts: [
             { product: { productId: 1, name: 'ZC-43', description: 'Wärmetauscher', price: 1 }, amount: 1 },
             { product: { productId: 2, name: 'ZC-44', description: 'Wellrohrschlauch', price: 12 }, amount: 21 },
@@ -6488,9 +6470,10 @@ var OfferData = /** @class */ (function () {
                 consultantId: -1,
                 // at start a offer is just a offer it is not transformed yet into anything else
                 stages: {
-                    offer: false,
-                    order: false,
-                    bill: false,
+                    offer: '',
+                    order: '',
+                    bill: '',
+                    deliveryNote: '',
                     finished: false,
                     canceld: false,
                 }
