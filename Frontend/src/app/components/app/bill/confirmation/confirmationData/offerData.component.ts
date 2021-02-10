@@ -22,7 +22,7 @@ selector: 'customer-component',
 templateUrl: './offerData.component.html',
 styleUrls: ['./offerData.component.css', '../../../../css/forms.css']
 })
-export class OfferData implements OnInit  {
+export class ConfirmationData implements OnInit  {
   constructor(private route: Router) {}
 
   locked = false;

@@ -12,9 +12,9 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-getVersion() : void{  
-  window.open('https://codechrisb.github.io/version.html?dev=1', "_blank");
+
+getVersion(): void{
+  window.open('https://codechrisb.github.io/version.html?dev=1', '_blank');
 
 }
 

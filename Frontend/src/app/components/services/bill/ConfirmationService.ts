@@ -1,10 +1,10 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { IBillData } from 'src/models/bill/offer/BillData';
+import { IBillData } from 'src/models/bill/offer/OfferData';
 
 const date1 = new Date('December 17, 2020');
 const date2 = new Date('January 12, 2021');
-var offer: IBillData[] =
+var confirmation: IBillData[] =
 [
   {offer:{number:200045,date:date1,uid:'21341234',possibleDelivery:date2,projectName:'An-17525',customerId:12265,isCompany:true,name:'Thermenbad',plz:"4050",town:'Leonding',street:'Ritzlhofstraße',bruttoValue:2750,status:'laufend',consultantId:1,stages:{offer:true,order:false,bill:true,finished:true,canceld:true}},
   prodcuts:[
@@ -110,27 +110,27 @@ amount:number;
 @Injectable({
   providedIn: 'root',
 })
-export class OfferService {
+export class confirmationService {
 
-  static getOffers():IBillData[]{
-    return offer;
+  static getconfirmations():IBillData[]{
+    return confirmation;
   }
 
-  static addOffer(newOffer:IBillData){
-    offer.push(newOffer);
+  static addconfirmation(newconfirmation:IBillData){
+    confirmation.push(newconfirmation);
   }
 
-  static deleteOffer(number:number){
-    offer = offer.filter(o=>o.offer.number!=number)
+  static deleteconfirmation(number:number){
+    confirmation = confirmation.filter(o=>o.offer.number!=number)
   }
 
-  static getOffer(number:number): IBillData{
-    return offer.filter(o=>o.offer.number == number)[0]
+  static getconfirmation(number:number): IBillData{
+    return confirmation.filter(o=>o.offer.number == number)[0]
   }
 
-  static updateOffer(updatedOffer:IBillData){
-    let itemIndex = offer.findIndex(item => item.offer.number == updatedOffer.offer.number);
-    offer[itemIndex] = updatedOffer;
+  static updateconfirmation(updatedconfirmation:IBillData){
+    let itemIndex = confirmation.findIndex(item => item.offer.number == updatedconfirmation.offer.number);
+    confirmation[itemIndex] = updatedconfirmation;
   }
 
 }

@@ -8,9 +8,8 @@ import { StringShortener } from 'src/app/components/services/tools/StringShortne
 import { IBillData } from 'src/models/bill/offer/OfferData';
 import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
-import { TransformComponent } from '../../transform/transform.component';
-import { PdfType } from 'src/models/bill/PdfType';
 import { PdfService } from 'src/app/components/services/pdf/bills/PdfService';
+import { PdfType } from 'src/models/bill/PdfType';
 
 
 const offers: IBillData[] = OfferService.getOffers();
@@ -19,13 +18,13 @@ const offers: IBillData[] = OfferService.getOffers();
 
 @Component({
   selector: 'customer-component',
-  templateUrl: './offer.component.html',
-  styleUrls: ['./offer.component.css']
+  templateUrl: './confirmation.component.html',
+  styleUrls: ['./confirmation.component.css']
 })
-export class Offer  {
+export class Confirmation  {
   // init the data
   displayedColumns = ['number', 'date', 'cId', 'name', 'plz', 'town', 'street', 'brutto', 'status', 'transform', 'actions'];
-  constructor(public dialog: MatDialog, private route: Router) {}
+
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
@@ -45,7 +44,9 @@ export class Offer  {
      this.pageIndex = $event.pageIndex;
     }
 
-
+  showOffer(row: IBillData) {
+    PdfService.OpenPdf(row, PdfType.Offer);
+  }
 
   updateOffer(row: IBillData){
     console.dir(row);
@@ -56,25 +57,13 @@ export class Offer  {
     this.route.navigate(['/app/sales/offer/new'] , { state: {mode: 'add' } });
   }
 
-  transform(offer: IBillData){
-    console.dir(offer);
-    const dialogRef = this.dialog.open(TransformComponent, {
-      height: '90%',
-      width: '80%',
-      data: {offer, type: PdfType.Offer}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
 
   short( string: string, number: number){
     return StringShortener.Trim(string, number);
   }
 
 
+  constructor(public dialog: MatDialog, private route: Router) {}
 
   deleteOffer(row: IBillData){
      if (confirm('Wollen Sie ' + row.offer.name + ' löschen?')){
@@ -88,13 +77,8 @@ export class Offer  {
       this.dataSource = this.dataSource;
     }
 
-
-    showOffer(row: IBillData) {
-      PdfService.OpenPdf(row, PdfType.Offer);
-    }
-
     downloadPdf(row: IBillData){
-      PdfService.DownloadPdf(row, PdfType.Offer);
+       PdfService.DownloadPdf(row, PdfType.Offer);
     }
 
 }

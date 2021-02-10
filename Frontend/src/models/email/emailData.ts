@@ -1,5 +1,5 @@
 export interface IEmailData {
-  email : string;
+  email: string;
   subject: string;
-  content : string;
+  content: string;
 }

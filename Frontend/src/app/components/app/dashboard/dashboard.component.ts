@@ -15,18 +15,18 @@ styleUrls: ['./dashboard.component.css']
 export class Dashboard implements OnInit {
 
 
-  public now: String = "."
-  timer =null;
-  customers: IPrivateCustomer[] = CustomerService.getAllCustomers().filter(c=>c.id<10);
-  companies: ICompanyCustomer[] = CompanyService.getData().filter(c=>c.id<10);
-  show=true;
-  totalCustomers:number=100;
-  newCustomers:number=100;
+  public now: String = '.';
+  timer = null;
+  customers: IPrivateCustomer[] = CustomerService.getAllCustomers().filter(c => c.id < 10);
+  companies: ICompanyCustomer[] = CompanyService.getData().filter(c => c.id < 10);
+  show = true;
+  totalCustomers = 100;
+  newCustomers = 100;
 
-  private weekDays=['Sontag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
-  private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  private weekDays = ['Sontag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+  private months = ['Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 
-  constructor(private route :Router) {
+  constructor(private route: Router) {
       this.timer = setInterval(() => {
         this.now = DateFormatter.getCurrentTimeAsString();
       }, 1000);
@@ -43,12 +43,12 @@ ngOnDestroy() {
   clearInterval(this.timer);
 }
 
-goToShowCustomerPage(id:number){
-  this.route.navigate(['/app/crm/customer/show'], { state: {mode:'show', id: id } });
+goToShowCustomerPage(id: number){
+  this.route.navigate(['/app/crm/customer/show'], { state: {mode: 'show', id } });
 }
 
-goToShowCompanyPage(id:number){
-  this.route.navigate(['/app/crm/company/show'], { state: {mode:'show', id: id } });
+goToShowCompanyPage(id: number){
+  this.route.navigate(['/app/crm/company/show'], { state: {mode: 'show', id } });
 }
 
 }
