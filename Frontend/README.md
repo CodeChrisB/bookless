@@ -56,6 +56,10 @@
 
 - npm run electron
 
+## Build to GH Pages
+
+- npm run pages
+
 ---     
 #### Written By Buchberger Christopher
 #### @CodeChrisB 
