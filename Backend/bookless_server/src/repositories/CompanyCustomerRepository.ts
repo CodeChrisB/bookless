@@ -1,8 +1,9 @@
-import { count, exception } from "console";
-import { Pool, QueryResult } from "pg";
+import { exception } from "console";
+import { Pool } from "pg";
 import { IContactPerson } from "../models/ContactPerson";
 import { ICompanyCustomer, IShippingAdress } from "../models/Customer/CompanyCustomer";
-
+import { createLogger } from 'winston';
+ 
 export class CompanyCustomerRepository {
 
     compCustomers:ICompanyCustomer[] = []
