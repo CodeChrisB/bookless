@@ -91,7 +91,7 @@ export class ConfirmationData implements OnInit  {
     // get the current mode
     // check if url routing
     if (history.state.mode == undefined && this.route.url.includes('edit')){
-      this.route.navigate(['/app/sales/offer']);
+      this.route.navigate(['/app/sales/confirmation']);
     }
     else{
         this.editMode = history.state.mode == 'edit';
@@ -115,7 +115,7 @@ export class ConfirmationData implements OnInit  {
     }else{
       this.fillInOffer();
       OfferService.addOffer(this.offerData);
-      this.route.navigate(['/app/sales/offer']);
+      this.route.navigate(['/app/sales/confirmation']);
     }
   }
 

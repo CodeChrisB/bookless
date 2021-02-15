@@ -61,7 +61,7 @@ export class Offer  {
     const dialogRef = this.dialog.open(TransformComponent, {
       height: '90%',
       width: '80%',
-      data: {offer, type: PdfType.Offer}
+      data: {billData:offer, type: PdfType.Offer}
     });
 
     dialogRef.afterClosed().subscribe(result => {

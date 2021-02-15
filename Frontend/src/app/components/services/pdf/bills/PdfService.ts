@@ -28,6 +28,16 @@ export class PdfService{
     }
   }
 
+    // the generic download method
+    public static CreatePdf(data: any, type: PdfType){
+      switch (type){
+        case PdfType.Offer :
+           return this.createOffer(data)
+        case PdfType.Confirmation:
+          return this.createConfirmation(data)
+      }
+    }
+
   // offer
   private static downloadOffer(data: IBillData){
     let ops = new OfferPdfService(data);
@@ -37,6 +47,11 @@ export class PdfService{
   private static openOffer(data: IBillData){
     let ops = new OfferPdfService(data);
     ops.download('Angebot.pdf');
+  }
+
+  private static createOffer(data: IBillData){
+    let ops = new OfferPdfService(data);
+    return ops.create();
   }
 
   // confirmation
@@ -50,6 +65,10 @@ export class PdfService{
     ops.download('Angebot.pdf');
   }
 
+  private static createConfirmation(data: IBillData){
+    let ops = new ConfirmationPdfService(data);
+    return ops.create();
+  }
 
 
 

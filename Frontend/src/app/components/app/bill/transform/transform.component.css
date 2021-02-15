@@ -9,7 +9,7 @@ mat-button-toggle{
   background-color: cadetblue;
 }
 
-#currentPdf,button#button-container{
+#currentPdf,#transformedPdf,button#button-container{
   min-height: 100%;
   width: 100%;
   background-color: brown;
