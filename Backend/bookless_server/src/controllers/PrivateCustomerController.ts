@@ -23,7 +23,7 @@ export class PrivateCustomerController {
     }
 
     @httpDelete("/:id")
-    private delete(@requestParam("id") id: number, @response()  res: express.Response): IPrivateCustomer[] {
+    private delete(@requestParam("id") id: number, @response()  res: express.Response): Promise<IPrivateCustomer[]> {
 
         return this.privateCustomerService.deletePrivateCustomer(id);
     } 

@@ -1,7 +1,5 @@
 import { count, exception } from "console";
-import e, { text } from "express";
 import { Pool, QueryResult } from "pg";
-import { add } from "winston";
 import { IContactPerson } from "../models/ContactPerson";
 import { ICompanyCustomer, IShippingAdress } from "../models/Customer/CompanyCustomer";
 
@@ -24,7 +22,6 @@ export class UserRepository {
 
         try{
             this.compCustomers = [];
-
 
             const result = await this.pool.query('select id,name, uid, town, plz, street, country from CompanyCustomer');
 

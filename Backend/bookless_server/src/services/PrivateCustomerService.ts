@@ -17,8 +17,9 @@ export class PrivateCustomerService {
     }
 
     // privateCustomerRepo = new this.privateCustomerRepository();
-    public deletePrivateCustomer(id:number):IPrivateCustomer[]{
-        return [];
+    public deletePrivateCustomer(id:number):Promise<IPrivateCustomer[]>{
+        this.repo.deletePrivateCustomer(id);
+        return this.repo.getPrivateCustomer();
     }
 
     public getAllPrivateCustomers() : Promise<IPrivateCustomer[]> {

@@ -1,9 +1,8 @@
 GET http://localhost:3000/CompanyCustomer
-
 ###
-GET http://localhost:3000/CompanyCustomer/all
+GET http://localhost:3000/PrivateCustomer/all
 ###
-DELETE http://localhost:3000/PrivateCustomer/1
+DELETE http://localhost:3000/PrivateCustomer/5
 ###
 POST http://localhost:3000/PrivateCustomer/add
 Content-Type: application/json 

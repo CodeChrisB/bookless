@@ -1,6 +1,15 @@
 import { exception } from "console";
 import { Pool, QueryResult } from "pg";
+import { createLogger, format, transports } from "winston";
 import { IPrivateCustomer } from "../models/Customer/PrivateCustomer";
+
+const logger = createLogger({
+    format: format.combine(
+      format.splat(),
+      format.simple()
+    ),
+    transports: [new transports.Console()]
+});
 
 export class PrivateCustomerRepository {
 
@@ -18,7 +27,7 @@ export class PrivateCustomerRepository {
     }
 
     public get():IPrivateCustomer[]{
-        //console.log(this.privateCustomers)
+        logger.info(this.privateCustomers)
         return this.privateCustomers;
     }
 
@@ -27,7 +36,7 @@ export class PrivateCustomerRepository {
         try{
             this.privateCustomers = [];
             const result:QueryResult<IPrivateCustomer> = await this.pool.query("select id, adress,phoneNumber,email,fName,lName,gender from PrivateCustomer");
-            console.log('Get privateCustomers from DB');
+            logger.info('Get privateCustomers from DB');
     
             for await (const row of result.rows) {
        
@@ -45,8 +54,18 @@ export class PrivateCustomerRepository {
             
         } finally{
           
-          console.log(this.privateCustomers)
+          logger.log('info', this.privateCustomers)
           return this.privateCustomers;
+        }
+    }
+
+    public async deletePrivateCustomer(id:number){
+        try{
+            this.privateCustomers.splice( this.privateCustomers.findIndex(v => v.id === id),1 );
+
+            await this.pool.query('delete from privateCustomer where id = $1', [id]);
+        } finally {
+
         }
     }
 
