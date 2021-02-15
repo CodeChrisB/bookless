@@ -10,7 +10,7 @@ export class CompanyCustomerController {
     constructor(@inject("CompanyCustomerService") private companyCustomerService:CompanyCustomerService){}
 
     @httpGet("/all")
-    private GetAllCustomers(req:express.Request):ICompanyCustomer[] {
+    private GetAllCustomers(req:express.Request):Promise<ICompanyCustomer[]> {
 
         // Get Data from customerService
         return this.companyCustomerService.getAllCompanyCustomers();
@@ -22,13 +22,13 @@ export class CompanyCustomerController {
     }
 
     @httpDelete("/:id")
-    private delete(@requestParam("id") id: number, @response()  res: express.Response): ICompanyCustomer {
+    private delete(@requestParam("id") id: number, @response()  res: express.Response): Promise<ICompanyCustomer[]> {
 
         return this.companyCustomerService.deleteCompanyCustomer(id);
     }
 
     @httpPost("/add")
-    private add(req:express.Request, res:express.Response):  ICompanyCustomer[] {
+    private add(req:express.Request, res:express.Response):  Promise<ICompanyCustomer[]> {
         return this.companyCustomerService.add(req.body);
     }
 }

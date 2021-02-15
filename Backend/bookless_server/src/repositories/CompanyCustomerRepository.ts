@@ -3,7 +3,7 @@ import { Pool, QueryResult } from "pg";
 import { IContactPerson } from "../models/ContactPerson";
 import { ICompanyCustomer, IShippingAdress } from "../models/Customer/CompanyCustomer";
 
-export class UserRepository {
+export class CompanyCustomerRepository {
 
     compCustomers:ICompanyCustomer[] = []
     private pool:Pool =  new Pool({
@@ -18,7 +18,15 @@ export class UserRepository {
         
     }
 
-    public async getAllCompCustomers() {
+    public async deleteCompCustomer(id:number){
+        try {
+            await this.pool.query('delete from CompanyCustomer where id = $1', [id]);
+        } finally {
+            
+        }
+    }
+
+    public async getAllCompCustomers():Promise<ICompanyCustomer[]> {
 
         try{
             this.compCustomers = [];
@@ -74,6 +82,8 @@ export class UserRepository {
             }
             console.log(this.compCustomers)
         } finally{
+
+            return this.compCustomers;
         }
     }
 
