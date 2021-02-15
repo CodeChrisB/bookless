@@ -1,9 +1,17 @@
-import { exception } from "console";
 import { Pool } from "pg";
 import { IContactPerson } from "../models/ContactPerson";
 import { ICompanyCustomer, IShippingAdress } from "../models/Customer/CompanyCustomer";
-import { createLogger } from 'winston';
- 
+import { createLogger, format, transports } from 'winston';
+
+const logger = createLogger({
+    
+    format: format.combine(
+      format.splat(),
+      format.simple()
+    ),
+    transports: [new transports.Console()]
+});
+
 export class CompanyCustomerRepository {
 
     compCustomers:ICompanyCustomer[] = []
@@ -81,7 +89,7 @@ export class CompanyCustomerRepository {
                 });
 
             }
-            console.log(this.compCustomers)
+            logger.log('info' , this.compCustomers)
         } finally{
 
             return this.compCustomers;
@@ -133,7 +141,7 @@ export class CompanyCustomerRepository {
             }
 
         } catch {
-            throw exception("Insert failed");
+            logger.log('exception', 'Insert failed into CompanyCustomers faild');
         } finally {
 
         }
