@@ -79,9 +79,6 @@ export class Customer  {
     EmailHandler.sendEmail(emailData);
   }
 
-
-
-
   refresh() {
       this.dataSource = this.dataSource;
     }
