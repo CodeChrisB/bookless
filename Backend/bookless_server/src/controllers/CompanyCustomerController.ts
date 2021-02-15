@@ -5,7 +5,7 @@ import { ICompanyCustomer } from "../models/Customer/CompanyCustomer";
 import { CompanyCustomerService } from "../services/CompanyCustomerService";
 
 @controller("/CompanyCustomer")
-export class PrivateCustomerController {
+export class CompanyCustomerController {
 
     constructor(@inject("CompanyCustomerService") private companyCustomerService:CompanyCustomerService){}
 

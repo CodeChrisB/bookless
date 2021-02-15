@@ -6,9 +6,20 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 // declare metadata by @controller annotation
 import "./controllers/HomeController";
 import "./controllers/PrivateCustomerController";
-import { PrivateCustomerService } from './services/PrivateCustomerService';
+import "./controllers/CompanyCustomerController";
+import { PrivateCustomerService } from './services/PrivateCustomerService'; 
 import { CompanyCustomerService } from './services/CompanyCustomerService';
+import { createLogger, format, transports } from 'winston';
 
+
+const logger = createLogger({
+    
+  format: format.combine(
+    format.splat(),
+    format.simple()
+  ),
+  transports: [new transports.Console()]
+});
 // set up container
 let container = new Container();
 container.bind<PrivateCustomerService>('PrivateCustomerService').to(PrivateCustomerService);
@@ -23,9 +34,10 @@ server.setConfig((app) => {
   app.use(bodyParser.json());
 });
 
+
 let app = server.build();
 app.listen(3000, () => {
-  console.log('Server runs on Port 3000');
+  logger.info('Server runs on Port 3000');
 });
 /*
 const app = express();
@@ -47,7 +59,7 @@ app.get('/api/testget', authenticateToken, (req:any, res:any) => {
       const hashedPassword = await bycrypt.hash(req.body.password, salt);
       console.log(salt);
       console.log(hashedPassword);
-      const user =  {
+      const user =  { 
         id:1, 
         req.body.fname, 
         hashedPassword);
