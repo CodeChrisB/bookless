@@ -1,0 +1,31 @@
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "id":1,
+    "username":"name",
+    "password":"pass"
+}
+
+###
+
+POST  http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username":"name",
+    "password":"pass"
+}
+
+###
+
+GET http://localhost:3000/api
+
+###
+
+GET http://localhost:3000/api/testget
+Authorization: Bearer <Access-Token>
+
+###
+
+GET http://localhost:3000/greet

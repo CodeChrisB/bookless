@@ -1,13 +1,16 @@
 # Backend
-
 ## API
+<b>Make sure that you are in the bookless_server directory!</b>
+- Build the System
+    - `docker-compose build`
+    - this command loads all required modules
 
-### Get Data
+- Run the System
+    - `docker-compose up`
+    - this command runs the system 
 
-- Command 1
-- Command 2
-    - Some Further explaination
-- Command 3
-    - When to call
-- Command 4
-    - What to do if it retruns true
+## Changes in init.sql
+- When you changed something from the db structe you have to remove the db image from your docker compose   
+    - `docker-compose rm database`
+
+- Then you have to run the system again

@@ -1,0 +1,18 @@
+GET http://localhost:3000/CompanyCustomer
+###
+GET http://localhost:3000/CompanyCustomer/all
+###
+DELETE http://localhost:3000/PrivateCustomer/5
+###
+POST http://localhost:3000/PrivateCustomer/add
+Content-Type: application/json 
+
+{
+    "id": 3,
+    "adress": "1",
+    "phoneNumber": "2",
+    "email": "email@gmail.com",
+    "fName": "21",
+    "lName": "21s", 
+    "gender": "f"
+}
