@@ -1,6 +1,7 @@
 import { IBillData } from 'src/models/bill/offer/OfferData';
 import {PdfType} from '../../../../../models/bill/PdfType';
 import {OfferPdfService} from '../../../services/pdf/bills/offer/offer';
+import { ConfirmationPdfService } from './confirmation/confirmation';
 
 
 export class PdfService{
@@ -13,6 +14,7 @@ export class PdfService{
       this.downloadOffer(data);
       break;
       case PdfType.Confirmation:
+        this.downloadConfirmation(data)
       break;
     }
   }
@@ -38,6 +40,15 @@ export class PdfService{
   }
 
   // confirmation
+  private static downloadConfirmation(data: IBillData){
+    let ops = new ConfirmationPdfService(data);
+    ops.download('Bestätigung.pdf');
+  }
+
+  private static openConfirmation(data: IBillData){
+    let ops = new ConfirmationPdfService(data);
+    ops.download('Angebot.pdf');
+  }
 
 
 

@@ -78,7 +78,7 @@ export class Confirmation  {
     }
 
     downloadPdf(row: IBillData){
-       PdfService.DownloadPdf(row, PdfType.Offer);
+       PdfService.DownloadPdf(row, PdfType.Confirmation);
     }
 
 }
