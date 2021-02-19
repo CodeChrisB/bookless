@@ -1,5 +1,6 @@
 <div>
-  <div>
+  <div id=grow>
+    <!--FIRST ROW-->
     <div class='row'>
       <div class='column'>
         <mat-card>
@@ -15,61 +16,39 @@
         </mat-card>
       </div>
       <div class='column'>
+        <mat-card>
+          Aufträge
+          <hr>
+        </mat-card>
       </div>
     </div>
     <div class='row'>
+      <!--SECOND ROW-->
       <div class='column'>
         <mat-card>
-          Umsatz
+         Heute
+          <hr>
+          {{now}}
+        </mat-card>
+      </div>
+      <div class='column'>
+        <mat-card>
+          Aufträge
           <hr>
         </mat-card>
       </div>
       <div class='column'>
         <mat-card>
-         Rechnung
+          Aufträge
           <hr>
         </mat-card>
-      </div>
-      <div class='column'>
       </div>
     </div>
   </div>
 </div>
-
+<!--
 <mat-card class="big">
-  <div class="box">
-    <button id="changeTop" (click)="show=!show">{{"Wechseln zu "+ (show ? 'Firmen':"Kunden")}}</button>
 
-    <div *ngIf="show">
-      <table id="topCustomer-table">
-        <tr>
-          <th>Vorname</th>
-          <th>Nachname</th>
-          <th>Email</th>
-        </tr>
-        <tr *ngFor="let c of customers" >
-          <td (click)="goToShowCustomerPage(c.id)">{{c.fName}}</td>
-          <td (click)="goToShowCustomerPage(c.id)">{{c.lName}}</td>
-          <td (click)="goToShowCustomerPage(c.id)">{{c.email}}</td>
-        </tr>
-      </table>
-    </div>
-    <div *ngIf="!show">
-      <table id="topCustomer-table">
-        <tr>
-          <th>Firmename</th>
-          <th>Vertreter</th>
-          <th>Lieferadresse</th>
-        </tr>
-        <tr *ngFor="let c of companies">
-          <td (click)="goToShowCompanyPage(c.id)">{{c.name}}</td>
-          <td (click)="goToShowCompanyPage(c.id)">{{c.contactPersons[0].lName}}</td>
-          <td (click)="goToShowCompanyPage(c.id)">{{c.shippingAdress[0].adress}}</td>
-        </tr>
-      </table>
-    </div>
-    <div style="height: 2vh;"></div>
-  </div>
 </mat-card>
 
 <mat-card class="small">
@@ -81,3 +60,4 @@
 
 </mat-card>
 
+-->
