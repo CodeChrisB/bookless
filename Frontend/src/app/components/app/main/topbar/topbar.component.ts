@@ -40,7 +40,12 @@ export class TopbarComponent implements OnInit {
 public sideNavToggleSubject: BehaviorSubject<any> = new BehaviorSubject(null);
 
 public toggle() {
- this.navHandler.toggle();
+  //only open sidenav when in the app otherwise go back to the app
+  if(this.route.url.toString().indexOf('app')!=-1){
+    this.navHandler.toggle();
+  }else{
+    this.route.navigate(['/app/dashboard']);
+  }
 }
 
 ngAfterView(){
