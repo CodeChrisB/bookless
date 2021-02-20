@@ -20,6 +20,7 @@ export class SidenavComponent implements OnInit{
 
   // close others tabs when open a new one
   closeOnClick = true;
+  closeSideNav=false;
 
   @ViewChild('drawer') sidenav:any;
 
@@ -52,8 +53,11 @@ export class SidenavComponent implements OnInit{
   }
 
   public close(){
+    if(this.closeSideNav)
+      this.sidenav.toggle();
+  }
+  public ForceClose(){
     this.sidenav.toggle();
-
   }
 
   constructor(private top: TopbarComponent,public navHandler:SideNavService) {}

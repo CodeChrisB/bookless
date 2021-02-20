@@ -1,6 +1,8 @@
 
 <mat-toolbar color="primary">
-  <mat-icon (click)="toggle()">{{inApp() ? 'menu' :'keyboard_backspace'}}   </mat-icon>
+  <button  (click)="toggle()" mat-button class="icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon >{{inApp() ? 'menu' :'keyboard_backspace'}}   </mat-icon>
+  </button>
   Bookless
 
 

@@ -67,4 +67,5 @@ mat-icon.home-icon{
 
 .mat-icon{
 margin-right: 1vw;
+cursor: pointer;
 }
