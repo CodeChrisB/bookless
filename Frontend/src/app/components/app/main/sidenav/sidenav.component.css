@@ -74,8 +74,8 @@ p.button-container{
 
 
 mat-drawer-container{
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: 87vh;
+  max-height: 87vh;
   margin: 0;
   padding: 0;
 }
