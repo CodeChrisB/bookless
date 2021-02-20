@@ -1,63 +1,45 @@
-<div>
-  <div id=grow>
-    <!--FIRST ROW-->
-    <div class='row'>
-      <div class='column'>
-        <mat-card>
-         Heute
-          <hr>
-          {{now}}
-        </mat-card>
-      </div>
-      <div class='column'>
-        <mat-card>
-          Aufträge
-          <hr>
-        </mat-card>
-      </div>
-      <div class='column'>
-        <mat-card>
-          Aufträge
-          <hr>
-        </mat-card>
-      </div>
+<div id="container" class="blog-pager">
+    <div id="left">
+      <mat-card id=settings>
+      <button (click)="today()">Heute</button>
+      <button (click)="order()">Aufträge</button>
+      <button (click)="sale()">Umsatz</button>
+      <button (click)="bill()">Rechnugen</button>
+      <button (click)="customer()">Kunden</button>
+       </mat-card>
     </div>
-    <div class='row'>
-      <!--SECOND ROW-->
-      <div class='column'>
-        <mat-card>
-         Heute
-          <hr>
-          {{now}}
-        </mat-card>
-      </div>
-      <div class='column'>
-        <mat-card>
+    <div id="right">
+      <mat-card id=big>
+        <!--TODAY-->
+        <div *ngIf="type == types.today">
+        Heute
+         <hr>
+         {{now}}
+         </div>
+        <!--Order-->
+        <div *ngIf="type == types.order">
           Aufträge
-          <hr>
-        </mat-card>
-      </div>
-      <div class='column'>
-        <mat-card>
-          Aufträge
-          <hr>
-        </mat-card>
-      </div>
+           <hr>
+           {{now}}
+           </div>
+          <!--Sale-->
+        <div *ngIf="type == types.sale">
+          Umsatz
+           <hr>
+           {{now}}
+           </div>
+        <!--Bill-->
+        <div *ngIf="type == types.bill">
+          Rechnungen
+           <hr>
+           {{now}}
+           </div>
+        <!--Customer-->
+        <div *ngIf="type == types.customer">
+          Kunden
+           <hr>
+           {{now}}
+           </div>
+       </mat-card>
     </div>
-  </div>
 </div>
-<!--
-<mat-card class="big">
-
-</mat-card>
-
-<mat-card class="small">
-  Daten
-  <hr>
-<h4>Kunden insgesamt : {{totalCustomers}}</h4>
-<h4>Neue Kunden : {{newCustomers}}</h4>
-
-
-</mat-card>
-
--->

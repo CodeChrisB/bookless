@@ -59,6 +59,7 @@ import { Confirmation } from './components/app/bill/confirmation/list/confirmati
 import { ConfirmationData } from './components/app/bill/confirmation/confirmationData/offerData.component';
 import { TransformComponent } from './components/app/bill/transform/transform.component';
 import { SalesComponent } from './components/settings/Sales/Sales.component';
+import { SideNavService } from './components/services/tools/SidenavHandler';
 
 
 @NgModule({
@@ -130,7 +131,7 @@ import { SalesComponent } from './components/settings/Sales/Sales.component';
     MatPaginatorModule,
   ],
 
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule,TopbarComponent,SideNavService],
   bootstrap: [AppComponent]
 
 })

@@ -5,28 +5,28 @@
   section {
     display: table;
   }
-  
+
   .example-label {
     display: table-cell;
     font-size: 14px;
     margin-left: 0px;
     min-width: 120px;
-  }  
+  }
   .example-button-row {
     display: table-cell;
     width: 490px;
   }
-  
+
   .example-button-row .mat-button-base {
     margin-bottom: 0px;
   }
-  
+
   .example-flex-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
-  
+
   .example-button-container {
     display: flex;
     justify-content: center;
@@ -34,7 +34,7 @@
   }
 
   .mat-toolbar{
-    height: 8vh;
+    height: 6vh;
   }
 
   img {
@@ -60,24 +60,11 @@ mat-icon.home-icon{
   left: 1vw;
 }
 
-p.button-container{
-  position: absolute;
-  left: 0;
-  display: flex;
-  align-items: center;
-  width: 14vw;
-  height: 8vh;
-  padding-left: 1vw;
-  margin-bottom: 0px;
-}
+
 .mock-hover:hover{
   background-color: #1d3a78;
 }
 
 .mat-icon{
 margin-right: 1vw;
-}
-p:hover,button:hover{
-  
-  background-color: #1d3a78;
 }

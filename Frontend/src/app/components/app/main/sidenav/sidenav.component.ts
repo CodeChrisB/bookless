@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer, MatSidenav, MatSidenavContainer } from '@angular/material/sidenav';
 import { UserService } from 'src/app/components/services/profile/UserService';
+import { SideNavService } from 'src/app/components/services/tools/SidenavHandler';
 import { IUser } from 'src/models/Profile/User';
+import { TopbarComponent } from '../topbar/topbar.component';
 
 @Component({
   selector: 'sidenav',
@@ -18,13 +21,8 @@ export class SidenavComponent implements OnInit{
   // close others tabs when open a new one
   closeOnClick = true;
 
-  ngOnInit(){
-    this.user = UserService.getUser(1);
-  }
+  @ViewChild('drawer') sidenav:any;
 
-  public openDashboard(): void {
-    console.log('Called: openDashboard');
-  }
 
   public openProduct(): void {
     this.productOpen = !this.productOpen;
@@ -35,7 +33,7 @@ export class SidenavComponent implements OnInit{
     }
   }
 
-  public openBill(): void {
+  public openBill(drawer): void {
     this.billOpen = !this.billOpen;
 
     if (this.closeOnClick){
@@ -44,7 +42,7 @@ export class SidenavComponent implements OnInit{
     }
   }
 
-  public openCrm(): void {
+  public openCrm(drawer): void {
     this.crmOpen = !this.crmOpen;
 
     if (this.closeOnClick){
@@ -53,4 +51,22 @@ export class SidenavComponent implements OnInit{
     }
   }
 
+  public close(){
+    this.sidenav.toggle();
+
+  }
+
+  constructor(private top: TopbarComponent,public navHandler:SideNavService) {}
+
+  ngOnInit() {
+    this.user = UserService.getUser(1);
+  }
+
+  ngAfterViewInit():any {
+
+    this.navHandler.nav = this.sidenav
+    this.top.sideNavToggleSubject.subscribe(()=> {
+       this.sidenav
+     });
+  }
 }
