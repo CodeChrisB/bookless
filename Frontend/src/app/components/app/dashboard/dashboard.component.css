@@ -4,7 +4,8 @@
   margin: 2vh;
 }
 #big{
-  width: 75vw;
+  width: 100%;
+  min-width: 75;
   min-height: 80vh;
   margin: 2vh;
 }
@@ -20,6 +21,10 @@
 
 
 #container{width:98%; }
- #left{float:left;}
- #center{text-align:center;}
- #right{float:right;}
+ #float{float:left;}
+ #float-big{
+   float:left;
+   width: 80%;
+   height: 100%;
+}
+

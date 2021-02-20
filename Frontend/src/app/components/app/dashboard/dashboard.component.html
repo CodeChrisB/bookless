@@ -1,5 +1,5 @@
 <div id="container" class="blog-pager">
-    <div id="left">
+    <div id="float">
       <mat-card id=settings>
       <button mat-button (click)="today()">Heute</button>
       <button mat-button (click)="order()">Aufträge</button>
@@ -8,7 +8,7 @@
       <button mat-button (click)="customer()">Kunden</button>
        </mat-card>
     </div>
-    <div id="right">
+    <div id="float-big">
       <mat-card id=big>
         <!--TODAY-->
         <div *ngIf="type == types.today">
