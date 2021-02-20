@@ -41,11 +41,15 @@ public sideNavToggleSubject: BehaviorSubject<any> = new BehaviorSubject(null);
 
 public toggle() {
   //only open sidenav when in the app otherwise go back to the app
-  if(this.route.url.toString().indexOf('app')!=-1){
+  if(this.inApp()){
     this.navHandler.toggle();
   }else{
     this.route.navigate(['/app/dashboard']);
   }
+}
+
+inApp():boolean{
+  return this.route.url.toString().indexOf('app')!=-1;
 }
 
 ngAfterView(){

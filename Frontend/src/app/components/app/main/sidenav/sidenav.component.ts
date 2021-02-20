@@ -28,12 +28,12 @@ export class SidenavComponent implements OnInit{
     this.productOpen = !this.productOpen;
 
     if (this.closeOnClick){
-      this.billOpen = !this.productOpen;
+      this.billOpen = false;
       this.crmOpen = false;
     }
   }
 
-  public openBill(drawer): void {
+  public openBill(): void {
     this.billOpen = !this.billOpen;
 
     if (this.closeOnClick){
@@ -42,12 +42,12 @@ export class SidenavComponent implements OnInit{
     }
   }
 
-  public openCrm(drawer): void {
+  public openCrm(): void {
     this.crmOpen = !this.crmOpen;
 
     if (this.closeOnClick){
       this.productOpen = false;
-      this.billOpen = !this.crmOpen;
+      this.billOpen = false;
     }
   }
 
