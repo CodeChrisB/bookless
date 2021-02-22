@@ -32,6 +32,10 @@ var customers: IPrivateCustomer[] = [
   providedIn: 'root',
 })
 export class CustomerService {
+  http: HttpClient;
+  public IPrivateCustomer;
+  url: string = 'http://localhost:4200/app/crm/customer';
+  
   static getAllCustomers(): IPrivateCustomer[] {
     return customers;
   }
