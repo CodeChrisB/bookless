@@ -1,16 +1,9 @@
-import { Pool } from "pg";
+import { Pool, QueryResult } from "pg";
 import { IContactPerson } from "../models/ContactPerson";
 import { ICompanyCustomer, IShippingAdress } from "../models/Customer/CompanyCustomer";
-import { createLogger, format, transports } from 'winston';
+import Logger from '../loaders/logger';
+import e from "express";
 
-const logger = createLogger({
-    
-    format: format.combine(
-      format.splat(),
-      format.simple()
-    ),
-    transports: [new transports.Console()]
-});
 
 export class CompanyCustomerRepository {
 
@@ -23,7 +16,7 @@ export class CompanyCustomerRepository {
         "database":process.env.DB_DATABASE
     }); 
 
-    constructor() {
+    constructor() { 
         
     }
 
@@ -89,17 +82,17 @@ export class CompanyCustomerRepository {
                 });
 
             }
-            logger.log('info' , this.compCustomers)
+            Logger.log('info' , this.compCustomers)
         } finally{
 
             return this.compCustomers;
         }
     }
 
-    public async addCompanyCustomer(compCustomer:ICompanyCustomer){
+    public async addCompanyCustomer(compCustomer:ICompanyCustomer) : Promise<boolean>{
         try{ 
 
-            await this.pool.query('insert into CompanyCustomer (name, uid, town, plz, street, country) values($1,$2,$3,$4,$5,$6)',
+             await this.pool.query('insert into CompanyCustomer (name, uid, town, plz, street, country) values($1,$2,$3,$4,$5,$6)',
             [
                 compCustomer.name,
                 compCustomer.uid,
@@ -107,20 +100,15 @@ export class CompanyCustomerRepository {
                 compCustomer.companyLocation.plz,
                 compCustomer.companyLocation.street,
                 compCustomer.companyLocation.country 
-            ]);
+            ]); 
 
-            // get id 
-            const insertID = await this.pool.query('select id from CompanyCustomer WHERE name LIKE $1',
-            [
-                compCustomer.name
-            ]);
-
-
+            const insertId = await this.pool.query('SELECT LASTVAL()');
+    
             // insert addresses
             for(const item of compCustomer.shippingAdress){
-                await this.pool.query('insert into Address (companyCustomerID, address) values($1,$2)',
+                await this.pool.query('insert into Address (companyCustomerID, adress) values($1,$2)',
                 [
-                    insertID.rows[0].id,
+                    insertId.rows[0].lastval,
                     item.adress
                 ]);
             }
@@ -129,7 +117,7 @@ export class CompanyCustomerRepository {
             for(const item of compCustomer.contactPersons){
                 await this.pool.query('insert into ContactPerson (companyCustomerID,adress, phoneNumber, email, companyRank, firstName, lastName, gender) values($1,$2,$3,$4,$5,$6,$7,$8)',
                 [
-                    insertID.rows[0].id,
+                    insertId.rows[0].lastval,
                     item.adress,
                     item.phoneNumber,
                     item.email,
@@ -141,8 +129,11 @@ export class CompanyCustomerRepository {
             }
 
         } catch {
-            logger.log('exception', 'Insert failed into CompanyCustomers faild');
+            return false;
+            
         } finally {
+
+            return true;
 
         }
     }

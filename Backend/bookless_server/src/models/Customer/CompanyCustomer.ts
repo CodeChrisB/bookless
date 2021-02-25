@@ -1,4 +1,4 @@
-import { ContactPerson } from "../ContactPerson";
+import { IContactPerson } from "../ContactPerson";
 
 export interface ICompanyCustomer
 {
@@ -12,7 +12,7 @@ export interface ICompanyCustomer
       country : string;
     };
     shippingAdress : IShippingAdress[];
-    contactPersons : ContactPerson[];
+    contactPersons : IContactPerson[];
 }
 
 export interface IShippingAdress

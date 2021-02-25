@@ -69,8 +69,8 @@ export class PrivateCustomerRepository {
         }
     }
 
-    public async addPrivateCustomer(privateCustomer:IPrivateCustomer){
-
+    public async addPrivateCustomer(privateCustomer:IPrivateCustomer):Promise<boolean>{
+        let ret = true;
         try{ 
            await this.pool.query('insert into privateCustomer (adress,phoneNumber,email,fName,lName,gender ) values($1, $2, $3, $4, $5,$6)', 
            [
@@ -81,10 +81,13 @@ export class PrivateCustomerRepository {
                privateCustomer.lName,
                privateCustomer.gender
            ]);
-        } catch { 
+
+           
+        } catch {
+            ret = false; 
             throw exception("Insert failed");
         } finally {
-
+            return ret;
         }
     }
 }
