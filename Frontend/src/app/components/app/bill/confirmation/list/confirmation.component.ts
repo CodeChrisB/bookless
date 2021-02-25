@@ -53,8 +53,8 @@ export class Confirmation  {
     this.route.navigate(['/app/sales/offer/edit'], { state: {mode: 'edit', id: row.offer.number } });
   }
 
-  addOffer(){
-    this.route.navigate(['/app/sales/offer/new'] , { state: {mode: 'add' } });
+  addConfirmation(){
+    this.route.navigate(['/app/sales/confirmation/new'] , { state: {mode: 'add' } });
   }
 
 

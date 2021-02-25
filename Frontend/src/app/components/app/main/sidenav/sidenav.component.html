@@ -1,4 +1,4 @@
-
+<!--SIDENAV-->
 <mat-drawer-container  hasBackdrop=false>
   <mat-drawer #drawer mode=push hasBackdrop=false>
     <mat-sidenav-container   class="example-container" ngIF="isMenuOpen">
@@ -59,6 +59,8 @@
       </mat-sidenav-content>
     </mat-sidenav-container>
   </mat-drawer>
+  <!--THE CONTENT-->
   <router-outlet></router-outlet>
 </mat-drawer-container>
+<!--FOOTER-->
 <footer></footer>

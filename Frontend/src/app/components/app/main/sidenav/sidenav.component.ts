@@ -63,6 +63,7 @@ export class SidenavComponent implements OnInit{
   constructor(private top: TopbarComponent,public navHandler:SideNavService) {}
 
   ngOnInit() {
+    //usually we do not know which user we are and need to get that one from another service
     this.user = UserService.getUser(1);
   }
 

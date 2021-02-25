@@ -38,17 +38,22 @@ const routes: Routes = [
         { path: 'sales/offer',  component: Offer, },
         { path: 'sales/offer/show', component: OfferData},
         { path: 'sales/offer/edit', component: OfferData},
-        { path: 'sales/offer/new', component: OfferData},
+        //confirmation
         { path: 'sales/confirmation',  component: Confirmation, },
         { path: 'sales/confirmation/show', component: Confirmation},
         { path: 'sales/confirmation/edit', component: Confirmation},
-        { path: 'sales/confirmation/new', component: Confirmation},
 
         // products
         { path: 'products/heatexchanger',  component: Heatexchanger },
         { path: 'products/heatexchanger/edit',  component: HeatexchangerData },
         { path: 'products/heatexchanger/show',  component: HeatexchangerData },
-        { path: 'products/heatexchanger/new',  component: HeatexchangerData }
+        { path: 'products/heatexchanger/new',  component: HeatexchangerData },
+
+
+        //Add Bill Data
+        { path: 'sales/offer/new',  component: AddDialog },
+        { path: 'sales/confirmation/new',  component: AddDialog, }
+
       ]
     },
 
@@ -71,6 +76,7 @@ import { SettingsdashboardComponent } from './components/settings/Dashboard/Sett
 import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
 
 import { SalesComponent } from './components/settings/Sales/Sales.component';
+import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';
 
 
 @NgModule({
