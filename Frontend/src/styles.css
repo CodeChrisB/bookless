@@ -8,3 +8,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*Force the margin on the right side to be 0 so no one can push elements of the side*/
+.mat-drawer-content {
+  margin-right: 0!important;
+}

@@ -73,3 +73,19 @@ p.button-container{
 }
 
 
+mat-drawer-container{
+  min-height: 87vh;
+  max-height: 87vh;
+  margin: 0;
+  padding: 0;
+}
+
+#footer{
+  bottom: 0;
+  margin: 0px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 7vh;
+}
+

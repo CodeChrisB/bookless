@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
 
 
 getVersion(): void{
-  window.open('https://codechrisb.github.io/version.html?dev=1', '_blank');
+  window.open('https://codechrisb.github.io/bookless', '_blank');
 
 }
 

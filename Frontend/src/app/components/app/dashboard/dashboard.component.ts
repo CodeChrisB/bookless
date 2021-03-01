@@ -6,6 +6,7 @@ import { CustomerService } from '../../services/crm/customerlist';
 import { TotalCustomerService } from '../../services/crm/customerData';
 import { Router } from '@angular/router';
 import { DateFormatter } from '../../services/tools/dateFormatter';
+import { DashboardType } from 'src/models/Dashboard/DashboardType';
 
 @Component({
 selector: 'dashboard-component',
@@ -22,6 +23,14 @@ export class Dashboard implements OnInit {
   show = true;
   totalCustomers = 100;
   newCustomers = 100;
+  type:DashboardType= DashboardType.Today;
+  types ={
+    today:DashboardType.Today,
+    order:DashboardType.Order,
+    sale:DashboardType.Sale,
+    bill:DashboardType.Bill,
+    customer:DashboardType.Customer
+  }
 
   private weekDays = ['Sontag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
   private months = ['Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
@@ -38,17 +47,37 @@ ngOnInit(){
   this.now = DateFormatter.getCurrentTimeAsString();
 }
 
-ngOnDestroy() {
-  // Will remove the timer on component change
-  clearInterval(this.timer);
-}
+  ngOnDestroy() {
+    // Will remove the timer on component change
+    clearInterval(this.timer);
+  }
 
-goToShowCustomerPage(id: number){
-  this.route.navigate(['/app/crm/customer/show'], { state: {mode: 'show', id } });
-}
+  goToShowCustomerPage(id: number){
+    this.route.navigate(['/app/crm/customer/show'], { state: {mode: 'show', id } });
+  }
 
-goToShowCompanyPage(id: number){
-  this.route.navigate(['/app/crm/company/show'], { state: {mode: 'show', id } });
-}
+  goToShowCompanyPage(id: number){
+    this.route.navigate(['/app/crm/company/show'], { state: {mode: 'show', id } });
+  }
+
+  today(){
+    this.changeDashboard(DashboardType.Today)
+  }
+
+  order(){
+    this.changeDashboard(DashboardType.Order);
+  }
+  sale(){
+    this.changeDashboard(DashboardType.Sale);
+  }
+  bill(){
+    this.changeDashboard(DashboardType.Bill)
+  }
+  customer(){
+    this.changeDashboard(DashboardType.Customer);
+  }
+  private changeDashboard(type : DashboardType){
+    this.type=type;
+  }
 
 }

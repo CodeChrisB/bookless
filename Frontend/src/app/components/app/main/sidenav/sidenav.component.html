@@ -1,53 +1,66 @@
-<mat-sidenav-container class="example-container" ngIF="isMenuOpen">
-  <mat-sidenav-content>
-    <!--Dashboard-->
-    <p *ngIf=user.premissions.dashboard class="button-container" routerLink="dashboard"  (click)="openDashboard()" >
-      <mat-icon>dashboard</mat-icon>
-      <button mat-button>Dashboard</button>
-    </p>
-    <!--CRM-->
-    <p *ngIf=user.premissions.crm class="button-container"  (click)="openCrm()">
-      <mat-icon>account_circle</mat-icon>
-      <button mat-button>CRM</button>
-    </p>
-    <p  *ngIf="crmOpen" id="child" class="button-container" routerLink="crm/customer">
-      <mat-icon>perm_identity</mat-icon>
-      <button mat-button >Kunden</button>
-    </p>
-    <p  *ngIf="crmOpen" id="child" class="button-container" routerLink="crm/company">
-      <mat-icon>business</mat-icon>
-      <button mat-button >Firmen</button>
-    </p>
-    <!--Sales-->
-    <p *ngIf=user.premissions.bills class="button-container"  (click)="openBill()">
-      <mat-icon>payments</mat-icon>
-      <button mat-button>Verkauf</button>
-    </p>
-    <p  *ngIf="billOpen" id="child" class="button-container">
-      <mat-icon>account_circle</mat-icon>
-      <button  mat-button routerLink="sales/offer">Angebot</button>
-    </p>
-    <p  *ngIf="billOpen" id="child" class="button-container">
-      <mat-icon>account_circle</mat-icon>
-      <button  mat-button routerLink="sales/confirmation">Bestätigung</button>
-    </p>
-    <p  *ngIf="billOpen" id="child" class="button-container">
-      <mat-icon>account_circle</mat-icon>
-      <button  mat-button routerLink="sales/bill">Rechnung</button>
-    </p>
-    <p  *ngIf="billOpen" id="child" class="button-container">
-      <mat-icon>account_circle</mat-icon>
-      <button disabled mat-button routerLink="sales/null">Lieferschein</button>
-    </p>
-    <!--Produkte-->
-    <p *ngIf=user.premissions.products class="button-container" (click)="openProduct()">
-      <mat-icon>shopping_basket</mat-icon>
-      <button mat-button >Produkte</button>
-    </p>
-    <p *ngIf="productOpen" id="child" class="button-container" routerLink="products/heatexchanger">
-      <mat-icon>microwave</mat-icon>
-      <button mat-button >Wärmetauscher</button>
-    </p>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
+<!--SIDENAV-->
+<mat-drawer-container  hasBackdrop=false>
+  <mat-drawer #drawer mode=push hasBackdrop=false>
+    <mat-sidenav-container   class="example-container" ngIF="isMenuOpen">
+      <mat-sidenav-content>
+        <!--Close-->
+        <p *ngIf=user.premissions.dashboard class="button-container" (click)="ForceClose()" >
+          <mat-icon>keyboard_backspace</mat-icon>
+          <button mat-button>Zurück</button>
+        </p>
+        <!--Dashboard-->
+        <p *ngIf=user.premissions.dashboard class="button-container" routerLink="dashboard"  (click)="close()" >
+          <mat-icon>dashboard</mat-icon>
+          <button mat-button>Dashboard</button>
+        </p>
+        <!--CRM-->
+        <p *ngIf=user.premissions.crm class="button-container"  (click)="openCrm()">
+          <mat-icon>account_circle</mat-icon>
+          <button mat-button>CRM</button>
+        </p>
+        <p  *ngIf="crmOpen" id="child" class="button-container" routerLink="crm/customer" (click)="close()">
+          <mat-icon>perm_identity</mat-icon>
+          <button mat-button >Kunden</button>
+        </p>
+        <p  *ngIf="crmOpen" id="child" class="button-container" routerLink="crm/company" (click)="close()">
+          <mat-icon>business</mat-icon>
+          <button mat-button >Firmen</button>
+        </p>
+        <!--Sales-->
+        <p *ngIf=user.premissions.bills class="button-container"  (click)="openBill()">
+          <mat-icon>payments</mat-icon>
+          <button mat-button>Verkauf</button>
+        </p>
+        <p  *ngIf="billOpen" id="child" class="button-container" (click)="close()">
+          <mat-icon>account_circle</mat-icon>
+          <button  mat-button routerLink="sales/offer">Angebot</button>
+        </p>
+        <p  *ngIf="billOpen" id="child" class="button-container" (click)="close()">
+          <mat-icon>account_circle</mat-icon>
+          <button  mat-button routerLink="sales/confirmation">Bestätigung</button>
+        </p>
+        <p  *ngIf="billOpen" id="child" class="button-container" (click)="close()">
+          <mat-icon>account_circle</mat-icon>
+          <button  mat-button routerLink="sales/bill">Rechnung</button>
+        </p>
+        <p  *ngIf="billOpen" id="child" class="button-container" (click)="close()">
+          <mat-icon>account_circle</mat-icon>
+          <button disabled mat-button routerLink="sales/null">Lieferschein</button>
+        </p>
+        <!--Produkte-->
+        <p *ngIf=user.premissions.products class="button-container" (click)="openProduct()">
+          <mat-icon>shopping_basket</mat-icon>
+          <button mat-button >Produkte</button>
+        </p>
+        <p *ngIf="productOpen" id="child" class="button-container" routerLink="products/heatexchanger" (click)="close()">
+          <mat-icon>microwave</mat-icon>
+          <button mat-button >Wärmetauscher</button>
+        </p>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </mat-drawer>
+  <!--THE CONTENT-->
+  <router-outlet></router-outlet>
+</mat-drawer-container>
+<!--FOOTER-->
+<footer></footer>
