@@ -9,17 +9,8 @@ import "./controllers/PrivateCustomerController";
 import "./controllers/CompanyCustomerController";
 import { PrivateCustomerService } from './services/PrivateCustomerService'; 
 import { CompanyCustomerService } from './services/CompanyCustomerService';
-import { createLogger, format, transports } from 'winston';
+import Logger from './loaders/logger';
 
-
-const logger = createLogger({
-    
-  format: format.combine(
-    format.splat(),
-    format.simple()
-  ),
-  transports: [new transports.Console()]
-});
 // set up container
 let container = new Container();
 container.bind<PrivateCustomerService>('PrivateCustomerService').to(PrivateCustomerService);
@@ -37,7 +28,7 @@ server.setConfig((app) => {
 
 let app = server.build();
 app.listen(3000, () => {
-  logger.info('Server runs on Port 3000');
+  Logger.log('info', 'Server runs on Port 3000');
 });
 /*
 const app = express();

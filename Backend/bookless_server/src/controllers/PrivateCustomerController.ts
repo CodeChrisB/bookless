@@ -11,25 +11,25 @@ export class PrivateCustomerController {
     constructor(@inject("PrivateCustomerService") private privateCustomerService:PrivateCustomerService){}
 
     @httpGet("/all")
-    private GetAllCustomers(req:express.Request):Promise<IPrivateCustomer[]> {
+    private getAllCustomers(req:express.Request):Promise<IPrivateCustomer[]> {
         let data:IPrivateCustomer[] = []; 
         // Get Data from customerService
         return this.privateCustomerService.getAllPrivateCustomers();
     }
-
+ 
     @httpGet("/")
-    private Get(req:express.Request):string{ 
+    private get(req:express.Request):string{ 
         return "PrivateCustomerController works!!";
     }
 
     @httpDelete("/:id")
-    private delete(@requestParam("id") id: number, @response()  res: express.Response): Promise<IPrivateCustomer[]> {
+    private delete(@requestParam("id") id: number, @response()  res: express.Response): any {
 
         return this.privateCustomerService.deletePrivateCustomer(id);
     } 
 
     @httpPost("/add")
-    private add(req:express.Request, res:express.Response):  Promise<IPrivateCustomer[]> {
+    private add(req:express.Request, res:express.Response):  Promise<boolean> {
         return this.privateCustomerService.add(req.body);
     }
 }

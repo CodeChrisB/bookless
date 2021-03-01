@@ -28,7 +28,7 @@ export class CompanyCustomerController {
     }
 
     @httpPost("/add")
-    private add(req:express.Request, res:express.Response):  Promise<ICompanyCustomer[]> {
+    private add(req:express.Request, res:express.Response):  Promise<boolean> {
         return this.companyCustomerService.add(req.body);
     }
 }

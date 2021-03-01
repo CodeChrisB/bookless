@@ -11,15 +11,14 @@ export class PrivateCustomerService {
     constructor(){
         this.repo = new PrivateCustomerRepository();
     }
-    add(privateCustomer: IPrivateCustomer): Promise<IPrivateCustomer[]> {
-        this.repo.addPrivateCustomer(privateCustomer);
-        return this.repo.getPrivateCustomer(); 
+    
+    add(privateCustomer: IPrivateCustomer): Promise<boolean> {
+        return this.repo.addPrivateCustomer(privateCustomer); 
     }
 
     // privateCustomerRepo = new this.privateCustomerRepository();
-    public deletePrivateCustomer(id:number):Promise<IPrivateCustomer[]>{
+    public deletePrivateCustomer(id:number){
         this.repo.deletePrivateCustomer(id);
-        return this.repo.getPrivateCustomer();
     }
 
     public getAllPrivateCustomers() : Promise<IPrivateCustomer[]> {

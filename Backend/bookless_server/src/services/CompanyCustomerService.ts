@@ -10,9 +10,8 @@ export class CompanyCustomerService {
         this.repo = new CompanyCustomerRepository();
     }
     //private companyCustomers : ICompanyCustomer[]  = [];
-    add(compCustomer: ICompanyCustomer): Promise<ICompanyCustomer[]> {
-        this.repo.addCompanyCustomer(compCustomer);
-        return this.repo.getAllCompCustomers(); 
+    add(compCustomer: ICompanyCustomer): Promise<boolean> {
+        return this.repo.addCompanyCustomer(compCustomer);
     }
     
     public deleteCompanyCustomer(id:number):Promise<ICompanyCustomer[]>{

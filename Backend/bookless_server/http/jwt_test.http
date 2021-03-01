@@ -1,6 +1,38 @@
-POST http://localhost:3000/api/login
+POST http://localhost:3000/CompanyCustomer/add
 Content-Type: application/json
 
 {
-    "username":"post"
+    "id" : 1,
+    "name" : "HTL Leonding",
+    "uid": "balgla",
+    "companyLocation" : {
+        "town":"Leonding",
+        "plz":"4060",
+        "street":"Limesstr",
+        "country":"Austria" 
+    },
+    "shippingAdress": [
+        {
+            "adress" : "Test address"
+        }, 
+        {
+            "adress":"Test address 1" 
+        }
+    ],
+
+    "contactPersons": [
+        {
+            "id":1,
+            "adress":"Person address",
+            "phoneNumber":"+43 655 33423",
+            "companyRank":"CEO",
+            "email":"test@gmail.com",
+            "fName":"Robert",
+            "lName":"Freiseisen",
+            "gender":"m"
+        }
+    ]
+
 }
+###
+GET http://localhost:3000/CompanyCustomer/all
