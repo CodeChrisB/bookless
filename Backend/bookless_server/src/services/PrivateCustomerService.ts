@@ -21,7 +21,7 @@ export class PrivateCustomerService {
         this.repo.deletePrivateCustomer(id);
     }
 
-    public getAllPrivateCustomers() : Promise<IPrivateCustomer[]> {
+    public async getAllPrivateCustomers() : Promise<IPrivateCustomer[]> {
 
         return this.repo.getPrivateCustomer();
     }

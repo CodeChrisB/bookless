@@ -42,25 +42,26 @@ shippingAdress:[{adress:'Vauweg 1'},{adress:'Htlweg 1'}],contactPersons:[{id:1, 
   providedIn: 'root',
 })
 export class CompanyService {
-  static getData(): ICompanyCustomer[] {
+  constructor() {}
+  getData(): ICompanyCustomer[] {
     return companyCustomers;
   }
 
-  static addCustomer(newCustomer:ICompanyCustomer)
+  addCustomer(newCustomer:ICompanyCustomer)
   {
     newCustomer.id = companyCustomers.length + 1;
     companyCustomers.push(newCustomer);
   }
 
-  static getCustomer(id:number): ICompanyCustomer{
+  getCustomer(id:number): ICompanyCustomer{
     return companyCustomers.filter(x=>x.id==id)[0];
   }
 
-  static updateCustomer(customer:ICompanyCustomer){
+  updateCustomer(customer:ICompanyCustomer){
     companyCustomers.find(c => c.id==customer.id) == customer
   }
 
-  static getCompanyCustomerIdList():IStringId[]{
+  getCompanyCustomerIdList():IStringId[]{
     var arr : IStringId[] = [];
     companyCustomers.forEach(c=>arr.push({id:c.id,string:c.name}))
     return arr;

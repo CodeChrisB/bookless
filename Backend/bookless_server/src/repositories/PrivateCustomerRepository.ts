@@ -2,18 +2,12 @@ import { exception } from "console";
 import { Pool, QueryResult } from "pg";
 import { createLogger, format, transports } from "winston";
 import { IPrivateCustomer } from "../models/Customer/PrivateCustomer";
-
-const logger = createLogger({
-    format: format.combine(
-      format.splat(),
-      format.simple()
-    ),
-    transports: [new transports.Console()]
-});
+import Logger from '../loaders/logger';
+import { lookup } from "dns";
 
 export class PrivateCustomerRepository {
 
-    public privateCustomers:IPrivateCustomer[] = [];
+    public privateCustomers:IPrivateCustomer[];
     private pool:Pool =  new Pool({
         "host":process.env.DB_HOST, 
         "port":Number(process.env.DB_PORT),
@@ -23,11 +17,11 @@ export class PrivateCustomerRepository {
     }); 
 
     constructor() {
-
+        this.privateCustomers = [];
     }
 
     public get():IPrivateCustomer[]{
-        logger.info(this.privateCustomers)
+        Logger.info(this.privateCustomers)
         return this.privateCustomers;
     }
 
@@ -35,27 +29,29 @@ export class PrivateCustomerRepository {
         
         try{
             this.privateCustomers = [];
-            const result:QueryResult<IPrivateCustomer> = await this.pool.query("select id, adress,phoneNumber,email,fName,lName,gender from PrivateCustomer");
-            logger.info('Get privateCustomers from DB');
+            const result = await this.pool.query("select id, adress,phonenumber,email,fname,lname,gender from PrivateCustomer");
+            Logger.info('Get privateCustomers from DB');
     
             for await (const row of result.rows) {
        
                 this.privateCustomers.push( {
                     id:row.id,
                     adress:row.adress,
-                    phoneNumber:row.phoneNumber,
+                    phoneNumber:row.phonenumber,
                     email:row.email,
-                    fName:row.fName,
-                    lName:row.lName,
+                    fName:row.fname,
+                    lName:row.lname,
                     gender:row.gender,
                 });
+
+
             }
 
+            Logger.info(this.privateCustomers[0].phoneNumber);
+            return this.privateCustomers;
             
-        } finally{
-          
-          logger.log('info', this.privateCustomers)
-          return this.privateCustomers;
+        } catch {
+            return [];
         }
     }
 
@@ -72,7 +68,7 @@ export class PrivateCustomerRepository {
     public async addPrivateCustomer(privateCustomer:IPrivateCustomer):Promise<boolean>{
         let ret = true;
         try{ 
-           await this.pool.query('insert into privateCustomer (adress,phoneNumber,email,fName,lName,gender ) values($1, $2, $3, $4, $5,$6)', 
+           const result:QueryResult<IPrivateCustomer> = await this.pool.query('insert into PrivateCustomer (adress,phoneNumber,email,fName,lName,gender ) values($1, $2, $3, $4, $5,$6)', 
            [
                privateCustomer.adress,
                privateCustomer.phoneNumber,
@@ -81,13 +77,16 @@ export class PrivateCustomerRepository {
                privateCustomer.lName,
                privateCustomer.gender
            ]);
+    
+           const insertId = await this.pool.query('select id, fname, lname from privateCustomer');
 
+           Logger.info(insertId.rows[0].fname);
            
+
+           return true;
         } catch {
-            ret = false; 
             throw exception("Insert failed");
-        } finally {
-            return ret;
+            return false
         }
     }
 }

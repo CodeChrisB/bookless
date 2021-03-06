@@ -1,8 +1,8 @@
 GET http://localhost:3000/CompanyCustomer
 ###
-GET http://localhost:3000/PrivateCustomer/all
+GET http://localhost:3000/PrivateCustomer/All
 ###
-DELETE http://localhost:3000/PrivateCustomer/5
+DELETE http://localhost:3000/PrivateCustomer/6
 ###
 POST http://localhost:3000/PrivateCustomer/add
 Content-Type: application/json 
@@ -12,7 +12,7 @@ Content-Type: application/json
     "adress": "1",
     "phoneNumber": "2",
     "email": "email@gmail.com",
-    "fName": "21",
-    "lName": "21s", 
+    "fName": "tes",
+    "lName": "test", 
     "gender": "f"
 }

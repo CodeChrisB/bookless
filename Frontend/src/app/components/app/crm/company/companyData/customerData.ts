@@ -39,7 +39,10 @@ export class addCompanyCustomer implements OnInit  {
 
 
 
- constructor(private route :Router,public activatedRoute: ActivatedRoute) {}
+ constructor(private route :Router,public activatedRoute: ActivatedRoute, private customerService : CustomerService, private companyService:CompanyService){
+   this.customerService = customerService;
+   this.companyService = companyService; 
+ }
 
   //#region All the Init Methods
 
@@ -48,7 +51,7 @@ export class addCompanyCustomer implements OnInit  {
 }
 
 
-  ngOnInit() {
+  async ngOnInit() {
     if(history.state.mode ==undefined && this.route.url.includes('edit')|| history.state.mode ==undefined &&this.route.url.includes('show')){
       this.route.navigate(['/app/crm/company'])
     }
@@ -74,14 +77,14 @@ export class addCompanyCustomer implements OnInit  {
 
   initShow(){
     this.msg = "Zurück";
-    this.companyCustomer = CompanyService.getCustomer(history.state.id)
+    this.companyCustomer = this.companyService.getCustomer(history.state.id)
    }
 
 
 
    initEdit(){
     this.msg = "Bearbeiten";
-    this.companyCustomer = CompanyService.getCustomer(history.state.id)
+    this.companyCustomer = this.companyService.getCustomer(history.state.id)
    }
 
    initAdd(){
@@ -104,11 +107,11 @@ export class addCompanyCustomer implements OnInit  {
 
   addCustomer():void{
     console.dir(this.companyCustomer)
-    CompanyService.addCustomer(this.companyCustomer)
+    this.companyService.addCustomer(this.companyCustomer)
   }
 
   updateCustomer():void{
-    CompanyService.updateCustomer(this.companyCustomer)
+    this.companyService.updateCustomer(this.companyCustomer)
     this.route.navigate(['/app/crm/company']);
   }
 
@@ -120,7 +123,7 @@ export class addCompanyCustomer implements OnInit  {
     this.companyCustomer.shippingAdress.push({adress:''});
     console.dir(this.companyCustomer)
   }
-
+ 
   addContact(){
     if(this.companyCustomer.contactPersons.length>=this.maxContacts){
       alert('Es können nur '+this.maxContacts+' Kontakte gespeichert werden.')

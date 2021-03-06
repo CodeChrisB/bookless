@@ -11,10 +11,10 @@ export class PrivateCustomerController {
     constructor(@inject("PrivateCustomerService") private privateCustomerService:PrivateCustomerService){}
 
     @httpGet("/all")
-    private getAllCustomers(req:express.Request):Promise<IPrivateCustomer[]> {
-        let data:IPrivateCustomer[] = []; 
+    private async getAllCustomers(req:express.Request) : Promise<IPrivateCustomer[]> {
         // Get Data from customerService
-        return this.privateCustomerService.getAllPrivateCustomers();
+        
+        return await this.privateCustomerService.getAllPrivateCustomers();;
     }
  
     @httpGet("/")

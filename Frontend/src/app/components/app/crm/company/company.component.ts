@@ -8,10 +8,6 @@ import { Router } from '@angular/router';
 
 
 
-const company: ICompanyCustomer[] = CompanyService.getData();
-
-
-
 @Component({
 selector: 'company-component',
 templateUrl: './company.component.html',
@@ -19,28 +15,31 @@ styleUrls: ['./company.component.css']
 })
 export class Company  {
   //init the data
+  company: ICompanyCustomer[] =   this.companyService.getData();
   displayedColumns = ["id", "name", "companyLocation","shippingAdress","contactPerson","actions"];
 
 
    // MatPaginator Inputs
-   length = company.length;
+   length = this.company.length;
    pageSize = 10;
    pageSizeOptions: number[] = [5, 10];
-   dataSource = company.slice(0,this.pageSize);
+   dataSource = this.company.slice(0,this.pageSize);
    pageIndex = 0
    goToPage($event){
      this.length = $event.length;
      this.pageSize =$event.pageSize;
-     this.dataSource = company.slice(this.pageSize* $event.pageIndex,this.pageSize* $event.pageIndex+this.pageSize);
+     this.dataSource = this.company.slice(this.pageSize* $event.pageIndex,this.pageSize* $event.pageIndex+this.pageSize);
      this.pageIndex = $event.pageIndex;
     }
 
   onRowClicked(row) {
     console.log('Row clicked: ', row);
+  } 
+
+
+  constructor(public dialog: MatDialog,public route: Router, private companyService:CompanyService) {
+     this.companyService = companyService;
   }
-
-
-  constructor(public dialog: MatDialog,public route: Router) {}
 
   deleteCustomer(row : ICompanyCustomer){
      if(confirm('Wollen Sie ' + row.contactPersons +'löschen?')){

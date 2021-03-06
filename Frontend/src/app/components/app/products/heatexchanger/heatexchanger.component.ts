@@ -38,6 +38,9 @@ export class Heatexchanger  {
    pageSizeOptions: number[] = [5, 10,25,100];
    dataSource = products.slice(0,this.pageSize);
    pageIndex = 0
+
+   customerService:CustomerService;
+
    goToPage($event){
      this.length = $event.length;
      this.pageSize =$event.pageSize;
@@ -57,14 +60,16 @@ export class Heatexchanger  {
   addCustomer(){
     this.route.navigate(['/app/products/heatexchanger/new'] , { state: {mode:'add' } });
   }
+ 
 
-
-  short( string:string,number:number){
+  short( string:string,number:number){ 
     return StringShortener.Trim(string,number);
   }
 
 
-  constructor(public dialog: MatDialog,private route :Router) {}
+  constructor(public dialog: MatDialog,private route :Router, customerService:CustomerService) {
+    this.customerService = customerService;
+  }
 
   deleteCustomer(row : IRawProduct){
      if(confirm('Wollen Sie löschen?')){
@@ -75,7 +80,7 @@ export class Heatexchanger  {
   }
 
   mailCustomer(row: IRawProduct){
-    var customer = CustomerService.getCustomer(row.productId)
+    var customer = this.customerService.getCustomer(row.productId)
       var text = "Sehr "+ (customer.gender =='m' ? 'geehrter Herr,' :'geehrte Frau,') +customer.lName
       var emailData: IEmailData = {email:customer.email,subject:'Subject ',content:text}
       EmailHandler.sendEmail(emailData)
@@ -87,5 +92,6 @@ export class Heatexchanger  {
   refresh() {
       this.dataSource = this.dataSource;
     }
+
 
 }

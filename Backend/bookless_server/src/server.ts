@@ -2,7 +2,6 @@ import * as bodyParser from 'body-parser';
 import "reflect-metadata";
 import { Container } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
-
 // declare metadata by @controller annotation
 import "./controllers/HomeController";
 import "./controllers/PrivateCustomerController";
@@ -10,7 +9,6 @@ import "./controllers/CompanyCustomerController";
 import { PrivateCustomerService } from './services/PrivateCustomerService'; 
 import { CompanyCustomerService } from './services/CompanyCustomerService';
 import Logger from './loaders/logger';
-
 // set up container
 let container = new Container();
 container.bind<PrivateCustomerService>('PrivateCustomerService').to(PrivateCustomerService);
@@ -27,6 +25,7 @@ server.setConfig((app) => {
 
 
 let app = server.build();
+
 app.listen(3000, () => {
   Logger.log('info', 'Server runs on Port 3000');
 });

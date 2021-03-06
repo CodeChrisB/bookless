@@ -15,13 +15,13 @@ export class OfferPdfService{
 
   offer
 
-
-
   public products: Array<string[]> = [['Pos.','Bezeichnung','Menge','Preis','Gesamt']]
   total:number=0;
-  constructor(offer:IOfferData){
+  constructor(offer:IOfferData, private customerService: CustomerService, private companyService:CompanyService){
+    this.companyService = companyService;
+    this.customerService = customerService;
     this.offer = offer.offer;
-
+ 
     //format the prodcuts into a string array for the table
     offer.prodcuts.forEach(p=>{
       this.products.push(
@@ -77,7 +77,7 @@ export class OfferPdfService{
   */
 
 
-  initData(id:number,isCompany:boolean){
+  async initData(id:number,isCompany:boolean){
 
     //rightblock static data
     var user = UserService.getUser(this.offer.consultantId)
@@ -87,14 +87,14 @@ export class OfferPdfService{
     this.pdfData.rightBlock.consultant.name = user.fname +" "+user.lname
     this.pdfData.rightBlock.consultant.phone =user.phone
     this.pdfData.rightBlock.consultant.fax = user.fax
-    this.pdfData.rightBlock.consultant.email = user.email
+    this.pdfData.rightBlock.consultant.email = user.email 
 
     //upperTextBlock static data
     this.pdfData.upperTextBlock.orderName = this.offer.name;
 
 
     if(isCompany){
-      var customer = CompanyService.getCustomer(id);
+      var customer = await this.companyService.getCustomer(id);
       //leftblock
       this.pdfData.leftBlock.sentTo = customer.name;
       this.pdfData.leftBlock.street = customer.companyLocation.street;
@@ -110,7 +110,7 @@ export class OfferPdfService{
       this.pdfData.upperTextBlock.salutation = 'Sehr geehrtes Team von ' +customer.name+',\n';
 
     }else{
-      var privateCustomer = CustomerService.getCustomer(id);
+      var privateCustomer = await this.customerService.getCustomer(id);
       //leftblock
       this.pdfData.leftBlock.sentTo = privateCustomer.fName;
       this.pdfData.leftBlock.street = 'XXXXXXX';

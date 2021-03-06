@@ -17,32 +17,37 @@ export class Dashboard implements OnInit {
 
   public now: String = "."
   timer =null;
-  customers: IPrivateCustomer[] = CustomerService.getAllCustomers().filter(c=>c.id<10);
-  companies: ICompanyCustomer[] = CompanyService.getData().filter(c=>c.id<10);
+  customers: IPrivateCustomer[];
+  companies: ICompanyCustomer[] = this.companyService.getData().filter(c=>c.id<10);
   show=true;
   totalCustomers:number=100;
   newCustomers:number=100;
 
   private weekDays=['Sontag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
   private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  customerService: CustomerService;
 
-  constructor(private route :Router) {
+  constructor(private route :Router , customerService:CustomerService, private companyService:CompanyService) {
       this.timer = setInterval(() => {
         this.now = DateFormatter.getCurrentTimeAsString();
       }, 1000);
       this.totalCustomers = TotalCustomerService.getTotalCustomerAmount();
       this.newCustomers = TotalCustomerService.getNewCustomerAmount();
+      this.customerService = customerService;
+      this.companyService = companyService;
   }
 
-ngOnInit(){
+async ngOnInit(){
   this.now = DateFormatter.getCurrentTimeAsString();
+  this.customers = (await this.customerService.getAllCustomers());
+  console.log(this.customers);
 }
 
 ngOnDestroy() {
   // Will remove the timer on component change
   clearInterval(this.timer);
 }
-
+ 
 goToShowCustomerPage(id:number){
   this.route.navigate(['/app/crm/customer/show'], { state: {mode:'show', id: id } });
 }

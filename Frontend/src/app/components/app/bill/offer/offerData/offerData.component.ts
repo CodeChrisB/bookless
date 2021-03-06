@@ -35,8 +35,10 @@ export class OfferData implements OnInit  {
   filteredOptions: Observable<number[]>;
   search:string
   editMode=false;
-  constructor(private route :Router) {}
-
+  constructor(private route :Router, private companyService:CompanyService, private customerService :CustomerService) {
+    this.companyService = companyService;
+    this.customerService = customerService;
+  }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -46,9 +48,9 @@ export class OfferData implements OnInit  {
       );
 
     //consultant init
-     this.consultantList = UserService.getUserNameList();
+    this.consultantList = UserService.getUserNameList();
     //customer init
-    this.customerList = CompanyService.getCompanyCustomerIdList();
+    this.customerList = this.companyService.getCompanyCustomerIdList();
 
     //get the current mode
     //check if url routing
@@ -61,7 +63,9 @@ export class OfferData implements OnInit  {
           this.initEdit()
           this.editMode=true;
         }
-      }
+    }
+
+    this.customerList 
   }
 
   initEdit(){
@@ -108,7 +112,7 @@ export class OfferData implements OnInit  {
   }
 
   getCustomerUID():string{
-    return this.offerData.offer.isCompany ? CompanyService.getCustomer(this.offerData.offer.customerId).uid : 'PK-EK-40000';
+    return this.offerData.offer.isCompany ? this.companyService.getCustomer(this.offerData.offer.customerId).uid : 'PK-EK-40000';
   }
 
   //#endregion
@@ -116,7 +120,7 @@ export class OfferData implements OnInit  {
 
   changeCustomerType(){
     this.offerData.offer.isCompany=!this.offerData.offer.isCompany;
-    this.customerList =  this.offerData.offer.isCompany ? CompanyService.getCompanyCustomerIdList():CustomerService.getPrivateCustomerIdList();
+    this.customerList =  this.offerData.offer.isCompany ? this.companyService.getCompanyCustomerIdList(): this.customerService.getPrivateCustomerIdList();
   }
 
   onCustomerChange(val:number){
@@ -124,7 +128,7 @@ export class OfferData implements OnInit  {
   }
 
   onConsultantChange(val:number){
-    this.offerData.offer.consultantId=val
+    this.offerData.offer.consultantId=val 
     this.consultant = UserService.getUser(val);
   }
 

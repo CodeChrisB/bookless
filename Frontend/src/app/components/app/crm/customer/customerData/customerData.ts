@@ -23,8 +23,7 @@ export class addCustomer implements OnInit  {
   msg:string="";
 
 
-
-
+  customerService:CustomerService;
   locked:boolean =false;
 
   customer={
@@ -74,10 +73,10 @@ export class addCustomer implements OnInit  {
   }
 
 
-  initShow(){
+  async initShow(){
     this.msg = "Zurück";
     this.id = history.state.id;
-    var customer = CustomerService.getCustomer(this.id)
+    var customer = await this.customerService.getCustomer(this.id);
     console.dir(customer)
     this.customer.fName = customer.fName;
     this.customer.lName = customer.lName;
@@ -92,15 +91,12 @@ export class addCustomer implements OnInit  {
 
     this.msg = "Änderungen speichern";
     this.id = history.state.id;
-    var customer = CustomerService.getCustomer(this.id)
+    var customer = this.customerService.getCustomer(this.id)
     this.customer.fName = customer.fName;
     this.customer.lName = customer.lName;
     this.customer.location.domicile = 'Nope'
     this.customer.email = customer.email;
     this.customer.gender = this.customer.gender;
-
-
-
 
 
    }
@@ -131,8 +127,7 @@ export class addCustomer implements OnInit  {
     this.customerObject.email = this.customer.email;
     this.customerObject.gender =this.customer.gender;
     this.customerObject.id = 100;
-
-    CustomerService.addPrivatCustomer(this.customerObject);
+    this.customerService.addPrivatCustomer(this.customerObject); //return Promise<boolean> to handle
     this.route.navigate(['/app/crm/customer']);
   }
 
@@ -145,7 +140,7 @@ export class addCustomer implements OnInit  {
     this.customerObject.phoneNumber = this.customer.phone;
     this.customerObject.id = this.id;
 
-    CustomerService.setCustomer(this.id,this.customerObject);
+    this.customerService.setCustomer(this.id,this.customerObject);
     this.route.navigate(['/app/crm/customer']);
   }
 
@@ -161,13 +156,9 @@ export class addCustomer implements OnInit  {
   }
 
 
-  mailAllCustomers(){
-    const emailData: string[] =CustomerService.getAllCustomers().map(x=>x.email)
+  async mailAllCustomers(){
+    const emailData: string[] = (await this.customerService.getAllCustomers()).map(x=>x.email)
     EmailHandler.sendBulkEmail(emailData)
   }
-
-
-
-
 }
 

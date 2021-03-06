@@ -80,7 +80,6 @@ export class CompanyCustomerRepository {
                     contactPersons: contactPersonsToAdd
 
                 });
-
             }
             Logger.log('info' , this.compCustomers)
         } finally{

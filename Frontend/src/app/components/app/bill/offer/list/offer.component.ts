@@ -8,6 +8,9 @@ import { StringShortener } from 'src/app/components/services/tools/StringShortne
 import { IOfferData } from 'src/models/bill/offer/OfferData';
 import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
+import { CustomerService } from 'src/app/components/services/crm/customerlist';
+import { CompanyService } from 'src/app/components/services/crm/companylist';
+import { HttpClient } from '@angular/common/http';
 
 
 const offers: IOfferData[] = OfferService.getOffers();
@@ -42,7 +45,7 @@ export class Offer  {
     }
 
   showOffer(row : IOfferData) {
-    var ops = new OfferPdfService(row)
+    var ops = new OfferPdfService(row, this.customerService, this.companyService)
     ops.open();
   }
 
@@ -61,12 +64,12 @@ export class Offer  {
   }
 
 
-  constructor(public dialog: MatDialog,private route :Router) {}
+  constructor(public dialog: MatDialog,private route :Router, public companyService:CompanyService, public customerService:CustomerService) {}
 
   deleteOffer(row : IOfferData){
      if(confirm('Wollen Sie ' + row.offer.name +' löschen?')){
         OfferService.deleteOffer(row.offer.number)
-        this.length = this.dataSource.length;
+        this.length = this.dataSource.length; 
         this.dataSource =  OfferService.getOffers()
      }
   }
@@ -76,7 +79,7 @@ export class Offer  {
     }
 
     downloadPdf(row:IOfferData){
-        var ops = new OfferPdfService(row)
+        var ops = new OfferPdfService(row, this.customerService, this.companyService);
         ops.download('Angebot.pdf');
     }
 

@@ -12,27 +12,32 @@ templateUrl: './Settings.component.html',
 styleUrls: ['./Settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  companyService: any;
+    constructor(private route :Router, public customerService:CustomerService) {
+    this.timer = setInterval(() => {
+      this.now = DateFormatter.getCurrentTimeAsString();
+    }, 1000);
+    this.totalCustomers = TotalCustomerService.getTotalCustomerAmount();
+    this.newCustomers = TotalCustomerService.getNewCustomerAmount();
+    this.customerService = customerService;
+}
     public now: String = "."
     timer =null;
-    customers: IPrivateCustomer[] = CustomerService.getAllCustomers().filter(c=>c.id<10);
-    companies: ICompanyCustomer[] = CompanyService.getData().filter(c=>c.id<10);
+    public customers: IPrivateCustomer[]; 
+    companies: ICompanyCustomer[];
     show=true;
     totalCustomers:number=100;
-    newCustomers:number=100;
+    newCustomers:number=100; 
   
     private weekDays=['Sontag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
     private months=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+
   
-    constructor(private route :Router) {
-        this.timer = setInterval(() => {
-          this.now = DateFormatter.getCurrentTimeAsString();
-        }, 1000);
-        this.totalCustomers = TotalCustomerService.getTotalCustomerAmount();
-        this.newCustomers = TotalCustomerService.getNewCustomerAmount();
-    }
-  
-  ngOnInit(){
+  async ngOnInit(){
     this.now = DateFormatter.getCurrentTimeAsString();
+    this.customers = await this.customerService.getAllCustomers();
+    console.log(this.customers);
+    this.companies = this.companyService.getData().filter(c=>c.id<10)
   }
   
   ngOnDestroy() {

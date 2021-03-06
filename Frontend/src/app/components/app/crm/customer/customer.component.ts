@@ -9,34 +9,31 @@ import { EmailHandler } from 'src/app/components/services/tools/emailHandler';
 import { StringShortener } from 'src/app/components/services/tools/StringShortner';
 
 
-const customers: IPrivateCustomer[] = CustomerService.getAllCustomers();
-
-
-
 @Component({
   selector: 'customer-component',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class Customer  {
+export class Customer implements OnInit  {
+  customers: IPrivateCustomer[] = [];
   //init the data
   displayedColumns = ["fName", "lName","adress","phoneNumber","email","gender","actions"];
-
+  customerService : CustomerService;
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
 
   contextMenuPosition = { x: '0px', y: '0px' };
 
    // MatPaginator Inputs
-   length = customers.length;
+   length = this.customers.length;
    pageSize = 10;
    pageSizeOptions: number[] = [5, 10,25,100];
-   dataSource = customers.slice(0,this.pageSize);
+   dataSource = this.customers.slice(0,this.pageSize);
    pageIndex = 0
    goToPage($event){
      this.length = $event.length;
      this.pageSize =$event.pageSize;
-     this.dataSource = customers.slice(this.pageSize* $event.pageIndex,this.pageSize* $event.pageIndex+this.pageSize);
+     this.dataSource = this.customers.slice(this.pageSize* $event.pageIndex,this.pageSize* $event.pageIndex+this.pageSize);
      this.pageIndex = $event.pageIndex;
     }
 
@@ -59,7 +56,12 @@ export class Customer  {
   }
 
 
-  constructor(public dialog: MatDialog,private route :Router) {}
+  constructor(public dialog: MatDialog,private route :Router, customerService:CustomerService) {
+    this.customerService = customerService;
+  }
+  async ngOnInit(): Promise<void> {
+    this.customers = await this.customerService.getAllCustomers();
+  }
 
   deleteCustomer(row : IPrivateCustomer){
      if(confirm('Wollen Sie ' + row.fName +' '+row.lName +' löschen?')){
@@ -69,8 +71,8 @@ export class Customer  {
      }
   }
 
-  mailCustomer(row: IPrivateCustomer){
-    var customer = CustomerService.getCustomer(row.id)
+  async mailCustomer(row: IPrivateCustomer){
+    var customer = await this.customerService.getCustomer(row.id);
       var text = "Sehr "+ (customer.gender =='m' ? 'geehrter Herr,' :'geehrte Frau,') +customer.lName
       var emailData: IEmailData = {email:customer.email,subject:'Subject ',content:text}
       EmailHandler.sendEmail(emailData)
@@ -81,6 +83,6 @@ export class Customer  {
 
   refresh() {
       this.dataSource = this.dataSource;
-    }
+  }
 
 }
