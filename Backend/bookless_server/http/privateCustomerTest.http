@@ -8,11 +8,24 @@ POST http://localhost:3000/PrivateCustomer/add
 Content-Type: application/json 
 
 {
+    "id": 2,
+    "adress": "1",
+    "phoneNumber": "2",
+    "email": "email@gmail.com",
+    "fName": "tes",
+    "lName": "testian", 
+    "gender": "f"
+}
+###
+POST http://localhost:3000/PrivateCustomer/update
+Content-Type: application/json 
+
+{
     "id": 3,
     "adress": "1",
     "phoneNumber": "2",
     "email": "email@gmail.com",
     "fName": "tes",
-    "lName": "test", 
+    "lName": "baldrian", 
     "gender": "f"
 }

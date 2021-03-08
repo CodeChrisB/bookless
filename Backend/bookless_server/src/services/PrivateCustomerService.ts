@@ -25,4 +25,8 @@ export class PrivateCustomerService {
 
         return this.repo.getPrivateCustomer();
     }
+
+    public async updatePrivateCustomer(privateCustomer:IPrivateCustomer):Promise<boolean> {
+        return this.repo.updatePrivateCustomer(privateCustomer);
+    }
 } 

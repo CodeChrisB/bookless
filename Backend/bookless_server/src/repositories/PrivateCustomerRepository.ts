@@ -3,7 +3,7 @@ import { Pool, QueryResult } from "pg";
 import { createLogger, format, transports } from "winston";
 import { IPrivateCustomer } from "../models/Customer/PrivateCustomer";
 import Logger from '../loaders/logger';
-import { lookup } from "dns";
+import { pid } from "process";
 
 export class PrivateCustomerRepository {
 
@@ -23,6 +23,25 @@ export class PrivateCustomerRepository {
     public get():IPrivateCustomer[]{
         Logger.info(this.privateCustomers)
         return this.privateCustomers;
+    }
+
+    public async updatePrivateCustomer(privateCustomer : IPrivateCustomer) : Promise<boolean> {
+        try {
+            await this.pool.query("update privateCustomer set adress=$1, phonenumber=$2, email=$3, fname=$4, lname=$5, gender=$6 where id=$7", [
+                privateCustomer.adress,
+                privateCustomer.phoneNumber,
+                privateCustomer.email,
+                privateCustomer.fName,
+                privateCustomer.lName,
+                privateCustomer.gender,
+                privateCustomer.id,
+            ]);
+            Logger.info('PrivateCustomer' + privateCustomer.id +  'updated!');
+        } catch {
+            return false;
+        }
+        
+        return true; 
     }
 
     public async getPrivateCustomer() : Promise<IPrivateCustomer[]>{
