@@ -16,7 +16,7 @@ styleUrls: ['./customerData.component.css','../../../../css/forms.css']
 })
 export class addCustomer implements OnInit  {
 
-  id:number = undefined;
+  id:number;
   editMode = false;
   showMode = false;
   addMode = false;
@@ -42,7 +42,9 @@ export class addCustomer implements OnInit  {
 
 
  customerObject : IPrivateCustomer = {id:0,adress:"",phoneNumber:"",email:"",fName:"",lName:"",gender:""};
- constructor(private route :Router,public activatedRoute: ActivatedRoute) {}
+ constructor(private route :Router,public activatedRoute: ActivatedRoute, customerService:CustomerService) {
+   this.customerService = customerService;
+ }
 
   //#region All the Init Methods
 
@@ -87,18 +89,16 @@ export class addCustomer implements OnInit  {
 
 
 
-   initEdit(){
+   async initEdit(){
 
     this.msg = "Änderungen speichern";
-    this.id = history.state.id;
-    var customer = this.customerService.getCustomer(this.id)
+    this.id = Number(history.state.id);
+    var customer:IPrivateCustomer =  await this.customerService.getCustomer(this.id);
     this.customer.fName = customer.fName;
     this.customer.lName = customer.lName;
     this.customer.location.domicile = 'Nope'
     this.customer.email = customer.email;
     this.customer.gender = this.customer.gender;
-
-
    }
 
    initAdd(){
@@ -120,14 +120,16 @@ export class addCustomer implements OnInit  {
     }
   }
 
-  addCustomer():void{
+  async addCustomer():Promise<void>{
     this.customerObject.fName = this.customer.fName;
     this.customerObject.lName = this.customer.lName;
     this.customerObject.adress = this.customer.location.domicile;
     this.customerObject.email = this.customer.email;
     this.customerObject.gender =this.customer.gender;
+    this.customerObject.phoneNumber = this.customer.phone;
     this.customerObject.id = 100;
-    this.customerService.addPrivatCustomer(this.customerObject); //return Promise<boolean> to handle
+    console.log(this.customerObject);
+    await this.customerService.addPrivatCustomer(this.customerObject); //return Promise<boolean> to handle
     this.route.navigate(['/app/crm/customer']);
   }
 

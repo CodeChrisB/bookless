@@ -30,7 +30,7 @@ export class PrivateCustomerController {
     } 
 
     @httpPost("/add")
-    private add(req:express.Request, res:express.Response):  Promise<boolean> {
+    private add(req:express.Request):  Promise<boolean> {
         return this.privateCustomerService.add(req.body);
     }
 

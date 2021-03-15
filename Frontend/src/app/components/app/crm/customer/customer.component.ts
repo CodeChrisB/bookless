@@ -61,12 +61,15 @@ export class Customer implements OnInit  {
   }
   async ngOnInit(): Promise<void> {
     this.customers = await this.customerService.getAllCustomers();
+    console.log(this.customers);
+    this.dataSource = this.customers.slice(0,this.pageSize)
   }
 
   deleteCustomer(row : IPrivateCustomer){
      if(confirm('Wollen Sie ' + row.fName +' '+row.lName +' löschen?')){
           this.dataSource = this.dataSource.filter(customers => customers.id !== row.id);
           this.length = this.dataSource.length;
+          this.customerService.removeCustomer(row.id);
           this.refresh();
      }
   }
