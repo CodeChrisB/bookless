@@ -1,11 +1,17 @@
 # docker-compose.yml
+#docker run -d -p 35432:5432 -v ./pgdata:/var/lib/databases/postgresql/data -v ./pgdata/init.sql:/docker-entrypoint-initdb.d/init.sql -e POSTGRES_USER=user -e POSTGRES_PASSWORD=pass -e POSTGRES_DB=booklessdb postgres
+
+# docker run -d -p 5432:5432 -v ./pgdata:/var/lib/databases/postgresql/data -e "POSTGRES_USER=user" -e "POSTGRES_PASSWORD=pass" -e "POSTGRES_DB=booklessdb" postgres
+
+
+
 version: '3.7'
 services: 
   database:
     image: postgres
 
     ports:
-      - 35432:5432
+      - 5432:5432
     volumes: 
       - ./pgdata:/var/lib/databases/postgresql/data
       - ./pgdata/init.sql:/docker-entrypoint-initdb.d/init.sql

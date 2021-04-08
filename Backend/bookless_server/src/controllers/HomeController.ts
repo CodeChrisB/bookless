@@ -5,6 +5,6 @@ import { controller, httpGet, interfaces } from 'inversify-express-utils';
 export class HomeController{
   @httpGet('/')
   public get(req:express.Request): string {
-    return 'Home sweet home';
+    return 'Bookless DB';
   }
 }

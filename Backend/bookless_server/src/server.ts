@@ -1,3 +1,5 @@
+//import * as cors from 'cors';
+const cors = require('cors');
 import * as bodyParser from 'body-parser';
 import "reflect-metadata";
 import { Container } from 'inversify';
@@ -17,6 +19,7 @@ container.bind<CompanyCustomerService>('CompanyCustomerService').to(CompanyCusto
 let server = new InversifyExpressServer(container);
 server.setConfig((app) => {
   // add body parser
+  app.use(cors());
   app.use(bodyParser.urlencoded({
     extended: true
   }));
