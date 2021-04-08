@@ -78,7 +78,6 @@ export class CompanyCustomerRepository {
                     },
                     shippingAdress: shipingAddressesToAdd,
                     contactPersons: contactPersonsToAdd
-
                 });
             }
             Logger.log('info' , this.compCustomers)
