@@ -18,8 +18,8 @@ export class DateFormatter {
     date = new Date();
     }
     // todo rework this part this has to be done easier
-    this.dateString = this.weekDays[date.getUTCDay()];
-    this.dateString += date.toString().substring(7, 11);
+    this.dateString = this.weekDays[date.getUTCDay()]+' der ';
+    this.dateString += date.toString().substring(7, 11).replace('0','');
     this.dateString += this.months[date.getUTCMonth()];
     this.dateString += date.toString().substring(15, 25);
     return this.dateString;

@@ -46,7 +46,7 @@ export class PdfService{
 
   private static openOffer(data: IBillData){
     let ops = new OfferPdfService(data);
-    ops.download('Angebot.pdf');
+    ops.open();
   }
 
   private static createOffer(data: IBillData){

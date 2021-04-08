@@ -59,8 +59,8 @@ export class Offer  {
   transform(offer: IBillData){
     console.dir(offer);
     const dialogRef = this.dialog.open(TransformComponent, {
-      height: '90%',
-      width: '80%',
+      //height: '90%',
+      //width: '80%',
       data: {billData:offer, type: PdfType.Offer}
     });
 

@@ -11,13 +11,10 @@ import { MainComponent } from './components/app/main/main/main.component';
 import { Profile } from './components/profile/profile/profile.component';
 // settings
 
-import { SettingsComponent } from './components/settings/settings/Settings.component';
 import { addCustomer } from './components/app/crm/customer/customerData/customerData';
 import { addCompanyCustomer } from './components/app/crm/company/companyData/customerData';
 import { HeatexchangerData } from './components/app/products/ProductData/ProductData';
 import { ProfileSettings } from './components/profile/settings/profileSettings.component';
-import { OfferData } from './components/app/bill/offer/offerData/offerData.component';
-import { ConfirmationData } from './components/app/bill/confirmation/confirmationData/offerData.component';
 import { Confirmation } from './components/app/bill/confirmation/list/confirmation.component';
 const routes: Routes = [
     { path: 'app', component: MainComponent,
@@ -36,8 +33,8 @@ const routes: Routes = [
           { path: 'crm/company/new',  component: addCompanyCustomer, },
         // sales
         { path: 'sales/offer',  component: Offer, },
-        { path: 'sales/offer/show', component: OfferData},
-        { path: 'sales/offer/edit', component: OfferData},
+        { path: 'sales/offer/show', component: Offer},
+        { path: 'sales/offer/edit', component: Offer},
         //confirmation
         { path: 'sales/confirmation',  component: Confirmation, },
         { path: 'sales/confirmation/show', component: Confirmation},
@@ -73,7 +70,6 @@ import { MainsettingsComponent } from './components/settings/Main/MainSettings.c
 
 import { SettingsdashboardComponent } from './components/settings/Dashboard/SettingsDashboard.component';
 
-import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
 
 import { SalesComponent } from './components/settings/Sales/Sales.component';
 import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';

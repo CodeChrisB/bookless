@@ -1,7 +1,7 @@
 <div id="container" class="blog-pager">
     <div id="float">
       <mat-card id=settings>
-      <button mat-button (click)="today()">Heute</button>
+      <button mat-button matRipple (click)="today()">Heute</button>
       <button mat-button (click)="order()">Aufträge</button>
       <button mat-button (click)="sale()">Umsatz</button>
       <button mat-button (click)="bill()">Rechnugen</button>
@@ -12,15 +12,30 @@
       <mat-card id=big>
         <!--TODAY-->
         <div *ngIf="type == types.today">
-        Heute
-         <hr>
-         {{now}}
+        <h1>Heute ist {{now}}</h1>
+
+          <hr>
+          <h2>Termine</h2>
+          <mat-card id="panel">
+            Momentan gibt es keine Termine
+            <mat-icon matTooltipPosition="right" matTooltip="Klicken Sie um einen neuen Termin hinzuzufügen" class="cursor" id=right>add</mat-icon>
+          </mat-card>
+          
+          <h2>Notizen</h2>
+          <mat-card id=panel>
+                <textarea class="input" matInput placeholder="Klicken um Notiz hinzuzufügen."></textarea>
+          </mat-card>
+
+
          </div>
         <!--Order-->
         <div *ngIf="type == types.order">
-          Aufträge
+          <h1>Aufträge</h1>
            <hr>
-           {{now}}
+           <mat-card id="panel">
+            Momentan gibt es keine Aufträge
+            <mat-icon matTooltipPosition="right" matTooltip="Klicken Sie um einen neuen Auftrag hinzuzufügen" class="cursor" id=right>add</mat-icon>
+          </mat-card>
            </div>
           <!--Sale-->
         <div *ngIf="type == types.sale">

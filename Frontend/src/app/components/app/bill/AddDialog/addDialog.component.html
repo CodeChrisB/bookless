@@ -1,7 +1,7 @@
 <mat-card id="scroll">
   <form>
     <div class="block">
-      <h1>Angebots Informationen</h1>
+      <h1>{{getTypeName()+'s'}} Informationen</h1>
     </div>
 
    <input type="text" [(ngModel)]="offerData.offer.name" [readonly]="locked" name="offer" placeholder="Anfrage">
