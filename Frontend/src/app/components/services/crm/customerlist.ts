@@ -35,9 +35,9 @@ export class CustomerService {
     this.http.post<boolean>(this.url + ('/add'), body, options).toPromise();
   }
 
-  getCustomer(id:number):IPrivateCustomer{
-    console.log(this.customers);
-    return this.customers.filter(a=> a.id==id)[0];
+  async getCustomer(id:number):Promise<IPrivateCustomer>{
+    console.dir(this.customers.filter(a=> a.id==id));
+    return this.customers[0];
   }
 
   setCustomer(id:number,newCustomer:IPrivateCustomer){
@@ -46,6 +46,7 @@ export class CustomerService {
   }
 
   removeCustomer(id:number):Promise<boolean>{
+    console.dir(this.customers);
     return this.http.delete<boolean>(this.url + "/"+id).toPromise();
   }
 

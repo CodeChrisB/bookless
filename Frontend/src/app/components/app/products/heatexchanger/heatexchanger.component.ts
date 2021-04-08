@@ -79,8 +79,8 @@ export class Heatexchanger  {
      }
   }
 
-  mailCustomer(row: IRawProduct){
-    var customer = this.customerService.getCustomer(row.productId)
+  async mailCustomer(row: IRawProduct): Promise<void>{
+    var customer = await this.customerService.getCustomer(row.productId)
       var text = "Sehr "+ (customer.gender =='m' ? 'geehrter Herr,' :'geehrte Frau,') +customer.lName
       var emailData: IEmailData = {email:customer.email,subject:'Subject ',content:text}
       EmailHandler.sendEmail(emailData)

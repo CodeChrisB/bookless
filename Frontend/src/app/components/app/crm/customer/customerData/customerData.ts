@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { CustomerService } from 'src/app/components/services/crm/customerlist';
 import {IPrivateCustomer} from '../../../../../../models/Customer/PrivateCustomer'
-import { Customer } from '../customer.component';
-import { DOCUMENT } from '@angular/common';
 import { EmailHandler } from 'src/app/components/services/tools/emailHandler';
 import { IEmailData } from 'src/models/email/emailData';
 
@@ -75,7 +72,7 @@ export class addCustomer implements OnInit  {
   }
 
 
-  async initShow(){
+  async initShow():Promise<void>{
     this.msg = "Zurück";
     this.id = history.state.id;
     var customer = await this.customerService.getCustomer(this.id);
@@ -89,11 +86,12 @@ export class addCustomer implements OnInit  {
 
 
 
-   async initEdit(){
+   async initEdit():Promise<void>{
 
     this.msg = "Änderungen speichern";
     this.id = Number(history.state.id);
-    var customer:IPrivateCustomer =  await this.customerService.getCustomer(this.id);
+    var customer:IPrivateCustomer = await this.customerService.getCustomer(this.id);
+    console.log(customer.fName)
     this.customer.fName = customer.fName;
     this.customer.lName = customer.lName;
     this.customer.location.domicile = 'Nope'
