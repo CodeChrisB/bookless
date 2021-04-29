@@ -50,7 +50,6 @@ const routes: Routes = [
         //Add Bill Data
         { path: 'sales/offer/new',  component: AddDialog },
         { path: 'sales/confirmation/new',  component: AddDialog, }
-
       ]
     },
 

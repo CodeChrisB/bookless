@@ -18,8 +18,6 @@ export class AppComponent {
   showAdress = true;
   showCompanyName = true;
 
-
-
   public customers =
   [
     {name: 'Chris', id: 1, email: 'coc31', phone: '45325324', adress: 'Ritzlhof', companyName: 'Buchfrei'},

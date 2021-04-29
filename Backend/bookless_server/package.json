@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "devStart": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "docker run -d -p 35432:5432 -v ./pgdata:/var/lib/databases/postgresql/data -v ./pgdata/init.sql:/docker-entrypoint-initdb.d/init.sql -e POSTGRES_USER=user -e POSTGRES_PASSWORD=pass -e POSTGRES_DB=booklessdb postgres"
   },
   "keywords": [],
   "author": "",
