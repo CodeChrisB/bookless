@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ASPNet.Models;
+using ASPNet.Services.Customers;
 
 namespace ASPNet.Controllers
 {
@@ -12,36 +13,35 @@ namespace ASPNet.Controllers
     [Route("[controller]")]
     public class PrivateCustomerController : ControllerBase
     {
-      private static List<PrivateCustomer> customers = new List<PrivateCustomer>(){
-          new PrivateCustomer(),
-          new PrivateCustomer{ Name="Egger" ,Id=1},
-          new PrivateCustomer{ Name="Egger" ,Id=2},
-          new PrivateCustomer{ Name="Egger" ,Id=3},
-          new PrivateCustomer{ Name="Egger" ,Id=4}
-        };
+
+
+        private readonly IPrivateCustomerService privateCustomerService;
+
+        public PrivateCustomerController(IPrivateCustomerService privateCustomerService){
+            this.privateCustomerService = privateCustomerService; 
+        }
 
         [HttpGet("GetAll")]
         public ActionResult<List<PrivateCustomer>> Get()
         {
-            return Ok(customers);
+           return this.privateCustomerService.GetAllCustomers();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<List<PrivateCustomer>> GetSingle(int id)
+        public PrivateCustomer GetSingle(int id)
         {
-            return Ok(customers.FirstOrDefault(c=>c.Id==id));
+            return this.privateCustomerService.GetPrivateCustomerById(id);
         }
 
         [HttpGet("{begin}/{end}")]
         public ActionResult<List<PrivateCustomer>> GetRange(int begin,int end)
         {
-            return Ok(customers.GetRange(begin,end));
+            return this.privateCustomerService.GetRange(begin,end);
         }
 
         [HttpPost]
-        public ActionResult<List<PrivateCustomer>> AddCPrivateCustomer(PrivateCustomer customer){
-            customers.Add(customer);
-            return Ok(customer);
+        public PrivateCustomer AddCPrivateCustomer(PrivateCustomer customer){
+           return this.privateCustomerService.AddPrivateCustomer(customer);
         }
         
 

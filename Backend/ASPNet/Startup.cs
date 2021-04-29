@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASPNet.Services.Customers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,8 @@ namespace ASPNet
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ASPNet", Version = "v1" });
             });
+            //Controller Import
+            services.AddScoped<IPrivateCustomerService,PrivateCustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
