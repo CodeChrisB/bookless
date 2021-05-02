@@ -1,6 +1,6 @@
 # BooklesDB
 
-Das Projekt 'Bookless' ist ein kleines Framework für die Erstellung eines automatisierten Generischen Backend.
+Das ist ein kleines Framework für die Erstellung eines automatisierten Generischen Backend für Bookless.
 
 Die Struktur des Frameworks besteht aus folgende Komponeneten:
 
@@ -10,8 +10,8 @@ Die Struktur des Frameworks besteht aus folgende Komponeneten:
 |**Bookless.Contracts**|In dieser Projekt werden alle für das System notwendigen Schnittstellen und Enumerationen implementiert.|Library|keine
 |**Bookless.Logic**|Dieser Projekt beinhaltet den vollständigen Datenzugriff, die gesamte Geschäftslogik und stellt somit den zentralen Baustein des Systems dar. |Library|CommonBase, # ASP.Net Backend
 |**Bookless.Transfer**|Dieser Projekt beinhaltet die Transferobjekte für den Datenaustausch zwischen den einzelnen Schichten. |Library|CommonBase, Bookless.Contracts
+|**Bookless.WebApi**|In diesem Projekt ist die REST-Schnittstelle implementiert. Dieses Modul stellt eine API (Aplication Programming Interface) für den Zugriff auf das System über das Netzwerk zur Verfügung.|Host|CommonBase, Bookless.Contracts, Bookless.Logic
 
-The new Backend Framework for [Bookless](https://github.com/CodeChrisB/bookless)
 
 ## Usefull Links
 [Swagger](https://localhost:5001/swagger/index.html) (Works after the server has started)
