@@ -49,14 +49,12 @@ import { Heatexchanger } from './components/app/products/heatexchanger/heatexcha
 import { HeatexchangerData } from './components/app/products/ProductData/ProductData';
 import { Offer } from './components/app/bill/offer/listOffer/offer.component';
 import { ProfileSettings } from './components/profile/settings/profileSettings.component';
-import { OfferData } from './components/app/bill/offer/offerData/offerData.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SettingsComponent } from './components/settings/settings/Settings.component';
 import { MainsettingsComponent } from './components/settings/Main/MainSettings.component';
 import { SettingsdashboardComponent } from './components/settings/Dashboard/SettingsDashboard.component';
 import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
 import { Confirmation } from './components/app/bill/confirmation/list/confirmation.component';
-import { ConfirmationData } from './components/app/bill/confirmation/confirmationData/offerData.component';
 import { TransformComponent } from './components/app/bill/transform/transform.component';
 import { SalesComponent } from './components/settings/Sales/Sales.component';
 import { SideNavService } from './components/services/tools/SidenavHandler';
@@ -80,13 +78,11 @@ import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';
     HeatexchangerData,
     Offer,
     ProfileSettings,
-    OfferData,
     SettingsComponent,
     MainsettingsComponent,
     SettingsdashboardComponent,
     SettingssidenavComponent,
     Confirmation,
-    ConfirmationData,
     TransformComponent,
     SalesComponent,
     AddDialog

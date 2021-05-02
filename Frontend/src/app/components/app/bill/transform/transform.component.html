@@ -1,9 +1,7 @@
 
-<h1>Transformieren von {{currentTypeString}} {{data.offer.offer.number}}</h1>
-<div id="transfrom-group">
-  <mat-button-toggle>Bestätigung</mat-button-toggle>
+<h3>Transformieren von {{currentTypeString}}</h3>
+<mat-card id="container">
+  <mat-button-toggle (click)="transformConfirmation()">Bestätigung</mat-button-toggle>
   <mat-button-toggle>Rechnung</mat-button-toggle>
   <mat-button-toggle>Lieferschein</mat-button-toggle>
-</div>
-<hr>
-
+</mat-card>

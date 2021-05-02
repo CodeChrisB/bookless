@@ -3,6 +3,11 @@
     float:left;
     margin:1vh;
 }
+body{
+  background-color: black;
+  min-width: 100%;
+  min-height: 100%;
+}
 
 #full{
   height:80vh;
@@ -95,7 +100,11 @@ div.container a *{
 #product{
   background-color: mediumpurple;
 }
-
+.mat-chip{
+  min-width: 6vw;
+  min-height: 5vh;
+  font-size: 13px;
+}
 
 
 #admin-button{

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ICompanyCustomer } from 'src/models/Customer/CompanyCustomer';
 import { IPrivateCustomer } from 'src/models/Customer/PrivateCustomer';
 import { CompanyService } from '../../services/crm/companylist';
@@ -7,6 +7,7 @@ import { TotalCustomerService } from '../../services/crm/customerData';
 import { Router } from '@angular/router';
 import { DateFormatter } from '../../services/tools/dateFormatter';
 import { DashboardType } from 'src/models/Dashboard/DashboardType';
+import { MatRipple } from '@angular/material/core';
 
 @Component({
 selector: 'dashboard-component',
@@ -79,5 +80,20 @@ ngOnInit(){
   private changeDashboard(type : DashboardType){
     this.type=type;
   }
+
+
+   /** Reference to the directive instance of the ripple. */
+   @ViewChild(MatRipple) ripple: MatRipple;
+
+   /** Shows a centered and persistent ripple. */
+   launchRipple() {
+     const rippleRef = this.ripple.launch({
+       persistent: true,
+       centered: true
+     });
+ 
+     // Fade out the ripple later.
+     rippleRef.fadeOut();
+   }
 
 }

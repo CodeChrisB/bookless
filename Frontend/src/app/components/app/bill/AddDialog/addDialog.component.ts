@@ -15,6 +15,7 @@ import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { Router } from '@angular/router';
 import { EventEmitter } from 'events';
 import { PdfType } from 'src/models/bill/PdfType';
+import { PdfTypeNames } from 'src/models/bill/PdfTypeName';
 
 @Component({
   selector: 'customer-component',
@@ -118,9 +119,20 @@ export class AddDialog implements OnInit {
   }
 
   doOffer() {
+    //thats the way the function should look like
+    //BillDataService.Handle(this.offerData,this.type,this.editMode)
     if (this.editMode) {
+      switch(this.type){
+        case PdfType.Offer:
+          OfferService.updateOffer(this.offerData);
+        case PdfType.Confirmation:
+          
+        break;
+      }
       OfferService.updateOffer(this.offerData);
-    } else {
+    } 
+    else 
+    {
       this.fillInOffer();
       OfferService.addOffer(this.offerData);
       this.route.navigate(['/app/sales/offer']);
@@ -204,5 +216,9 @@ export class AddDialog implements OnInit {
     console.dir(this.offerData.prodcuts);
 
     this.offerData.prodcuts.splice(id, 1);
+  }
+
+  getTypeName(){
+    return PdfTypeNames.getName(this.type);
   }
 }
