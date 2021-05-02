@@ -20,6 +20,4 @@ Die Struktur des Frameworks besteht aus folgende Komponeneten:
 
 
 ## Projekt
-
-Zur Umsetzung des Projektes wird DotNetCore (3.1) als Framework, die Programmiersprache CSharp (C#) und die Entwicklungsumgebung Visual Studio 2019 Community verwendet. Alle Komponenten können kostenlos aus dem Internet heruntergeladen werden.
- 
+Zur Umsetzung des Projektes wird DotNetCore (5.0) als Framework genuzt.
