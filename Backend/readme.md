@@ -9,6 +9,7 @@ Die Struktur des Frameworks besteht aus folgende Komponeneten:
 |**CommonBase**|In dieser Projekt werden alle Hilfsfunktionen und allgemeine Erweiterungen zusammengefasst. Diese sind unabhängig vom Problembereich und können auch in andere Domän-Projekte verwendet werden.|Library|keine
 |**Bookless.Contracts**|In dieser Projekt werden alle für das System notwendigen Schnittstellen und Enumerationen implementiert.|Library|keine
 |**Bookless.Logic**|Dieser Projekt beinhaltet den vollständigen Datenzugriff, die gesamte Geschäftslogik und stellt somit den zentralen Baustein des Systems dar. |Library|CommonBase, # ASP.Net Backend
+|**Bookless.Transfer**|Dieser Projekt beinhaltet die Transferobjekte für den Datenaustausch zwischen den einzelnen Schichten. |Library|CommonBase, Bookless.Contracts
 
 The new Backend Framework for [Bookless](https://github.com/CodeChrisB/bookless)
 
