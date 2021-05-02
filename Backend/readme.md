@@ -13,8 +13,8 @@ Die Struktur des Frameworks besteht aus folgende Komponeneten:
 |**Bookless.WebApi**|In diesem Projekt ist die REST-Schnittstelle implementiert. Dieses Modul stellt eine API (Aplication Programming Interface) für den Zugriff auf das System über das Netzwerk zur Verfügung.|Host|CommonBase, Bookless.Contracts, Bookless.Logic
 
 
-## Usefull Links
-[Swagger](https://localhost:5001/swagger/index.html) (Works after the server has started)
+## Nützliche Links
+[Swagger](https://localhost:5001/swagger/index.html) ,nach Start von [Bookless.WebAPI](https://github.com/CodeChrisB/bookless/tree/frontendV1/Backend/ASPNet/Bookless.WebApi) aufrufbar
 
 [ASP.Net Documentation](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/?view=aspnetcore-5.0)
 
