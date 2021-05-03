@@ -4,10 +4,11 @@ using ClientCorntracts = Bookless.Contracts;
 
 namespace Bookless.Logic.DataContext
 {
+	//Fill Database
 	partial class ProjectDbContext
 	{
 
-		public DbSet<Entities.CRM.PrivateCustomer> PrivateCustomer { get; set; }
+		public static DbSet<Entities.CRM.PrivateCustomer> PrivateCustomer { get; set; }
 
 		partial void GetDbSet<C, E>(ref DbSet<E> dbset) where E : class
 		{

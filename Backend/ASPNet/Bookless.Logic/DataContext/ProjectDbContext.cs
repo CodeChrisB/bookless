@@ -65,10 +65,7 @@ namespace Bookless.Logic.DataContext
 			return Set<C, E>().FindAsync(id).AsTask();
 		}
 
-		Task<E> IContext.GetRangeAsync<C, E>(int begin, int end)
-		{
-			throw new NotImplementedException();
-		}
+
 		public async Task<IEnumerable<E>> GetRangeAsync<C, E>(int begin,int end)
 			where C : IIdentifiable
 			where E : IdentityEntity, C
@@ -162,5 +159,5 @@ namespace Bookless.Logic.DataContext
 		partial void AfterOnModelCreating(ModelBuilder modelBuilder);
 
 
-    }
+    };
 }

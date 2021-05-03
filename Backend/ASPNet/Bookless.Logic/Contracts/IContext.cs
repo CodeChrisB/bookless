@@ -25,7 +25,7 @@ namespace Bookless.Logic.Contracts
 		Task<E> GetByIdAsync<C, E>(int id)
 			where C : IIdentifiable
 			where E : IdentityEntity, C;
-		Task<E> GetRangeAsync<C, E>(int begin,int end)
+		Task<IEnumerable<E>> GetRangeAsync<C, E>(int begin,int end)
 			where C : IIdentifiable
 			where E : IdentityEntity, C;
 		Task<IEnumerable<E>> GetAllAsync<C, E>()

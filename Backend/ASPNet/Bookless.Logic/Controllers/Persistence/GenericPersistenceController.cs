@@ -38,7 +38,7 @@ namespace Bookless.Logic.Controllers.Persistence
 			return BeforeReturn(result);
 		}
 
-		public override async Task<C> GetRangeAsync(int begin,int end)
+		public override async Task<IEnumerable<C>> GetRangeAsync(int begin,int end)
 		{
 			var result = await Context.GetRangeAsync<C, E>(begin,end);
 
