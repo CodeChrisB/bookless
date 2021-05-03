@@ -11,34 +11,18 @@ namespace Bookless.Logic
 	{
 		static partial void CreateController<C>(IContext context, ref IControllerAccess<C> controller) where C : IIdentifiable
 		{
-			if (typeof(C) == typeof(Bookless.Contracts.Persistence.MusicStore.IGenre))
+			if (typeof(C) == typeof(Bookless.Contracts.Persistence.CRM.IPrivateCustomer))
 			{
-				controller = new Controllers.Persistence.MusicStore.GenreController(context) as IControllerAccess<C>;
-			}
-			else if (typeof(C) == typeof(Bookless.Contracts.Persistence.MusicStore.IArtist))
-			{
-				controller = new Controllers.Persistence.MusicStore.ArtistController(context) as IControllerAccess<C>;
-			}
-			else if (typeof(C) == typeof(Bookless.Contracts.Persistence.MusicStore.IAlbum))
-			{
-				controller = new Controllers.Persistence.MusicStore.AlbumController(context) as IControllerAccess<C>;
+				controller = new Controllers.Persistence.CRM.PrivateCustomerController(context) as IControllerAccess<C>;
 			}
 		}
 		static partial void CreateController<C>(ControllerObject controllerObject, ref IControllerAccess<C> controller) where C : IIdentifiable
 		{
 			controllerObject.CheckArgument(nameof(controllerObject));
 
-			if (typeof(C) == typeof(Bookless.Contracts.Persistence.MusicStore.IGenre))
+			if (typeof(C) == typeof(Bookless.Contracts.Persistence.CRM.IPrivateCustomer))
 			{
-				controller = new Controllers.Persistence.MusicStore.GenreController(controllerObject) as IControllerAccess<C>;
-			}
-			else if (typeof(C) == typeof(Bookless.Contracts.Persistence.MusicStore.IArtist))
-			{
-				controller = new Controllers.Persistence.MusicStore.ArtistController(controllerObject) as IControllerAccess<C>;
-			}
-			else if (typeof(C) == typeof(Bookless.Contracts.Persistence.MusicStore.IAlbum))
-			{
-				controller = new Controllers.Persistence.MusicStore.AlbumController(controllerObject) as IControllerAccess<C>;
+				controller = new Controllers.Persistence.CRM.PrivateCustomerController(controllerObject) as IControllerAccess<C>;
 			}
 		}
 	}
