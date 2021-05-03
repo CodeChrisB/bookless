@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.Transfer", "Bookle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.WebApi", "Bookless.WebApi\Bookless.WebApi.csproj", "{C3978E7C-608E-4A46-9FD9-D60F38A5950A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookless.UnitTest", "Bookless.UnitTest\Bookless.UnitTest.csproj", "{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{C3978E7C-608E-4A46-9FD9-D60F38A5950A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3978E7C-608E-4A46-9FD9-D60F38A5950A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3978E7C-608E-4A46-9FD9-D60F38A5950A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

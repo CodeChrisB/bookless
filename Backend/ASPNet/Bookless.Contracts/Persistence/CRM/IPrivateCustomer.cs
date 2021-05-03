@@ -9,5 +9,7 @@ namespace Bookless.Contracts.Persistence.CRM
 		int CustomerId { get; set; }
 		[ContractPropertyInfo(Required = true, MaxLength = 1024, IsUnique = true)]
 		string fName { get; set; }
+
+		//TODO add Private customer data
 	}
 }
