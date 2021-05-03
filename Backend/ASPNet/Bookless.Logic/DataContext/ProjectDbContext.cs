@@ -7,11 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using Bookless.Logic.Contracts;
 
 namespace Bookless.Logic.DataContext
 {
-	internal partial class ProjectDbContext : DbContext, Contracts.IContext
-	{
+	internal partial class ProjectDbContext : DbContext, IContext
+    {
 		static ProjectDbContext()
 		{
 			ClassConstructing();
@@ -63,13 +64,25 @@ namespace Bookless.Logic.DataContext
 		{
 			return Set<C, E>().FindAsync(id).AsTask();
 		}
+
+		Task<E> IContext.GetRangeAsync<C, E>(int begin, int end)
+		{
+			throw new NotImplementedException();
+		}
+		public async Task<IEnumerable<E>> GetRangeAsync<C, E>(int begin,int end)
+			where C : IIdentifiable
+			where E : IdentityEntity, C
+		{
+			return await Set<C, E>().Where(x => x.Id <= begin && x.Id <= end).ToArrayAsync();
+		}
+
 		public async Task<IEnumerable<E>> GetAllAsync<C, E>()
 			where C : IIdentifiable
 			where E : IdentityEntity, C
 		{
 			return await Set<C, E>().ToArrayAsync().ConfigureAwait(false);
 		}
-
+	
 		public async Task<IEnumerable<E>> QueryAllAsync<C, E>(string predicate)
 			where C : IIdentifiable
 			where E : IdentityEntity, C
@@ -147,5 +160,7 @@ namespace Bookless.Logic.DataContext
 		}
 		partial void BeforeOnModelCreating(ModelBuilder modelBuilder, ref bool handled);
 		partial void AfterOnModelCreating(ModelBuilder modelBuilder);
-	}
+
+
+    }
 }

@@ -29,6 +29,10 @@ namespace Bookless.Contracts.Client
         /// <returns>The element of the type T with the corresponding identification.</returns>
         Task<T> GetByIdAsync(int id);
         /// <summary>
+        /// Returns the elements of type T in the range id
+        /// </summary>
+        Task<T> GetRangeAsync(int begin,int end);
+        /// <summary>
         /// Returns all interfaces of the entities in the collection.
         /// </summary>
         /// <returns>All interfaces of the entity collection.</returns>

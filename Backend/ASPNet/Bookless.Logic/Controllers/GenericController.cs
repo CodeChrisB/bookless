@@ -30,8 +30,9 @@ namespace Bookless.Logic.Controllers
 
 		public abstract Task<IEnumerable<C>> GetAllAsync(); 
 
-		public abstract Task<C> GetByIdAsync(int id); 
-
+		public abstract Task<C> GetByIdAsync(int id);
+		public abstract Task<C> GetRangeAsync(int begin,int end);
+		
 		public abstract Task<C> InsertAsync(C entity); 
 
 		public abstract Task<IEnumerable<C>> QueryAllAsync(string predicate); 

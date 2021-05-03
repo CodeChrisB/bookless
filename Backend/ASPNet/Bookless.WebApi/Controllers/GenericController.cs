@@ -44,6 +44,15 @@ namespace Bookless.WebApi.Controllers
 
 			return ToModel(entity);
 		}
+
+		[HttpGet("/api/[controller]/GetRange/{begin}/{end}")]
+		public async Task<M> GetRangeAsync(int begin,int end)
+		{
+			var entity = await Controller.GetRangeAsync(begin,end);
+
+			return ToModel(entity);
+		}
+
 		[HttpGet("/api/[controller]/GetAll")]
 		public async Task<IEnumerable<M>> GetAllAsync()
 		{
