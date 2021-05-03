@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bookless.Logic\Bookless.Logic.csproj" />
+    <ProjectReference Include="..\Bookless.Transfer\Bookless.Transfer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Business\" />
+    <Folder Include="Controllers\Persistence\NewFolder\" />
+  </ItemGroup>
+
+</Project>

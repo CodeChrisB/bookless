@@ -1,0 +1,3 @@
+﻿In diesem Ordner werden alle Business-Entitäten definiert. 
+Die Schnittstellen der Business-Entitäten muessen von der Schnittstellen 
+'IIdentifiable' und 'ICopyable<IEntity>' abgeleitet sein.
