@@ -1,13 +1,23 @@
-# Backend
+# BooklesDB
 
-## API
+Das ist ein kleines Framework für die Erstellung eines automatisierten Generischen Backend für Bookless.
 
-### Get Data
+Die Struktur des Frameworks besteht aus folgende Komponeneten:
 
-- Command 1
-- Command 2
-    - Some Further explaination
-- Command 3
-    - When to call
-- Command 4
-    - What to do if it retruns true
+|Projekt|Beschreibung|Typ|Abhängigkeit
+|---|---|---|---|
+|**CommonBase**|In dieser Projekt werden alle Hilfsfunktionen und allgemeine Erweiterungen zusammengefasst. Diese sind unabhängig vom Problembereich und können auch in andere Domän-Projekte verwendet werden.|Library|keine
+|**Bookless.Contracts**|In dieser Projekt werden alle für das System notwendigen Schnittstellen und Enumerationen implementiert.|Library|keine
+|**Bookless.Logic**|Dieser Projekt beinhaltet den vollständigen Datenzugriff, die gesamte Geschäftslogik und stellt somit den zentralen Baustein des Systems dar. |Library|CommonBase, # ASP.Net Backend
+|**Bookless.Transfer**|Dieser Projekt beinhaltet die Transferobjekte für den Datenaustausch zwischen den einzelnen Schichten. |Library|CommonBase, Bookless.Contracts
+|**Bookless.WebApi**|In diesem Projekt ist die REST-Schnittstelle implementiert. Dieses Modul stellt eine API (Aplication Programming Interface) für den Zugriff auf das System über das Netzwerk zur Verfügung.|Host|CommonBase, Bookless.Contracts, Bookless.Logic
+
+
+## Nützliche Links
+[Swagger](https://localhost:5001/swagger/index.html) ,nach Start von [Bookless.WebAPI](https://github.com/CodeChrisB/bookless/tree/frontendV1/Backend/ASPNet/Bookless.WebApi) aufrufbar
+
+[ASP.Net Documentation](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/?view=aspnetcore-5.0)
+
+
+## Projekt
+Zur Umsetzung des Projektes wird DotNetCore (5.0) als Framework genuzt.
