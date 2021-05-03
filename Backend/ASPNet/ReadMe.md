@@ -21,3 +21,4 @@ The new Backend Framework for [Bookless](https://github.com/CodeChrisB/bookless)
 ## Projekt
 
 Zur Umsetzung des Projektes wird DotNetCore (3.1) als Framework, die Programmiersprache CSharp (C#) und die Entwicklungsumgebung Visual Studio 2019 Community verwendet. Alle Komponenten können kostenlos aus dem Internet heruntergeladen werden.
+ 
