@@ -1,4 +1,5 @@
 ﻿//@Ignore
+//@Ignore
 using Microsoft.AspNetCore.Mvc;
 using TContract = Bookless.Contracts.Persistence.CRM.IPrivateCustomer;
 using TModel = Bookless.Transfer.Models.Persistence.CRM.PrivateCustomer;

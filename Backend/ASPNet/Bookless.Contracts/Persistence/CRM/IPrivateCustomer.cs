@@ -6,9 +6,8 @@ namespace Bookless.Contracts.Persistence.CRM
 	[ContractInfo(ContextType = ContextType.Table)]
 	public partial interface IPrivateCustomer : IVersionable, ICopyable<IPrivateCustomer>
 	{
+		
 		//private data
-		[ContractPropertyInfo(Required = true,  IsUnique = true)]
-		int CustomerId { get; set; }
 		[ContractPropertyInfo(Required = true, MaxLength = 128)]
 		string fName { get; set; }
 		[ContractPropertyInfo(Required = true, MaxLength = 128)]
