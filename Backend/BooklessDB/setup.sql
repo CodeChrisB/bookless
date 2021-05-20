@@ -1,0 +1,4 @@
+CREATE TABLE CUSTOMERS (
+    customerID SERIAL PRIMARY KEY,
+    priceListID SERIAL
+)
