@@ -1,0 +1,4 @@
+﻿In diesem Ordner werden alle Datenbank-Entitäten definiert. 
+Die Schnittstellen der Entitäten muessen von der Schnittstellen 
+'IVersionable' und 'ICopyable<IEntity>' abgeleitet sein. Jede Entität 
+hat einen direkten Bezug zu einem Datenbankobjekt (Table oder View).

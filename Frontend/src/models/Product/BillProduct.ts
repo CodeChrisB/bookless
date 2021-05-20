@@ -1,7 +1,7 @@
-import { IRawProduct } from "./RawProduct";
+import { IRawProduct } from './RawProduct';
 
 export interface IBillProduct
 {
   product: IRawProduct;
-  amount:number;
+  amount: number;
 }

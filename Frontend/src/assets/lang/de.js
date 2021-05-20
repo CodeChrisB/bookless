@@ -1,4 +1,4 @@
- const lang = {
+np const lang = {
   tabs : {
       crm : 'CRM',
       dashboard : 'Dashboard',

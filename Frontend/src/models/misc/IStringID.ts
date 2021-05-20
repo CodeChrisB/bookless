@@ -1,4 +1,4 @@
 export interface IStringId{
-  string:string;
-  id:number;
+  string: string;
+  id: number;
 }

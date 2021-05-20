@@ -1,83 +1,60 @@
-<div>
-  <div>
-    <div class='row'>
-      <div class='column'>
-        <mat-card>
-         Heute
-          <hr>
-          {{now}}
-        </mat-card>
-      </div>
-      <div class='column'>
-        <mat-card>
-          Aufträge
-          <hr>
-        </mat-card>
-      </div>
-      <div class='column'>
-      </div>
+<div id="container" class="blog-pager">
+    <div id="float">
+      <mat-card id=settings>
+      <button mat-button matRipple (click)="today()">Heute</button>
+      <button mat-button (click)="order()">Aufträge</button>
+      <button mat-button (click)="sale()">Umsatz</button>
+      <button mat-button (click)="bill()">Rechnugen</button>
+      <button mat-button (click)="customer()">Kunden</button>
+       </mat-card>
     </div>
-    <div class='row'>
-      <div class='column'>
-        <mat-card>
+    <div id="float-big">
+      <mat-card id=big>
+        <!--TODAY-->
+        <div *ngIf="type == types.today">
+        <h1>Heute ist {{now}}</h1>
+
+          <hr>
+          <h2>Termine</h2>
+          <mat-card id="panel">
+            Momentan gibt es keine Termine
+            <mat-icon matTooltipPosition="right" matTooltip="Klicken Sie um einen neuen Termin hinzuzufügen" class="cursor" id=right>add</mat-icon>
+          </mat-card>
+          
+          <h2>Notizen</h2>
+          <mat-card id=panel>
+                <textarea class="input" matInput placeholder="Klicken um Notiz hinzuzufügen."></textarea>
+          </mat-card>
+
+
+         </div>
+        <!--Order-->
+        <div *ngIf="type == types.order">
+          <h1>Aufträge</h1>
+           <hr>
+           <mat-card id="panel">
+            Momentan gibt es keine Aufträge
+            <mat-icon matTooltipPosition="right" matTooltip="Klicken Sie um einen neuen Auftrag hinzuzufügen" class="cursor" id=right>add</mat-icon>
+          </mat-card>
+           </div>
+          <!--Sale-->
+        <div *ngIf="type == types.sale">
           Umsatz
-          <hr>
-        </mat-card>
-      </div>
-      <div class='column'>
-        <mat-card>
-         Rechnung
-          <hr>
-        </mat-card>
-      </div>
-      <div class='column'>
-      </div>
+           <hr>
+           {{now}}
+           </div>
+        <!--Bill-->
+        <div *ngIf="type == types.bill">
+          Rechnungen
+           <hr>
+           {{now}}
+           </div>
+        <!--Customer-->
+        <div *ngIf="type == types.customer">
+          Kunden
+           <hr>
+           {{now}}
+           </div>
+       </mat-card>
     </div>
-  </div>
 </div>
-
-<mat-card class="big">
-  <div class="box">
-    <button id="changeTop" (click)="show=!show">{{"Wechseln zu "+ (show ? 'Firmen':"Kunden")}}</button>
-
-    <div *ngIf="show">
-      <table id="topCustomer-table">
-        <tr>
-          <th>Vorname</th>
-          <th>Nachname</th>
-          <th>Email</th>
-        </tr>
-        <tr *ngFor="let c of customers" >
-          <td (click)="goToShowCustomerPage(c.id)">{{c.fName}}</td>
-          <td (click)="goToShowCustomerPage(c.id)">{{c.lName}}</td>
-          <td (click)="goToShowCustomerPage(c.id)">{{c.email}}</td>
-        </tr>
-      </table>
-    </div>
-    <div *ngIf="!show">
-      <table id="topCustomer-table">
-        <tr>
-          <th>Firmename</th>
-          <th>Vertreter</th>
-          <th>Lieferadresse</th>
-        </tr>
-        <tr *ngFor="let c of companies">
-          <td (click)="goToShowCompanyPage(c.id)">{{c.name}}</td>
-          <td (click)="goToShowCompanyPage(c.id)">{{c.contactPersons[0].lName}}</td>
-          <td (click)="goToShowCompanyPage(c.id)">{{c.shippingAdress[0].adress}}</td>
-        </tr>
-      </table>
-    </div>
-    <div style="height: 2vh;"></div>
-  </div>
-</mat-card>
-
-<mat-card class="small">
-  Daten
-  <hr>
-<h4>Kunden insgesamt : {{totalCustomers}}</h4>
-<h4>Neue Kunden : {{newCustomers}}</h4>
-
-
-</mat-card>
-

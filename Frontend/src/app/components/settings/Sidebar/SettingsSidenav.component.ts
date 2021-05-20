@@ -9,47 +9,29 @@ styleUrls: ['./SettingsSidenav.component.css']
 })
 export class SettingssidenavComponent implements OnInit {
 
+      public user: IUser;
+      // current stat of the tabs
+      crmOpen = false;
+      salesOpen = false;
+      productOpen = false;
+
+      // close others tabs when open a new one
+      closeOnClick = true;
+
     ngOnInit(){
         this.user = UserService.getUser(1);
       }
-    
-      public user:IUser;
-      //current stat of the tabs
-      crmOpen = false;
-      billOpen =false;
-      productOpen =false;
-    
-      //close others tabs when open a new one
-      closeOnClick =true;
-    
-      public openDashboard() : void {
-        console.log('Called: openDashboard')
+
+      public openDashboard(): void {
+        console.log('Called: openDashboard');
       }
-    
-      public openProduct() : void {
-        this.productOpen=!this.productOpen;
-    
-        if(this.closeOnClick){
-          this.billOpen=!this.productOpen;
-          this.crmOpen=false;
+
+      public openSales(): void {
+        this.salesOpen = !this.salesOpen;
+
+        if (this.closeOnClick){
+          this.salesOpen = !this.productOpen;
         }
       }
-    
-      public openBill() : void {
-        this.billOpen=!this.billOpen;
-    
-        if(this.closeOnClick){
-          this.productOpen=false;
-          this.crmOpen=false
-        }
-      }
-    
-      public openCrm() : void {
-        this.crmOpen=!this.crmOpen;
-    
-        if(this.closeOnClick){
-          this.productOpen=false;
-          this.billOpen=!this.crmOpen;
-        }
-      }
+
 }

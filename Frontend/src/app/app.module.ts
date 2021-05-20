@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopbarComponent } from './components/app/main/topbar/topbar.component';
@@ -40,21 +40,25 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from  '@angular/material/button';
 import {Profile} from './components/profile/profile/profile.component';
-import { Customer } from './components/app/crm/customer/customer.component'
+import { Customer } from './components/app/crm/customer/customer.component';
 import { addCustomer } from './components/app/crm/customer/customerData/customerData';
 import { Dashboard } from './components/app/dashboard/dashboard.component';
 import { Company } from './components/app/crm/company/company.component';
 import { addCompanyCustomer } from './components/app/crm/company/companyData/customerData';
 import { Heatexchanger } from './components/app/products/heatexchanger/heatexchanger.component';
 import { HeatexchangerData } from './components/app/products/ProductData/ProductData';
-import { Offer } from './components/app/bill/offer/list/offer.component';
+import { Offer } from './components/app/bill/offer/listOffer/offer.component';
 import { ProfileSettings } from './components/profile/settings/profileSettings.component';
-import { OfferData } from './components/app/bill/offer/offerData/offerData.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SettingsComponent } from './components/settings/settings/Settings.component';
 import { MainsettingsComponent } from './components/settings/Main/MainSettings.component';
 import { SettingsdashboardComponent } from './components/settings/Dashboard/SettingsDashboard.component';
 import { SettingssidenavComponent } from './components/settings/Sidebar/SettingsSidenav.component';
+import { Confirmation } from './components/app/bill/confirmation/list/confirmation.component';
+import { TransformComponent } from './components/app/bill/transform/transform.component';
+import { SalesComponent } from './components/settings/Sales/Sales.component';
+import { SideNavService } from './components/services/tools/SidenavHandler';
+import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';
 
 
 @NgModule({
@@ -74,11 +78,14 @@ import { SettingssidenavComponent } from './components/settings/Sidebar/Settings
     HeatexchangerData,
     Offer,
     ProfileSettings,
-    OfferData,
     SettingsComponent,
     MainsettingsComponent,
     SettingsdashboardComponent,
-    SettingssidenavComponent
+    SettingssidenavComponent,
+    Confirmation,
+    TransformComponent,
+    SalesComponent,
+    AddDialog
   ],
   imports: [
     FormsModule,
@@ -122,7 +129,7 @@ import { SettingssidenavComponent } from './components/settings/Sidebar/Settings
     MatPaginatorModule,
   ],
 
-  providers: [MatDatepickerModule],
+  providers: [MatAutocompleteModule,MatDatepickerModule,TopbarComponent,SideNavService],
   bootstrap: [AppComponent]
 
 })

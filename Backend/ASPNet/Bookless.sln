@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4BC300B-0CAF-4A53-815C-C432B6C80611}"
+	ProjectSection(SolutionItems) = preProject
+		Anwendungsentwicker Step By Step.txt = Anwendungsentwicker Step By Step.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonBase", "CommonBase\CommonBase.csproj", "{26FDE123-189E-4248-BFD4-0C49CFC4C982}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.Logic", "Bookless.Logic\Bookless.Logic.csproj", "{B23BED2E-DC0E-45AA-9412-AD0AF8A50063}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.Contracts", "Bookless.Contracts\Bookless.Contracts.csproj", "{CDD23FD3-4029-4231-824F-89DC137F0EFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.Transfer", "Bookless.Transfer\Bookless.Transfer.csproj", "{CFBCC977-7261-4E6C-AC64-AC64FDEE9F30}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.WebApi", "Bookless.WebApi\Bookless.WebApi.csproj", "{C3978E7C-608E-4A46-9FD9-D60F38A5950A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.UnitTest", "Bookless.UnitTest\Bookless.UnitTest.csproj", "{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26FDE123-189E-4248-BFD4-0C49CFC4C982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FDE123-189E-4248-BFD4-0C49CFC4C982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FDE123-189E-4248-BFD4-0C49CFC4C982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FDE123-189E-4248-BFD4-0C49CFC4C982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23BED2E-DC0E-45AA-9412-AD0AF8A50063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23BED2E-DC0E-45AA-9412-AD0AF8A50063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23BED2E-DC0E-45AA-9412-AD0AF8A50063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23BED2E-DC0E-45AA-9412-AD0AF8A50063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD23FD3-4029-4231-824F-89DC137F0EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD23FD3-4029-4231-824F-89DC137F0EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD23FD3-4029-4231-824F-89DC137F0EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD23FD3-4029-4231-824F-89DC137F0EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFBCC977-7261-4E6C-AC64-AC64FDEE9F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFBCC977-7261-4E6C-AC64-AC64FDEE9F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFBCC977-7261-4E6C-AC64-AC64FDEE9F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFBCC977-7261-4E6C-AC64-AC64FDEE9F30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3978E7C-608E-4A46-9FD9-D60F38A5950A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3978E7C-608E-4A46-9FD9-D60F38A5950A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3978E7C-608E-4A46-9FD9-D60F38A5950A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3978E7C-608E-4A46-9FD9-D60F38A5950A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9981B144-57D7-4BD7-BE83-935CDDE807E1}
+	EndGlobalSection
+EndGlobal

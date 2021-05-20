@@ -48,14 +48,22 @@
 
 - git push origin --delete (branch name)
 
-## Get current version
+## Get current version name
 
 - https://codechrisb.github.io/version.html
+
+
+## Get current live demo
+
+- https://codechrisb.github.io/bookless
 
 ## Get the project as desktop application
 
 - npm run electron
 
+## Build to GH Pages
+
+- npm run pages
+
 ---     
-#### Written By Buchberger Christopher
-#### @CodeChrisB 
+ 

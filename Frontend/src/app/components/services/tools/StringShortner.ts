@@ -7,12 +7,12 @@ import { HttpClient} from '@angular/common/http';
 })
 export class StringShortener {
 
-    static Trim(string:string ,length:number):string{
-      if(length<string.length){
-        return string.substring(0,length-3)+'...'
+    static Trim(string: string , length: number): string{
+      if (length < string.length){
+        return string.substring(0, length - 3) + '...';
       }
       else{
-        //the string is short enoguh to be displayed fully
+        // the string is short enoguh to be displayed fully
         return string;
       }
     }
