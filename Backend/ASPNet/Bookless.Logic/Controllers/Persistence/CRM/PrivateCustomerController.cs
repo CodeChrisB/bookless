@@ -1,15 +1,15 @@
 ﻿using Bookless.Logic.Contracts;
-using TContract = Bookless.Contracts.Persistence.CRM.ICompanyCustomer;
-using TEntity = Bookless.Logic.Entities.CRM.CompanyCustomer;
+using TContract = Bookless.Contracts.Persistence.CRM.IPrivateCustomer;
+using TEntity = Bookless.Logic.Entities.CRM.PrivateCustomer;
 
 namespace Bookless.Logic.Controllers.Persistence.CRM
 {
-	class CompanyCustomerController : GenericPersistenceController<TContract, TEntity>
+	class PrivateCustomerController : GenericPersistenceController<TContract, TEntity>
 	{
-		public CompanyCustomerController(IContext context) : base(context)
+		public PrivateCustomerController(IContext context) : base(context)
 		{
 		}
-		public CompanyCustomerController(ControllerObject controllerObject) : base(controllerObject)
+		public PrivateCustomerController(ControllerObject controllerObject) : base(controllerObject)
 		{
 		}
 	}

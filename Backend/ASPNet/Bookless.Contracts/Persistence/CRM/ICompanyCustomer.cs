@@ -4,8 +4,8 @@ using Bookless.Contracts.Modules.Crm;
 namespace Bookless.Contracts.Persistence.CRM
 {
 	[ContractInfo(ContextType = ContextType.Table)]
-	public interface ICompanyCustomer : IIdentifiable
-    {
+	public interface ICompanyCustomer : IVersionable, ICopyable<ICompanyCustomer>
+	{
 		//company country
 		[ContractPropertyInfo(Required = true, MaxLength = 128)]
 		string companyName { get; set; }
