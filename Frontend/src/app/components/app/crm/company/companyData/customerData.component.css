@@ -1,65 +1,48 @@
 mat-card{
   height: 80vh;
   border-radius: 0px;
-  overflow-y: auto;
+  padding-left: 0;
 }
 
+.mat-tab-body-content { overflow: hidden!important}
+mat-tab-group{
+  min-height: 500px;
+}
+mat-tab{
+  min-height: 100%;
+}
+
+mat-button-toggle{
+  margin: 15px;
+  margin-bottom: 5;
+  background-color: #4CAF50;
+}
 input, select{
   position: relative;
   left: 10px;
-  width: 20%;
-  margin: 10px;
+  width: 200px;
+  min-width: 20%;
+  margin-right: 60%;
+  margin-bottom: 2%;
+  margin-top: 1%;
   margin-left: 10px;
-  margin-right: 20px;
-}
-
-input#contact-person{
-  width: 10vw;
-  min-width: 100px;
-  margin: 0px;
-  border-radius: 0;
-  margin-top: 1vh;
-}
-.mat-button-toggle{
-  height: fit-content;
-  margin-bottom: 10px;
-}
-
-.mat-icon#black{
-  color:black;
-  background-color: white;
 }
 
 input:disabled,select:disabled{
   background-color: white;
 }
 div.block{
-  display: block;
   padding-top: 10px;
   border-radius: 0px 50px 50px 0px;
   height: 50px;
   width: 100%;
   background-color: #303030 ;
-  margin: 0;
 }
 
 div.block h1{
-  margin: 0;
-  display: inline-block;
-  margin-right: 1vw;
+ position: relative;
+ left: 10px;
 }
-#line{
-  display: inline;
-}
-
-button#id {
-  padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 
 #addButton
 {
@@ -73,18 +56,11 @@ button#id {
   width: 50px;
 }
 
-
-
-#button-container{
-  width: 100%;
-  padding-left: 1vw;
-  margin-bottom: 0px;
+input#contact-person{
+  width: 12.5vw;
+  min-width: 100px;
+  margin: 0px;
+  border-radius: 0;
+  margin-top: 0.5vh;
 }
-
-#row{
-  float: left;
-  position: absolute;
-  left: 15vw;
-}
-
 

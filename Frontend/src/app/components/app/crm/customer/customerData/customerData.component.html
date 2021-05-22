@@ -10,6 +10,7 @@
       <select type="text" [disabled]="locked ? 'disabled':null">
         <option value="m">Herr</option>
         <option value="f">Frau</option>
+        <option value="d">Divers</option>
       </select>
       <input type="text" [readonly]="locked" [(ngModel)]="customer.phone"  name="phone" placeholder="Telefonnummer">
       <input type="text" [readonly]="locked" [(ngModel)]="customer.email"  name="email" placeholder="E-Mail">
