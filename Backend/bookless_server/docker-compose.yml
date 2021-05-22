@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: '3.7'
+services: 
+  database:
+    image: postgres
+
+    ports:
+      - 35432:5432
+    volumes: 
+      - ./pgdata:/var/lib/databases/postgresql/data
+      - ./pgdata/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: booklessdb
+  web:
+    restart: always 
+    build: .
+    command: nodemon --legacy-watch src/*.ts
+    depends_on: 
+      - database
+    env_file: .env
+    volumes: 
+      - ./src :/usr/app/src/
+      - /app/node_modules
+    ports: 
+      - "3000:3000"

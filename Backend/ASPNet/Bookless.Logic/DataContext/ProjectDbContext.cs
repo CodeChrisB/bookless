@@ -17,7 +17,7 @@ namespace Bookless.Logic.DataContext
 		{
 			ClassConstructing();
 			ConnectionString = CommonBase.Modules.Configuration.AppSettings.Configuration["ConnectionStrings:DefaultConnection"];
-			//ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Database=BooklessDb;Integrated Security=True";
+			ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Database=BooklessDb;Integrated Security=True";
 			ClassConstructed();
 		}
 		static partial void ClassConstructing();

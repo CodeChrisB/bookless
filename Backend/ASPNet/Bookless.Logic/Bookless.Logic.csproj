@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookless.Contracts\Bookless.Contracts.csproj" />
+    <Compile Remove="Controllers\Business\**" />
+    <EmbeddedResource Remove="Controllers\Business\**" />
+    <None Remove="Controllers\Business\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Business\MusicStore\" />
+    <ProjectReference Include="..\Bookless.Contracts\Bookless.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

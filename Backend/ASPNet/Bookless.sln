@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.Transfer", "Bookle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.WebApi", "Bookless.WebApi\Bookless.WebApi.csproj", "{C3978E7C-608E-4A46-9FD9-D60F38A5950A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookless.UnitTest", "Bookless.UnitTest\Bookless.UnitTest.csproj", "{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookless.UnitTest", "Bookless.UnitTest\Bookless.UnitTest.csproj", "{0BE0EA8E-5891-4006-A83A-584B7EA98C8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
