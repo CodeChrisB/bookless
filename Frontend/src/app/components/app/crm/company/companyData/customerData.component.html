@@ -1,8 +1,8 @@
 <mat-card>
   <form>
-    <mat-tab-group>
+    <mat-tab-group animationDuration="0ms">
       <!---Firma-->
-      <mat-tab label="Firma">
+      <mat-tab label="Firma" >
         <div class="block">
           <h1>Firmen Daten</h1>
         </div>
@@ -20,7 +20,7 @@
 
       </mat-tab>
       <!---Firma-->
-      <mat-tab label="Firma">
+      <mat-tab label="Lieferadressen">
 
         <div class="block">
           <h1>Liefer Daten</h1>
@@ -62,17 +62,7 @@
           </mat-button-toggle>
         </div>
       </mat-tab>
-
-
     </mat-tab-group>
-
-
-
-
-
-
-
-
     <input (click)="doCustomer()" type="submit" value={{msg}}>
   </form>
 </mat-card>

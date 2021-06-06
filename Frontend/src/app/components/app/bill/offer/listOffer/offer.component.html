@@ -75,8 +75,14 @@
                         <button mat-menu-item (click)="updateOffer(row)">Bearbeiten</button>
                         <button mat-menu-item (click)="deleteOffer(row)">Löschen</button>
                         <button mat-menu-item (click)="downloadPdf(row)">Download</button>
-                        <button mat-menu-item (click)="transform(row)">Transformieren</button>
+                        <button mat-menu-item [matMenuTriggerFor]="types"Transformieren>Transformieren</button>
                     </mat-menu>
+                    <mat-menu #types="matMenu">
+                        <button mat-menu-item>Angebot</button>
+                        <button mat-menu-item>Bestätigung</button>
+                        <button mat-menu-item>Rechnung</button>
+                        <button mat-menu-item>Lieferschein</button>
+                      </mat-menu>
                 </mat-cell>
             </ng-container>
 
