@@ -37,12 +37,11 @@ export class AddDialog implements OnInit {
   filteredOptions: Observable<number[]>;
   search: string;
   editMode = false;
+  label: string;
   type: PdfType;
 
   ngOnInit() {
     this.type = this.getType();
-    alert(this.type)
-
     //auto complete for the products
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -65,6 +64,7 @@ export class AddDialog implements OnInit {
         this.editMode = true;
       }
     }
+    this.label = this.getTypeName()+'s';
   }
 
   getType(): PdfType {

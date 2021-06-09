@@ -85,6 +85,7 @@ export class addCompanyCustomer implements OnInit  {
    }
 
    initAdd(){
+     this.addShipping();
      this.msg = 'Hinzufügen';
    }
 
