@@ -64,7 +64,7 @@ export class AddDialog implements OnInit {
         this.editMode = true;
       }
     }
-    this.label = this.getTypeName()+'s';
+    this.label = this.getTypeName();
   }
 
   getType(): PdfType {

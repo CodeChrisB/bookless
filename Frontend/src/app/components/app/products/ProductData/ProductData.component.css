@@ -1,64 +1,269 @@
-mat-card{
-  height: 80vh;
-  border-radius: 0px;
+mat-card {
+    min-height: 100vh;
+    min-width: 100vw;
+    border-radius: 0px;
+    padding: 0%;
 }
 
-input, select{
-  position: relative;
-  left: 10px;
-  width: 20%;
-  margin: 10px;
-  margin-left: 10px;
-  margin-right: 20px;
+input,
+select {
+    position: relative;
+    left: 10px;
+    width: 20%;
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 20px;
 }
 
-input:disabled,select:disabled{
-  background-color: white;
-}
-div.block{
-  padding-top: 10px;
-  border-radius: 0px 50px 50px 0px;
-  height: 50px;
-  width: 100%;
-  background-color: #303030 ;
+input:disabled,
+select:disabled {
+    background-color: white;
 }
 
-div.block h1{
- position: relative;
- left: 10px;
+div.block {
+    padding-top: 10px;
+    border-radius: 0px 50px 50px 0px;
+    height: 30px;
+    width: 50%;
+    background-color: #303030;
 }
 
-#addButton
-{
-  margin-top: 10px;
-  background-color: #c2185b;
-  border-color: #c2185b;
-  border-radius: 50px;
-  position: relative;
-  float: right;
-  height: 50px;
-  width: 50px;
+div.block h1 {
+    position: relative;
+    left: 10px;
 }
 
-#big-Input{
-  width: 50vw;
-  height: 20vh;
+#addButton {
+    margin-top: 10px;
+    background-color: #c2185b;
+    border-color: #c2185b;
+    border-radius: 50px;
+    position: relative;
+    float: right;
+    height: 50px;
+    width: 50px;
 }
 
-#button-container{
-  width: 100%;
-  padding-left: 1vw;
-  margin-bottom: 0px;
+#big-Input {
+    width: 50vw;
+    height: 6vh;
 }
 
-#id{
-  width: 5vw;
+#button-container {
+    width: 100%;
+    padding-left: 1vw;
+    margin-bottom: 0px;
 }
 
-#row{
-  float: left;
-  position: absolute;
-  left: 15vw;
+#id {
+    width: 5vw;
+}
+
+#row {
+    float: left;
+    position: absolute;
+    left: 15vw;
+}
+
+.mat-card {
+    width: 45vw;
+    float: left;
+    margin: 1vh;
+}
+
+body {
+    background-color: black;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#full {
+    height: 80vh;
+    max-height: 80vh;
+}
+
+#globals {
+    width: 90%;
+}
+
+.mat-checkbox {
+    margin: 2vw;
+    background-color: rgba(255, 0, 0, 0.4);
+    padding: 0.5vw;
+    border-radius: 2vw;
+}
+
+#gear {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+#pointer {
+    cursor: pointer;
+}
+
+img {
+    width: 20vw;
+    height: 20vw
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.container {
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    text-align: center;
+    color: white;
+    padding: 2vh;
+    padding: 1vw;
+}
+
+#side-form {
+    width: 15vw;
+}
+
+div.container a * {
+    display: inline;
+}
+
+.mat-chip {
+    cursor: pointer;
+    font-size: 5pt;
+}
+
+.chip-container {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0.5vw;
+}
+
+#admin {
+    background-color: crimson;
+}
+
+#admin-window {
+    max-height: 50.5vh;
+    height: 36.5vh;
+}
+
+#pass-window {
+    max-height: 37vh;
+    height: 37vh;
+}
+
+#dashbaord {
+    background-color: darkorange;
+}
+
+#crm {
+    background-color: darkolivegreen
+}
+
+#bill {
+    background-color: dodgerblue;
+}
+
+#product {
+    background-color: mediumpurple;
+}
+
+.mat-chip {
+    min-width: 6vw;
+    min-height: 5vh;
+    font-size: 13px;
+}
+
+#admin-button {
+    background-color: #294b93;
+    border-color: #294b93;
+    color: white;
+    min-height: 5vh;
+    min-width: 45%;
+    width: 50%;
+    margin-bottom: 5vh;
+    margin-right: 1vw;
+    flex-grow: 1;
+}
+
+h4 {
+    display: inline;
+    margin-left: 1vw;
+    margin-bottom: 5vh;
+}
+
+.left-half {
+    position: absolute;
+    left: 1%;
+    width: 49%;
+}
+
+.right-half {
+    position: absolute;
+    right: 1%;
+    width: 49%;
 }
 
 
+/*The Big container for image and user stuff*/
+
+.container {
+    width: 42vw
+}
+
+#left {
+    float: left;
+    width: 12vw;
+}
+
+#right {
+    float: right;
+    width: 30vw
+}
+
+
+/*the inside container for 2 columns of user stuff*/
+
+input#small,
+.mat-form-field#small {
+    width: 21vw;
+}
+
+#pass {
+    width: 50%;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container>mat-form-field {
+    margin-left: 1vw;
+}
+
+
+/*fake image button*/
+
+.image-upload>input {
+    display: none;
+}
+
+#userImage {
+    cursor: pointer;
+}
+
+#submit-user {
+    background-color: #294b93;
+    border-color: #294b93;
+    border-radius: 0px;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
