@@ -113,6 +113,7 @@ amount:number;
 export class OfferService {
 
   static getOffers(): IBillData[]{
+    console.dir(offer);
     return offer;
   }
 

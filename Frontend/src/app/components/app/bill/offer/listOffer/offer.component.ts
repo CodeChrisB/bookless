@@ -11,6 +11,7 @@ import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/off
 import { TransformComponent } from '../../transform/transform.component';
 import { PdfType } from 'src/models/bill/PdfType';
 import { PdfService } from 'src/app/components/services/pdf/bills/PdfService';
+import { TransService } from 'src/app/components/services/bill/transformService';
 
 
 const offers: IBillData[] = OfferService.getOffers();
@@ -56,18 +57,7 @@ export class Offer  {
     this.route.navigate(['/app/sales/offer/new'] , { state: {mode: 'add' } });
   }
 
-  transform(offer: IBillData){
-    console.dir(offer);
-    const dialogRef = this.dialog.open(TransformComponent, {
-      //height: '90%',
-      //width: '80%',
-      data: {billData:offer, type: PdfType.Offer}
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
 
 
   short( string: string, number: number){
@@ -87,6 +77,12 @@ export class Offer  {
   refresh() {
       this.dataSource = this.dataSource;
     }
+
+
+  transformCon = (row) => TransService.transform(row,PdfType.Confirmation)
+  transformBil =(row) =>TransService.transform(row,PdfType.Bill)
+  transformDel =(row) => TransService.transform(row,PdfType.DeliveryNote)
+  transformOff =(row) => TransService.transform(row,PdfType.Offer)
 
 
     showOffer(row: IBillData) {

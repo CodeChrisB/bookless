@@ -78,11 +78,11 @@
                         <button mat-menu-item [matMenuTriggerFor]="types"Transformieren>Transformieren</button>
                     </mat-menu>
                     <mat-menu #types="matMenu">
-                        <button mat-menu-item>Angebot</button>
-                        <button mat-menu-item>Bestätigung</button>
-                        <button mat-menu-item>Rechnung</button>
-                        <button mat-menu-item>Lieferschein</button>
-                      </mat-menu>
+                        <button mat-menu-item (click)=transformOff(row)>Angbot</button>
+                        <button mat-menu-item (click)=transformCon(row)>Bestätigung</button>
+                        <button mat-menu-item (click)=transformBil(row)>Rechnung</button>
+                        <button mat-menu-item (click)=transformDel(row)>Lieferschein</button>
+                    </mat-menu>
                 </mat-cell>
             </ng-container>
 
