@@ -19,9 +19,9 @@ export interface IBillData{
     consultantId: number;
     stages: {
       offer: string;
-      order: string;
-      bill: string;
-      deliveryNote: string;
+      order: boolean;
+      bill: boolean;
+      deliveryNote: boolean;
       finished: boolean;
       canceld: boolean;
     }

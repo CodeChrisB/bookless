@@ -103,9 +103,9 @@ export class AddDialog implements OnInit {
       // at start a offer is just a offer it is not transformed yet into anything else
       stages: {
         offer: '',
-        order: '',
-        bill: '',
-        deliveryNote: '',
+        order: false,
+        bill: false,
+        deliveryNote: false,
         finished: false,
         canceld: false,
       },
@@ -126,12 +126,12 @@ export class AddDialog implements OnInit {
         case PdfType.Offer:
           OfferService.updateOffer(this.offerData);
         case PdfType.Confirmation:
-          
+
         break;
       }
       OfferService.updateOffer(this.offerData);
-    } 
-    else 
+    }
+    else
     {
       this.fillInOffer();
       OfferService.addOffer(this.offerData);

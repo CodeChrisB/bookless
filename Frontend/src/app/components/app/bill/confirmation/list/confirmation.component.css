@@ -12,6 +12,10 @@
   border-radius: 0px;
 }
 
+mat-menu button{
+  width: 100%;
+}
+
 
 div.mat-paginator-conatainer{
   max-height:1vh;

@@ -49,3 +49,6 @@ button{
 }
 
 
+mat-menu button{
+  width: 100%;
+}

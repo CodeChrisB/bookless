@@ -26,7 +26,7 @@ const offers: IBillData[] = OfferService.getOffers();
 export class Offer  {
   // init the data
   displayedColumns = ['number', 'date', 'cId', 'name', 'plz', 'town', 'street', 'brutto', 'status', 'transform', 'actions'];
-  constructor(public dialog: MatDialog, private route: Router) {}
+  constructor(public dialog: MatDialog, private route: Router,private ts:TransService) {}
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
@@ -79,10 +79,10 @@ export class Offer  {
     }
 
 
-  transformCon = (row) => TransService.transform(row,PdfType.Confirmation)
-  transformBil =(row) =>TransService.transform(row,PdfType.Bill)
-  transformDel =(row) => TransService.transform(row,PdfType.DeliveryNote)
-  transformOff =(row) => TransService.transform(row,PdfType.Offer)
+  transformCon = (row) => this.ts.transform(row,PdfType.Confirmation)
+  transformBil =(row) =>this.ts.transform(row,PdfType.Bill)
+  transformDel =(row) => this.ts.transform(row,PdfType.DeliveryNote)
+  transformOff =(row) => this.ts.transform(row,PdfType.Offer)
 
 
     showOffer(row: IBillData) {
