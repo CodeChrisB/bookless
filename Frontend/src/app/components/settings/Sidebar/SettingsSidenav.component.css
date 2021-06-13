@@ -1,6 +1,5 @@
 .example-container {
-    height: 85vh;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    height: 87vh;
     float: left;
     width: 15vw;
     overflow: hidden;
@@ -13,9 +12,7 @@
     justify-content: center;
 }
 
-.example-sidenav {
-    padding: 20px;
-}
+
 
 button {
     text-align: left;
