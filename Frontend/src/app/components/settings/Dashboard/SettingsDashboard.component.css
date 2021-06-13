@@ -5,5 +5,11 @@
 
 h1{
   padding-top: 12pt;
-  font-size: 50pt;
+  font-size: 40pt;
 }
+
+img{
+  width: 30%;
+  height: auto;
+}
+
