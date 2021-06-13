@@ -39,6 +39,10 @@ const routes: Routes = [
         { path: 'sales/confirmation',  component: Confirmation, },
         { path: 'sales/confirmation/show', component: Confirmation},
         { path: 'sales/confirmation/edit', component: Confirmation},
+        //bill
+        { path: 'sales/bill',  component: Bill, },
+        { path: 'sales/bill/show', component: Bill},
+        { path: 'sales/bill/edit', component: Bill},
 
         // products
         { path: 'products/heatexchanger',  component: Heatexchanger },
@@ -72,6 +76,7 @@ import { SettingsdashboardComponent } from './components/settings/Dashboard/Sett
 
 import { SalesComponent } from './components/settings/Sales/Sales.component';
 import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';
+import { Bill } from './components/app/bill/Bill/bill.component';
 
 
 @NgModule({

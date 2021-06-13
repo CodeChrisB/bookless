@@ -14,7 +14,7 @@ export class TransService {
   public transform(data:IBillData, type: PdfType) {
     switch(type){
       case PdfType.Confirmation :
-        data.offer.stages.offer=true;
+        data.offer.stages.order=true;
         ConfirmationService.addconfirmation(data);
         this.route.navigate(['/app/sales/confirmation'])
       break;

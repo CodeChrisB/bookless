@@ -60,6 +60,7 @@ import { SalesComponent } from './components/settings/Sales/Sales.component';
 import { SideNavService } from './components/services/tools/SidenavHandler';
 import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';
 import { TransService } from './components/services/bill/transformService';
+import { Bill } from './components/app/bill/Bill/bill.component';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { TransService } from './components/services/bill/transformService';
     Confirmation,
     TransformComponent,
     SalesComponent,
-    AddDialog
+    AddDialog,
+    Bill
   ],
   imports: [
     FormsModule,
