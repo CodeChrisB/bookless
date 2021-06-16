@@ -59,6 +59,8 @@ import { TransformComponent } from './components/app/bill/transform/transform.co
 import { SalesComponent } from './components/settings/Sales/Sales.component';
 import { SideNavService } from './components/services/tools/SidenavHandler';
 import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';
+import { TransService } from './components/services/bill/transformService';
+import { Bill } from './components/app/bill/Bill/bill.component';
 
 
 @NgModule({
@@ -85,7 +87,8 @@ import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';
     Confirmation,
     TransformComponent,
     SalesComponent,
-    AddDialog
+    AddDialog,
+    Bill
   ],
   imports: [
     FormsModule,
@@ -129,7 +132,7 @@ import { AddDialog } from './components/app/bill/AddDialog/addDialog.component';
     MatPaginatorModule,
   ],
 
-  providers: [MatAutocompleteModule,MatDatepickerModule,TopbarComponent,SideNavService],
+  providers: [MatAutocompleteModule,MatDatepickerModule,TopbarComponent,SideNavService,TransService],
   bootstrap: [AppComponent]
 
 })

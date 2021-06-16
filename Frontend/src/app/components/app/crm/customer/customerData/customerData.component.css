@@ -1,15 +1,24 @@
 mat-card{
   height: 80vh;
   border-radius: 0px;
+  padding-left: 0;
 }
+
+
+
+
+.mat-tab-body-content { overflow: hidden!important}
+
 
 input, select{
   position: relative;
   left: 10px;
-  width: 20%;
-  margin: 10px;
+  width: 200px;
+  min-width: 20%;
+  margin-right: 60%;
+  margin-bottom: 2%;
+  margin-top: 1%;
   margin-left: 10px;
-  margin-right: 20px;
 }
 
 input:disabled,select:disabled{

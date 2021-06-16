@@ -37,12 +37,11 @@ export class AddDialog implements OnInit {
   filteredOptions: Observable<number[]>;
   search: string;
   editMode = false;
+  label: string;
   type: PdfType;
 
   ngOnInit() {
     this.type = this.getType();
-    alert(this.type)
-
     //auto complete for the products
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -65,6 +64,7 @@ export class AddDialog implements OnInit {
         this.editMode = true;
       }
     }
+    this.label = this.getTypeName();
   }
 
   getType(): PdfType {
@@ -103,9 +103,9 @@ export class AddDialog implements OnInit {
       // at start a offer is just a offer it is not transformed yet into anything else
       stages: {
         offer: '',
-        order: '',
-        bill: '',
-        deliveryNote: '',
+        order: false,
+        bill: false,
+        deliveryNote: false,
         finished: false,
         canceld: false,
       },
@@ -126,12 +126,12 @@ export class AddDialog implements OnInit {
         case PdfType.Offer:
           OfferService.updateOffer(this.offerData);
         case PdfType.Confirmation:
-          
+
         break;
       }
       OfferService.updateOffer(this.offerData);
-    } 
-    else 
+    }
+    else
     {
       this.fillInOffer();
       OfferService.addOffer(this.offerData);

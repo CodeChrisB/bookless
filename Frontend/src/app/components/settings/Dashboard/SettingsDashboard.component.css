@@ -1,0 +1,23 @@
+#center {
+    display: inline;
+    float: none;
+}
+
+#background {
+    background-color: aqua;
+}
+
+h1 {
+    padding-top: 12pt;
+    font-size: 30pt;
+}
+
+h2 {
+    padding-top: 12pt;
+    font-size: 30pt;
+}
+
+img {
+    width: 30%;
+    height: auto;
+}

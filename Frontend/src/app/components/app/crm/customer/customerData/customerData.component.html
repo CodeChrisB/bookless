@@ -1,33 +1,49 @@
 <mat-card>
+  <mat-tab-group>
+    <!---PERSON-->
+    <mat-tab label="Person">
+      <div class="block">
+        <h1>Person bezogene Daten</h1>
+      </div>
+      <input type="text" [readonly]="locked" [(ngModel)]="customer.fName" name="fname" placeholder="Vorname">
+      <input type="text" [readonly]="locked" [(ngModel)]="customer.lName" name="lname" placeholder="Nachname">
+      <select type="text" [disabled]="locked ? 'disabled':null">
+        <option value="m">Herr</option>
+        <option value="f">Frau</option>
+        <option value="d">Divers</option>
+      </select>
+      <input type="text" [readonly]="locked" [(ngModel)]="customer.phone"  name="phone" placeholder="Telefonnummer">
+      <input type="text" [readonly]="locked" [(ngModel)]="customer.email"  name="email" placeholder="E-Mail">
+    </mat-tab>
+
+    <!---Adress-->
+    <mat-tab label="Adresse">
+      <div class="block">
+        <h1>Adress Daten</h1>
+      </div>
+      <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.town" name="town" placeholder="Ort">
+      <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.plz" name="plz" placeholder="Postleitzahl">
+      <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.street" name="street" placeholder="Straße">
+      <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.country" name="country" placeholder="Land">
+      <input type="text"  [readonly]="locked" [(ngModel)]="customer.location.domicile"  name="domicile"  placeholder="Wohnort">
+    </mat-tab>
+
+    <!---Adress-->
+    <mat-tab label="Lieferadressen">
+      <div class="block">
+        <h1>Liefer Daten</h1>
+      </div>
+      <input type="text"  [readonly]="locked" [(ngModel)]="customer.location.orderAdress" name="adress"  placeholder="Lieferadresse">
+      <input type="text"  [readonly]="locked" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
+  <br>
+
+
+    </mat-tab>
+  </mat-tab-group>
   <form>
-    <div class="block">
-      <h1>Personen Daten</h1>
-    </div>
-    <input type="text" [readonly]="locked" [(ngModel)]="customer.fName" name="fname" placeholder="Vorname">
-    <input type="text" [readonly]="locked" [(ngModel)]="customer.lName" name="lname" placeholder="Nachname">
-    <select type="text" [disabled]="locked ? 'disabled':null">
-      <option value="m">Herr</option>
-      <option value="f">Frau</option>
-    </select>
-    <input type="text" [readonly]="locked" [(ngModel)]="customer.phone"  name="phone" placeholder="Telefonnummer">
-    <input type="text" [readonly]="locked" [(ngModel)]="customer.email"  name="email" placeholder="E-Mail">
-
-    <div class="block">
-      <h1>Adress Daten</h1>
-    </div>
-    <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.town" name="town" placeholder="Ort">
-    <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.plz" name="plz" placeholder="Postleitzahl">
-    <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.street" name="street" placeholder="Straße">
-    <input type="text" [readonly]="locked" [(ngModel)]="customer.customerLocation.country" name="country" placeholder="Land">
 
 
-    <div class="block">
-      <h1>Orts Daten</h1>
-    </div>
-    <input type="text"  [readonly]="locked" [(ngModel)]="customer.location.domicile"  name="domicile"  placeholder="Wohnort">
-    <input type="text"  [readonly]="locked" [(ngModel)]="customer.location.orderAdress" name="adress"  placeholder="Lieferadresse">
-    <input type="text"  [readonly]="locked" [(ngModel)]="customer.location.orderAdressOptional"  name="optional"  placeholder="Zweite Lieferadresse [Optional]">
-<br>
+
 
 
     <input (click)="doCustomer()" type="submit" value={{msg}}>

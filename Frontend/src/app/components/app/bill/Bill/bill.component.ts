@@ -8,10 +8,8 @@ import { StringShortener } from 'src/app/components/services/tools/StringShortne
 import { IBillData } from 'src/models/bill/offer/OfferData';
 import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
-import { TransformComponent } from '../../transform/transform.component';
-import { PdfType } from 'src/models/bill/PdfType';
 import { PdfService } from 'src/app/components/services/pdf/bills/PdfService';
-import { TransService } from 'src/app/components/services/bill/transformService';
+import { PdfType } from 'src/models/bill/PdfType';
 
 
 const offers: IBillData[] = OfferService.getOffers();
@@ -19,14 +17,14 @@ const offers: IBillData[] = OfferService.getOffers();
 
 
 @Component({
-  selector: 'customer-component',
-  templateUrl: './offer.component.html',
-  styleUrls: ['./offer.component.css']
+  selector: 'bill-component',
+  templateUrl: './bill.component.html',
+  styleUrls: ['./bill.component.css']
 })
-export class Offer  {
+export class Bill  {
   // init the data
   displayedColumns = ['number', 'date', 'cId', 'name', 'plz', 'town', 'street', 'brutto', 'status', 'transform', 'actions'];
-  constructor(public dialog: MatDialog, private route: Router,private ts:TransService) {}
+
 
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
@@ -46,18 +44,18 @@ export class Offer  {
      this.pageIndex = $event.pageIndex;
     }
 
-
+  showOffer(row: IBillData) {
+    PdfService.OpenPdf(row, PdfType.Offer);
+  }
 
   updateOffer(row: IBillData){
     console.dir(row);
     this.route.navigate(['/app/sales/offer/edit'], { state: {mode: 'edit', id: row.offer.number } });
   }
 
-  addOffer(){
-    this.route.navigate(['/app/sales/offer/new'] , { state: {mode: 'add' } });
+  addConfirmation(){
+    this.route.navigate(['/app/sales/confirmation/new'] , { state: {mode: 'add' } });
   }
-
-
 
 
   short( string: string, number: number){
@@ -65,6 +63,7 @@ export class Offer  {
   }
 
 
+  constructor(public dialog: MatDialog, private route: Router) {}
 
   deleteOffer(row: IBillData){
      if (confirm('Wollen Sie ' + row.offer.name + ' löschen?')){
@@ -78,19 +77,8 @@ export class Offer  {
       this.dataSource = this.dataSource;
     }
 
-
-  transformCon = (row) => this.ts.transform(row,PdfType.Confirmation)
-  transformBil =(row) =>this.ts.transform(row,PdfType.Bill)
-  transformDel =(row) => this.ts.transform(row,PdfType.DeliveryNote)
-  transformOff =(row) => this.ts.transform(row,PdfType.Offer)
-
-
-    showOffer(row: IBillData) {
-      PdfService.OpenPdf(row, PdfType.Offer);
-    }
-
     downloadPdf(row: IBillData){
-      PdfService.DownloadPdf(row, PdfType.Offer);
+       PdfService.DownloadPdf(row, PdfType.Confirmation);
     }
 
 }

@@ -1,6 +1,6 @@
 <div id="content">
     <mat-card>
-
+      <h1>Angebot</h1>
         <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
             <!--NR-->
             <ng-container matColumnDef="number">
@@ -75,7 +75,13 @@
                         <button mat-menu-item (click)="updateOffer(row)">Bearbeiten</button>
                         <button mat-menu-item (click)="deleteOffer(row)">Löschen</button>
                         <button mat-menu-item (click)="downloadPdf(row)">Download</button>
-                        <button mat-menu-item (click)="transform(row)">Transformieren</button>
+                        <button mat-menu-item [matMenuTriggerFor]="types"Transformieren>Transformieren</button>
+                    </mat-menu>
+                    <mat-menu #types="matMenu">
+                        <button mat-menu-item (click)=transformOff(row)>Angbot</button>
+                        <button mat-menu-item (click)=transformCon(row)>Bestätigung</button>
+                        <button mat-menu-item (click)=transformBil(row)>Rechnung</button>
+                        <button mat-menu-item (click)=transformDel(row)>Lieferschein</button>
                     </mat-menu>
                 </mat-cell>
             </ng-container>
