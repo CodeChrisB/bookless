@@ -1,6 +1,8 @@
 import { IBillData } from 'src/models/bill/offer/OfferData';
 import {PdfType} from '../../../../../models/bill/PdfType';
 import {OfferPdfService} from '../../../services/pdf/bills/offer/offer';
+import { BillService } from '../../bill/BillService';
+import { BillPdfService } from './Bill';
 import { ConfirmationPdfService } from './confirmation/confirmation';
 
 
@@ -16,6 +18,9 @@ export class PdfService{
       case PdfType.Confirmation:
         this.downloadConfirmation(data)
       break;
+      case PdfType.Bill:
+        this.downloadBill(data)
+        break;
     }
   }
 
@@ -71,5 +76,11 @@ export class PdfService{
   }
 
 
+  //bill
+
+  private static downloadBill(data: IBillData){
+    let ops = new BillPdfService(data);
+    ops.download('Rechnung.pdf')
+  }
 
 }

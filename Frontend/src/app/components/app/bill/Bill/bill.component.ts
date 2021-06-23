@@ -10,9 +10,10 @@ import { OfferService } from 'src/app/components/services/bill/OfferService';
 import { OfferPdfService } from 'src/app/components/services/pdf/bills/offer/offer';
 import { PdfService } from 'src/app/components/services/pdf/bills/PdfService';
 import { PdfType } from 'src/models/bill/PdfType';
+import { BillService } from 'src/app/components/services/bill/BillService';
 
 
-const offers: IBillData[] = OfferService.getOffers();
+const offers: IBillData[] = BillService.getBills();
 
 
 
@@ -50,11 +51,11 @@ export class Bill  {
 
   updateOffer(row: IBillData){
     console.dir(row);
-    this.route.navigate(['/app/sales/offer/edit'], { state: {mode: 'edit', id: row.offer.number } });
+    this.route.navigate(['/app/sales/bill/edit'], { state: {mode: 'edit', id: row.offer.number } });
   }
 
   addConfirmation(){
-    this.route.navigate(['/app/sales/confirmation/new'] , { state: {mode: 'add' } });
+    this.route.navigate(['/app/sales/bill/new'] , { state: {mode: 'add' } });
   }
 
 
@@ -78,7 +79,7 @@ export class Bill  {
     }
 
     downloadPdf(row: IBillData){
-       PdfService.DownloadPdf(row, PdfType.Confirmation);
+       PdfService.DownloadPdf(row, PdfType.Bill);
     }
 
 }

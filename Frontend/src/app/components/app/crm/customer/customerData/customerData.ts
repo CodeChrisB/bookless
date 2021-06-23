@@ -148,6 +148,8 @@ export class addCustomer implements OnInit  {
     this.customerObject.adress = this.customer.location.domicile;
     this.customerObject.email = this.customer.email;
     this.customerObject.gender = this.customer.gender;
+    this.customerObject.adress = this.customer.location.orderAdress;
+    this.customerObject.phoneNumber = this.customer.phone;
     this.customerObject.id = 100;
 
     CustomerService.addPrivatCustomer(this.customerObject);

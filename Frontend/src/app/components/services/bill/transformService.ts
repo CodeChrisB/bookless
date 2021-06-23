@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { IBillData } from "src/models/bill/offer/OfferData";
 import { PdfType } from "src/models/bill/PdfType";
 import { Offer } from "../../app/bill/offer/listOffer/offer.component";
+import { BillService } from "./BillService";
 import { ConfirmationService } from "./ConfirmationService";
 import { OfferService } from "./OfferService";
 
@@ -22,6 +23,11 @@ export class TransService {
         data.offer.stages.order=true;
         OfferService.addOffer(data);
         this.route.navigate(['/app/sales/offer'])
+      break;
+      case PdfType.Bill :
+        data.offer.stages.bill=true;
+        BillService.addBill(data);
+        this.route.navigate(['/app/sales/bill'])
       break;
     }
   }

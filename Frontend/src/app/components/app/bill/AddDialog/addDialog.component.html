@@ -42,10 +42,8 @@
         <mat-tab label="Produkte ">
             <!--PRODUCTS-->
             <!--Auto Picker-->
-
-
             <div id="center-select">
-                <input type="text" placeholder="Product wählen" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <input [(ngModel)]="autoCompleteSearch" type="text" placeholder="Product wählen" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="setProdcutData($event.option.value)">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{getProductNameById(option)}}
@@ -57,7 +55,6 @@
 
             <div *ngIf="showProducts">
                 <div *ngFor="let product of offerData.prodcuts ; let i = index">
-                    <hr>
                     <div id="center-select">
                         <!--ProductID-->
                         <input id="productId" (keydown)="setPrice($event)" type="text" placeholder="ID" [ngModel]="offerData.prodcuts[i].amount" name={{i*5+4}}>

@@ -39,6 +39,7 @@ export class AddDialog implements OnInit {
   editMode = false;
   label: string;
   type: PdfType;
+  autoCompleteSearch:string;
 
   ngOnInit() {
     this.type = this.getType();
